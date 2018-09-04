@@ -9,37 +9,14 @@
 import UIKit
 
 extension UIAlertController {
-    static func alert(title: String?, message: String?) -> UIAlertController {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        return alert
-    }
-    
-    static func actionSheet(title: String?, message: String?) -> UIAlertController {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+    static func alert(_ style: UIAlertControllerStyle = .alert, title: String?, message: String?) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: style)
         return alert
     }
     
     @discardableResult
-    func defaultAction(title: String?, handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertController {
-        let action = UIAlertAction(title: title, style: .default) { (action) in
-            handler?(action)
-        }
-        self.addAction(action)
-        return self
-    }
-    
-    @discardableResult
-    func destructiveAction(title: String?, handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertController {
-        let action = UIAlertAction(title: title, style: .destructive) { (action) in
-            handler?(action)
-        }
-        self.addAction(action)
-        return self
-    }
-    
-    @discardableResult
-    func cancelAction(title: String?, handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertController {
-        let action = UIAlertAction(title: title, style: .cancel) { (action) in
+    func action(_ style: UIAlertActionStyle = .default, title: String?, handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertController {
+        let action = UIAlertAction(title: title, style: style) { (action) in
             handler?(action)
         }
         self.addAction(action)
