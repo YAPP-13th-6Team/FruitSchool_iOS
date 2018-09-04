@@ -11,6 +11,5 @@ import UIKit
 extension UIView {
     static func instantiateFromXib(xibName: String) -> UIView? {
         return UINib(nibName: xibName, bundle: nil).instantiate(withOwner: nil, options: nil).first as? UIView
-        
     }
 }

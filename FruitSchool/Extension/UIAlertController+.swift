@@ -38,8 +38,7 @@ extension UIAlertController {
     }
     
     @discardableResult
-    func cancelAction(title: String?, handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertController
-    {
+    func cancelAction(title: String?, handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertController {
         let action = UIAlertAction(title: title, style: .cancel) { (action) in
             handler?(action)
         }
