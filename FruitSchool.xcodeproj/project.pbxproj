@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		190F74A6213E33850038234A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F74A5213E33850038234A /* UIViewController+.swift */; };
+		190F74A8213E33DC0038234A /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F74A7213E33DC0038234A /* String+.swift */; };
+		190F74AA213E34020038234A /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F74A9213E34020038234A /* UIColor+.swift */; };
+		190F74AC213E340F0038234A /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F74AB213E340F0038234A /* UIView+.swift */; };
+		190F74AE213E34700038234A /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F74AD213E34700038234A /* NSObject+.swift */; };
+		190F74B0213E34B00038234A /* UIAlertController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F74AF213E34B00038234A /* UIAlertController+.swift */; };
 		190FC3BB213A689C00DD333F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190FC3BA213A689C00DD333F /* AppDelegate.swift */; };
 		190FC3BD213A689C00DD333F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190FC3BC213A689C00DD333F /* ViewController.swift */; };
 		190FC3C0213A689C00DD333F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 190FC3BE213A689C00DD333F /* Main.storyboard */; };
@@ -16,6 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		190F74A5213E33850038234A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		190F74A7213E33DC0038234A /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		190F74A9213E34020038234A /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		190F74AB213E340F0038234A /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		190F74AD213E34700038234A /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
+		190F74AF213E34B00038234A /* UIAlertController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+.swift"; sourceTree = "<group>"; };
 		190FC3B7213A689C00DD333F /* FruitSchool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FruitSchool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		190FC3BA213A689C00DD333F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		190FC3BC213A689C00DD333F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +52,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		190F74A3213E33590038234A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				190FC3C6213A689D00DD333F /* Info.plist */,
+				190FC3C1213A689D00DD333F /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		190F74A4213E33600038234A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				190F74AD213E34700038234A /* NSObject+.swift */,
+				190F74A7213E33DC0038234A /* String+.swift */,
+				190F74AF213E34B00038234A /* UIAlertController+.swift */,
+				190F74A9213E34020038234A /* UIColor+.swift */,
+				190F74A5213E33850038234A /* UIViewController+.swift */,
+				190F74AB213E340F0038234A /* UIView+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		190FC3AE213A689C00DD333F = {
 			isa = PBXGroup;
 			children = (
@@ -61,12 +95,12 @@
 		190FC3B9213A689C00DD333F /* FruitSchool */ = {
 			isa = PBXGroup;
 			children = (
-				190FC3BA213A689C00DD333F /* AppDelegate.swift */,
-				190FC3BC213A689C00DD333F /* ViewController.swift */,
-				190FC3BE213A689C00DD333F /* Main.storyboard */,
-				190FC3C1213A689D00DD333F /* Assets.xcassets */,
 				190FC3C3213A689D00DD333F /* LaunchScreen.storyboard */,
-				190FC3C6213A689D00DD333F /* Info.plist */,
+				190FC3BA213A689C00DD333F /* AppDelegate.swift */,
+				190FC3BE213A689C00DD333F /* Main.storyboard */,
+				190FC3BC213A689C00DD333F /* ViewController.swift */,
+				190F74A4213E33600038234A /* Extension */,
+				190F74A3213E33590038234A /* Supporting Files */,
 			);
 			path = FruitSchool;
 			sourceTree = "<group>";
@@ -202,8 +236,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				190F74B0213E34B00038234A /* UIAlertController+.swift in Sources */,
+				190F74AC213E340F0038234A /* UIView+.swift in Sources */,
 				190FC3BD213A689C00DD333F /* ViewController.swift in Sources */,
 				190FC3BB213A689C00DD333F /* AppDelegate.swift in Sources */,
+				190F74A8213E33DC0038234A /* String+.swift in Sources */,
+				190F74AE213E34700038234A /* NSObject+.swift in Sources */,
+				190F74A6213E33850038234A /* UIViewController+.swift in Sources */,
+				190F74AA213E34020038234A /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
