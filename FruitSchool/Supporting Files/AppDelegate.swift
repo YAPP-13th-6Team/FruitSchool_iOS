@@ -13,9 +13,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        /**
+         * 1. 로그인 안되어 있으면 로그인이 루트 뷰 컨트롤러
+         * 2. 로그인 되어 있으면,
+         * 2-1. 입학증서 확인 버튼을 누르지 않았으면 튜토리얼이 루트 뷰 컨트롤러
+         * 2-2. 입학증서 확인 버튼을 이전에 눌렀다면 탭 바 컨트롤러가 루트 뷰 컨트롤러
+        */
+        let controller = tabBarController()
+        window?.rootViewController = controller
+        window?.makeKeyAndVisible()
         UIApplication.shared.isStatusBarHidden = false
         return true
     }
@@ -41,7 +49,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+}
 
-
+extension AppDelegate {
+    private func tabBarController() -> UITabBarController? {
+        let mainController = UITabBarController()
+        guard let firstController = UIViewController.instantiate(storyboard: "FruitBook", identifier: "FruitBookNavigationController") else { return nil }
+        let firstTabBar = UITabBarItem(title: "도감", image: nil, tag: 0)
+        firstController.tabBarItem = firstTabBar
+        mainController.viewControllers = [firstController]
+        return mainController
+    }
 }
 
