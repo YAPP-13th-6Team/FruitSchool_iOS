@@ -25,6 +25,7 @@
 		19E274D42144DA7600E2F6D2 /* FruitBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274D32144DA7600E2F6D2 /* FruitBookViewController.swift */; };
 		19E274D62144DDE600E2F6D2 /* Notification.Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274D52144DDE600E2F6D2 /* Notification.Name.swift */; };
 		19E274D82144DEED00E2F6D2 /* FruitBookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274D72144DEED00E2F6D2 /* FruitBookDetailViewController.swift */; };
+		19E274DA2145015100E2F6D2 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274D92145015100E2F6D2 /* TriangleView.swift */; };
 		263ED1ACE83EAA3C1B5EC81A /* Pods_FruitSchool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E984EE3A34C42D62533B13 /* Pods_FruitSchool.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		19E274D32144DA7600E2F6D2 /* FruitBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitBookViewController.swift; sourceTree = "<group>"; };
 		19E274D52144DDE600E2F6D2 /* Notification.Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.Name.swift; sourceTree = "<group>"; };
 		19E274D72144DEED00E2F6D2 /* FruitBookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitBookDetailViewController.swift; sourceTree = "<group>"; };
+		19E274D92145015100E2F6D2 /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
 		48E984EE3A34C42D62533B13 /* Pods_FruitSchool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FruitSchool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE308E65D83414C1D0945E8F /* Pods-FruitSchool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.release.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.release.xcconfig"; sourceTree = "<group>"; };
 		DA48AB07292D5B1D20B98DFD /* Pods-FruitSchool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.debug.xcconfig"; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				19E274D12144DA6300E2F6D2 /* FruitBook.storyboard */,
 				19E274D32144DA7600E2F6D2 /* FruitBookViewController.swift */,
 				19E274D72144DEED00E2F6D2 /* FruitBookDetailViewController.swift */,
+				19E274D92145015100E2F6D2 /* TriangleView.swift */,
 			);
 			path = "Fruit Book";
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 			files = (
 				19E274D42144DA7600E2F6D2 /* FruitBookViewController.swift in Sources */,
 				190F74B0213E34B00038234A /* UIAlertController+.swift in Sources */,
+				19E274DA2145015100E2F6D2 /* TriangleView.swift in Sources */,
 				190F74AC213E340F0038234A /* UIView+.swift in Sources */,
 				190FC3BB213A689C00DD333F /* AppDelegate.swift in Sources */,
 				19E274C92144D75300E2F6D2 /* API.swift in Sources */,

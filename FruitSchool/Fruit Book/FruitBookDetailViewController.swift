@@ -9,10 +9,15 @@
 import UIKit
 
 class FruitBookDetailViewController: UIViewController {
-
+    
+    @IBOutlet weak var superview: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        //let gravityCenter = CGPoint(x: (topMiddlePoint.x + bottomLeftPoint.x + bottomRightPoint.x) / 3, y: (topMiddlePoint.y + bottomLeftPoint.y + bottomRightPoint.y) / 3)
+        
+        let view = TriangleView(frame: superview.bounds)
+        superview.addSubview(view)
     }
 }
