@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,19 +15,20 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="ti1-q7-A2G">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96862745098039216" green="0.95294117647058818" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ti1-q7-A2G" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="AK0-lT-3wr"/>
-                            <constraint firstItem="ti1-q7-A2G" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="I1f-hi-o3i"/>
-                            <constraint firstItem="ti1-q7-A2G" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="UEv-RX-bsS"/>
-                            <constraint firstItem="ti1-q7-A2G" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="iN8-HC-Pbu"/>
+                            <constraint firstItem="ti1-q7-A2G" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Kia-Sc-JOw"/>
+                            <constraint firstItem="ti1-q7-A2G" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Nn1-FE-fTp"/>
+                            <constraint firstItem="ti1-q7-A2G" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="gZB-jE-9ED"/>
+                            <constraint firstItem="ti1-q7-A2G" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="yp8-9y-uTN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

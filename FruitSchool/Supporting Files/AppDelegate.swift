@@ -54,10 +54,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
     private func tabBarController() -> UITabBarController? {
         let mainController = UITabBarController()
-        guard let firstController = UIViewController.instantiate(storyboard: "FruitBook", identifier: "FruitBookNavigationController") else { return nil }
-        let firstTabBar = UITabBarItem(title: "도감", image: nil, tag: 0)
+        guard let firstController = UIViewController.instantiate(storyboard: "Home", identifier: "HomeNavigationController") else { return nil }
+        let firstTabBar = UITabBarItem(title: "홈", image: nil, tag: 0)
         firstController.tabBarItem = firstTabBar
-        mainController.viewControllers = [firstController]
+        guard let secondController = UIViewController.instantiate(storyboard: "FruitBook", identifier: "FruitBookNavigationController") else { return nil }
+        let secondTabBar = UITabBarItem(title: "교과서", image: nil, tag: 1)
+        secondController.tabBarItem = secondTabBar
+        guard let thirdController = UIViewController.instantiate(storyboard: "GuideBook", identifier: "GuideBookNavigationController") else { return nil }
+        let thirdTabBar = UITabBarItem(title: "도감", image: nil, tag: 2)
+        thirdController.tabBarItem = thirdTabBar
+        mainController.viewControllers = [firstController, secondController, thirdController]
         return mainController
     }
 }
