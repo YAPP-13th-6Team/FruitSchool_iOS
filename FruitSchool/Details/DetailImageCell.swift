@@ -8,13 +8,24 @@
 
 import UIKit
 
+protocol DetailImageCellDelegate {
+    func didTouchUpBackButton(_ sender: UIButton)
+}
+
 class DetailImageCell: UITableViewCell {
 
+    var delegate: DetailImageCellDelegate?
     @IBOutlet weak var fruitImageView: UIImageView!
+    @IBOutlet weak var backButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = .gray
+        backButton.addTarget(self, action: #selector(touchUpBackButton(_:)), for: .touchUpInside)
+    }
+    
+    @objc func touchUpBackButton(_ sender: UIButton) {
+        delegate?.didTouchUpBackButton(sender)
     }
     
     func setProperties() {

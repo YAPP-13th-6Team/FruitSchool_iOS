@@ -10,25 +10,38 @@ import UIKit
 
 class GuideBookViewController: UIViewController {
 
+    let titleString: String = "과일 도감"
     let cellIdentifier = "guideBookCell"
+    var searchBar: UISearchBar!
+    var searchButton: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    override func loadView() {
-        super.loadView()
-        self.navigationItem.title = "과일 도감"
-        let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(touchUpSearchButton(_:)))
-        self.navigationItem.setRightBarButton(searchButton, animated: false)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationItem.title = titleString
+        searchBar = UISearchBar()
+        searchBar.delegate = self
+        searchBar.showsCancelButton = true
+        searchBar.searchBarStyle = .minimal
+        searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(touchUpSearchButton(_:)))
+        self.navigationItem.setRightBarButton(searchButton, animated: false)
     }
 }
 
 extension GuideBookViewController {
     @objc func touchUpSearchButton(_ sender: UIBarButtonItem) {
-        
+        searchBar.becomeFirstResponder()
+        navigationItem.setRightBarButton(nil, animated: true)
+        navigationItem.titleView = searchBar
+    }
+}
+
+extension GuideBookViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        navigationItem.titleView = nil
+        navigationItem.title = titleString
+        navigationItem.setRightBarButton(searchButton, animated: true)
     }
 }
 

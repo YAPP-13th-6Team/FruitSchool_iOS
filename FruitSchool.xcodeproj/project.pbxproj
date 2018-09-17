@@ -31,15 +31,18 @@
 		1947C576214F2F9000BF6521 /* DetailTriangleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C575214F2F9000BF6521 /* DetailTriangleCell.swift */; };
 		1947C578214F2FA500BF6521 /* DetailQuizCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C577214F2FA500BF6521 /* DetailQuizCell.swift */; };
 		1947C57A214F335700BF6521 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C579214F335700BF6521 /* HomeCell.swift */; };
+		1947C57C214F9E5F00BF6521 /* FruitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C57B214F9E5F00BF6521 /* FruitResponse.swift */; };
+		1947C57E214FB3FE00BF6521 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C57D214FB3FE00BF6521 /* LoginViewController.swift */; };
+		1947C583214FB45000BF6521 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C582214FB45000BF6521 /* TutorialViewController.swift */; };
+		1947C588214FBF4A00BF6521 /* CertificateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1947C587214FBF4A00BF6521 /* CertificateView.xib */; };
+		1947C58A214FBF5800BF6521 /* CertificateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C589214FBF5800BF6521 /* CertificateView.swift */; };
 		19E274C72144D74E00E2F6D2 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274C62144D74E00E2F6D2 /* Network.swift */; };
 		19E274C92144D75300E2F6D2 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274C82144D75300E2F6D2 /* API.swift */; };
 		19E274CB2144D93F00E2F6D2 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19E274CA2144D93F00E2F6D2 /* Login.storyboard */; };
 		19E274CD2144D94800E2F6D2 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19E274CC2144D94800E2F6D2 /* Tutorial.storyboard */; };
-		19E274CF2144D95500E2F6D2 /* Certificate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19E274CE2144D95500E2F6D2 /* Certificate.storyboard */; };
 		19E274D22144DA6300E2F6D2 /* FruitBook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19E274D12144DA6300E2F6D2 /* FruitBook.storyboard */; };
 		19E274D42144DA7600E2F6D2 /* FruitBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274D32144DA7600E2F6D2 /* FruitBookViewController.swift */; };
 		19E274D62144DDE600E2F6D2 /* Notification.Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274D52144DDE600E2F6D2 /* Notification.Name.swift */; };
-		19E274DA2145015100E2F6D2 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274D92145015100E2F6D2 /* TriangleView.swift */; };
 		263ED1ACE83EAA3C1B5EC81A /* Pods_FruitSchool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E984EE3A34C42D62533B13 /* Pods_FruitSchool.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,15 +73,18 @@
 		1947C575214F2F9000BF6521 /* DetailTriangleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTriangleCell.swift; sourceTree = "<group>"; };
 		1947C577214F2FA500BF6521 /* DetailQuizCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailQuizCell.swift; sourceTree = "<group>"; };
 		1947C579214F335700BF6521 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		1947C57B214F9E5F00BF6521 /* FruitResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitResponse.swift; sourceTree = "<group>"; };
+		1947C57D214FB3FE00BF6521 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1947C582214FB45000BF6521 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		1947C587214FBF4A00BF6521 /* CertificateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CertificateView.xib; sourceTree = "<group>"; };
+		1947C589214FBF5800BF6521 /* CertificateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateView.swift; sourceTree = "<group>"; };
 		19E274C62144D74E00E2F6D2 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		19E274C82144D75300E2F6D2 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		19E274CA2144D93F00E2F6D2 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		19E274CC2144D94800E2F6D2 /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
-		19E274CE2144D95500E2F6D2 /* Certificate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Certificate.storyboard; sourceTree = "<group>"; };
 		19E274D12144DA6300E2F6D2 /* FruitBook.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FruitBook.storyboard; sourceTree = "<group>"; };
 		19E274D32144DA7600E2F6D2 /* FruitBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitBookViewController.swift; sourceTree = "<group>"; };
 		19E274D52144DDE600E2F6D2 /* Notification.Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.Name.swift; sourceTree = "<group>"; };
-		19E274D92145015100E2F6D2 /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
 		48E984EE3A34C42D62533B13 /* Pods_FruitSchool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FruitSchool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE308E65D83414C1D0945E8F /* Pods-FruitSchool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.release.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.release.xcconfig"; sourceTree = "<group>"; };
 		DA48AB07292D5B1D20B98DFD /* Pods-FruitSchool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.debug.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +155,7 @@
 				19E274D02144D9F700E2F6D2 /* Fruit Book */,
 				1947C557214F274000BF6521 /* Guide Book */,
 				1947C563214F2CFF00BF6521 /* Details */,
+				1947C586214FBF3500BF6521 /* Reusable Views */,
 				190F74A4213E33600038234A /* Extension */,
 				190F74A3213E33590038234A /* Supporting Files */,
 			);
@@ -189,17 +196,44 @@
 		1947C564214F2DB000BF6521 /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				1947C57B214F9E5F00BF6521 /* FruitResponse.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		1947C57F214FB40700BF6521 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				19E274CA2144D93F00E2F6D2 /* Login.storyboard */,
+				1947C57D214FB3FE00BF6521 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		1947C580214FB40B00BF6521 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				19E274CC2144D94800E2F6D2 /* Tutorial.storyboard */,
+				1947C582214FB45000BF6521 /* TutorialViewController.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		1947C586214FBF3500BF6521 /* Reusable Views */ = {
+			isa = PBXGroup;
+			children = (
+				1947C587214FBF4A00BF6521 /* CertificateView.xib */,
+				1947C589214FBF5800BF6521 /* CertificateView.swift */,
+			);
+			path = "Reusable Views";
 			sourceTree = "<group>";
 		};
 		19E274C22144D6EB00E2F6D2 /* Start */ = {
 			isa = PBXGroup;
 			children = (
 				190FC3C3213A689D00DD333F /* LaunchScreen.storyboard */,
-				19E274CA2144D93F00E2F6D2 /* Login.storyboard */,
-				19E274CC2144D94800E2F6D2 /* Tutorial.storyboard */,
-				19E274CE2144D95500E2F6D2 /* Certificate.storyboard */,
+				1947C57F214FB40700BF6521 /* Login */,
+				1947C580214FB40B00BF6521 /* Tutorial */,
 			);
 			path = Start;
 			sourceTree = "<group>";
@@ -237,7 +271,6 @@
 			children = (
 				19E274D12144DA6300E2F6D2 /* FruitBook.storyboard */,
 				19E274D32144DA7600E2F6D2 /* FruitBookViewController.swift */,
-				19E274D92145015100E2F6D2 /* TriangleView.swift */,
 				1947C560214F281F00BF6521 /* Promotion Review */,
 			);
 			path = "Fruit Book";
@@ -323,11 +356,11 @@
 				1947C559214F278A00BF6521 /* Home.storyboard in Resources */,
 				19E274D22144DA6300E2F6D2 /* FruitBook.storyboard in Resources */,
 				1947C56A214F2E0C00BF6521 /* Detail.storyboard in Resources */,
+				1947C588214FBF4A00BF6521 /* CertificateView.xib in Resources */,
 				190FC3C5213A689D00DD333F /* LaunchScreen.storyboard in Resources */,
 				190FC3C2213A689D00DD333F /* Assets.xcassets in Resources */,
 				1947C55D214F27B800BF6521 /* GuideBook.storyboard in Resources */,
 				19E274CD2144D94800E2F6D2 /* Tutorial.storyboard in Resources */,
-				19E274CF2144D95500E2F6D2 /* Certificate.storyboard in Resources */,
 				19E274CB2144D93F00E2F6D2 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,13 +416,14 @@
 				1947C572214F2F2E00BF6521 /* DetailHealthInfoCell.swift in Sources */,
 				19E274D42144DA7600E2F6D2 /* FruitBookViewController.swift in Sources */,
 				190F74B0213E34B00038234A /* UIAlertController+.swift in Sources */,
-				19E274DA2145015100E2F6D2 /* TriangleView.swift in Sources */,
 				190F74AC213E340F0038234A /* UIView+.swift in Sources */,
 				1947C566214F2DC000BF6521 /* User.swift in Sources */,
+				1947C58A214FBF5800BF6521 /* CertificateView.swift in Sources */,
 				1947C55F214F27C000BF6521 /* GuideBookViewController.swift in Sources */,
 				1947C568214F2DC700BF6521 /* Fruit.swift in Sources */,
 				190FC3BB213A689C00DD333F /* AppDelegate.swift in Sources */,
 				1947C55B214F27A600BF6521 /* HomeViewController.swift in Sources */,
+				1947C583214FB45000BF6521 /* TutorialViewController.swift in Sources */,
 				1947C57A214F335700BF6521 /* HomeCell.swift in Sources */,
 				1947C56C214F2E1500BF6521 /* DetailViewController.swift in Sources */,
 				1947C562214F2B7800BF6521 /* GuideBookCell.swift in Sources */,
@@ -398,11 +432,13 @@
 				1947C576214F2F9000BF6521 /* DetailTriangleCell.swift in Sources */,
 				19E274C72144D74E00E2F6D2 /* Network.swift in Sources */,
 				190F74AE213E34700038234A /* NSObject+.swift in Sources */,
+				1947C57C214F9E5F00BF6521 /* FruitResponse.swift in Sources */,
 				1947C574214F2F3900BF6521 /* DetailBasicInfoCell.swift in Sources */,
 				19E274D62144DDE600E2F6D2 /* Notification.Name.swift in Sources */,
 				190F74A6213E33850038234A /* UIViewController+.swift in Sources */,
 				1947C570214F2F2600BF6521 /* DetailImageCell.swift in Sources */,
 				1947C578214F2FA500BF6521 /* DetailQuizCell.swift in Sources */,
+				1947C57E214FB3FE00BF6521 /* LoginViewController.swift in Sources */,
 				190F74AA213E34020038234A /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

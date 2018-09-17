@@ -17,18 +17,23 @@ class DetailViewController: UIViewController {
 
     var parentType: DetailParentType = .fruitBook
     let cellIdentifiers = ["detailImageCell", "detailBasicInfoCell", "detailHealthInfoCell", "detailTriangleCell", "detailQuizCell"]
-    var basicInfoButton: UIButton!
-    var healthInfoButton: UIButton!
-    var triangleInfoButton: UIButton!
+    let sectionTitles = ["Basic Information", "Health Function", "Fruit Flavor"]
     var springsBasicInfo: Bool = false
     var springsHealthInfo: Bool = false
     var springsTriangleInfo: Bool = false
+    var basicInfoButton: UIButton!
+    var healthInfoButton: UIButton!
+    var triangleInfoButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     @objc func touchUpHeaderButtons(_ sender: UIButton) {
@@ -42,7 +47,6 @@ class DetailViewController: UIViewController {
         default:
             break
         }
-        
         tableView.reloadSections(IndexSet(integer: sender.tag), with: .automatic)
     }
 }
@@ -53,6 +57,7 @@ extension DetailViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers[section], for: indexPath)
         switch section {
         case 0:
+            (cell as? DetailImageCell)?.delegate = self
             (cell as? DetailImageCell)?.setProperties()
         case 1:
             (cell as? DetailBasicInfoCell)?.setProperties()
@@ -110,6 +115,7 @@ extension DetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 || section == 4 { return nil }
         let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 40))
+        view.backgroundColor = .white
         let titleLabel = UILabel()
         let dropButton = UIButton(type: .system)
         view.addSubview(titleLabel)
@@ -123,7 +129,7 @@ extension DetailViewController: UITableViewDelegate {
             dropButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
             ])
         dropButton.tag = section
-        titleLabel.text = "Section \(section)"
+        titleLabel.text = sectionTitles[section - 1]
         dropButton.setTitle("not selected", for: .normal)
         dropButton.setTitle("selected", for: .selected)
         dropButton.addTarget(self, action: #selector(touchUpHeaderButtons(_:)), for: .touchUpInside)
@@ -154,5 +160,11 @@ extension DetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40
+    }
+}
+
+extension DetailViewController: DetailImageCellDelegate {
+    func didTouchUpBackButton(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
 }

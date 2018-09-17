@@ -1,5 +1,5 @@
 //
-//  HomeCell.swift
+//  CertificateView.swift
 //  FruitSchool
 //
 //  Created by Presto on 2018. 9. 17..
@@ -8,13 +8,19 @@
 
 import UIKit
 
-class HomeCell: UITableViewCell {
+protocol CertificateViewDelegate {
+    
+}
 
+class CertificateView: UIView {
+    
+    var delegate: CertificateViewDelegate?
+    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var startButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
+
 }

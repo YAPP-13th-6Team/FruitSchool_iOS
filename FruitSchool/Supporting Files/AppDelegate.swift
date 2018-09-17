@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
+        window?.tintColor = .main
         /**
          * 1. 로그인 안되어 있으면 로그인이 루트 뷰 컨트롤러
          * 2. 로그인 되어 있으면,
