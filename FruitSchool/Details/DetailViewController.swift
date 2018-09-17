@@ -20,15 +20,9 @@ class DetailViewController: UIViewController {
     var basicInfoButton: UIButton!
     var healthInfoButton: UIButton!
     var triangleInfoButton: UIButton!
-    var springsBasicInfo: Bool {
-        return basicInfoButton?.isSelected ?? false
-    }
-    var springsHealthInfo: Bool {
-        return healthInfoButton?.isSelected ?? false
-    }
-    var springsTriangleInfo: Bool {
-        return triangleInfoButton?.isSelected ?? false
-    }
+    var springsBasicInfo: Bool = false
+    var springsHealthInfo: Bool = false
+    var springsTriangleInfo: Bool = false
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -38,7 +32,18 @@ class DetailViewController: UIViewController {
     }
     
     @objc func touchUpHeaderButtons(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
+        switch sender.tag {
+        case 1:
+            springsBasicInfo = !springsBasicInfo
+        case 2:
+            springsHealthInfo = !springsHealthInfo
+        case 3:
+            springsTriangleInfo = !springsTriangleInfo
+        default:
+            break
+        }
+        
+        tableView.reloadSections(IndexSet(integer: sender.tag), with: .automatic)
     }
 }
 
@@ -68,9 +73,7 @@ extension DetailViewController: UITableViewDataSource {
         case 0:
             return 1
         case 1:
-            print(2)
             if springsBasicInfo {
-                print(1)
                 return 3
             }
         case 2:
@@ -127,10 +130,13 @@ extension DetailViewController: UITableViewDelegate {
         switch section {
         case 1:
             basicInfoButton = dropButton
+            basicInfoButton.isSelected = springsBasicInfo
         case 2:
             healthInfoButton = dropButton
+            healthInfoButton.isSelected = springsHealthInfo
         case 3:
             triangleInfoButton = dropButton
+            triangleInfoButton.isSelected = springsTriangleInfo
         default:
             break
         }
