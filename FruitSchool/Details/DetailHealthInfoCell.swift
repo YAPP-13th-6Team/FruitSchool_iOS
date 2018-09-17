@@ -1,5 +1,5 @@
 //
-//  DetailBasicInfoCell.swift
+//  DetailHealthCell.swift
 //  FruitSchool
 //
 //  Created by Presto on 2018. 9. 17..
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class DetailBasicInfoCell: UITableViewCell {
+class DetailHealthInfoCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    private func setProperties() {
+    func setProperties() {
         
     }
 }

@@ -1,5 +1,5 @@
 //
-//  DetailImageCell.swift
+//  DetailBasicInfoCell.swift
 //  FruitSchool
 //
 //  Created by Presto on 2018. 9. 17..
@@ -8,15 +8,13 @@
 
 import UIKit
 
-class DetailImageCell: UITableViewCell {
+class DetailBasicInfoCell: UITableViewCell {
 
-    @IBOutlet weak var fruitImageView: UIImageView!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    private func setProperties() {
+    func setProperties() {
         
     }
 }

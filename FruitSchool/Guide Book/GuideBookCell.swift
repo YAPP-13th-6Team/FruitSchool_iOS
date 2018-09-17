@@ -16,10 +16,9 @@ class GuideBookCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         imageView.backgroundColor = .gray
-        let path = UIBezierPath(roundedRect: imageView.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 5, height: 0))
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.path = path.cgPath
-        imageView.layer.mask = shapeLayer
+        nameLabel.backgroundColor = .blue
+        layer.cornerRadius = 5
+        layer.masksToBounds = true
     }
     
     override func prepareForReuse() {
@@ -27,10 +26,8 @@ class GuideBookCell: UICollectionViewCell {
         imageView.image = nil
         nameLabel.text = nil
     }
-}
-
-extension GuideBookCell {
-    private func setProperties() {
+    
+    func setProperties() {
         
     }
 }

@@ -1,5 +1,5 @@
 //
-//  DetailTriangleCell.swift
+//  DetailQuizCell.swift
 //  FruitSchool
 //
 //  Created by Presto on 2018. 9. 17..
@@ -8,9 +8,13 @@
 
 import UIKit
 
-class DetailTriangleCell: UITableViewCell {
+class DetailQuizCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    func setProperties() {
+        
     }
 }

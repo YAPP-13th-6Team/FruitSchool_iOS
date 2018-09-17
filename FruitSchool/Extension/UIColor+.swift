@@ -9,5 +9,5 @@
 import UIKit
 
 extension UIColor {
-    
+    static let main = #colorLiteral(red: 0.6, green: 0.5529411765, blue: 0.5058823529, alpha: 1)
 }

@@ -148,7 +148,7 @@
 				19E274C32144D72D00E2F6D2 /* Home */,
 				19E274D02144D9F700E2F6D2 /* Fruit Book */,
 				1947C557214F274000BF6521 /* Guide Book */,
-				1947C563214F2CFF00BF6521 /* Fruit Details */,
+				1947C563214F2CFF00BF6521 /* Details */,
 				190F74A4213E33600038234A /* Extension */,
 				190F74A3213E33590038234A /* Supporting Files */,
 			);
@@ -172,7 +172,7 @@
 			path = "Promotion Review";
 			sourceTree = "<group>";
 		};
-		1947C563214F2CFF00BF6521 /* Fruit Details */ = {
+		1947C563214F2CFF00BF6521 /* Details */ = {
 			isa = PBXGroup;
 			children = (
 				1947C569214F2E0C00BF6521 /* Detail.storyboard */,
@@ -183,7 +183,7 @@
 				1947C575214F2F9000BF6521 /* DetailTriangleCell.swift */,
 				1947C577214F2FA500BF6521 /* DetailQuizCell.swift */,
 			);
-			path = "Fruit Details";
+			path = Details;
 			sourceTree = "<group>";
 		};
 		1947C564214F2DB000BF6521 /* Response */ = {

@@ -1,5 +1,5 @@
 //
-//  DetailQuizCell.swift
+//  DetailImageCell.swift
 //  FruitSchool
 //
 //  Created by Presto on 2018. 9. 17..
@@ -8,9 +8,16 @@
 
 import UIKit
 
-class DetailQuizCell: UITableViewCell {
+class DetailImageCell: UITableViewCell {
 
+    @IBOutlet weak var fruitImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        backgroundColor = .gray
+    }
+    
+    func setProperties() {
+        
     }
 }
