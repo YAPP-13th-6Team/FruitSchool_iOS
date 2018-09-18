@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol DetailImageCellDelegate {
+protocol DetailImageCellDelegate: class {
     func didTouchUpBackButton(_ sender: UIButton)
 }
 
 class DetailImageCell: UITableViewCell {
 
-    var delegate: DetailImageCellDelegate?
+    weak var delegate: DetailImageCellDelegate?
     @IBOutlet weak var fruitImageView: UIImageView!
     @IBOutlet weak var backButton: UIButton!
     

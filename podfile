@@ -7,4 +7,5 @@ target 'FruitSchool' do
 
   # Pods for FruitSchool
   pod 'RealmSwift'
+  pod 'SwiftLint'
 end

@@ -36,6 +36,7 @@
 		1947C583214FB45000BF6521 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C582214FB45000BF6521 /* TutorialViewController.swift */; };
 		1947C588214FBF4A00BF6521 /* CertificateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1947C587214FBF4A00BF6521 /* CertificateView.xib */; };
 		1947C58A214FBF5800BF6521 /* CertificateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C589214FBF5800BF6521 /* CertificateView.swift */; };
+		197E55BE21512550003A610D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 197E55BD21512550003A610D /* .swiftlint.yml */; };
 		19E274C72144D74E00E2F6D2 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274C62144D74E00E2F6D2 /* Network.swift */; };
 		19E274C92144D75300E2F6D2 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274C82144D75300E2F6D2 /* API.swift */; };
 		19E274CB2144D93F00E2F6D2 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19E274CA2144D93F00E2F6D2 /* Login.storyboard */; };
@@ -78,6 +79,7 @@
 		1947C582214FB45000BF6521 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		1947C587214FBF4A00BF6521 /* CertificateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CertificateView.xib; sourceTree = "<group>"; };
 		1947C589214FBF5800BF6521 /* CertificateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateView.swift; sourceTree = "<group>"; };
+		197E55BD21512550003A610D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		19E274C62144D74E00E2F6D2 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		19E274C82144D75300E2F6D2 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		19E274CA2144D93F00E2F6D2 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		190FC3AE213A689C00DD333F = {
 			isa = PBXGroup;
 			children = (
+				197E55BD21512550003A610D /* .swiftlint.yml */,
 				190FC3B9213A689C00DD333F /* FruitSchool */,
 				190FC3B8213A689C00DD333F /* Products */,
 				C371771957EB3C97F15BE1BE /* Pods */,
@@ -305,6 +308,7 @@
 				190FC3B4213A689C00DD333F /* Frameworks */,
 				190FC3B5213A689C00DD333F /* Resources */,
 				7300568699B1CF225A7FA6B9 /* [CP] Embed Pods Frameworks */,
+				197E55BC2151252D003A610D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -353,6 +357,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				197E55BE21512550003A610D /* .swiftlint.yml in Resources */,
 				1947C559214F278A00BF6521 /* Home.storyboard in Resources */,
 				19E274D22144DA6300E2F6D2 /* FruitBook.storyboard in Resources */,
 				1947C56A214F2E0C00BF6521 /* Detail.storyboard in Resources */,
@@ -368,6 +373,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		197E55BC2151252D003A610D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
 		7300568699B1CF225A7FA6B9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

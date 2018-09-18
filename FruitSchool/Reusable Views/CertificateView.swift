@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol CertificateViewDelegate {
+protocol CertificateViewDelegate: class {
     
 }
 
 class CertificateView: UIView {
     
-    var delegate: CertificateViewDelegate?
+    weak var delegate: CertificateViewDelegate?
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
