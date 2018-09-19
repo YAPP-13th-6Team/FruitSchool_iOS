@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CertificateViewDelegate: class {
-    
+    func didTouchUpButton(_ sender: UIButton)
 }
 
 class CertificateView: UIView {
@@ -21,6 +21,10 @@ class CertificateView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        startButton.addTarget(self, action: #selector(didTouchUpButton(_:)), for: .touchUpInside)
     }
-
+    
+    @objc func didTouchUpButton(_ sender: UIButton) {
+        delegate?.didTouchUpButton(sender)
+    }
 }

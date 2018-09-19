@@ -6,3 +6,5 @@ included:
 excluded:
 - Pods
 - FruitSchool/Supporting Files/AppDelegate.swift
+
+cyclomatic_complexity: 20
