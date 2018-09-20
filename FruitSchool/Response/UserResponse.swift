@@ -8,5 +8,6 @@
 
 struct UserResponse: Codable {
     let id: Double
+    let nickname: String
     let grade: Int
 }
