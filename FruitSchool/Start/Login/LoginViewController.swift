@@ -34,8 +34,9 @@ class LoginViewController: UIViewController {
                     self?.presentErrorAlert(error.localizedDescription)
                     return
                 }
-                //guard let user = user else { return }
+                guard let user = user else { return }
                 //user로 로그인한 사용자 정보 접근하기
+                //user.id 말고 쓸만한 거 없음
                 //튜토리얼로 이동하기
                 guard let next = UIViewController.instantiate(storyboard: "Tutorial", identifier: "TutorialViewController") else { return }
                 next.modalTransitionStyle = .flipHorizontal

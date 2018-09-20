@@ -8,3 +8,6 @@ excluded:
 - FruitSchool/Supporting Files/AppDelegate.swift
 
 cyclomatic_complexity: 20
+identifier_name:
+    excluded:
+    - id

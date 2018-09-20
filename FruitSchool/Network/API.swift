@@ -9,8 +9,12 @@
 import Foundation
 
 class API {
-    static let baseURL = ""
-    private static let jsonDecoder = JSONDecoder()
+    private static let baseURL = ""
+    private static let jsonDecoder: JSONDecoder = {
+        let jsonDecoder = JSONDecoder()
+        jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+        return jsonDecoder
+    }()
 }
 
 extension API {
