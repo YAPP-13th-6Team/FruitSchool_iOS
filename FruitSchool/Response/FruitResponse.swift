@@ -19,7 +19,7 @@ struct FruitResponse: Codable {
 }
 
 struct StandardTip: Codable {
-    let purchasingTip: String?
+    let purchasingTip: String
     let storageTemperature: String?
     let storageDate: String?
     let storageMethod: String?
@@ -29,6 +29,7 @@ struct StandardTip: Codable {
 struct IntakeTip: Codable {
     let intakeMethod: String?
     let chemistry: String?
+    let precaution: String?
     let diet: String?
     let effect: String?
 }
