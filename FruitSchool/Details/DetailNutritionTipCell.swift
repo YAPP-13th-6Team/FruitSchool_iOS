@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailTriangleCell: UITableViewCell {
+class DetailNutritionTipCell: UITableViewCell {
 
     @IBOutlet weak var backView: UIView!
     
@@ -27,7 +27,7 @@ class DetailTriangleCell: UITableViewCell {
         self.layer.addSublayer(shapeLayer)
     }
     
-    func setProperties() {
+    func setProperties(_ object: NutritionTip) {
         
     }
 }

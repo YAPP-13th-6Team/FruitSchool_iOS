@@ -28,7 +28,7 @@ class DetailImageCell: UITableViewCell {
         delegate?.didTouchUpBackButton(sender)
     }
     
-    func setProperties() {
+    func setProperties(_ object: FruitResponse) {
         
     }
 }

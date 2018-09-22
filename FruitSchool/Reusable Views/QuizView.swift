@@ -38,13 +38,12 @@ class QuizView: UIView {
         return secondLineStackView.arrangedSubviews.last as? UIButton
     }
     var isYesOrNo: Bool = false
-    // MARK: IBOutlets
     @IBOutlet weak var stackView: UIStackView!
-    // MARK: Life Cycle
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    // MARK: Button Touch Event
+    
     @IBAction func didTouchUpQuizButtons(_ sender: UIButton) {
         delegate?.didTouchUpQuizButtons(sender)
     }

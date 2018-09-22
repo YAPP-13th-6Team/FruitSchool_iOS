@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		190983CA2156722E00E2461A /* PromotionReview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 190983C92156722E00E2461A /* PromotionReview.storyboard */; };
+		190983CC2156723B00E2461A /* PromotionReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190983CB2156723B00E2461A /* PromotionReviewViewController.swift */; };
+		190983CE215672EB00E2461A /* PromotionReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190983CD215672EB00E2461A /* PromotionReviewCell.swift */; };
 		190F74A6213E33850038234A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F74A5213E33850038234A /* UIViewController+.swift */; };
 		190F74A8213E33DC0038234A /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F74A7213E33DC0038234A /* String+.swift */; };
 		190F74AA213E34020038234A /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F74A9213E34020038234A /* UIColor+.swift */; };
@@ -27,9 +30,9 @@
 		1947C56A214F2E0C00BF6521 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1947C569214F2E0C00BF6521 /* Detail.storyboard */; };
 		1947C56C214F2E1500BF6521 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C56B214F2E1500BF6521 /* DetailViewController.swift */; };
 		1947C570214F2F2600BF6521 /* DetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C56F214F2F2600BF6521 /* DetailImageCell.swift */; };
-		1947C572214F2F2E00BF6521 /* DetailHealthInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C571214F2F2E00BF6521 /* DetailHealthInfoCell.swift */; };
-		1947C574214F2F3900BF6521 /* DetailBasicInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C573214F2F3900BF6521 /* DetailBasicInfoCell.swift */; };
-		1947C576214F2F9000BF6521 /* DetailTriangleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C575214F2F9000BF6521 /* DetailTriangleCell.swift */; };
+		1947C572214F2F2E00BF6521 /* DetailIntakeTipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C571214F2F2E00BF6521 /* DetailIntakeTipCell.swift */; };
+		1947C574214F2F3900BF6521 /* DetailStandardTipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C573214F2F3900BF6521 /* DetailStandardTipCell.swift */; };
+		1947C576214F2F9000BF6521 /* DetailNutritionTipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C575214F2F9000BF6521 /* DetailNutritionTipCell.swift */; };
 		1947C578214F2FA500BF6521 /* DetailQuizCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C577214F2FA500BF6521 /* DetailQuizCell.swift */; };
 		1947C57A214F335700BF6521 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C579214F335700BF6521 /* HomeCell.swift */; };
 		1947C57C214F9E5F00BF6521 /* FruitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C57B214F9E5F00BF6521 /* FruitResponse.swift */; };
@@ -54,6 +57,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		190983C92156722E00E2461A /* PromotionReview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PromotionReview.storyboard; sourceTree = "<group>"; };
+		190983CB2156723B00E2461A /* PromotionReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionReviewViewController.swift; sourceTree = "<group>"; };
+		190983CD215672EB00E2461A /* PromotionReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionReviewCell.swift; sourceTree = "<group>"; };
 		190F74A5213E33850038234A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		190F74A7213E33DC0038234A /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		190F74A9213E34020038234A /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
@@ -76,9 +82,9 @@
 		1947C569214F2E0C00BF6521 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		1947C56B214F2E1500BF6521 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1947C56F214F2F2600BF6521 /* DetailImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageCell.swift; sourceTree = "<group>"; };
-		1947C571214F2F2E00BF6521 /* DetailHealthInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHealthInfoCell.swift; sourceTree = "<group>"; };
-		1947C573214F2F3900BF6521 /* DetailBasicInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBasicInfoCell.swift; sourceTree = "<group>"; };
-		1947C575214F2F9000BF6521 /* DetailTriangleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTriangleCell.swift; sourceTree = "<group>"; };
+		1947C571214F2F2E00BF6521 /* DetailIntakeTipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailIntakeTipCell.swift; sourceTree = "<group>"; };
+		1947C573214F2F3900BF6521 /* DetailStandardTipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStandardTipCell.swift; sourceTree = "<group>"; };
+		1947C575214F2F9000BF6521 /* DetailNutritionTipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNutritionTipCell.swift; sourceTree = "<group>"; };
 		1947C577214F2FA500BF6521 /* DetailQuizCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailQuizCell.swift; sourceTree = "<group>"; };
 		1947C579214F335700BF6521 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		1947C57B214F9E5F00BF6521 /* FruitResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitResponse.swift; sourceTree = "<group>"; };
@@ -191,6 +197,9 @@
 		1947C560214F281F00BF6521 /* Promotion Review */ = {
 			isa = PBXGroup;
 			children = (
+				190983C92156722E00E2461A /* PromotionReview.storyboard */,
+				190983CB2156723B00E2461A /* PromotionReviewViewController.swift */,
+				190983CD215672EB00E2461A /* PromotionReviewCell.swift */,
 			);
 			path = "Promotion Review";
 			sourceTree = "<group>";
@@ -201,9 +210,9 @@
 				1947C569214F2E0C00BF6521 /* Detail.storyboard */,
 				1947C56B214F2E1500BF6521 /* DetailViewController.swift */,
 				1947C56F214F2F2600BF6521 /* DetailImageCell.swift */,
-				1947C573214F2F3900BF6521 /* DetailBasicInfoCell.swift */,
-				1947C571214F2F2E00BF6521 /* DetailHealthInfoCell.swift */,
-				1947C575214F2F9000BF6521 /* DetailTriangleCell.swift */,
+				1947C573214F2F3900BF6521 /* DetailStandardTipCell.swift */,
+				1947C571214F2F2E00BF6521 /* DetailIntakeTipCell.swift */,
+				1947C575214F2F9000BF6521 /* DetailNutritionTipCell.swift */,
 				1947C577214F2FA500BF6521 /* DetailQuizCell.swift */,
 			);
 			path = Details;
@@ -378,6 +387,7 @@
 			files = (
 				197E55BE21512550003A610D /* .swiftlint.yml in Resources */,
 				1947C559214F278A00BF6521 /* Home.storyboard in Resources */,
+				190983CA2156722E00E2461A /* PromotionReview.storyboard in Resources */,
 				19E274D22144DA6300E2F6D2 /* FruitBook.storyboard in Resources */,
 				1947C56A214F2E0C00BF6521 /* Detail.storyboard in Resources */,
 				1947C588214FBF4A00BF6521 /* CertificateView.xib in Resources */,
@@ -455,12 +465,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1947C572214F2F2E00BF6521 /* DetailHealthInfoCell.swift in Sources */,
+				1947C572214F2F2E00BF6521 /* DetailIntakeTipCell.swift in Sources */,
 				199715C42153F59D001D5276 /* CommonSenseResponse.swift in Sources */,
 				19E274D42144DA7600E2F6D2 /* FruitBookViewController.swift in Sources */,
 				190F74B0213E34B00038234A /* UIAlertController+.swift in Sources */,
 				190F74AC213E340F0038234A /* UIView+.swift in Sources */,
 				1947C566214F2DC000BF6521 /* User.swift in Sources */,
+				190983CE215672EB00E2461A /* PromotionReviewCell.swift in Sources */,
+				190983CC2156723B00E2461A /* PromotionReviewViewController.swift in Sources */,
 				199715C22153E695001D5276 /* UserResponse.swift in Sources */,
 				1947C58A214FBF5800BF6521 /* CertificateView.swift in Sources */,
 				1947C55F214F27C000BF6521 /* GuideBookViewController.swift in Sources */,
@@ -472,13 +484,13 @@
 				1947C562214F2B7800BF6521 /* GuideBookCell.swift in Sources */,
 				19E274C92144D75300E2F6D2 /* API.swift in Sources */,
 				190F74A8213E33DC0038234A /* String+.swift in Sources */,
-				1947C576214F2F9000BF6521 /* DetailTriangleCell.swift in Sources */,
+				1947C576214F2F9000BF6521 /* DetailNutritionTipCell.swift in Sources */,
 				192E7BE321526AF000C6C68F /* TutorialViewController.swift in Sources */,
 				19EC61CE215243B800A80DA4 /* QuizButton.swift in Sources */,
 				19E274C72144D74E00E2F6D2 /* Network.swift in Sources */,
 				190F74AE213E34700038234A /* NSObject+.swift in Sources */,
 				1947C57C214F9E5F00BF6521 /* FruitResponse.swift in Sources */,
-				1947C574214F2F3900BF6521 /* DetailBasicInfoCell.swift in Sources */,
+				1947C574214F2F3900BF6521 /* DetailStandardTipCell.swift in Sources */,
 				19E274D62144DDE600E2F6D2 /* Notification.Name.swift in Sources */,
 				190F74A6213E33850038234A /* UIViewController+.swift in Sources */,
 				1947C570214F2F2600BF6521 /* DetailImageCell.swift in Sources */,

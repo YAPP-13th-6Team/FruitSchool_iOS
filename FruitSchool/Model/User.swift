@@ -11,4 +11,8 @@ import RealmSwift
 @objcMembers
 class User: Object {
     
+    dynamic var id: Double = 0
+    dynamic var nickname: String = ""
+    dynamic var grade: Int = 0
+     
 }

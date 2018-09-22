@@ -16,14 +16,15 @@ enum DetailParentType {
 class DetailViewController: UIViewController {
 
     var parentType: DetailParentType = .fruitBook
-    let cellIdentifiers = ["detailImageCell", "detailBasicInfoCell", "detailHealthInfoCell", "detailTriangleCell", "detailQuizCell"]
+    var fruit: FruitResponse!
+    let cellIdentifiers = ["detailImageCell", "detailStandardTipCell", "detailIntakeTipCell", "detailNutritionTipCell", "detailQuizCell"]
     let sectionTitles = ["Basic Information", "Health Function", "Fruit Flavor"]
-    var springsBasicInfo: Bool = false
-    var springsHealthInfo: Bool = false
-    var springsTriangleInfo: Bool = false
-    var basicInfoButton: UIButton!
-    var healthInfoButton: UIButton!
-    var triangleInfoButton: UIButton!
+    var springsStandardTipSection: Bool = false
+    var springsIntakeTipSection: Bool = false
+    var springsNutritionTipSection: Bool = false
+    var standardTipButton: UIButton!
+    var intakeTipButton: UIButton!
+    var nutritionTipButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -35,15 +36,17 @@ class DetailViewController: UIViewController {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    
+}
+// MARK: - Button Touch Event
+extension DetailViewController {
     @objc func touchUpHeaderButtons(_ sender: UIButton) {
         switch sender.tag {
         case 1:
-            springsBasicInfo = !springsBasicInfo
+            springsStandardTipSection = !springsStandardTipSection
         case 2:
-            springsHealthInfo = !springsHealthInfo
+            springsIntakeTipSection = !springsIntakeTipSection
         case 3:
-            springsTriangleInfo = !springsTriangleInfo
+            springsNutritionTipSection = !springsNutritionTipSection
         default:
             break
         }
@@ -58,15 +61,15 @@ extension DetailViewController: UITableViewDataSource {
         switch section {
         case 0:
             (cell as? DetailImageCell)?.delegate = self
-            (cell as? DetailImageCell)?.setProperties()
+            (cell as? DetailImageCell)?.setProperties(fruit)
         case 1:
-            (cell as? DetailBasicInfoCell)?.setProperties()
+            (cell as? DetailStandardTipCell)?.setProperties(fruit.standardTip)
         case 2:
-            (cell as? DetailHealthInfoCell)?.setProperties()
+            (cell as? DetailIntakeTipCell)?.setProperties(fruit.intakeTip)
         case 3:
-            (cell as? DetailTriangleCell)?.setProperties()
+            (cell as? DetailNutritionTipCell)?.setProperties(fruit.nutritionTip)
         case 4:
-            (cell as? DetailQuizCell)?.setProperties()
+            (cell as? DetailQuizCell)?.setProperties(fruit.quizs)
         default:
             break
         }
@@ -77,18 +80,12 @@ extension DetailViewController: UITableViewDataSource {
         switch section {
         case 0:
             return 1
-        case 1:
-            if springsBasicInfo {
-                return 3
-            }
-        case 2:
-            if springsHealthInfo {
-                return 3
-            }
-        case 3:
-            if springsTriangleInfo {
-                return 1
-            }
+        case 1 where springsStandardTipSection:
+            return 1
+        case 2 where springsIntakeTipSection:
+            return 1
+        case 3 where springsNutritionTipSection:
+            return 1
         case 4:
             return 1
         default:
@@ -135,14 +132,14 @@ extension DetailViewController: UITableViewDelegate {
         dropButton.addTarget(self, action: #selector(touchUpHeaderButtons(_:)), for: .touchUpInside)
         switch section {
         case 1:
-            basicInfoButton = dropButton
-            basicInfoButton.isSelected = springsBasicInfo
+            standardTipButton = dropButton
+            standardTipButton.isSelected = springsStandardTipSection
         case 2:
-            healthInfoButton = dropButton
-            healthInfoButton.isSelected = springsHealthInfo
+            intakeTipButton = dropButton
+            intakeTipButton.isSelected = springsIntakeTipSection
         case 3:
-            triangleInfoButton = dropButton
-            triangleInfoButton.isSelected = springsTriangleInfo
+            nutritionTipButton = dropButton
+            nutritionTipButton.isSelected = springsNutritionTipSection
         default:
             break
         }

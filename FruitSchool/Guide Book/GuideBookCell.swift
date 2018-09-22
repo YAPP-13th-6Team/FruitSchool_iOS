@@ -27,7 +27,7 @@ class GuideBookCell: UICollectionViewCell {
         nameLabel.text = nil
     }
     
-    func setProperties() {
-        
+    func setProperties(_ object: FruitResponse) {
+        nameLabel.text = object.title
     }
 }

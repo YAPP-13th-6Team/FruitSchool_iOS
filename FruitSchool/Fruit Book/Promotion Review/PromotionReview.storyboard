@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Promotion Review View Controller-->
+        <scene sceneID="tq0-U0-gri">
+            <objects>
+                <viewController storyboardIdentifier="PromotionReviewViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hRr-wI-hcY" customClass="PromotionReviewViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bIb-DR-U4T">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Uc3-Aq-Qyl">
+                                <rect key="frame" x="0.0" y="20" width="375" height="627"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="promotionReviewCell" rowHeight="375" id="vSl-C6-img" customClass="PromotionReviewCell" customModule="FruitSchool" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="375"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vSl-C6-img" id="XIc-eb-Z47">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="374.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="hRr-wI-hcY" id="5yr-u0-O1W"/>
+                                    <outlet property="delegate" destination="hRr-wI-hcY" id="dCJ-SF-oML"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1Vl-pK-Eku" firstAttribute="bottom" secondItem="Uc3-Aq-Qyl" secondAttribute="bottom" constant="20" id="RQb-gu-2kK"/>
+                            <constraint firstItem="Uc3-Aq-Qyl" firstAttribute="leading" secondItem="1Vl-pK-Eku" secondAttribute="leading" id="YNB-Jc-HMd"/>
+                            <constraint firstItem="Uc3-Aq-Qyl" firstAttribute="top" secondItem="1Vl-pK-Eku" secondAttribute="top" id="aa9-ra-xxD"/>
+                            <constraint firstItem="Uc3-Aq-Qyl" firstAttribute="trailing" secondItem="1Vl-pK-Eku" secondAttribute="trailing" id="r2t-g6-bXs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1Vl-pK-Eku"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Uc3-Aq-Qyl" id="nJd-Uf-OdJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jrQ-g3-90G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="725.60000000000002" y="-235.23238380809596"/>
+        </scene>
+    </scenes>
+</document>
