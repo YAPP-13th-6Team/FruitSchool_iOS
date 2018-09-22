@@ -7,6 +7,7 @@
 //
 
 struct CommonSenseResponse: Codable {
+    let _id: String
     let grade: Int
     let commonSenseTips: [CommonSenseTip]
     let quizs: [QuizTip]

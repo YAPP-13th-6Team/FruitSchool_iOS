@@ -11,3 +11,4 @@ cyclomatic_complexity: 20
 identifier_name:
     excluded:
     - id
+    - _id

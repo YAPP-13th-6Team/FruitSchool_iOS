@@ -7,6 +7,7 @@
 //
 
 struct UserResponse: Codable {
+    let _id: String
     let id: Double
     let nickname: String
     let grade: Int

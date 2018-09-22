@@ -9,5 +9,6 @@
 import Foundation
 
 extension Notification.Name {
-    
+    static let didReceiveFruits = Notification.Name("DidReceiveFruits")
+    static let errorReceiveFruits = Notification.Name("ErrorReceiveFruits")
 }

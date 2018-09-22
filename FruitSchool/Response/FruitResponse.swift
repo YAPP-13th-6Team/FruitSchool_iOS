@@ -7,6 +7,7 @@
 //
 
 struct FruitResponse: Codable {
+    let _id: String
     let title: String
     let grade: Int      //0: 서당개, 1: 학도, 2: 훈장
     let category: String
