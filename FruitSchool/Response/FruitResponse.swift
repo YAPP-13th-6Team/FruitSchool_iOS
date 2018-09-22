@@ -11,6 +11,7 @@ struct FruitResponse: Codable {
     let grade: Int      //0: 서당개, 1: 학도, 2: 훈장
     let category: String
     let calorie: Double
+    let season: String
     let standardTip: StandardTip
     let intakeTip: IntakeTip
     let nutritionTip: NutritionTip
