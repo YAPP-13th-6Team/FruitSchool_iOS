@@ -12,7 +12,9 @@ class FruitBookViewController: UIViewController {
 
     var searchBar = UISearchBar()
     var searchButton: UIBarButtonItem!
-    @IBOutlet weak var circle: UIView!
+    
+    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,27 +23,36 @@ class FruitBookViewController: UIViewController {
         navigationItem.setRightBarButton(searchButton, animated: true)
         searchBar.showsCancelButton = true
         searchBar.searchBarStyle = .minimal
-        circle.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(didPanCircle(_:))))
+        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveCommonSenses(_:)), name: .didReceiveCommonSenses, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(errorReceiveCommonSenses(_:)), name: .errorReceiveCommonSenses, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveFruits(_:)), name: .didReceiveFruits, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(errorReceiveFruits(_:)), name: .errorReceiveFruits, object: nil)
+    }
+}
+// MARK: - Notification Handler
+extension FruitBookViewController {
+    @objc func didReceiveCommonSenses(_ notification: Notification) {
+        guard let commonSenses = notification.userInfo?["commonSenses"] as? CommonSenseResponse else { return }
+        print(commonSenses)
     }
     
-    @objc func didPanCircle(_ gesture: UIPanGestureRecognizer) {
-        let middlePointOfSuperView = CGPoint(x: 100, y: 100)
-        let radius: CGFloat = 100
-        let theta: CGFloat = .pi / 6
-        let minimumX = middlePointOfSuperView.x - radius * cos(theta)
-        let maximumX = middlePointOfSuperView.x + radius * cos(theta)
-        let locationX = gesture.location(in: circle.superview).x
-        switch locationX {
-        case minimumX...maximumX:
-            circle.center.x = locationX
-            circle.center.y = {
-                return middlePointOfSuperView.y - sqrt(pow(radius, 2) - pow(radius - locationX, 2))
-            }()
-        default:
-            break
-        }
+    @objc func errorReceiveCommonSenses(_ notification: Notification) {
+        guard let error = notification.userInfo?["error"] as? String else { return }
+        UIAlertController.presentErrorAlert(to: self, error: error)
     }
     
+    @objc func didReceiveFruits(_ notification: Notification) {
+        guard let fruits = notification.userInfo?["fruits"] as? [FruitResponse] else { return }
+        print(fruits)
+    }
+    
+    @objc func errorReceiveFruits(_ notification: Notification) {
+        guard let error = notification.userInfo?["error"] as? String else { return }
+        UIAlertController.presentErrorAlert(to: self, error: error)
+    }
+}
+// MARK: - Button Touch Event
+extension FruitBookViewController {
     @objc func touchUpSearchButton(_ sender: UIBarButtonItem) {
         searchBar.becomeFirstResponder()
         navigationItem.setRightBarButton(nil, animated: true)

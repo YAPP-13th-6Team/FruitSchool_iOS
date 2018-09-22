@@ -10,6 +10,7 @@
 		190983CA2156722E00E2461A /* PromotionReview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 190983C92156722E00E2461A /* PromotionReview.storyboard */; };
 		190983CC2156723B00E2461A /* PromotionReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190983CB2156723B00E2461A /* PromotionReviewViewController.swift */; };
 		190983CE215672EB00E2461A /* PromotionReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190983CD215672EB00E2461A /* PromotionReviewCell.swift */; };
+		190983D021568C9300E2461A /* FruitBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190983CF21568C9300E2461A /* FruitBookCell.swift */; };
 		190F74A6213E33850038234A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F74A5213E33850038234A /* UIViewController+.swift */; };
 		190F74A8213E33DC0038234A /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F74A7213E33DC0038234A /* String+.swift */; };
 		190F74AA213E34020038234A /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F74A9213E34020038234A /* UIColor+.swift */; };
@@ -60,6 +61,7 @@
 		190983C92156722E00E2461A /* PromotionReview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PromotionReview.storyboard; sourceTree = "<group>"; };
 		190983CB2156723B00E2461A /* PromotionReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionReviewViewController.swift; sourceTree = "<group>"; };
 		190983CD215672EB00E2461A /* PromotionReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionReviewCell.swift; sourceTree = "<group>"; };
+		190983CF21568C9300E2461A /* FruitBookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitBookCell.swift; sourceTree = "<group>"; };
 		190F74A5213E33850038234A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		190F74A7213E33DC0038234A /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		190F74A9213E34020038234A /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 			children = (
 				19E274D12144DA6300E2F6D2 /* FruitBook.storyboard */,
 				19E274D32144DA7600E2F6D2 /* FruitBookViewController.swift */,
+				190983CF21568C9300E2461A /* FruitBookCell.swift */,
 				1947C560214F281F00BF6521 /* Promotion Review */,
 			);
 			path = "Fruit Book";
@@ -476,6 +479,7 @@
 				199715C22153E695001D5276 /* UserResponse.swift in Sources */,
 				1947C58A214FBF5800BF6521 /* CertificateView.swift in Sources */,
 				1947C55F214F27C000BF6521 /* GuideBookViewController.swift in Sources */,
+				190983D021568C9300E2461A /* FruitBookCell.swift in Sources */,
 				1947C568214F2DC700BF6521 /* Fruit.swift in Sources */,
 				190FC3BB213A689C00DD333F /* AppDelegate.swift in Sources */,
 				1947C55B214F27A600BF6521 /* HomeViewController.swift in Sources */,
