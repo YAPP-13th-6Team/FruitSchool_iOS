@@ -10,9 +10,19 @@ import UIKit
 
 class FruitBookViewController: UIViewController {
 
+    var finishesCommonSensesRequest: Bool = false
+    var finishesFruitsRequest: Bool = false
+    var finishingCount: Int = 0 {
+        didSet {
+            if finishingCount == 2 {
+                DispatchQueue.main.async { [weak self] in
+                    self?.collectionView.reloadData()
+                }
+            }
+        }
+    }
     var searchBar = UISearchBar()
     var searchButton: UIBarButtonItem!
-    
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -33,7 +43,9 @@ class FruitBookViewController: UIViewController {
 extension FruitBookViewController {
     @objc func didReceiveCommonSenses(_ notification: Notification) {
         guard let commonSenses = notification.userInfo?["commonSenses"] as? CommonSenseResponse else { return }
-        print(commonSenses)
+        DispatchQueue.global().sync {
+            finishingCount += 1
+        }
     }
     
     @objc func errorReceiveCommonSenses(_ notification: Notification) {
@@ -43,7 +55,9 @@ extension FruitBookViewController {
     
     @objc func didReceiveFruits(_ notification: Notification) {
         guard let fruits = notification.userInfo?["fruits"] as? [FruitResponse] else { return }
-        print(fruits)
+        DispatchQueue.global().sync {
+            finishingCount += 1
+        }
     }
     
     @objc func errorReceiveFruits(_ notification: Notification) {

@@ -17,7 +17,7 @@ protocol QuizViewDelegate: class {
 }
 
 class QuizView: UIView {
-    // MARK: Properties
+    
     weak var delegate: QuizViewDelegate?
     var firstLineStackView: UIStackView! {
         return stackView.arrangedSubviews.first as? UIStackView
@@ -46,6 +46,24 @@ class QuizView: UIView {
         layer.borderColor = UIColor.black.cgColor
         layer.shadowRadius = 10
         layer.shadowColor = UIColor.gray.cgColor
+    }
+    
+    subscript(_ index: Int) -> UIButton {
+        if index > 4 {
+            fatalError("IndexOutOfBoundsException")
+        }
+        switch index {
+        case 0:
+            return answer1Button
+        case 1:
+            return answer2Button
+        case 2:
+            return answer3Button
+        case 3:
+            return answer4Button
+        default:
+            return UIButton()
+        }
     }
     
     @IBAction func didTouchUpQuizButtons(_ sender: UIButton) {

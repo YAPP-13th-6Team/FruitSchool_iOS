@@ -7,8 +7,12 @@
 //
 
 struct UserResponse: Codable {
-    let _id: String
-    let id: Double
+    let id: String
+    let identifier: Double
     let nickname: String
     let grade: Int
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case identifier, nickname, grade
+    }
 }

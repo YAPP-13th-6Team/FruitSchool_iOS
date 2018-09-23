@@ -7,7 +7,7 @@
 //
 
 struct FruitResponse: Codable {
-    let _id: String
+    let id: String
     let title: String
     let grade: Int      //0: 서당개, 1: 학도, 2: 훈장
     let category: String
@@ -19,6 +19,10 @@ struct FruitResponse: Codable {
     let quizs: [QuizTip]
     var calorieText: String {
         return "\(calorie)kcal/100g"
+    }
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case title, grade, category, calorie, season, standardTip, intakeTip, nutritionTip, quizs
     }
 }
 

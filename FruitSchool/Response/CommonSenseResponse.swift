@@ -7,10 +7,14 @@
 //
 
 struct CommonSenseResponse: Codable {
-    let _id: String
+    let id: String
     let grade: Int
     let commonSenseTips: [CommonSenseTip]
     let quizs: [QuizTip]
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case grade, commonSenseTips, quizs
+    }
 }
 
 struct CommonSenseTip: Codable {
