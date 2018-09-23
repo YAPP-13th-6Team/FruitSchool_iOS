@@ -47,11 +47,10 @@
 		19EC61CA2152431B00A80DA4 /* QuizView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19EC61C92152431B00A80DA4 /* QuizView.xib */; };
 		19EC61CC2152432400A80DA4 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EC61CB2152432400A80DA4 /* QuizView.swift */; };
 		19EC61CE215243B800A80DA4 /* QuizButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EC61CD215243B800A80DA4 /* QuizButton.swift */; };
-		263ED1ACE83EAA3C1B5EC81A /* Pods_FruitSchool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E984EE3A34C42D62533B13 /* Pods_FruitSchool.framework */; };
 		DBF51B892157CE0900AA85DF /* Tutorial4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF51B862157CE0900AA85DF /* Tutorial4ViewController.swift */; };
 		DBF51B8A2157CE0900AA85DF /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBF51B872157CE0900AA85DF /* Tutorial.storyboard */; };
 		DBF51B8B2157CE0900AA85DF /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF51B882157CE0900AA85DF /* TutorialViewController.swift */; };
-		DBF51B8D2157D05B00AA85DF /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF51B8C2157D05B00AA85DF /* KakaoOpenSDK.framework */; };
+		DBF51B912157D43900AA85DF /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF51B902157D43900AA85DF /* KakaoOpenSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,13 +96,12 @@
 		19EC61C92152431B00A80DA4 /* QuizView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizView.xib; sourceTree = "<group>"; };
 		19EC61CB2152432400A80DA4 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		19EC61CD215243B800A80DA4 /* QuizButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizButton.swift; sourceTree = "<group>"; };
-		48E984EE3A34C42D62533B13 /* Pods_FruitSchool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FruitSchool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE308E65D83414C1D0945E8F /* Pods-FruitSchool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.release.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.release.xcconfig"; sourceTree = "<group>"; };
 		DA48AB07292D5B1D20B98DFD /* Pods-FruitSchool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.debug.xcconfig"; sourceTree = "<group>"; };
 		DBF51B862157CE0900AA85DF /* Tutorial4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tutorial4ViewController.swift; sourceTree = "<group>"; };
 		DBF51B872157CE0900AA85DF /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
 		DBF51B882157CE0900AA85DF /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
-		DBF51B8C2157D05B00AA85DF /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoOpenSDK.framework; path = "../Downloads/kakao-ios-sdk-1/KakaoOpenSDK.framework"; sourceTree = "<group>"; };
+		DBF51B902157D43900AA85DF /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,8 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBF51B8D2157D05B00AA85DF /* KakaoOpenSDK.framework in Frameworks */,
-				263ED1ACE83EAA3C1B5EC81A /* Pods_FruitSchool.framework in Frameworks */,
+				DBF51B912157D43900AA85DF /* KakaoOpenSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,8 +300,7 @@
 		416A087A72719A34F32E0F72 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DBF51B8C2157D05B00AA85DF /* KakaoOpenSDK.framework */,
-				48E984EE3A34C42D62533B13 /* Pods_FruitSchool.framework */,
+				DBF51B902157D43900AA85DF /* KakaoOpenSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

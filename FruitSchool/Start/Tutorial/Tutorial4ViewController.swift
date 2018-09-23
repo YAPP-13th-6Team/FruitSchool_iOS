@@ -25,9 +25,9 @@ class Tutorial4ViewController: UIViewController, CertificateViewDelegate {
     }
     
     func didTouchUpButton(_ sender: UIButton) {
-        let ud = UserDefaults.standard
-        ud.set(true, forKey: "TUTORIAL")
-        ud.synchronize()
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(true, forKey: "TUTORIAL")
+        userDefaults.synchronize()
         
         self.presentingViewController?.dismiss(animated: true, completion: nil)
     }

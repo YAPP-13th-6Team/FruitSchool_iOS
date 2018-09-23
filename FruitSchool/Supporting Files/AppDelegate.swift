@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          * 2-1. 입학증서 확인 버튼을 누르지 않았으면 튜토리얼이 루트 뷰 컨트롤러
          * 2-2. 입학증서 확인 버튼을 이전에 눌렀다면 탭 바 컨트롤러가 루트 뷰 컨트롤러
         */
-        let controller = UIViewController.instantiate(storyboard: "Tutorial", identifier: TutorialViewController.classNameToString)
+        let controller = UIViewController.instantiate(storyboard: "Login", identifier: LoginViewController.classNameToString)
         //let controller = tabBarController()
         window?.rootViewController = controller
         window?.makeKeyAndVisible()
