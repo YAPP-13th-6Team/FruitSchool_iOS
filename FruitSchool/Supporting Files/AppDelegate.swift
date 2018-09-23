@@ -23,8 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          * 2-1. 입학증서 확인 버튼을 누르지 않았으면 튜토리얼이 루트 뷰 컨트롤러
          * 2-2. 입학증서 확인 버튼을 이전에 눌렀다면 탭 바 컨트롤러가 루트 뷰 컨트롤러
         */
-        //let controller = UIViewController.instantiate(storyboard: "Login", identifier: LoginViewController.classNameToString)
-        let controller = tabBarController()
+        let controller = UIViewController.instantiate(storyboard: "Main", identifier: MainTabBarController.classNameToString)
         window?.rootViewController = controller
         window?.makeKeyAndVisible()
         UIApplication.shared.isStatusBarHidden = false
@@ -53,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 }
-
+// MARK: - KakaoTalk Login
 extension AppDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         if KOSession.isKakaoAccountLoginCallback(url) {
@@ -62,21 +61,3 @@ extension AppDelegate {
         return false
     }
 }
-
-extension AppDelegate {
-    private func tabBarController() -> UITabBarController? {
-        let mainController = UITabBarController()
-        guard let firstController = UIViewController.instantiate(storyboard: "Home", identifier: "HomeNavigationController") else { return nil }
-        let firstTabBar = UITabBarItem(title: "홈", image: nil, tag: 0)
-        firstController.tabBarItem = firstTabBar
-        guard let secondController = UIViewController.instantiate(storyboard: "FruitBook", identifier: "FruitBookNavigationController") else { return nil }
-        let secondTabBar = UITabBarItem(title: "교과서", image: nil, tag: 1)
-        secondController.tabBarItem = secondTabBar
-        guard let thirdController = UIViewController.instantiate(storyboard: "GuideBook", identifier: "GuideBookNavigationController") else { return nil }
-        let thirdTabBar = UITabBarItem(title: "도감", image: nil, tag: 2)
-        thirdController.tabBarItem = thirdTabBar
-        mainController.viewControllers = [firstController, secondController, thirdController]
-        return mainController
-    }
-}
-
