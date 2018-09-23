@@ -20,6 +20,15 @@ class HomeViewController: UIViewController {
         titleImageView.contentMode = .scaleAspectFit
         navigationItem.titleView = titleImageView
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let ud = UserDefaults.standard
+        if ud.bool(forKey: "TUTORIAL") == false {
+            let vc = self.instanceTutorialVC(name: "TutorialViewController")
+            self.present(vc!, animated: false)
+            return
+        }
+    }
 }
 
 extension HomeViewController: UITableViewDataSource {
