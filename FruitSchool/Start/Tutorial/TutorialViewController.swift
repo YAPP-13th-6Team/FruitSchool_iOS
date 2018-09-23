@@ -34,7 +34,7 @@ extension TutorialViewController: UIPageViewControllerDataSource {
         guard let viewControllerIndex = pages.firstIndex(of: viewController) else { return nil }
         let previousIndex = viewControllerIndex - 1
 
-        if previousIndex < 0  {
+        if previousIndex < 0 {
             return nil
         }
         return pages[previousIndex]
