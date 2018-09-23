@@ -24,7 +24,7 @@ class DetailNutritionTipCell: UITableViewCell {
         shapeLayer.path = path.cgPath
         shapeLayer.strokeColor = UIColor.green.cgColor
         shapeLayer.lineWidth = 5
-        self.layer.addSublayer(shapeLayer)
+        backView.layer.addSublayer(shapeLayer)
     }
     
     func setProperties(_ object: NutritionTip) {

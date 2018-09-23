@@ -42,6 +42,10 @@ class QuizView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        layer.borderWidth = 3
+        layer.borderColor = UIColor.black.cgColor
+        layer.shadowRadius = 10
+        layer.shadowColor = UIColor.gray.cgColor
     }
     
     @IBAction func didTouchUpQuizButtons(_ sender: UIButton) {

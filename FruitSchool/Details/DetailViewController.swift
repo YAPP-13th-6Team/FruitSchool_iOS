@@ -95,12 +95,13 @@ extension DetailViewController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        switch parentType {
-        case .fruitBook:
-            return 5
-        case .guideBook:
-            return 4
-        }
+        return 5
+//        switch parentType {
+//        case .fruitBook:
+//            return 5
+//        case .guideBook:
+//            return 4
+//        }
     }
 }
 
@@ -156,7 +157,7 @@ extension DetailViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
+        return 200
     }
 }
 
