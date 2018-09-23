@@ -20,7 +20,6 @@
 		190FC3BB213A689C00DD333F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190FC3BA213A689C00DD333F /* AppDelegate.swift */; };
 		190FC3C2213A689D00DD333F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 190FC3C1213A689D00DD333F /* Assets.xcassets */; };
 		190FC3C5213A689D00DD333F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 190FC3C3213A689D00DD333F /* LaunchScreen.storyboard */; };
-		192E7BE321526AF000C6C68F /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192E7BE221526AF000C6C68F /* TutorialViewController.swift */; };
 		1947C559214F278A00BF6521 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1947C558214F278A00BF6521 /* Home.storyboard */; };
 		1947C55B214F27A600BF6521 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C55A214F27A600BF6521 /* HomeViewController.swift */; };
 		1947C55D214F27B800BF6521 /* GuideBook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1947C55C214F27B800BF6521 /* GuideBook.storyboard */; };
@@ -46,15 +45,16 @@
 		19E274C72144D74E00E2F6D2 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274C62144D74E00E2F6D2 /* Network.swift */; };
 		19E274C92144D75300E2F6D2 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274C82144D75300E2F6D2 /* API.swift */; };
 		19E274CB2144D93F00E2F6D2 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19E274CA2144D93F00E2F6D2 /* Login.storyboard */; };
-		19E274CD2144D94800E2F6D2 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19E274CC2144D94800E2F6D2 /* Tutorial.storyboard */; };
 		19E274D22144DA6300E2F6D2 /* FruitBook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19E274D12144DA6300E2F6D2 /* FruitBook.storyboard */; };
 		19E274D42144DA7600E2F6D2 /* FruitBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274D32144DA7600E2F6D2 /* FruitBookViewController.swift */; };
 		19E274D62144DDE600E2F6D2 /* Notification.Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274D52144DDE600E2F6D2 /* Notification.Name.swift */; };
-		19EC61C82152386500A80DA4 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EC61C72152386400A80DA4 /* KakaoOpenSDK.framework */; };
 		19EC61CA2152431B00A80DA4 /* QuizView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19EC61C92152431B00A80DA4 /* QuizView.xib */; };
 		19EC61CC2152432400A80DA4 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EC61CB2152432400A80DA4 /* QuizView.swift */; };
 		19EC61CE215243B800A80DA4 /* QuizButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EC61CD215243B800A80DA4 /* QuizButton.swift */; };
-		263ED1ACE83EAA3C1B5EC81A /* Pods_FruitSchool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E984EE3A34C42D62533B13 /* Pods_FruitSchool.framework */; };
+		DBF51B892157CE0900AA85DF /* Tutorial4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF51B862157CE0900AA85DF /* Tutorial4ViewController.swift */; };
+		DBF51B8A2157CE0900AA85DF /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBF51B872157CE0900AA85DF /* Tutorial.storyboard */; };
+		DBF51B8B2157CE0900AA85DF /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF51B882157CE0900AA85DF /* TutorialViewController.swift */; };
+		DBF51B912157D43900AA85DF /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF51B902157D43900AA85DF /* KakaoOpenSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,7 +73,6 @@
 		190FC3C1213A689D00DD333F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		190FC3C4213A689D00DD333F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		190FC3C6213A689D00DD333F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		192E7BE221526AF000C6C68F /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		1947C558214F278A00BF6521 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		1947C55A214F27A600BF6521 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1947C55C214F27B800BF6521 /* GuideBook.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GuideBook.storyboard; sourceTree = "<group>"; };
@@ -99,17 +98,18 @@
 		19E274C62144D74E00E2F6D2 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		19E274C82144D75300E2F6D2 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		19E274CA2144D93F00E2F6D2 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		19E274CC2144D94800E2F6D2 /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
 		19E274D12144DA6300E2F6D2 /* FruitBook.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FruitBook.storyboard; sourceTree = "<group>"; };
 		19E274D32144DA7600E2F6D2 /* FruitBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitBookViewController.swift; sourceTree = "<group>"; };
 		19E274D52144DDE600E2F6D2 /* Notification.Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.Name.swift; sourceTree = "<group>"; };
-		19EC61C72152386400A80DA4 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		19EC61C92152431B00A80DA4 /* QuizView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizView.xib; sourceTree = "<group>"; };
 		19EC61CB2152432400A80DA4 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		19EC61CD215243B800A80DA4 /* QuizButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizButton.swift; sourceTree = "<group>"; };
-		48E984EE3A34C42D62533B13 /* Pods_FruitSchool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FruitSchool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE308E65D83414C1D0945E8F /* Pods-FruitSchool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.release.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.release.xcconfig"; sourceTree = "<group>"; };
 		DA48AB07292D5B1D20B98DFD /* Pods-FruitSchool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.debug.xcconfig"; sourceTree = "<group>"; };
+		DBF51B862157CE0900AA85DF /* Tutorial4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tutorial4ViewController.swift; sourceTree = "<group>"; };
+		DBF51B872157CE0900AA85DF /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
+		DBF51B882157CE0900AA85DF /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		DBF51B902157D43900AA85DF /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,8 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				263ED1ACE83EAA3C1B5EC81A /* Pods_FruitSchool.framework in Frameworks */,
-				19EC61C82152386500A80DA4 /* KakaoOpenSDK.framework in Frameworks */,
+				DBF51B912157D43900AA85DF /* KakaoOpenSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,8 +241,9 @@
 		1947C580214FB40B00BF6521 /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				19E274CC2144D94800E2F6D2 /* Tutorial.storyboard */,
-				192E7BE221526AF000C6C68F /* TutorialViewController.swift */,
+				DBF51B872157CE0900AA85DF /* Tutorial.storyboard */,
+				DBF51B882157CE0900AA85DF /* TutorialViewController.swift */,
+				DBF51B862157CE0900AA85DF /* Tutorial4ViewController.swift */,
 			);
 			path = Tutorial;
 			sourceTree = "<group>";
@@ -312,8 +312,7 @@
 		416A087A72719A34F32E0F72 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				19EC61C72152386400A80DA4 /* KakaoOpenSDK.framework */,
-				48E984EE3A34C42D62533B13 /* Pods_FruitSchool.framework */,
+				DBF51B902157D43900AA85DF /* KakaoOpenSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -397,8 +396,8 @@
 				190FC3C5213A689D00DD333F /* LaunchScreen.storyboard in Resources */,
 				190FC3C2213A689D00DD333F /* Assets.xcassets in Resources */,
 				1947C55D214F27B800BF6521 /* GuideBook.storyboard in Resources */,
-				19E274CD2144D94800E2F6D2 /* Tutorial.storyboard in Resources */,
 				19E274CB2144D93F00E2F6D2 /* Login.storyboard in Resources */,
+				DBF51B8A2157CE0900AA85DF /* Tutorial.storyboard in Resources */,
 				19EC61CA2152431B00A80DA4 /* QuizView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,6 +470,7 @@
 				1947C572214F2F2E00BF6521 /* DetailIntakeTipCell.swift in Sources */,
 				199715C42153F59D001D5276 /* CommonSenseResponse.swift in Sources */,
 				19E274D42144DA7600E2F6D2 /* FruitBookViewController.swift in Sources */,
+				DBF51B892157CE0900AA85DF /* Tutorial4ViewController.swift in Sources */,
 				190F74B0213E34B00038234A /* UIAlertController+.swift in Sources */,
 				190F74AC213E340F0038234A /* UIView+.swift in Sources */,
 				1947C566214F2DC000BF6521 /* User.swift in Sources */,
@@ -480,6 +480,7 @@
 				1947C58A214FBF5800BF6521 /* CertificateView.swift in Sources */,
 				1947C55F214F27C000BF6521 /* GuideBookViewController.swift in Sources */,
 				190983D021568C9300E2461A /* FruitBookCell.swift in Sources */,
+				DBF51B8B2157CE0900AA85DF /* TutorialViewController.swift in Sources */,
 				1947C568214F2DC700BF6521 /* Fruit.swift in Sources */,
 				190FC3BB213A689C00DD333F /* AppDelegate.swift in Sources */,
 				1947C55B214F27A600BF6521 /* HomeViewController.swift in Sources */,
@@ -490,6 +491,7 @@
 				190F74A8213E33DC0038234A /* String+.swift in Sources */,
 				1947C576214F2F9000BF6521 /* DetailNutritionTipCell.swift in Sources */,
 				192E7BE321526AF000C6C68F /* TutorialViewController.swift in Sources */,
+				1947C576214F2F9000BF6521 /* DetailTriangleCell.swift in Sources */,
 				19EC61CE215243B800A80DA4 /* QuizButton.swift in Sources */,
 				19E274C72144D74E00E2F6D2 /* Network.swift in Sources */,
 				190F74AE213E34700038234A /* NSObject+.swift in Sources */,
@@ -639,7 +641,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H79MF628K3;
+				DEVELOPMENT_TEAM = 4U9B5GDBZA;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -659,7 +661,7 @@
 					"\"RealmSwift\"",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yapp.FruitSchool;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yapp.FruitSchool.Donald;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -672,7 +674,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H79MF628K3;
+				DEVELOPMENT_TEAM = 4U9B5GDBZA;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -692,7 +694,7 @@
 					"\"RealmSwift\"",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yapp.FruitSchool;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yapp.FruitSchool.Donald;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

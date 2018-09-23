@@ -18,6 +18,15 @@ class LoginViewController: UIViewController {
         loginButton.addTarget(self, action: #selector(didTouchUpLoginButton(_:)), for: .touchUpInside)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        let userDefaults = UserDefaults.standard
+        if userDefaults.bool(forKey: "TUTORIAL") == false {
+            guard let viewController = UIViewController.instantiate(storyboard: "Tutorial", identifier: "Tutorial1ViewController") else { return }
+            self.present(viewController, animated: false)
+            return
+        }
+    }
+    
     @objc func didTouchUpLoginButton(_ sender: UIButton) {
         guard let session = KOSession.shared() else { return }
         if session.isOpen() {
