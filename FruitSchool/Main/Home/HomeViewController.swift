@@ -11,7 +11,8 @@ import UIKit
 class HomeViewController: UIViewController {
 
     let cellIdentifier = "homeCell"
-    @IBOutlet weak var idiomStackView: UIStackView!
+    
+    @IBOutlet weak var idiomLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {

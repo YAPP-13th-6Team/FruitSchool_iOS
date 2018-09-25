@@ -10,11 +10,12 @@ import UIKit
 
 class PromotionReviewCell: UITableViewCell {
 
-    var quizView: UIView!
+    var quizView: QuizView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        quizView = UIView.instantiateFromXib(xibName: "QuizView")
+        quizView = UIView.instantiateFromXib(xibName: "QuizView") as? QuizView
+        quizView.delegate = self
         self.addSubview(quizView)
         quizView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -27,6 +28,28 @@ class PromotionReviewCell: UITableViewCell {
     }
     
     func setProperties() {
+        
+    }
+}
+
+extension PromotionReviewCell: QuizViewDelegate {
+    var title: String {
+        return ""
+    }
+    
+    var answers: [String] {
+        return [String]()
+    }
+    
+    var number: Int {
+        return 1
+    }
+    
+    var answerIndex: Int {
+        return 0
+    }
+    
+    func didTouchUpQuizButtons(_ sender: UIButton) {
         
     }
 }

@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,25 +36,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4ob-EB-Uca">
-                                <rect key="frame" x="16" y="20" width="343" height="185"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서당개도 3년이면 풍월을 읊는다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0a-vY-9QT">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="88.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="과일인생은 3일천하에 불과하다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgW-ZB-j7J">
-                                        <rect key="frame" x="0.0" y="96.5" width="343" height="88.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a7D-AP-Sge">
-                                <rect key="frame" x="16" y="221" width="343" height="362"/>
+                                <rect key="frame" x="16" y="120" width="343" height="301.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="aTw-84-NJk">
                                     <rect key="frame" x="0.0" y="117" width="343" height="44"/>
@@ -103,23 +84,37 @@
                                     <outlet property="delegate" destination="xwN-Qg-pbf" id="Nzg-f4-cYd"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서당개도 3년이면 풍월을 읊는다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2G-dn-uJs">
+                                <rect key="frame" x="16" y="20" width="343" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="A2G-dn-uJs" secondAttribute="height" multiplier="343:80" id="66O-IE-LqR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyv-bb-XNP">
+                                <rect key="frame" x="148.5" y="441.5" width="78" height="30"/>
+                                <state key="normal" title="문제풀러가기"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="4ob-EB-Uca" firstAttribute="leading" secondItem="uaQ-ct-cnP" secondAttribute="leading" constant="16" id="B0o-P6-Dah"/>
-                            <constraint firstItem="a7D-AP-Sge" firstAttribute="top" secondItem="4ob-EB-Uca" secondAttribute="bottom" constant="16" id="DiM-yX-Idu"/>
-                            <constraint firstItem="4ob-EB-Uca" firstAttribute="top" secondItem="uaQ-ct-cnP" secondAttribute="top" constant="20" id="K6J-Qe-xmN"/>
-                            <constraint firstItem="uaQ-ct-cnP" firstAttribute="trailing" secondItem="4ob-EB-Uca" secondAttribute="trailing" constant="16" id="LTx-Kb-EnG"/>
-                            <constraint firstItem="a7D-AP-Sge" firstAttribute="height" secondItem="6Uw-t7-sef" secondAttribute="height" multiplier="0.6" id="bpN-N6-SGT"/>
-                            <constraint firstItem="uaQ-ct-cnP" firstAttribute="bottom" secondItem="a7D-AP-Sge" secondAttribute="bottom" constant="20" id="c6d-x9-0zc"/>
-                            <constraint firstItem="uaQ-ct-cnP" firstAttribute="trailing" secondItem="a7D-AP-Sge" secondAttribute="trailing" constant="16" id="fkn-Br-G6j"/>
-                            <constraint firstItem="a7D-AP-Sge" firstAttribute="leading" secondItem="uaQ-ct-cnP" secondAttribute="leading" constant="16" id="rrL-xh-dK3"/>
+                            <constraint firstItem="A2G-dn-uJs" firstAttribute="top" secondItem="uaQ-ct-cnP" secondAttribute="top" constant="20" id="0YW-An-weE"/>
+                            <constraint firstItem="uaQ-ct-cnP" firstAttribute="trailing" secondItem="a7D-AP-Sge" secondAttribute="trailing" constant="16" id="1PN-8r-XGY"/>
+                            <constraint firstItem="xyv-bb-XNP" firstAttribute="top" secondItem="a7D-AP-Sge" secondAttribute="bottom" constant="20" id="5WT-4V-Xyf"/>
+                            <constraint firstItem="A2G-dn-uJs" firstAttribute="leading" secondItem="uaQ-ct-cnP" secondAttribute="leading" constant="16" id="CcB-zg-Og8"/>
+                            <constraint firstItem="xyv-bb-XNP" firstAttribute="centerX" secondItem="6Uw-t7-sef" secondAttribute="centerX" id="HEM-FU-NAE"/>
+                            <constraint firstItem="a7D-AP-Sge" firstAttribute="top" secondItem="A2G-dn-uJs" secondAttribute="bottom" constant="20" id="Kln-X1-JQg"/>
+                            <constraint firstItem="a7D-AP-Sge" firstAttribute="leading" secondItem="uaQ-ct-cnP" secondAttribute="leading" constant="16" id="bwJ-Gy-TJa"/>
+                            <constraint firstItem="uaQ-ct-cnP" firstAttribute="trailing" secondItem="A2G-dn-uJs" secondAttribute="trailing" constant="16" id="hJ5-L0-hZd"/>
+                            <constraint firstItem="a7D-AP-Sge" firstAttribute="height" secondItem="6Uw-t7-sef" secondAttribute="height" multiplier="1:2" id="qIM-22-7PL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uaQ-ct-cnP"/>
                     </view>
                     <navigationItem key="navigationItem" id="VSs-xN-B03"/>
                     <connections>
-                        <outlet property="idiomStackView" destination="4ob-EB-Uca" id="EZT-oV-4tJ"/>
+                        <outlet property="idiomLabel" destination="A2G-dn-uJs" id="gUf-67-u9W"/>
                         <outlet property="tableView" destination="a7D-AP-Sge" id="yEz-l9-MTw"/>
                     </connections>
                 </viewController>

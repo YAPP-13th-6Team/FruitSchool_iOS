@@ -10,6 +10,11 @@ import UIKit
 
 class FruitBookViewController: UIViewController {
 
+    @IBAction func didTouchUpPromotionReviewButton(_ sender: UIButton) {
+        guard let controller = UIViewController.instantiate(storyboard: "PromotionReview", identifier: PromotionReviewViewController.classNameToString) else { return }
+        self.present(controller, animated: true, completion: nil)
+    }
+    
     var finishesCommonSensesRequest: Bool = false
     var finishesFruitsRequest: Bool = false
     var finishingCount: Int = 0 {

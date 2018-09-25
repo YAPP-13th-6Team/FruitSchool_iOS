@@ -9,10 +9,10 @@
 import UIKit
 
 protocol QuizViewDelegate: class {
-    var quizTitle: String { get }
-    var quizAnswers: [String] { get }
-    var quizNumber: Int { get }
-    var quizAnswerIndex: Int { get }
+    var title: String { get }
+    var answers: [String] { get }
+    var number: Int { get }
+    var answerIndex: Int { get }
     func didTouchUpQuizButtons(_ sender: UIButton)
 }
 
@@ -44,8 +44,6 @@ class QuizView: UIView {
         super.awakeFromNib()
         layer.borderWidth = 3
         layer.borderColor = UIColor.black.cgColor
-        layer.shadowRadius = 10
-        layer.shadowColor = UIColor.gray.cgColor
     }
     
     subscript(_ index: Int) -> UIButton {

@@ -21,7 +21,7 @@ class LoginViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         let userDefaults = UserDefaults.standard
         if userDefaults.bool(forKey: "TUTORIAL") == false {
-            guard let viewController = UIViewController.instantiate(storyboard: "Tutorial", identifier: "Tutorial1ViewController") else { return }
+            guard let viewController = UIViewController.instantiate(storyboard: "Tutorial", identifier: TutorialViewController.classNameToString) else { return }
             self.present(viewController, animated: false)
             return
         }
@@ -44,6 +44,7 @@ class LoginViewController: UIViewController {
                     return
                 }
                 guard let user = user else { return }
+                print(user.id)
                 //user로 로그인한 사용자 정보 접근하기
                 //user.id 말고 쓸만한 거 없음
                 //튜토리얼로 이동하기
