@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         loginButton.addTarget(self, action: #selector(didTouchUpLoginButton(_:)), for: .touchUpInside)
     }
-    
+
     @objc func didTouchUpLoginButton(_ sender: UIButton) {
         guard let session = KOSession.shared() else { return }
         if session.isOpen() {
