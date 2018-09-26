@@ -21,7 +21,7 @@ class LoginViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         let userDefaults = UserDefaults.standard
         if userDefaults.bool(forKey: "TUTORIAL") == false {
-            guard let viewController = UIViewController.instantiate(storyboard: "Tutorial", identifier: "Tutorial1ViewController") else { return }
+            guard let viewController = UIViewController.instantiate(storyboard: "Tutorial", identifier: "TutorialViewController") else { return }
             self.present(viewController, animated: false)
             return
         }
