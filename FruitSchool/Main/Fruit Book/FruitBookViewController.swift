@@ -12,7 +12,7 @@ class FruitBookViewController: UIViewController {
 
     @IBAction func didTouchUpPromotionReviewButton(_ sender: UIButton) {
         guard let controller = UIViewController.instantiate(storyboard: "PromotionReview", identifier: PromotionReviewViewController.classNameToString) else { return }
-        self.present(controller, animated: true, completion: nil)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     var finishesCommonSensesRequest: Bool = false

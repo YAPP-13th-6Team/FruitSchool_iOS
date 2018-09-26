@@ -19,9 +19,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jSM-lJ-ksN" customClass="KOLoginButton">
-                                <rect key="frame" x="32" y="507" width="311" height="60"/>
+                                <rect key="frame" x="16" y="525" width="343" height="42"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="u5l-kH-lxK"/>
+                                    <constraint firstAttribute="height" constant="42" id="u5l-kH-lxK"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                             </button>
@@ -31,9 +31,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="jSM-lJ-ksN" firstAttribute="leading" secondItem="ffl-W5-faC" secondAttribute="leading" constant="32" id="8Ym-Sm-Bqj"/>
+                            <constraint firstItem="jSM-lJ-ksN" firstAttribute="leading" secondItem="ffl-W5-faC" secondAttribute="leading" constant="16" id="8Ym-Sm-Bqj"/>
                             <constraint firstItem="Phf-MJ-Mdy" firstAttribute="centerY" secondItem="IsK-aL-fLX" secondAttribute="centerY" id="Osu-NU-W5M"/>
-                            <constraint firstItem="ffl-W5-faC" firstAttribute="trailing" secondItem="jSM-lJ-ksN" secondAttribute="trailing" constant="32" id="aZ1-7X-rto"/>
+                            <constraint firstItem="ffl-W5-faC" firstAttribute="trailing" secondItem="jSM-lJ-ksN" secondAttribute="trailing" constant="16" id="aZ1-7X-rto"/>
                             <constraint firstItem="ffl-W5-faC" firstAttribute="bottom" secondItem="jSM-lJ-ksN" secondAttribute="bottom" constant="100" id="fn2-9T-Klq"/>
                             <constraint firstItem="Phf-MJ-Mdy" firstAttribute="centerX" secondItem="IsK-aL-fLX" secondAttribute="centerX" id="gvS-1C-cBn"/>
                         </constraints>

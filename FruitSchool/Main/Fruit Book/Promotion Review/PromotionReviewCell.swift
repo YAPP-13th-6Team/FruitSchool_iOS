@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PromotionReviewCell: UITableViewCell {
+class PromotionReviewCell: UICollectionViewCell {
 
     var quizView: QuizView!
     
@@ -22,9 +22,13 @@ class PromotionReviewCell: UITableViewCell {
             quizView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             quizView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
             quizView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            quizView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16),
-            quizView.heightAnchor.constraint(equalToConstant: self.frame.width)
+            quizView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16)
+            //quizView.heightAnchor.constraint(equalToConstant: self.frame.width)
             ])
+    }
+    
+    override func prepareForReuse() {
+        quizView = nil
     }
     
     func setProperties() {

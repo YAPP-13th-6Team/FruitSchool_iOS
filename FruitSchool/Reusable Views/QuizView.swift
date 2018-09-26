@@ -47,7 +47,7 @@ class QuizView: UIView {
     }
     
     subscript(_ index: Int) -> UIButton {
-        if index > 4 {
+        if !(0...3).contains(index) {
             fatalError("IndexOutOfBoundsException")
         }
         switch index {

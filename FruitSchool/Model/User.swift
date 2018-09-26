@@ -11,12 +11,12 @@ import RealmSwift
 @objcMembers
 class User: Object {
     
-    dynamic var id: Double = 0
+    dynamic var id: String = ""
     dynamic var nickname: String = ""
     dynamic var grade: Int = 0
     
     /// CREATE User
-    static func add(id: Double, nickname: String) {
+    static func add(id: String, nickname: String) {
         if User.fetch().isEmpty {
             let realm = try! Realm()
             let object = User()
