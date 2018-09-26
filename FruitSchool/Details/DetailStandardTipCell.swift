@@ -14,8 +14,9 @@ class DetailStandardTipCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func setProperties(_ object: StandardTip) {
-        let text: String = "\(object.purchasingTipText)\(object.storageTemperatureText)\(object.storageDateText)\(object.storageMethodText)\(object.careMethodText)"
-        textLabel?.text = text
+    func setProperties(_ object: StandardTip, at row: Int) {
+        let tip = object.tips[row]
+        textLabel?.text = tip.title
+        detailTextLabel?.text = tip.content
     }
 }

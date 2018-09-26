@@ -9,8 +9,8 @@
 import Foundation
 
 class API {
-    private static let baseURL = "http://localhost:3000"
-    //private static let baseURL = "http://ec2-13-125-249-84.ap-northeast-2.compute.amazonaws.com"
+    //private static let baseURL = "http://localhost:3000"
+    private static let baseURL = "http://ec2-13-125-249-84.ap-northeast-2.compute.amazonaws.com:3000"
     private static let jsonDecoder: JSONDecoder = {
         let jsonDecoder = JSONDecoder()
         jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase

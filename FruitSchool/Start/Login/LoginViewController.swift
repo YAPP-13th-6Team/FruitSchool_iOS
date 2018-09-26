@@ -17,16 +17,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         loginButton.addTarget(self, action: #selector(didTouchUpLoginButton(_:)), for: .touchUpInside)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        let userDefaults = UserDefaults.standard
-        if userDefaults.bool(forKey: "TUTORIAL") == false {
-            guard let viewController = UIViewController.instantiate(storyboard: "Tutorial", identifier: "Tutorial1ViewController") else { return }
-            self.present(viewController, animated: false)
-            return
-        }
-    }
-    
+
     @objc func didTouchUpLoginButton(_ sender: UIButton) {
         guard let session = KOSession.shared() else { return }
         if session.isOpen() {
@@ -43,11 +34,14 @@ class LoginViewController: UIViewController {
                     self?.presentErrorAlert(error.localizedDescription)
                     return
                 }
+                //user로 로그인한 사용자 정보 접근
                 guard let user = user else { return }
-                //user로 로그인한 사용자 정보 접근하기
-                //user.id 말고 쓸만한 거 없음
-                //튜토리얼로 이동하기
-                guard let next = UIViewController.instantiate(storyboard: "Tutorial", identifier: "TutorialViewController") else { return }
+                guard let id = user.id else { return }
+                //클라이언트에 유저 정보 저장
+                User.add(id: id, nickname: "")
+                //키체인에 id 저장. 지금은 UserDefaults로 진행
+                UserDefaults.standard.set(id, forKey: "id")
+                guard let next = UIViewController.instantiate(storyboard: "Tutorial", identifier: TutorialViewController.classNameToString) else { return }
                 next.modalTransitionStyle = .flipHorizontal
                 self?.present(next, animated: true, completion: nil)
             })

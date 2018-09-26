@@ -98,7 +98,6 @@ extension GuideBookViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         guard let next = UIViewController.instantiate(storyboard: "Detail", identifier: "DetailViewController") as? DetailViewController else { return }
-        next.parentType = .guideBook
         next.fruit = fruits[indexPath.section][indexPath.row]
         self.navigationController?.pushViewController(next, animated: true)
     }

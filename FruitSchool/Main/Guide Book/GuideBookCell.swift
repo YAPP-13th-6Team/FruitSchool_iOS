@@ -25,9 +25,15 @@ class GuideBookCell: UICollectionViewCell {
         super.prepareForReuse()
         imageView.image = nil
         nameLabel.text = nil
+        alpha = 1
     }
     
     func setProperties(_ object: FruitResponse) {
+        let grade = User.fetch().first?.grade ?? 0
+        if grade < object.grade {
+            alpha = 0.5
+            isUserInteractionEnabled = false
+        }
         nameLabel.text = object.title
     }
 }

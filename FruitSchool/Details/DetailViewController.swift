@@ -8,17 +8,11 @@
 
 import UIKit
 
-enum DetailParentType {
-    case fruitBook
-    case guideBook
-}
-
 class DetailViewController: UIViewController {
 
-    var parentType: DetailParentType = .fruitBook
     var fruit: FruitResponse!
     let cellIdentifiers = ["detailImageCell", "detailStandardTipCell", "detailIntakeTipCell", "detailNutritionTipCell", "detailQuizCell"]
-    let sectionTitles = ["Basic Information", "Health Function", "Fruit Flavor"]
+    let sectionTitles = ["기본 정보", "섭취 정보", "영양 정보"]
     var springsStandardTipSection: Bool = false
     var springsIntakeTipSection: Bool = false
     var springsNutritionTipSection: Bool = false
@@ -29,6 +23,8 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(fruit.standardTip.tips)
+        print(fruit.intakeTip.tips)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
@@ -63,9 +59,9 @@ extension DetailViewController: UITableViewDataSource {
             (cell as? DetailImageCell)?.delegate = self
             (cell as? DetailImageCell)?.setProperties(fruit)
         case 1:
-            (cell as? DetailStandardTipCell)?.setProperties(fruit.standardTip)
+            (cell as? DetailStandardTipCell)?.setProperties(fruit.standardTip, at: indexPath.row)
         case 2:
-            (cell as? DetailIntakeTipCell)?.setProperties(fruit.intakeTip)
+            (cell as? DetailIntakeTipCell)?.setProperties(fruit.intakeTip, at: indexPath.row)
         case 3:
             (cell as? DetailNutritionTipCell)?.setProperties(fruit.nutritionTip)
         case 4:
@@ -81,9 +77,9 @@ extension DetailViewController: UITableViewDataSource {
         case 0:
             return 1
         case 1 where springsStandardTipSection:
-            return 1
+            return fruit.standardTip.validCount
         case 2 where springsIntakeTipSection:
-            return 1
+            return fruit.intakeTip.validCount
         case 3 where springsNutritionTipSection:
             return 1
         case 4:
@@ -95,13 +91,7 @@ extension DetailViewController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
-//        switch parentType {
-//        case .fruitBook:
-//            return 5
-//        case .guideBook:
-//            return 4
-//        }
+        return 4
     }
 }
 

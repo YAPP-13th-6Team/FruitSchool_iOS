@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +13,7 @@
         <!--Tutorial View Controller-->
         <scene sceneID="DYs-Iw-RUD">
             <objects>
-                <pageViewController storyboardIdentifier="TutorialViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="IGI-vp-58o" customClass="TutorialViewController" customModule="UIPageViewControllerTest2" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="TutorialViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="IGI-vp-58o" customClass="TutorialViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QvN-Tc-0C8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-460" y="-155"/>
@@ -20,7 +21,7 @@
         <!--View Controller-->
         <scene sceneID="tbm-m3-o8R">
             <objects>
-                <viewController storyboardIdentifier="Tutorial1ViewController" id="cYk-km-mj0" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Tutorial1ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cYk-km-mj0" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dl6-ce-Ccf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -58,7 +59,7 @@
         <!--View Controller-->
         <scene sceneID="Tzu-n2-wes">
             <objects>
-                <viewController storyboardIdentifier="Tutorial2ViewController" id="RdH-Ol-nQd" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Tutorial2ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RdH-Ol-nQd" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kqR-Ni-uMd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -96,7 +97,7 @@
         <!--View Controller-->
         <scene sceneID="gVv-pd-Ijy">
             <objects>
-                <viewController storyboardIdentifier="Tutorial3ViewController" id="yKU-wV-Vz2" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Tutorial3ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yKU-wV-Vz2" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hxs-K5-fFb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -134,7 +135,7 @@
         <!--Tutorial4 View Controller-->
         <scene sceneID="XAJ-qN-Eqx">
             <objects>
-                <viewController storyboardIdentifier="Tutorial4ViewController" id="GPi-kE-VFN" customClass="Tutorial4ViewController" customModule="UIPageViewControllerTest2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Tutorial4ViewController" id="GPi-kE-VFN" customClass="Tutorial4ViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0P6-y8-SPE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
