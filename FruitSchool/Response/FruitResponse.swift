@@ -32,36 +32,26 @@ struct StandardTip: Codable {
     let storageDate: String?
     let storageMethod: String?
     let careMethod: String?
-    var purchasingTipText: String {
-        return "구입 요령 : \(purchasingTip)\n"
+    var tips: [(title: String, content: String)] {
+        let array = [("구입 요령", purchasingTip), ("보관 온도", storageTemperature), ("보관일", storageDate), ("보관법", storageMethod), ("손질법", careMethod)]
+        let filtered = array.filter { $0.1 != nil }
+        return filtered as? [(title: String, content: String)] ?? [(title: String, content: String)]()
     }
-    var storageTemperatureText: String {
-        if let storageTemperature = storageTemperature {
-            return "보관 온도 : \(storageTemperature)\n"
-        } else {
-            return ""
+    var validCount: Int {
+        var count = 1
+        if storageTemperature != nil {
+            count += 1
         }
-    }
-    var storageDateText: String {
-        if let storageDate = storageDate {
-            return "보관일 : \(storageDate)\n"
-        } else {
-            return ""
+        if storageDate != nil {
+            count += 1
         }
-    }
-    var storageMethodText: String {
-        if let storageMethod = storageMethod {
-            return "보관법 : \(storageMethod)\n"
-        } else {
-            return ""
+        if storageMethod != nil {
+            count += 1
         }
-    }
-    var careMethodText: String {
-        if let careMethod = careMethod {
-            return "손질법 : \(careMethod)"
-        } else {
-            return ""
+        if careMethod != nil {
+            count += 1
         }
+        return count
     }
 }
 
@@ -71,36 +61,26 @@ struct IntakeTip: Codable {
     let precaution: String?
     let diet: String?
     let effect: String?
-    var intakeMethodText: String {
-        return "섭취 방법 : \(intakeMethod)\n"
+    var tips: [(title: String, content: String)] {
+        let array = [("섭취 방법", intakeMethod), ("궁합 음식 정보", chemistry), ("주의사항", precaution), ("다이어트", diet), ("효능", effect)]
+        let filtered = array.filter { $0.1 != nil }
+        return filtered as? [(title: String, content: String)] ?? [(title: String, content: String)]()
     }
-    var chemistryText: String {
-        if let chemistry = chemistry {
-            return "궁합 음식 정보 : \(chemistry)\n"
-        } else {
-            return ""
+    var validCount: Int {
+        var count = 1
+        if chemistry != nil {
+            count += 1
         }
-    }
-    var precautionText: String {
-        if let precaution = precaution {
-            return "주의사항 : \(precaution)\n"
-        } else {
-            return ""
+        if precaution != nil {
+            count += 1
         }
-    }
-    var dietText: String {
-        if let diet = diet {
-            return "다이어트 : \(diet)\n"
-        } else {
-            return ""
+        if diet != nil {
+            count += 1
         }
-    }
-    var effectText: String {
-        if let effect = effect {
-            return "효능 : \(effect)"
-        } else {
-            return ""
+        if effect != nil {
+            count += 1
         }
+        return count
     }
 }
 

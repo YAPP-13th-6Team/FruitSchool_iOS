@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Tutorial4ViewController: UIViewController, CertificateViewDelegate {
+class Tutorial4ViewController: UIViewController {
 
     lazy var certificateView: UIView = {
         let dummy = UIView()
@@ -23,12 +23,15 @@ class Tutorial4ViewController: UIViewController, CertificateViewDelegate {
         
         self.view.addSubview(certificateView)
     }
-    
+}
+
+extension Tutorial4ViewController: CertificateViewDelegate {
     func didTouchUpButton(_ sender: UIButton) {
-        let userDefaults = UserDefaults.standard
-        userDefaults.set(true, forKey: "TUTORIAL")
-        userDefaults.synchronize()
-        
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
+        guard let next = UIViewController.instantiate(storyboard: "Main", identifier: MainTabBarController.classNameToString) else { return }
+        next.modalTransitionStyle = .flipHorizontal
+        self.present(next, animated: true) {
+            UserDefaults.standard.set(true, forKey: "checksTutorial")
+            UserDefaults.standard.synchronize()
+        }
     }
 }

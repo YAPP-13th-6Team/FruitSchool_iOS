@@ -60,12 +60,21 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U5E-6u-Gk6">
+                                <rect key="frame" x="135.5" y="553" width="104" height="30"/>
+                                <state key="normal" title="승급심사 (TEST)"/>
+                                <connections>
+                                    <action selector="didTouchUpPromotionReviewButton:" destination="UiC-e1-WnX" eventType="touchUpInside" id="xBS-Bg-WvX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="9by-d2-Bdc" firstAttribute="top" secondItem="r5v-UU-R6S" secondAttribute="top" constant="20" id="3Cp-Nf-V4o"/>
                             <constraint firstItem="r5v-UU-R6S" firstAttribute="trailing" secondItem="9by-d2-Bdc" secondAttribute="trailing" constant="16" id="KIW-GW-cqu"/>
+                            <constraint firstItem="U5E-6u-Gk6" firstAttribute="centerX" secondItem="dF1-P7-Oh5" secondAttribute="centerX" id="NY5-zU-hWe"/>
                             <constraint firstItem="9by-d2-Bdc" firstAttribute="leading" secondItem="r5v-UU-R6S" secondAttribute="leading" constant="16" id="kt3-B0-s5e"/>
+                            <constraint firstItem="r5v-UU-R6S" firstAttribute="bottom" secondItem="U5E-6u-Gk6" secondAttribute="bottom" constant="20" id="y8p-zi-U3C"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="r5v-UU-R6S"/>
                     </view>

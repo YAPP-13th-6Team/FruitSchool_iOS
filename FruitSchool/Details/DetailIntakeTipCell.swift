@@ -14,8 +14,9 @@ class DetailIntakeTipCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func setProperties(_ object: IntakeTip) {
-        let text: String = "\(object.intakeMethodText)\(object.chemistryText)\(object.precautionText)\(object.dietText)\(object.effectText)"
-        textLabel?.text = text
+    func setProperties(_ object: IntakeTip, at row: Int) {
+        let tip = object.tips[row]
+        textLabel?.text = tip.title
+        detailTextLabel?.text = tip.content
     }
 }
