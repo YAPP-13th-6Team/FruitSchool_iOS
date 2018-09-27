@@ -47,6 +47,7 @@
 		199715C22153E695001D5276 /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199715C12153E695001D5276 /* UserResponse.swift */; };
 		199715C42153F59D001D5276 /* CommonSenseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199715C32153F59D001D5276 /* CommonSenseResponse.swift */; };
 		19A113652157E5E80017292E /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A113642157E5E80017292E /* KakaoOpenSDK.framework */; };
+		19C78015215CE80100A3B729 /* NicknameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C78014215CE80100A3B729 /* NicknameInputViewController.swift */; };
 		19E274C72144D74E00E2F6D2 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274C62144D74E00E2F6D2 /* Network.swift */; };
 		19E274C92144D75300E2F6D2 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274C82144D75300E2F6D2 /* API.swift */; };
 		19E274CB2144D93F00E2F6D2 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19E274CA2144D93F00E2F6D2 /* Login.storyboard */; };
@@ -105,6 +106,7 @@
 		199715C12153E695001D5276 /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		199715C32153F59D001D5276 /* CommonSenseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonSenseResponse.swift; sourceTree = "<group>"; };
 		19A113642157E5E80017292E /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
+		19C78014215CE80100A3B729 /* NicknameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameInputViewController.swift; sourceTree = "<group>"; };
 		19E274C62144D74E00E2F6D2 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		19E274C82144D75300E2F6D2 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		19E274CA2144D93F00E2F6D2 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			children = (
 				19E274CA2144D93F00E2F6D2 /* Login.storyboard */,
 				1947C57D214FB3FE00BF6521 /* LoginViewController.swift */,
+				19C78014215CE80100A3B729 /* NicknameInputViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 				DBF51B892157CE0900AA85DF /* Tutorial4ViewController.swift in Sources */,
 				190F74B0213E34B00038234A /* UIAlertController+.swift in Sources */,
 				190F74AC213E340F0038234A /* UIView+.swift in Sources */,
+				19C78015215CE80100A3B729 /* NicknameInputViewController.swift in Sources */,
 				1947C566214F2DC000BF6521 /* User.swift in Sources */,
 				190983CE215672EB00E2461A /* PromotionReviewCell.swift in Sources */,
 				190983CC2156723B00E2461A /* PromotionReviewViewController.swift in Sources */,
@@ -667,7 +671,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4U9B5GDBZA;
+				DEVELOPMENT_TEAM = H79MF628K3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -700,7 +704,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4U9B5GDBZA;
+				DEVELOPMENT_TEAM = H79MF628K3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

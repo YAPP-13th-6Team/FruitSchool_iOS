@@ -18,7 +18,6 @@ class API {
     }()
 }
 
-// MARK: - Guide Book
 extension API {
     ///과일 정보 요청.
     static func requestFruits() {
@@ -52,6 +51,57 @@ extension API {
             }
         }, errorHandler: { error in
             NotificationCenter.default.post(name: .errorReceiveCommonSenses, object: nil, userInfo: ["error": error.localizedDescription])
+        })
+    }
+    /**
+     서버에 회원 정보 업로드.
+     - Parameter id: 카카오 고유 ID
+     - Parameter nickname: 사용자가 입력한 닉네임
+    */
+    static func requestCreatingUser(id: String, nickname: String) {
+        let parameter = ["id": id, "nickname": nickname]
+        Network.post("\(baseURL)/users/user", parameters: parameter, successHandler: { (data, statusCode) in
+            if (400...499).contains(statusCode) {
+                NotificationCenter.default.post(name: .errorReceiveCreatingUser, object: nil)
+            } else {
+                NotificationCenter.default.post(name: .didReceiveCreatingUser, object: nil)
+            }
+        }, errorHandler: { (error) in
+            NotificationCenter.default.post(name: .errorReceiveCreatingUser, object: nil)
+        })
+    }
+    /**
+     사용자 중복 확인.
+     - Parameter id: 카카오 고유 ID
+     - Note: 409 Conflict 에러는 중복 사용자임을 의미.
+    */
+    static func requestCheckingDuplicatedUser(id: String) {
+        let parameter = ["id": id]
+        Network.post("\(baseURL)/users/duplicated", parameters: parameter, successHandler: { (data, statusCode) in
+            if statusCode == 409 {
+                NotificationCenter.default.post(name: .didReceiveDuplicatedUser, object: nil, userInfo: ["isDuplicated": true])
+            } else {
+                NotificationCenter.default.post(name: .didReceiveDuplicatedUser, object: nil, userInfo: ["isDuplicated": false ,"id": id])
+            }
+        }, errorHandler: { (error) in
+            NotificationCenter.default.post(name: .errorReceiveDuplicatedUser, object: nil)
+        })
+    }
+    /**
+     서버에 있는 사용자 등급 정보 수정.
+     - Parameter id: 카카오 고유 ID
+     - Parameter grade: 새로운 등급
+    */
+    static func requestUpdatingUserGrade(id: String, grade: Int) {
+        let parameter: [String: Any] = ["id": id, "grade": grade]
+        Network.post("\(baseURL)/users/grade", parameters: parameter, successHandler: { (data, statusCode) in
+            if (400...499).contains(statusCode) {
+                NotificationCenter.default.post(name: .errorReceiveUpdatingUserGrade, object: nil)
+            } else {
+                NotificationCenter.default.post(name: .didReceiveUpdatingUserGrade, object: nil)
+            }
+        }, errorHandler: { (error) in
+            NotificationCenter.default.post(name: .errorReceiveUpdatingUserGrade, object: nil)
         })
     }
 }

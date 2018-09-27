@@ -37,6 +37,9 @@ class QuizView: UIView {
     var answer4Button: UIButton! {
         return secondLineStackView.arrangedSubviews.last as? UIButton
     }
+    var buttons: [UIButton] {
+        return [answer1Button, answer2Button, answer3Button, answer4Button]
+    }
     var isYesOrNo: Bool = false
     @IBOutlet weak var stackView: UIStackView!
     
@@ -65,6 +68,10 @@ class QuizView: UIView {
     }
     
     @IBAction func didTouchUpQuizButtons(_ sender: UIButton) {
+        for button in buttons {
+            button.isSelected = false
+        }
+        sender.isSelected = true
         delegate?.didTouchUpQuizButtons(sender)
     }
 }
