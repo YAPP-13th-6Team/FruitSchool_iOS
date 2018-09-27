@@ -15,6 +15,10 @@ class GuideBookViewController: UIViewController {
     var searchBar: UISearchBar!
     var searchButton: UIBarButtonItem!
     var fruits: [[FruitResponse]] = []
+    var searchedFruits: [FruitResponse] = []
+    var isSearching: Bool {
+        return searchBar.isFirstResponder
+    }
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -61,13 +65,20 @@ extension GuideBookViewController {
 }
 // MARK: - Button Touch Event
 extension GuideBookViewController {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let flatted = fruits.flatMap { $0 }
+        let predicate = NSPredicate(format: "title == %@", searchText)
+        guard let filtered = (flatted as NSArray).filtered(using: predicate) as? [FruitResponse] else { return }
+        self.searchedFruits = filtered
+        self.collectionView.reloadSections(IndexSet(0...2))
+    }
     @objc func touchUpSearchButton(_ sender: UIBarButtonItem) {
         searchBar.becomeFirstResponder()
         navigationItem.setRightBarButton(nil, animated: true)
         navigationItem.titleView = searchBar
     }
 }
-
+// MARK: - Search Bar Delegate
 extension GuideBookViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
@@ -80,17 +91,24 @@ extension GuideBookViewController: UISearchBarDelegate {
 extension GuideBookViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? GuideBookCell else { return UICollectionViewCell() }
-        let fruit = fruits[indexPath.section][indexPath.row]
-        cell.setProperties(fruit)
-        return cell
+        if !isSearching {
+            let fruit = fruits[indexPath.section][indexPath.row]
+            cell.setProperties(fruit)
+            return cell
+        } else {
+            let fruit = searchedFruits[indexPath.row]
+            cell.setProperties(fruit)
+            return cell
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return fruits[section].count
+        return !isSearching ? fruits[section].count : searchedFruits.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return fruits.count
+        return !isSearching ? fruits.count : 1
     }
 }
 

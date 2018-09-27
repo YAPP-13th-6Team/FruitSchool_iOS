@@ -60,7 +60,7 @@ extension API {
     */
     static func requestCreatingUser(id: String, nickname: String) {
         let parameter = ["id": id, "nickname": nickname]
-        Network.post("\(baseURL)/users/user", parameters: parameter, successHandler: { (data, statusCode) in
+        Network.post("\(baseURL)/users/user", parameters: parameter, successHandler: { (_, statusCode) in
             if (400...499).contains(statusCode) {
                 NotificationCenter.default.post(name: .errorReceiveCreatingUser, object: nil)
             } else {
@@ -77,11 +77,11 @@ extension API {
     */
     static func requestCheckingDuplicatedUser(id: String) {
         let parameter = ["id": id]
-        Network.post("\(baseURL)/users/duplicated", parameters: parameter, successHandler: { (data, statusCode) in
+        Network.post("\(baseURL)/users/duplicated", parameters: parameter, successHandler: { (_, statusCode) in
             if statusCode == 409 {
                 NotificationCenter.default.post(name: .didReceiveDuplicatedUser, object: nil, userInfo: ["isDuplicated": true])
             } else {
-                NotificationCenter.default.post(name: .didReceiveDuplicatedUser, object: nil, userInfo: ["isDuplicated": false ,"id": id])
+                NotificationCenter.default.post(name: .didReceiveDuplicatedUser, object: nil, userInfo: ["isDuplicated": false, "id": id])
             }
         }, errorHandler: { (error) in
             NotificationCenter.default.post(name: .errorReceiveDuplicatedUser, object: nil)
@@ -94,7 +94,7 @@ extension API {
     */
     static func requestUpdatingUserGrade(id: String, grade: Int) {
         let parameter: [String: Any] = ["id": id, "grade": grade]
-        Network.post("\(baseURL)/users/grade", parameters: parameter, successHandler: { (data, statusCode) in
+        Network.post("\(baseURL)/users/grade", parameters: parameter, successHandler: { (_, statusCode) in
             if (400...499).contains(statusCode) {
                 NotificationCenter.default.post(name: .errorReceiveUpdatingUserGrade, object: nil)
             } else {
