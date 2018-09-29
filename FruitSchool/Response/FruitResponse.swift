@@ -100,7 +100,7 @@ struct NutritionTip: Codable {
 }
 
 struct QuizTip: Codable {
-    let level: Int      //몇개 난이도가 있을까?
+    //let level: Int      //몇개 난이도가 있을까?
     let title: String
     let correctAnswer: String
     let incorrectAnswers: [String]

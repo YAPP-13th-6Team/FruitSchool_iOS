@@ -11,14 +11,14 @@ import UIKit
 class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
-        guard let firstController = UIViewController.instantiate(storyboard: "Home", identifier: "HomeNavigationController") else { return }
-        let firstTabBar = UITabBarItem(title: "홈", image: nil, tag: 0)
+        guard let firstController = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController") else { return }
+        let firstTabBar = UITabBarItem(title: "교과서", image: nil, tag: 0)
         firstController.tabBarItem = firstTabBar
-        guard let secondController = UIViewController.instantiate(storyboard: "FruitBook", identifier: "FruitBookNavigationController") else { return }
-        let secondTabBar = UITabBarItem(title: "교과서", image: nil, tag: 1)
+        guard let secondController = UIViewController.instantiate(storyboard: "Community", identifier: "CommunityNavigationController") else { return }
+        let secondTabBar = UITabBarItem(title: "커뮤니티", image: nil, tag: 1)
         secondController.tabBarItem = secondTabBar
-        guard let thirdController = UIViewController.instantiate(storyboard: "GuideBook", identifier: "GuideBookNavigationController") else { return }
-        let thirdTabBar = UITabBarItem(title: "도감", image: nil, tag: 2)
+        guard let thirdController = UIViewController.instantiate(storyboard: "MyPage", identifier: "MyPageNavigationController") else { return }
+        let thirdTabBar = UITabBarItem(title: "내정보", image: nil, tag: 2)
         thirdController.tabBarItem = thirdTabBar
         viewControllers = [firstController, secondController, thirdController]
     }

@@ -23,8 +23,6 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(fruit.standardTip.tips)
-        print(fruit.intakeTip.tips)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     

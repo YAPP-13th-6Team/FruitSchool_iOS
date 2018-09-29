@@ -8,9 +8,13 @@
 
 import Foundation
 
+enum NetworkError: Error {
+    case invalidGradeError
+}
+
 class API {
     //private static let baseURL = "http://localhost:3000"
-    private static let baseURL = "http://ec2-13-125-249-84.ap-northeast-2.compute.amazonaws.com:3000"
+    private static let baseURL = "http://13.125.249.84:3000"
     private static let jsonDecoder: JSONDecoder = {
         let jsonDecoder = JSONDecoder()
         jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -20,16 +24,21 @@ class API {
 
 extension API {
     ///과일 정보 요청.
-    static func requestFruits() {
+    static func requestFruits(grade: Int = -1, completion: @escaping ([FruitResponse]?, Error?) -> Void) {
         Network.get("\(baseURL)/fruits", successHandler: { data in
             do {
                 let decoded = try jsonDecoder.decode([FruitResponse].self, from: data)
-                NotificationCenter.default.post(name: .didReceiveFruits, object: nil, userInfo: ["fruits": decoded])
+                if grade != -1 {
+                    let filtered = decoded.filter { $0.grade == grade }
+                    completion(filtered, nil)
+                } else {
+                    completion(decoded, nil)
+                }
             } catch {
-                NotificationCenter.default.post(name: .errorReceiveFruits, object: nil, userInfo: ["error": error.localizedDescription])
+                completion(nil, error)
             }
         }, errorHandler: { error in
-            NotificationCenter.default.post(name: .errorReceiveFruits, object: nil, userInfo: ["error": error.localizedDescription])
+            completion(nil, error)
         })
     }
     /**
@@ -37,20 +46,20 @@ extension API {
      - Parameter grade: 등급 (0: 서당개 / 1: 학도 / 2: 훈장).
      - Note: 잘못된 등급이 인자로 넘어가면 에러 노티피케이션 포스트.
     */
-    static func requestCommonSenses(grade: Int) {
+    static func requestCommonSenses(grade: Int, completion: @escaping (CommonSenseResponse?, Error?) -> Void) {
         if !(0...2).contains(grade) {
-            NotificationCenter.default.post(name: .errorReceiveCommonSenses, object: nil, userInfo: ["error": "올바르지 않은 요청"])
+            completion(nil, NetworkError.invalidGradeError)
             return
         }
         Network.get("\(baseURL)/commonSenses/\(grade)", successHandler: { data in
             do {
                 let decoded = try jsonDecoder.decode(CommonSenseResponse.self, from: data)
-                NotificationCenter.default.post(name: .didReceiveCommonSenses, object: nil, userInfo: ["commonSenses": decoded])
+                completion(decoded, nil)
             } catch {
-                NotificationCenter.default.post(name: .errorReceiveCommonSenses, object: nil, userInfo: ["error": error.localizedDescription])
+                completion(nil, error)
             }
         }, errorHandler: { error in
-            NotificationCenter.default.post(name: .errorReceiveCommonSenses, object: nil, userInfo: ["error": error.localizedDescription])
+            completion(nil, error)
         })
     }
     /**
@@ -58,16 +67,12 @@ extension API {
      - Parameter id: 카카오 고유 ID
      - Parameter nickname: 사용자가 입력한 닉네임
     */
-    static func requestCreatingUser(id: String, nickname: String) {
+    static func requestCreatingUser(id: String, nickname: String, completion: @escaping (Int?, Error?) -> Void) {
         let parameter = ["id": id, "nickname": nickname]
         Network.post("\(baseURL)/users/user", parameters: parameter, successHandler: { (_, statusCode) in
-            if (400...499).contains(statusCode) {
-                NotificationCenter.default.post(name: .errorReceiveCreatingUser, object: nil)
-            } else {
-                NotificationCenter.default.post(name: .didReceiveCreatingUser, object: nil)
-            }
+            completion(statusCode, nil)
         }, errorHandler: { (error) in
-            NotificationCenter.default.post(name: .errorReceiveCreatingUser, object: nil)
+            completion(nil, error)
         })
     }
     /**
@@ -75,16 +80,16 @@ extension API {
      - Parameter id: 카카오 고유 ID
      - Note: 409 Conflict 에러는 중복 사용자임을 의미.
     */
-    static func requestCheckingDuplicatedUser(id: String) {
+    static func requestCheckingDuplicatedUser(id: String, completion: @escaping (Bool?, Error?) -> Void) {
         let parameter = ["id": id]
         Network.post("\(baseURL)/users/duplicated", parameters: parameter, successHandler: { (_, statusCode) in
             if statusCode == 409 {
-                NotificationCenter.default.post(name: .didReceiveDuplicatedUser, object: nil, userInfo: ["isDuplicated": true])
+                completion(true, nil)
             } else {
-                NotificationCenter.default.post(name: .didReceiveDuplicatedUser, object: nil, userInfo: ["isDuplicated": false, "id": id])
+                completion(false, nil)
             }
         }, errorHandler: { (error) in
-            NotificationCenter.default.post(name: .errorReceiveDuplicatedUser, object: nil)
+            completion(nil, error)
         })
     }
     /**
@@ -92,16 +97,12 @@ extension API {
      - Parameter id: 카카오 고유 ID
      - Parameter grade: 새로운 등급
     */
-    static func requestUpdatingUserGrade(id: String, grade: Int) {
+    static func requestUpdatingUserGrade(id: String, grade: Int, completion: @escaping (Int?, Error?) -> Void) {
         let parameter: [String: Any] = ["id": id, "grade": grade]
         Network.post("\(baseURL)/users/grade", parameters: parameter, successHandler: { (_, statusCode) in
-            if (400...499).contains(statusCode) {
-                NotificationCenter.default.post(name: .errorReceiveUpdatingUserGrade, object: nil)
-            } else {
-                NotificationCenter.default.post(name: .didReceiveUpdatingUserGrade, object: nil)
-            }
+            completion(statusCode, nil)
         }, errorHandler: { (error) in
-            NotificationCenter.default.post(name: .errorReceiveUpdatingUserGrade, object: nil)
+            completion(nil, error)
         })
     }
 }

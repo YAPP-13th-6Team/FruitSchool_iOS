@@ -47,59 +47,6 @@
             </objects>
             <point key="canvasLocation" x="192.80000000000001" y="-101.19940029985008"/>
         </scene>
-        <!--Nickname Input View Controller-->
-        <scene sceneID="rFw-zN-Dsx">
-            <objects>
-                <viewController storyboardIdentifier="NicknameInputViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wMu-Ho-Wss" customClass="NicknameInputViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="PDC-C2-5q0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4hK-hg-k4H">
-                                <rect key="frame" x="16" y="313.5" width="343" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="sNE-s5-6cT"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="wMu-Ho-Wss" id="7W2-ce-fE4"/>
-                                </connections>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임 입력" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qng-nq-l9Y">
-                                <rect key="frame" x="16" y="276.5" width="78" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70W-eE-zZr">
-                                <rect key="frame" x="172.5" y="369.5" width="30" height="30"/>
-                                <state key="normal" title="다음"/>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="70W-eE-zZr" firstAttribute="top" secondItem="4hK-hg-k4H" secondAttribute="bottom" constant="16" id="3Sd-Lv-yNt"/>
-                            <constraint firstItem="4hK-hg-k4H" firstAttribute="centerY" secondItem="PDC-C2-5q0" secondAttribute="centerY" id="Ot1-Vl-BZn"/>
-                            <constraint firstItem="4hK-hg-k4H" firstAttribute="leading" secondItem="Kjq-Te-Nee" secondAttribute="leading" constant="16" id="RGx-Gy-Jqo"/>
-                            <constraint firstItem="70W-eE-zZr" firstAttribute="centerX" secondItem="PDC-C2-5q0" secondAttribute="centerX" id="W0F-nc-ODv"/>
-                            <constraint firstItem="4hK-hg-k4H" firstAttribute="top" secondItem="qng-nq-l9Y" secondAttribute="bottom" constant="16" id="aUw-hk-ljB"/>
-                            <constraint firstItem="4hK-hg-k4H" firstAttribute="centerX" secondItem="PDC-C2-5q0" secondAttribute="centerX" id="fTl-of-dJ9"/>
-                            <constraint firstItem="Kjq-Te-Nee" firstAttribute="trailing" secondItem="4hK-hg-k4H" secondAttribute="trailing" constant="16" id="sea-yD-qZb"/>
-                            <constraint firstItem="qng-nq-l9Y" firstAttribute="leading" secondItem="Kjq-Te-Nee" secondAttribute="leading" constant="16" id="xpN-1A-HqV"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Kjq-Te-Nee"/>
-                    </view>
-                    <connections>
-                        <outlet property="button" destination="70W-eE-zZr" id="Ehg-bA-kwj"/>
-                        <outlet property="textField" destination="4hK-hg-k4H" id="8Kb-0S-cGe"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zJ8-Ts-uBq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="975" y="-101"/>
-        </scene>
     </scenes>
     <resources>
         <image name="topLogo" width="57" height="57"/>
