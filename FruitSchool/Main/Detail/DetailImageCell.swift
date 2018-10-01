@@ -16,6 +16,8 @@ class DetailImageCell: UITableViewCell {
 
     weak var delegate: DetailImageCellDelegate?
     @IBOutlet weak var fruitImageView: UIImageView!
+    @IBOutlet weak var fruitTitleLabel: UILabel!
+    @IBOutlet weak var fruitGradeLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     
     override func awakeFromNib() {
@@ -29,6 +31,8 @@ class DetailImageCell: UITableViewCell {
     }
     
     func setProperties(_ object: FruitResponse) {
-        
+        fruitImageView.image = nil
+        fruitTitleLabel.text = object.title
+        fruitGradeLabel.text = Grade(rawValue: object.grade)?.expression
     }
 }

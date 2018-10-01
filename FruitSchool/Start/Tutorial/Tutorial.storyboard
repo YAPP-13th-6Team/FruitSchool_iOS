@@ -26,28 +26,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="cgg-jZ-myO">
-                                <rect key="frame" x="16" y="20" width="343" height="501"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="cgg-jZ-myO">
+                                <rect key="frame" x="94" y="154.5" width="187.5" height="225"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="343" id="jn1-fp-1Ha"/>
-                                    <constraint firstAttribute="width" secondItem="cgg-jZ-myO" secondAttribute="height" multiplier="343:501" id="ldw-Xj-pet"/>
+                                    <constraint firstAttribute="width" secondItem="cgg-jZ-myO" secondAttribute="height" multiplier="1:1.2" id="4OY-d3-C0D"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tutorial 1 Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0M-ey-mfq">
-                                <rect key="frame" x="16" y="529" width="343" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="재밌는 과일 퀴즈들을 통해 과일에 대한 정보를 학습하세요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0M-ey-mfq">
+                                <rect key="frame" x="16" y="399.5" width="343" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="lu7-Qv-R4M" firstAttribute="trailing" secondItem="cgg-jZ-myO" secondAttribute="trailing" constant="16" id="9Oy-kf-rW1"/>
-                            <constraint firstItem="cgg-jZ-myO" firstAttribute="leading" secondItem="lu7-Qv-R4M" secondAttribute="leading" constant="16" id="A4X-Jc-q4E"/>
-                            <constraint firstItem="U0M-ey-mfq" firstAttribute="top" secondItem="cgg-jZ-myO" secondAttribute="bottom" constant="8" id="BZj-Jv-FHY"/>
-                            <constraint firstItem="U0M-ey-mfq" firstAttribute="leading" secondItem="cgg-jZ-myO" secondAttribute="leading" id="Lcc-z1-hfU"/>
-                            <constraint firstItem="cgg-jZ-myO" firstAttribute="top" secondItem="lu7-Qv-R4M" secondAttribute="top" id="sU9-Vh-SjI"/>
-                            <constraint firstItem="U0M-ey-mfq" firstAttribute="trailing" secondItem="cgg-jZ-myO" secondAttribute="trailing" id="yWh-ZS-mNR"/>
+                            <constraint firstItem="cgg-jZ-myO" firstAttribute="centerX" secondItem="Dl6-ce-Ccf" secondAttribute="centerX" id="B2h-JZ-O9d"/>
+                            <constraint firstItem="lu7-Qv-R4M" firstAttribute="trailing" secondItem="U0M-ey-mfq" secondAttribute="trailing" constant="16" id="QM5-Um-oM5"/>
+                            <constraint firstItem="U0M-ey-mfq" firstAttribute="top" secondItem="cgg-jZ-myO" secondAttribute="bottom" constant="20" id="Sjy-iv-PST"/>
+                            <constraint firstItem="cgg-jZ-myO" firstAttribute="centerY" secondItem="Dl6-ce-Ccf" secondAttribute="centerY" multiplier="0.8" id="aDE-2P-FFV"/>
+                            <constraint firstItem="U0M-ey-mfq" firstAttribute="leading" secondItem="lu7-Qv-R4M" secondAttribute="leading" constant="16" id="jPp-3d-l9c"/>
+                            <constraint firstItem="cgg-jZ-myO" firstAttribute="width" secondItem="Dl6-ce-Ccf" secondAttribute="width" multiplier="0.5" id="kq6-IW-50h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lu7-Qv-R4M"/>
                     </view>
@@ -64,28 +63,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="NLa-NY-M7T">
-                                <rect key="frame" x="16" y="20" width="343" height="501"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="NLa-NY-M7T" secondAttribute="height" multiplier="343:501" id="U7C-PM-gdP"/>
-                                    <constraint firstAttribute="width" constant="343" id="gLK-7X-9oz"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="TQb-fr-ukz">
+                                <rect key="frame" x="95" y="154.5" width="187.5" height="225"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tutorial 2 Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZ3-tD-cVI">
-                                <rect key="frame" x="16" y="529" width="343" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="도감에 있는 과일을 하나하나 채워보는 즐거움을 느껴보세요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niz-e7-y1s">
+                                <rect key="frame" x="16" y="399.5" width="343" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="aVZ-KU-VdL" firstAttribute="trailing" secondItem="NLa-NY-M7T" secondAttribute="trailing" constant="16" id="HtH-UT-XIb"/>
-                            <constraint firstItem="LZ3-tD-cVI" firstAttribute="leading" secondItem="NLa-NY-M7T" secondAttribute="leading" id="NK4-7x-oen"/>
-                            <constraint firstItem="LZ3-tD-cVI" firstAttribute="trailing" secondItem="NLa-NY-M7T" secondAttribute="trailing" id="PRH-RH-PZY"/>
-                            <constraint firstItem="NLa-NY-M7T" firstAttribute="top" secondItem="aVZ-KU-VdL" secondAttribute="top" id="XAP-f1-KXq"/>
-                            <constraint firstItem="LZ3-tD-cVI" firstAttribute="top" secondItem="NLa-NY-M7T" secondAttribute="bottom" constant="8" id="o4n-Sj-x2s"/>
-                            <constraint firstItem="NLa-NY-M7T" firstAttribute="leading" secondItem="aVZ-KU-VdL" secondAttribute="leading" constant="16" id="wLF-hx-uZm"/>
+                            <constraint firstItem="TQb-fr-ukz" firstAttribute="width" secondItem="TQb-fr-ukz" secondAttribute="height" multiplier="1:1.2" id="43J-xE-Jt4"/>
+                            <constraint firstItem="TQb-fr-ukz" firstAttribute="centerY" secondItem="kqR-Ni-uMd" secondAttribute="centerY" multiplier="0.8" id="Aox-6K-Dct"/>
+                            <constraint firstItem="niz-e7-y1s" firstAttribute="top" secondItem="TQb-fr-ukz" secondAttribute="bottom" constant="20" id="Y8G-w6-XVh"/>
+                            <constraint firstItem="TQb-fr-ukz" firstAttribute="width" secondItem="kqR-Ni-uMd" secondAttribute="width" multiplier="0.5" id="ePh-D3-5YL"/>
+                            <constraint firstItem="aVZ-KU-VdL" firstAttribute="trailing" secondItem="niz-e7-y1s" secondAttribute="trailing" constant="16" id="fwl-gb-okw"/>
+                            <constraint firstItem="niz-e7-y1s" firstAttribute="leading" secondItem="aVZ-KU-VdL" secondAttribute="leading" constant="16" id="rnr-L6-gLD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aVZ-KU-VdL"/>
                     </view>
@@ -95,57 +90,48 @@
             <point key="canvasLocation" x="292" y="-156.07196401799101"/>
         </scene>
         <!--View Controller-->
-        <scene sceneID="gVv-pd-Ijy">
-            <objects>
-                <viewController storyboardIdentifier="Tutorial3ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yKU-wV-Vz2" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Hxs-K5-fFb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tutorial 3 Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hyM-7X-h6s">
-                                <rect key="frame" x="16" y="529" width="343" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="Aal-wO-UKY">
-                                <rect key="frame" x="16" y="20" width="343" height="501"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="343" id="GhI-bI-EXD"/>
-                                    <constraint firstAttribute="width" secondItem="Aal-wO-UKY" secondAttribute="height" multiplier="343:501" id="nxn-Br-2Vz"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="hyM-7X-h6s" firstAttribute="trailing" secondItem="Aal-wO-UKY" secondAttribute="trailing" id="7Ry-3E-AVs"/>
-                            <constraint firstItem="6Jf-wF-C2v" firstAttribute="trailing" secondItem="Aal-wO-UKY" secondAttribute="trailing" constant="16" id="FlF-Qq-1r6"/>
-                            <constraint firstItem="hyM-7X-h6s" firstAttribute="top" secondItem="Aal-wO-UKY" secondAttribute="bottom" constant="8" id="OiN-Qk-nvV"/>
-                            <constraint firstItem="Aal-wO-UKY" firstAttribute="leading" secondItem="6Jf-wF-C2v" secondAttribute="leading" constant="16" id="RlN-I6-TKQ"/>
-                            <constraint firstItem="Aal-wO-UKY" firstAttribute="top" secondItem="6Jf-wF-C2v" secondAttribute="top" id="RlY-HR-81A"/>
-                            <constraint firstItem="hyM-7X-h6s" firstAttribute="leading" secondItem="Aal-wO-UKY" secondAttribute="leading" id="sW9-GQ-A6C"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Jf-wF-C2v"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HGx-Kn-Vvt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="292" y="542.87856071964018"/>
-        </scene>
-        <!--Tutorial4 View Controller-->
         <scene sceneID="XAJ-qN-Eqx">
             <objects>
-                <viewController storyboardIdentifier="Tutorial4ViewController" id="GPi-kE-VFN" customClass="Tutorial4ViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Tutorial3ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GPi-kE-VFN" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0P6-y8-SPE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="tFn-WM-16s">
+                                <rect key="frame" x="94" y="154.5" width="187.5" height="225"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="tFn-WM-16s" secondAttribute="height" multiplier="1:1.2" id="hBp-Wu-2bH"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="자유롭게 다른 학도들과 소통해보세요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIx-Wc-npJ">
+                                <rect key="frame" x="16" y="399.5" width="343" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p3w-6z-jEn">
+                                <rect key="frame" x="16" y="480.5" width="343" height="30"/>
+                                <state key="normal" title="시작하기"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tFn-WM-16s" firstAttribute="width" secondItem="0P6-y8-SPE" secondAttribute="width" multiplier="0.5" id="2vc-9a-c6E"/>
+                            <constraint firstItem="p3w-6z-jEn" firstAttribute="leading" secondItem="wV1-98-8gH" secondAttribute="leading" constant="16" id="4m9-Oz-efO"/>
+                            <constraint firstItem="wV1-98-8gH" firstAttribute="trailing" secondItem="p3w-6z-jEn" secondAttribute="trailing" constant="16" id="9eP-gJ-KWW"/>
+                            <constraint firstItem="aIx-Wc-npJ" firstAttribute="leading" secondItem="wV1-98-8gH" secondAttribute="leading" constant="16" id="AwE-fJ-BHb"/>
+                            <constraint firstItem="tFn-WM-16s" firstAttribute="centerX" secondItem="0P6-y8-SPE" secondAttribute="centerX" id="Gn3-iC-eP2"/>
+                            <constraint firstItem="aIx-Wc-npJ" firstAttribute="top" secondItem="tFn-WM-16s" secondAttribute="bottom" constant="20" id="XgT-yd-gL1"/>
+                            <constraint firstItem="tFn-WM-16s" firstAttribute="centerY" secondItem="0P6-y8-SPE" secondAttribute="centerY" multiplier="0.8" id="qfz-iK-ToB"/>
+                            <constraint firstItem="wV1-98-8gH" firstAttribute="trailing" secondItem="aIx-Wc-npJ" secondAttribute="trailing" constant="16" id="qyb-TT-Nsf"/>
+                            <constraint firstItem="p3w-6z-jEn" firstAttribute="top" secondItem="aIx-Wc-npJ" secondAttribute="bottom" constant="40" id="vQD-sz-gQh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wV1-98-8gH"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3df-Sr-pWC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="292" y="1294"/>
+            <point key="canvasLocation" x="292" y="577"/>
         </scene>
     </scenes>
     <resources>

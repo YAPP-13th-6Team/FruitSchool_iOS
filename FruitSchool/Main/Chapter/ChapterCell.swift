@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GuideBookCell: UICollectionViewCell {
+class ChapterCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -16,7 +16,7 @@ class GuideBookCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         imageView.backgroundColor = .gray
-        nameLabel.backgroundColor = .blue
+        nameLabel.backgroundColor = .lightGray
         layer.cornerRadius = 5
         layer.masksToBounds = true
     }
@@ -29,8 +29,8 @@ class GuideBookCell: UICollectionViewCell {
     }
     
     func setProperties(_ object: FruitResponse) {
-        let grade = User.fetch().first?.grade ?? 0
-        if grade < object.grade {
+        let myGrade = UserDefaults.standard.integer(forKey: "grdae")
+        if myGrade < object.grade {
             alpha = 0.5
             isUserInteractionEnabled = false
         }

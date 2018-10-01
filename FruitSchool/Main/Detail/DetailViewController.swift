@@ -23,8 +23,6 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(fruit.standardTip.tips)
-        print(fruit.intakeTip.tips)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
@@ -135,6 +133,19 @@ extension DetailViewController: UITableViewDelegate {
             break
         }
         return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0:
+            return 250
+        case 1, 2:
+            return UITableViewAutomaticDimension
+        case 3:
+            return 200
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

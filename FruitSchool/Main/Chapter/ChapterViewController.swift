@@ -8,102 +8,101 @@
 
 import UIKit
 
-class GuideBookViewController: UIViewController {
+class ChapterViewController: UIViewController {
 
-    let titleString: String = "과일 도감"
-    let cellIdentifier = "guideBookCell"
+    var grade: Int = 0
+    let cellIdentifier = "chapterCell"
     var searchBar: UISearchBar!
     var searchButton: UIBarButtonItem!
-    var fruits: [[FruitResponse]] = []
+    var fruits: [FruitResponse] = []
+    var searchedFruits: [FruitResponse] = []
+    var isSearching: Bool {
+        return searchBar.isFirstResponder
+    }
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = titleString
         searchBar = UISearchBar()
         searchBar.delegate = self
         searchBar.showsCancelButton = true
         searchBar.searchBarStyle = .minimal
-        searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(touchUpSearchButton(_:)))
+        searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTouchUpSearchButton(_:)))
         self.navigationItem.setRightBarButton(searchButton, animated: false)
-        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveFruits(_:)), name: .didReceiveFruits, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(errorReceiveFruits(_:)), name: .errorReceiveFruits, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        API.requestFruits()
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-}
-// MARK: - Notification Handler
-extension GuideBookViewController {
-    /// 전체 과일 정보 요청 성공 핸들러
-    @objc func didReceiveFruits(_ notification: Notification) {
-        guard let fruits = notification.userInfo?["fruits"] as? [FruitResponse] else { return }
-        let grade0Fruits = fruits.filter { $0.grade == 0 }
-        let grade1Fruits = fruits.filter { $0.grade == 1 }
-        let grade2Fruits = fruits.filter { $0.grade == 2 }
-        let tempFruits = [grade0Fruits, grade1Fruits, grade2Fruits]
-        self.fruits = tempFruits
-        DispatchQueue.main.async { [weak self] in
-            self?.collectionView.reloadData()
+        API.requestFruits(grade: grade) { (response, error) in
+            if let error = error {
+                DispatchQueue.main.async { [weak self] in
+                    UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription)
+                }
+                return
+            }
+            guard let fruits = response else { return }
+            self.fruits = fruits
+            DispatchQueue.main.async { [weak self] in
+                self?.collectionView.reloadData()
+            }
         }
-    }
-    /// 전체 과일 정보 요청 실패 핸들러
-    @objc func errorReceiveFruits(_ notification: Notification) {
-        guard let error = notification.userInfo?["error"] as? String else { return }
-        UIAlertController.presentErrorAlert(to: self, error: error)
     }
 }
 // MARK: - Button Touch Event
-extension GuideBookViewController {
-    @objc func touchUpSearchButton(_ sender: UIBarButtonItem) {
+extension ChapterViewController {
+    @objc func didTouchUpSearchButton(_ sender: UIBarButtonItem) {
         searchBar.becomeFirstResponder()
         navigationItem.setRightBarButton(nil, animated: true)
         navigationItem.titleView = searchBar
     }
 }
-
-extension GuideBookViewController: UISearchBarDelegate {
+// MARK: - Search Bar Delegate
+extension ChapterViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let flatted = fruits.flatMap { $0 }
+        let predicate = NSPredicate(format: "title == %@", searchText)
+        guard let filtered = (flatted as NSArray).filtered(using: predicate) as? [FruitResponse] else { return }
+        self.searchedFruits = filtered
+        self.collectionView.reloadSections(IndexSet(0...2))
+    }
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         navigationItem.titleView = nil
-        navigationItem.title = titleString
         navigationItem.setRightBarButton(searchButton, animated: true)
     }
 }
 
-extension GuideBookViewController: UICollectionViewDataSource {
+extension ChapterViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? GuideBookCell else { return UICollectionViewCell() }
-        let fruit = fruits[indexPath.section][indexPath.row]
-        cell.setProperties(fruit)
-        return cell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? ChapterCell else { return UICollectionViewCell() }
+        if !isSearching {
+            let fruit = fruits[indexPath.item]
+            cell.setProperties(fruit)
+            return cell
+        } else {
+            let fruit = searchedFruits[indexPath.row]
+            cell.setProperties(fruit)
+            return cell
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return fruits[section].count
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return fruits.count
+        return !isSearching ? fruits.count : searchedFruits.count
     }
 }
 
-extension GuideBookViewController: UICollectionViewDelegate {
+extension ChapterViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         guard let next = UIViewController.instantiate(storyboard: "Detail", identifier: "DetailViewController") as? DetailViewController else { return }
-        next.fruit = fruits[indexPath.section][indexPath.row]
+        next.fruit = fruits[indexPath.item]
         self.navigationController?.pushViewController(next, animated: true)
     }
 }
 
-extension GuideBookViewController: UICollectionViewDelegateFlowLayout {
+extension ChapterViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.view.frame.width / 4 - 10
         return CGSize(width: width, height: width * 1.2)

@@ -18,26 +18,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         window?.tintColor = .main
         /**
-         * 1. 로그인 안되어 있으면 로그인이 루트 뷰 컨트롤러
-         * 2. 로그인 되어 있으면,
-         * 2-1. 입학증서 확인 버튼을 누르지 않았으면 튜토리얼이 루트 뷰 컨트롤러
-         * 2-2. 입학증서 확인 버튼을 이전에 눌렀다면 탭 바 컨트롤러가 루트 뷰 컨트롤러
-        */
+         1. 로그인 안되어 있으면 로그인이 루트 뷰 컨트롤러
+         2. 로그인 되어 있으면 탭 바 컨트롤러가 루트 뷰 컨트롤러
+         */
         let controller: UIViewController?
         //LoginViewController에서 저장한 id. 나중에 키체인으로 바꿀 것.
         if UserDefaults.standard.string(forKey: "id") == nil {
             controller = UIViewController.instantiate(storyboard: "Login", identifier: LoginViewController.classNameToString)
         } else {
-            if UserDefaults.standard.bool(forKey: "checksTutorial") {
-                controller = UIViewController.instantiate(storyboard: "Main", identifier: MainTabBarController.classNameToString)
-            } else {
-                controller = UIViewController.instantiate(storyboard: "Tutorial", identifier: TutorialViewController.classNameToString)
-            }
+            controller = UIViewController.instantiate(storyboard: "Main", identifier: MainTabBarController.classNameToString)
         }
         window?.rootViewController = controller
         window?.makeKeyAndVisible()
         UIApplication.shared.isStatusBarHidden = false
-        
+        //페이지 인디케이터 전역 프로퍼티 설정
         let pageControl = UIPageControl.appearance()
         pageControl.pageIndicatorTintColor = UIColor.lightGray
         pageControl.currentPageIndicatorTintColor = UIColor.black
