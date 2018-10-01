@@ -37,11 +37,22 @@ class QuizView: UIView {
     var answer4Button: UIButton! {
         return secondLineStackView.arrangedSubviews.last as? UIButton
     }
+    var buttons: [UIButton] {
+        return [answer1Button, answer2Button, answer3Button, answer4Button]
+    }
     var isYesOrNo: Bool = false
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        numberLabel.text = "\(delegate?.number ?? 0)"
+        titleLabel.text = delegate?.title
+        answer1Button.setTitle(delegate?.answers[0], for: [])
+        answer2Button.setTitle(delegate?.answers[1], for: [])
+        answer3Button.setTitle(delegate?.answers[2], for: [])
+        answer4Button.setTitle(delegate?.answers[3], for: [])
         layer.borderWidth = 3
         layer.borderColor = UIColor.black.cgColor
     }
@@ -65,6 +76,10 @@ class QuizView: UIView {
     }
     
     @IBAction func didTouchUpQuizButtons(_ sender: UIButton) {
+        for button in buttons {
+            button.isSelected = false
+        }
+        sender.isSelected = true
         delegate?.didTouchUpQuizButtons(sender)
     }
 }

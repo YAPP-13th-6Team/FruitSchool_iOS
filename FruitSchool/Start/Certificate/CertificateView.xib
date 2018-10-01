@@ -66,7 +66,7 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="backgroundView" destination="v8o-PN-rbC" id="Jfk-Vg-9SP"/>
+                <outlet property="contentView" destination="v8o-PN-rbC" id="Jfk-Vg-9SP"/>
                 <outlet property="startButton" destination="sLJ-8o-R5X" id="dbU-Zm-gPc"/>
                 <outlet property="titleLabel" destination="C1U-Aq-V4e" id="uwx-rZ-fJP"/>
             </connections>

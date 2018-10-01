@@ -16,8 +16,7 @@ class TutorialViewController: UIPageViewController {
         let first = UIViewController.instantiate(storyboard: "Tutorial", identifier: "Tutorial1ViewController") ?? dummy
         let second = UIViewController.instantiate(storyboard: "Tutorial", identifier: "Tutorial2ViewController") ?? dummy
         let third = UIViewController.instantiate(storyboard: "Tutorial", identifier: "Tutorial3ViewController") ?? dummy
-        let last = UIViewController.instantiate(storyboard: "Tutorial", identifier: "Tutorial4ViewController") ?? dummy
-        return [first, second, third, last]
+        return [first, second, third]
     }()
     
     override func viewDidLoad() {
@@ -26,6 +25,11 @@ class TutorialViewController: UIPageViewController {
         if let firstViewController = pages.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
         }
+        (pages.last?.view.viewWithTag(100) as? UIButton)?.addTarget(self, action: #selector(didTouchUpStartButton(_:)), for: .touchUpInside)
+    }
+    
+    @objc func didTouchUpStartButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

@@ -1,15 +1,17 @@
 //
-//  Tutorial4ViewController.swift
-//  UIPageViewControllerTest2
+//  CertificateViewController.swift
+//  FruitSchool
 //
-//  Created by Kim DongHwan on 2018. 9. 23..
-//  Copyright © 2018년 Kim DongHwan. All rights reserved.
+//  Created by Presto on 29/09/2018.
+//  Copyright © 2018 YAPP. All rights reserved.
 //
 
 import UIKit
 
-class Tutorial4ViewController: UIViewController {
+class CertificateViewController: UIViewController {
 
+    var id: String = ""
+    var nickname: String = ""
     lazy var certificateView: UIView = {
         let dummy = UIView()
         guard let certificateView = UIView.instantiateFromXib(xibName: "CertificateView") as? CertificateView else { return dummy }
@@ -20,18 +22,18 @@ class Tutorial4ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         certificateView.layer.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-        
         self.view.addSubview(certificateView)
     }
 }
 
-extension Tutorial4ViewController: CertificateViewDelegate {
+extension CertificateViewController: CertificateViewDelegate {
     func didTouchUpButton(_ sender: UIButton) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(id, forKey: "id")
+        userDefaults.set(nickname, forKey: "nickname")
+        userDefaults.set(0, forKey: "grade")
         guard let next = UIViewController.instantiate(storyboard: "Main", identifier: MainTabBarController.classNameToString) else { return }
         next.modalTransitionStyle = .flipHorizontal
-        self.present(next, animated: true) {
-            UserDefaults.standard.set(true, forKey: "checksTutorial")
-            UserDefaults.standard.synchronize()
-        }
+        self.present(next, animated: true)
     }
 }
