@@ -10,6 +10,8 @@ import UIKit
 
 class MyPageViewController: UIViewController {
 
+    @IBOutlet weak var userImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
