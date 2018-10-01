@@ -15,7 +15,8 @@ class TutorialViewController: UIPageViewController {
         let dummy = UIViewController()
         let first = UIViewController.instantiate(storyboard: "Tutorial", identifier: "Tutorial1ViewController") ?? dummy
         let second = UIViewController.instantiate(storyboard: "Tutorial", identifier: "Tutorial2ViewController") ?? dummy
-        return [first, second]
+        let third = UIViewController.instantiate(storyboard: "Tutorial", identifier: "Tutorial3ViewController") ?? dummy
+        return [first, second, third]
     }()
     
     override func viewDidLoad() {

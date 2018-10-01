@@ -52,10 +52,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EdA-K4-nAc">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="108.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="EdA-K4-nAc" secondAttribute="height" id="4tN-fv-73g"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7T-R5-Nkh">
-                                                    <rect key="frame" x="0.0" y="108.5" width="100" height="43.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="j7T-R5-Nkh">
+                                                    <rect key="frame" x="0.0" y="100" width="100" height="52"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -70,7 +73,6 @@
                                             <constraint firstItem="j7T-R5-Nkh" firstAttribute="leading" secondItem="PJQ-Id-wWz" secondAttribute="leading" id="xWD-r0-wd1"/>
                                             <constraint firstItem="EdA-K4-nAc" firstAttribute="leading" secondItem="PJQ-Id-wWz" secondAttribute="leading" id="yGv-gM-WRo"/>
                                             <constraint firstAttribute="trailing" secondItem="EdA-K4-nAc" secondAttribute="trailing" id="z5r-sC-gcR"/>
-                                            <constraint firstItem="j7T-R5-Nkh" firstAttribute="height" secondItem="EdA-K4-nAc" secondAttribute="height" multiplier="2:5" id="zzC-WZ-ofh"/>
                                         </constraints>
                                         <size key="customSize" width="100" height="152"/>
                                         <connections>

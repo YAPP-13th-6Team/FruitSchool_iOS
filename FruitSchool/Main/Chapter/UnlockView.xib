@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UnlockView" customModule="FruitSchool" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FgO-Lq-GI6">
+                    <rect key="frame" x="37.5" y="66.5" width="300" height="534"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kv0-s3-AtW">
+                            <rect key="frame" x="75" y="177" width="150" height="180"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tRc-FJ-d1G">
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="tRc-FJ-d1G" secondAttribute="height" id="oo7-1Q-nDh"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="MgD-0M-GZZ">
+                                    <rect key="frame" x="0.0" y="150" width="150" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="MgD-0M-GZZ" secondAttribute="bottom" id="6d6-VS-1qf"/>
+                                <constraint firstItem="MgD-0M-GZZ" firstAttribute="leading" secondItem="kv0-s3-AtW" secondAttribute="leading" id="Ewn-Ep-X5m"/>
+                                <constraint firstAttribute="width" secondItem="kv0-s3-AtW" secondAttribute="height" multiplier="1:1.2" id="iNx-ET-cA5"/>
+                                <constraint firstAttribute="trailing" secondItem="MgD-0M-GZZ" secondAttribute="trailing" id="jNQ-0G-7b4"/>
+                                <constraint firstItem="tRc-FJ-d1G" firstAttribute="top" secondItem="kv0-s3-AtW" secondAttribute="top" id="v75-ok-7rN"/>
+                                <constraint firstItem="tRc-FJ-d1G" firstAttribute="leading" secondItem="kv0-s3-AtW" secondAttribute="leading" id="wBD-Vi-d9H"/>
+                                <constraint firstItem="MgD-0M-GZZ" firstAttribute="top" secondItem="tRc-FJ-d1G" secondAttribute="bottom" id="wh2-AH-323"/>
+                                <constraint firstAttribute="trailing" secondItem="tRc-FJ-d1G" secondAttribute="trailing" id="ywC-2v-92R"/>
+                            </constraints>
+                        </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XC7-8W-mGY">
+                            <rect key="frame" x="135" y="484" width="30" height="30"/>
+                            <state key="normal" title="확인"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="무슨 과일 학습 완료" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfJ-d6-3Zv">
+                            <rect key="frame" x="84.5" y="447.5" width="131" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="xfJ-d6-3Zv" firstAttribute="centerX" secondItem="FgO-Lq-GI6" secondAttribute="centerX" id="KL8-Kn-Sze"/>
+                        <constraint firstItem="kv0-s3-AtW" firstAttribute="centerX" secondItem="FgO-Lq-GI6" secondAttribute="centerX" id="Pqe-Vz-pAH"/>
+                        <constraint firstItem="XC7-8W-mGY" firstAttribute="centerX" secondItem="FgO-Lq-GI6" secondAttribute="centerX" id="bSr-hH-RQV"/>
+                        <constraint firstItem="kv0-s3-AtW" firstAttribute="centerY" secondItem="FgO-Lq-GI6" secondAttribute="centerY" id="nXO-48-OdB"/>
+                        <constraint firstAttribute="bottom" secondItem="XC7-8W-mGY" secondAttribute="bottom" constant="20" id="sOW-oB-V6C"/>
+                        <constraint firstItem="kv0-s3-AtW" firstAttribute="width" secondItem="FgO-Lq-GI6" secondAttribute="width" multiplier="0.5" id="u4A-nm-LKa"/>
+                        <constraint firstItem="XC7-8W-mGY" firstAttribute="top" secondItem="xfJ-d6-3Zv" secondAttribute="bottom" constant="16" id="wma-t2-5Aw"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="FgO-Lq-GI6" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="0rE-1c-5v3"/>
+                <constraint firstItem="FgO-Lq-GI6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="N1A-B1-TaW"/>
+                <constraint firstItem="FgO-Lq-GI6" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.8" id="i2E-jT-YKu"/>
+                <constraint firstItem="FgO-Lq-GI6" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.8" id="nwT-jV-fow"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="confirmButton" destination="XC7-8W-mGY" id="DaA-Fe-xet"/>
+                <outlet property="descriptionLabel" destination="xfJ-d6-3Zv" id="8oL-dM-e7F"/>
+                <outlet property="stackView" destination="kv0-s3-AtW" id="8U0-l5-Fsw"/>
+            </connections>
+            <point key="canvasLocation" x="53.600000000000001" y="-121.88905547226388"/>
+        </view>
+    </objects>
+</document>

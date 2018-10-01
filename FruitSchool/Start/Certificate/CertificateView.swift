@@ -15,12 +15,14 @@ protocol CertificateViewDelegate: class {
 class CertificateView: UIView {
     
     weak var delegate: CertificateViewDelegate?
-    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        contentView.layer.cornerRadius = 10
+        startButton.layer.cornerRadius = 10
         startButton.addTarget(self, action: #selector(didTouchUpButton(_:)), for: .touchUpInside)
     }
     

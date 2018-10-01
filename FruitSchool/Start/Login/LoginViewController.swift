@@ -50,6 +50,7 @@ extension LoginViewController {
                 }
                 //user로 로그인한 사용자 정보 접근
                 guard let user = user else { return }
+                
                 guard let id = user.id else { return }
                 let nickname = user.nickname ?? "익명의사용자"
                 /**

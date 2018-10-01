@@ -19,40 +19,43 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="axU-Jt-ZAM">
                     <rect key="frame" x="37.5" y="66.5" width="300" height="534"/>
                     <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cg1-mQ-EvC">
+                            <rect key="frame" x="16" y="20" width="268" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sH7-2n-bnl">
                             <rect key="frame" x="20" y="460.5" width="260" height="53.5"/>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                            <state key="normal" title="Start Now">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="title"/>
                         </button>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4qK-1E-0Vo">
-                            <rect key="frame" x="32" y="0.0" width="236" height="53.5"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="승급심사" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuT-Fo-wr6">
-                                    <rect key="frame" x="88.5" y="16.5" width="59" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9vP-jB-PSV">
+                            <rect key="frame" x="75" y="192" width="150" height="150"/>
                             <constraints>
-                                <constraint firstItem="uuT-Fo-wr6" firstAttribute="centerY" secondItem="4qK-1E-0Vo" secondAttribute="centerY" id="aBO-Xs-mol"/>
-                                <constraint firstItem="uuT-Fo-wr6" firstAttribute="centerX" secondItem="4qK-1E-0Vo" secondAttribute="centerX" id="xir-2y-Aud"/>
+                                <constraint firstAttribute="width" secondItem="9vP-jB-PSV" secondAttribute="height" id="Uk7-rW-tPS"/>
                             </constraints>
-                        </view>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otv-pL-SqC">
+                            <rect key="frame" x="129" y="256.5" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="4qK-1E-0Vo" firstAttribute="height" secondItem="axU-Jt-ZAM" secondAttribute="height" multiplier="0.1" id="71A-U7-jSK"/>
-                        <constraint firstItem="4qK-1E-0Vo" firstAttribute="leading" secondItem="axU-Jt-ZAM" secondAttribute="leading" constant="32" id="D2Y-lO-c4f"/>
+                        <constraint firstItem="9vP-jB-PSV" firstAttribute="centerX" secondItem="axU-Jt-ZAM" secondAttribute="centerX" id="0Y7-1F-ztY"/>
+                        <constraint firstAttribute="trailing" secondItem="cg1-mQ-EvC" secondAttribute="trailing" constant="16" id="8SD-xR-jvD"/>
+                        <constraint firstItem="9vP-jB-PSV" firstAttribute="centerY" secondItem="axU-Jt-ZAM" secondAttribute="centerY" id="B5L-8L-0N7"/>
+                        <constraint firstItem="otv-pL-SqC" firstAttribute="centerX" secondItem="axU-Jt-ZAM" secondAttribute="centerX" id="Ihr-7a-cxZ"/>
                         <constraint firstAttribute="bottom" secondItem="sH7-2n-bnl" secondAttribute="bottom" constant="20" id="UST-aa-LlB"/>
+                        <constraint firstItem="otv-pL-SqC" firstAttribute="centerY" secondItem="axU-Jt-ZAM" secondAttribute="centerY" id="VBx-bU-uYt"/>
                         <constraint firstItem="sH7-2n-bnl" firstAttribute="leading" secondItem="axU-Jt-ZAM" secondAttribute="leading" constant="20" id="f1O-Rh-NoV"/>
-                        <constraint firstAttribute="trailing" secondItem="4qK-1E-0Vo" secondAttribute="trailing" constant="32" id="fWt-n7-e7g"/>
+                        <constraint firstItem="9vP-jB-PSV" firstAttribute="width" secondItem="axU-Jt-ZAM" secondAttribute="width" multiplier="0.5" id="lOs-KX-x5D"/>
+                        <constraint firstItem="cg1-mQ-EvC" firstAttribute="leading" secondItem="axU-Jt-ZAM" secondAttribute="leading" constant="16" id="nna-3R-Rqq"/>
                         <constraint firstItem="sH7-2n-bnl" firstAttribute="height" secondItem="axU-Jt-ZAM" secondAttribute="height" multiplier="0.1" id="rPi-7i-c1G"/>
-                        <constraint firstItem="4qK-1E-0Vo" firstAttribute="top" secondItem="axU-Jt-ZAM" secondAttribute="top" id="rfb-2r-sfl"/>
+                        <constraint firstItem="cg1-mQ-EvC" firstAttribute="top" secondItem="axU-Jt-ZAM" secondAttribute="top" constant="20" id="tgB-s2-EX2"/>
                         <constraint firstAttribute="trailing" secondItem="sH7-2n-bnl" secondAttribute="trailing" constant="20" id="xjn-VF-GDD"/>
                     </constraints>
                 </view>
@@ -67,8 +70,10 @@
             <viewLayoutGuide key="safeArea" id="dvE-vh-PXi"/>
             <connections>
                 <outlet property="backgroundView" destination="axU-Jt-ZAM" id="d2s-3h-2wg"/>
+                <outlet property="button" destination="sH7-2n-bnl" id="ogL-dc-Pia"/>
+                <outlet property="descriptionLabel" destination="otv-pL-SqC" id="EOv-na-jNa"/>
                 <outlet property="startButton" destination="sH7-2n-bnl" id="MeC-pW-Uty"/>
-                <outlet property="titleLabel" destination="uuT-Fo-wr6" id="Etw-kg-gos"/>
+                <outlet property="titleLabel" destination="cg1-mQ-EvC" id="ZdT-07-sdC"/>
             </connections>
             <point key="canvasLocation" x="28" y="79.610194902548727"/>
         </view>

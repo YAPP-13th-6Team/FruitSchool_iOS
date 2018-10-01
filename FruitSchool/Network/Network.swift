@@ -9,7 +9,7 @@
 import Foundation
 
 class Network {
-    static func get(_ urlPath: String, successHandler: ((Data) -> Void)? = nil, errorHandler: ((Error) -> Void)? = nil) {
+    static func get(_ urlPath: String, successHandler: ((Data, Int) -> Void)? = nil, errorHandler: ((Error) -> Void)? = nil) {
         let session = URLSession(configuration: .default)
         guard let url = URL(string: urlPath) else { return }
         let task = session.dataTask(with: url) { (data, response, error) in
@@ -19,7 +19,8 @@ class Network {
                 return
             }
             guard let data = data else { return }
-            successHandler?(data)
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode else { return }
+            successHandler?(data, statusCode)
             session.finishTasksAndInvalidate()
         }
         task.resume()

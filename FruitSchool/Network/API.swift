@@ -25,7 +25,7 @@ class API {
 extension API {
     ///과일 정보 요청.
     static func requestFruits(grade: Int = -1, completion: @escaping ([FruitResponse]?, Error?) -> Void) {
-        Network.get("\(baseURL)/fruits", successHandler: { data in
+        Network.get("\(baseURL)/fruits", successHandler: { (data, statusCode) in
             do {
                 let decoded = try jsonDecoder.decode([FruitResponse].self, from: data)
                 if grade != -1 {
@@ -51,7 +51,7 @@ extension API {
             completion(nil, NetworkError.invalidGradeError)
             return
         }
-        Network.get("\(baseURL)/commonSenses/\(grade)", successHandler: { data in
+        Network.get("\(baseURL)/commonSenses/\(grade)", successHandler: { (data, statusCode) in
             do {
                 let decoded = try jsonDecoder.decode(CommonSenseResponse.self, from: data)
                 completion(decoded, nil)
