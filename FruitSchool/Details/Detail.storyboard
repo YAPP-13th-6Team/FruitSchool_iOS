@@ -104,11 +104,11 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="detailNutritionTipCell" id="ydA-Cs-X5p" customClass="DetailNutritionTipCell" customModule="FruitSchool" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="160" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="detailNutritionTipCell" rowHeight="83" id="ydA-Cs-X5p" customClass="DetailNutritionTipCell" customModule="FruitSchool" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="160" width="375" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ydA-Cs-X5p" id="9Tv-qn-wdt">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="82.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ijH-Ke-Srj">
@@ -133,7 +133,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="detailQuizCell" rowHeight="200" id="DhJ-0j-F3v" customClass="DetailQuizCell" customModule="FruitSchool" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="204" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="243" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DhJ-0j-F3v" id="bPz-LZ-fnk">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
