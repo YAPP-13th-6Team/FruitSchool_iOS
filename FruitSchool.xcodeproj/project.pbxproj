@@ -49,6 +49,7 @@
 		19A113652157E5E80017292E /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A113642157E5E80017292E /* KakaoOpenSDK.framework */; };
 		19A76F732161B69500C7C05F /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A76F722161B69500C7C05F /* AlertView.swift */; };
 		19A76F752161B6F600C7C05F /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A76F742161B6F600C7C05F /* AlertView.xib */; };
+		19A76F7B2162333200C7C05F /* QuizResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A76F7A2162333200C7C05F /* QuizResponse.swift */; };
 		19E274C72144D74E00E2F6D2 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274C62144D74E00E2F6D2 /* Network.swift */; };
 		19E274C92144D75300E2F6D2 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274C82144D75300E2F6D2 /* API.swift */; };
 		19E274CB2144D93F00E2F6D2 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19E274CA2144D93F00E2F6D2 /* Login.storyboard */; };
@@ -110,6 +111,7 @@
 		19A113642157E5E80017292E /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		19A76F722161B69500C7C05F /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		19A76F742161B6F600C7C05F /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
+		19A76F7A2162333200C7C05F /* QuizResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResponse.swift; sourceTree = "<group>"; };
 		19E274C62144D74E00E2F6D2 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		19E274C82144D75300E2F6D2 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		19E274CA2144D93F00E2F6D2 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 			children = (
 				1947C57B214F9E5F00BF6521 /* FruitResponse.swift */,
 				199715C32153F59D001D5276 /* CommonSenseResponse.swift */,
+				19A76F7A2162333200C7C05F /* QuizResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				19FCF24421610AF000BCC3F7 /* UnlockView.swift in Sources */,
 				19784240215FC68600D53F48 /* CertificateViewController.swift in Sources */,
 				1947C58A214FBF5800BF6521 /* CertificateView.swift in Sources */,
+				19A76F7B2162333200C7C05F /* QuizResponse.swift in Sources */,
 				19FCF2402160FE9600BCC3F7 /* Grade.swift in Sources */,
 				1947C55F214F27C000BF6521 /* ChapterViewController.swift in Sources */,
 				190983D021568C9300E2461A /* BookCell.swift in Sources */,

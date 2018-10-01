@@ -69,7 +69,6 @@ extension ChapterViewController: UISearchBarDelegate {
         self.collectionView.reloadSections(IndexSet(0...0))
         navigationItem.titleView = nil
         navigationItem.setRightBarButton(searchButton, animated: true)
-        
     }
 }
 

@@ -24,16 +24,40 @@ class API {
 
 extension API {
     ///과일 정보 요청.
-    static func requestFruits(grade: Int = -1, completion: @escaping ([FruitResponse]?, Error?) -> Void) {
-        Network.get("\(baseURL)/fruits", successHandler: { (data, statusCode) in
+    static func requestFruits(grade: Int? = nil, completion: @escaping ([FruitResponse]?, Error?) -> Void) {
+        guard let grade = grade else {
+            Network.get("\(baseURL)/fruits", successHandler: { (data, statusCode) in
+                do {
+                    let decoded = try jsonDecoder.decode([FruitResponse].self, from: data)
+                    completion(decoded, nil)
+                } catch {
+                    completion(nil, error)
+                }
+            }, errorHandler: { error in
+                completion(nil, error)
+            })
+            return
+        }
+        Network.get("\(baseURL)/fruits?grade=\(grade)", successHandler: { (data, statusCode) in
             do {
                 let decoded = try jsonDecoder.decode([FruitResponse].self, from: data)
-                if grade != -1 {
-                    let filtered = decoded.filter { $0.grade == grade }
-                    completion(filtered, nil)
-                } else {
-                    completion(decoded, nil)
-                }
+                completion(decoded, nil)
+            } catch {
+                completion(nil, error)
+            }
+        }, errorHandler: { error in
+            completion(nil, error)
+        })
+    }
+    /**
+     특정 과일의 문제 요청.
+     - Parameter fruitID: 과일 고유 id
+    */
+    static func requestQuizs(of fruitID: String, completion: @escaping ([QuizResponse]?, Error?) -> Void) {
+        Network.get("\(baseURL)/fruits/\(fruitID)/quizs", successHandler: { (data, statusCode) in
+            do {
+                let decoded = try jsonDecoder.decode([QuizResponse].self, from: data)
+                completion(decoded, nil)
             } catch {
                 completion(nil, error)
             }
@@ -44,7 +68,7 @@ extension API {
     /**
      상식 정보 요청.
      - Parameter grade: 등급 (0: 서당개 / 1: 학도 / 2: 훈장).
-     - Note: 잘못된 등급이 인자로 넘어가면 에러 노티피케이션 포스트.
+     - Note: 잘못된 등급이 인자로 넘어가면 에러 던짐.
     */
     static func requestCommonSenses(grade: Int, completion: @escaping (CommonSenseResponse?, Error?) -> Void) {
         if !(0...2).contains(grade) {
@@ -65,7 +89,7 @@ extension API {
     /**
      서버에 회원 정보 업로드.
      - Parameter id: 카카오 고유 ID
-     - Parameter nickname: 사용자가 입력한 닉네임
+     - Parameter nickname: 카카오 사용자의 닉네임
     */
     static func requestCreatingUser(id: String, nickname: String, completion: @escaping (Int?, Error?) -> Void) {
         let parameter = ["id": id, "nickname": nickname]
