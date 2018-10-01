@@ -20,7 +20,7 @@ class ChapterViewController: UIViewController {
         return searchBar.isFirstResponder
     }
     @IBOutlet weak var collectionView: UICollectionView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar = UISearchBar()
@@ -59,17 +59,17 @@ extension ChapterViewController {
 // MARK: - Search Bar Delegate
 extension ChapterViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let flatted = fruits.flatMap { $0 }
-        let predicate = NSPredicate(format: "title == %@", searchText)
-        guard let filtered = (flatted as NSArray).filtered(using: predicate) as? [FruitResponse] else { return }
+        let filtered = fruits.filter { $0.title.range(of: searchText) != nil }
         self.searchedFruits = filtered
-        self.collectionView.reloadSections(IndexSet(0...2))
+        self.collectionView.reloadSections(IndexSet(0...0))
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        self.collectionView.reloadSections(IndexSet(0...0))
         navigationItem.titleView = nil
         navigationItem.setRightBarButton(searchButton, animated: true)
+        
     }
 }
 
@@ -81,11 +81,14 @@ extension ChapterViewController: UICollectionViewDataSource {
             cell.setProperties(fruit)
             return cell
         } else {
-            let fruit = searchedFruits[indexPath.row]
+            let fruit = searchedFruits[indexPath.item]
             cell.setProperties(fruit)
             return cell
         }
-        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
