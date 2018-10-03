@@ -57,6 +57,7 @@
 		19EC61CC2152432400A80DA4 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EC61CB2152432400A80DA4 /* QuizView.swift */; };
 		19EC61CE215243B800A80DA4 /* QuizButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EC61CD215243B800A80DA4 /* QuizButton.swift */; };
 		9E51A59652BFAA932928067F /* Pods_FruitSchool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F105C82803FFC63FD567EBBB /* Pods_FruitSchool.framework */; };
+		DB4EAB8C21652A810054E41C /* BackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4EAB8B21652A810054E41C /* BackView.swift */; };
 		DBF51B892157CE0900AA85DF /* Tutorial4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF51B862157CE0900AA85DF /* Tutorial4ViewController.swift */; };
 		DBF51B8A2157CE0900AA85DF /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBF51B872157CE0900AA85DF /* Tutorial.storyboard */; };
 		DBF51B8B2157CE0900AA85DF /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF51B882157CE0900AA85DF /* TutorialViewController.swift */; };
@@ -116,6 +117,7 @@
 		19EC61CD215243B800A80DA4 /* QuizButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizButton.swift; sourceTree = "<group>"; };
 		AE308E65D83414C1D0945E8F /* Pods-FruitSchool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.release.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.release.xcconfig"; sourceTree = "<group>"; };
 		DA48AB07292D5B1D20B98DFD /* Pods-FruitSchool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.debug.xcconfig"; sourceTree = "<group>"; };
+		DB4EAB8B21652A810054E41C /* BackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackView.swift; sourceTree = "<group>"; };
 		DBF51B862157CE0900AA85DF /* Tutorial4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tutorial4ViewController.swift; sourceTree = "<group>"; };
 		DBF51B872157CE0900AA85DF /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
 		DBF51B882157CE0900AA85DF /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				1947C571214F2F2E00BF6521 /* DetailIntakeTipCell.swift */,
 				1947C575214F2F9000BF6521 /* DetailNutritionTipCell.swift */,
 				1947C577214F2FA500BF6521 /* DetailQuizCell.swift */,
+				DB4EAB8B21652A810054E41C /* BackView.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				19E274C72144D74E00E2F6D2 /* Network.swift in Sources */,
 				190F74AE213E34700038234A /* NSObject+.swift in Sources */,
 				1947C57C214F9E5F00BF6521 /* FruitResponse.swift in Sources */,
+				DB4EAB8C21652A810054E41C /* BackView.swift in Sources */,
 				1947C574214F2F3900BF6521 /* DetailStandardTipCell.swift in Sources */,
 				19E274D62144DDE600E2F6D2 /* Notification.Name.swift in Sources */,
 				190F74A6213E33850038234A /* UIViewController+.swift in Sources */,
