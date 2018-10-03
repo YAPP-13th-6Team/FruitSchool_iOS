@@ -26,28 +26,22 @@ class BackView: UIView {
         path1.close()
         
         let path2 = UIBezierPath()
-        path2.move(to: CGPoint(x: width/2, y: height * 2 / 15))
-        path2.addLine(to: CGPoint(x: CGFloat(Double(width) * 3.0.squareRoot() / 15), y: height * 14 / 15))
-        path2.addLine(to: CGPoint(x: width - CGFloat(Double(width) * 3.0.squareRoot() / 15), y: height * 14 / 15))
+        path2.move(to: CGPoint(x: width/2, y: height * 2.5 / 15))
+        path2.addLine(to: CGPoint(x: CGFloat(Double(width) * 3.0.squareRoot() * 1.1 / 15), y: height * 13.7 / 15))
+        path2.addLine(to: CGPoint(x: width - CGFloat(Double(width) * 3.0.squareRoot() * 1.1 / 15), y: height * 13.7 / 15))
         path2.close()
         
         let path3 = UIBezierPath()
-        path3.move(to: CGPoint(x: width/2, y: height * 4 / 15))
-        path3.addLine(to: CGPoint(x: CGFloat(Double(width) * 3.0.squareRoot() * 2 / 15), y: height * 13 / 15))
-        path3.addLine(to: CGPoint(x: width - CGFloat(Double(width) * 3.0.squareRoot() * 2 / 15), y: height * 13 / 15))
+        path3.move(to: CGPoint(x: width/2, y: height * 5 / 15))
+        path3.addLine(to: CGPoint(x: CGFloat(Double(width) * 3.0.squareRoot() * 2.2 / 15), y: height * 12.4 / 15))
+        path3.addLine(to: CGPoint(x: width - CGFloat(Double(width) * 3.0.squareRoot() * 2.2 / 15), y: height * 12.4 / 15))
         path3.close()
         
         let path4 = UIBezierPath()
-        path4.move(to: CGPoint(x: width/2, y: height * 6 / 15))
-        path4.addLine(to: CGPoint(x: CGFloat(Double(width) * 3.0.squareRoot() * 3 / 15), y: height * 12 / 15))
-        path4.addLine(to: CGPoint(x: width - CGFloat(Double(width) * 3.0.squareRoot() * 3 / 15), y: height * 12 / 15))
+        path4.move(to: CGPoint(x: width/2, y: height * 7.5 / 15))
+        path4.addLine(to: CGPoint(x: CGFloat(Double(width) * 3.0.squareRoot() * 3.2 / 15), y: height * 11.3 / 15))
+        path4.addLine(to: CGPoint(x: width - CGFloat(Double(width) * 3.0.squareRoot() * 3.2 / 15), y: height * 11.3 / 15))
         path4.close()
-        
-        let path5 = UIBezierPath()
-        path5.move(to: CGPoint(x: width/2, y: height * 8 / 15))
-        path5.addLine(to: CGPoint(x: CGFloat(Double(width) * 3.0.squareRoot() * 4 / 15), y: height * 11 / 15))
-        path5.addLine(to: CGPoint(x: width - CGFloat(Double(width) * 3.0.squareRoot() * 4 / 15), y: height * 11 / 15))
-        path5.close()
     
         let shapeLayer1 = CAShapeLayer()
         shapeLayer1.path = path1.cgPath
@@ -72,12 +66,6 @@ class BackView: UIView {
         shapeLayer4.fillColor = UIColor.white.cgColor
         shapeLayer4.strokeColor = UIColor.lightGray.cgColor
         shapeLayer4.lineWidth = 3.0
-        
-        let shapeLayer5 = CAShapeLayer()
-        shapeLayer5.path = path5.cgPath
-        shapeLayer5.fillColor = UIColor.white.cgColor
-        shapeLayer5.strokeColor = UIColor.lightGray.cgColor
-        shapeLayer5.lineWidth = 3.0
         
         self.layer.addSublayer(shapeLayer1)
         self.layer.addSublayer(shapeLayer2)
