@@ -27,6 +27,10 @@ class CertificateViewController: UIViewController {
 }
 
 extension CertificateViewController: CertificateViewDelegate {
+    var certificateNickname: String {
+        return nickname
+    }
+    
     func didTouchUpButton(_ sender: UIButton) {
         let userDefaults = UserDefaults.standard
         userDefaults.set(id, forKey: "id")

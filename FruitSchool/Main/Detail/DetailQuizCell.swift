@@ -26,7 +26,8 @@ class DetailQuizCell: UITableViewCell {
             ])
     }
     
-    func setProperties(_ object: [QuizTip]) {
+    func setProperties(_ object: [QuizResponse]?) {
+        guard let object = object else { return }
         
     }
 }

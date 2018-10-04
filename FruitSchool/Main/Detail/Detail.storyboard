@@ -123,36 +123,60 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="detailNutritionTipCell" id="ydA-Cs-X5p" customClass="DetailNutritionTipCell" customModule="FruitSchool" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="366" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="detailNutritionTipCell" rowHeight="269" id="ydA-Cs-X5p" customClass="DetailNutritionTipCell" customModule="FruitSchool" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="160" width="375" height="269"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ydA-Cs-X5p" id="9Tv-qn-wdt">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ydA-Cs-X5p" id="9Tv-qn-wdt">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="268.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ijH-Ke-Srj">
-                                                    <rect key="frame" x="87.5" y="27" width="200" height="200"/>
+                                                    <rect key="frame" x="102.5" y="49.5" width="170" height="170"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="200" id="RNo-Ie-Es0"/>
-                                                        <constraint firstAttribute="width" constant="200" id="dtY-9s-8KC"/>
+                                                        <constraint firstAttribute="width" secondItem="ijH-Ke-Srj" secondAttribute="height" multiplier="1:1" id="bx2-JP-Chn"/>
+                                                        <constraint firstAttribute="width" constant="170" id="zuD-Lh-UlR"/>
                                                     </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나트륨" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKN-oZ-W6Q">
+                                                    <rect key="frame" x="165" y="27" width="45" height="22.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="단백질" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jgL-yP-wri">
+                                                    <rect key="frame" x="57.5" y="219.5" width="45" height="22.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="당질" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOo-XK-X3v">
+                                                    <rect key="frame" x="272.5" y="219.5" width="30" height="22.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="ijH-Ke-Srj" secondAttribute="bottom" constant="16" id="1Hc-7X-5o9"/>
-                                                <constraint firstItem="ijH-Ke-Srj" firstAttribute="top" secondItem="9Tv-qn-wdt" secondAttribute="topMargin" constant="16" id="DdK-Jp-NPs"/>
-                                                <constraint firstItem="ijH-Ke-Srj" firstAttribute="centerX" secondItem="9Tv-qn-wdt" secondAttribute="centerX" id="Xeq-IA-I1v"/>
-                                                <constraint firstItem="ijH-Ke-Srj" firstAttribute="centerY" secondItem="9Tv-qn-wdt" secondAttribute="centerY" id="ngA-vm-JVO"/>
+                                                <constraint firstItem="jgL-yP-wri" firstAttribute="top" secondItem="ijH-Ke-Srj" secondAttribute="bottom" id="02w-gG-xu9"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="zOo-XK-X3v" secondAttribute="bottom" constant="16" id="4F6-11-mIz"/>
+                                                <constraint firstItem="VKN-oZ-W6Q" firstAttribute="bottom" secondItem="ijH-Ke-Srj" secondAttribute="top" id="BFF-G0-sRA"/>
+                                                <constraint firstItem="jgL-yP-wri" firstAttribute="trailing" secondItem="ijH-Ke-Srj" secondAttribute="leading" id="KCO-cS-73P"/>
+                                                <constraint firstItem="zOo-XK-X3v" firstAttribute="top" secondItem="ijH-Ke-Srj" secondAttribute="bottom" id="Qh6-Ek-fNi"/>
+                                                <constraint firstItem="zOo-XK-X3v" firstAttribute="leading" secondItem="ijH-Ke-Srj" secondAttribute="trailing" id="Uqt-nH-GF7"/>
+                                                <constraint firstItem="VKN-oZ-W6Q" firstAttribute="top" secondItem="9Tv-qn-wdt" secondAttribute="topMargin" constant="16" id="UwS-cB-zKf"/>
+                                                <constraint firstItem="VKN-oZ-W6Q" firstAttribute="centerX" secondItem="ijH-Ke-Srj" secondAttribute="centerX" id="cvt-Bh-pyG"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="jgL-yP-wri" secondAttribute="bottom" constant="16" id="nst-3R-N9B"/>
+                                                <constraint firstItem="ijH-Ke-Srj" firstAttribute="centerY" secondItem="9Tv-qn-wdt" secondAttribute="centerY" id="trf-fx-RnS"/>
+                                                <constraint firstItem="ijH-Ke-Srj" firstAttribute="centerX" secondItem="9Tv-qn-wdt" secondAttribute="centerX" id="xQh-XZ-5q4"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="backView" destination="ijH-Ke-Srj" id="30F-va-cWW"/>
-                                            <outlet property="backgroundView" destination="ijH-Ke-Srj" id="DAe-LY-AcW"/>
+                                            <outlet property="nutritionTipView" destination="ijH-Ke-Srj" id="a5T-kD-zEl"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="detailQuizCell" rowHeight="200" id="DhJ-0j-F3v" customClass="DetailQuizCell" customModule="FruitSchool" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="410" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="429" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DhJ-0j-F3v" id="bPz-LZ-fnk">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>

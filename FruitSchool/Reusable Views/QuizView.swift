@@ -18,7 +18,11 @@ protocol QuizViewDelegate: class {
 
 class QuizView: UIView {
     
-    weak var delegate: QuizViewDelegate?
+    weak var delegate: QuizViewDelegate? {
+        didSet {
+            titleLabel.text = delegate?.title
+        }
+    }
     var firstLineStackView: UIStackView! {
         return stackView.arrangedSubviews.first as? UIStackView
     }
