@@ -58,6 +58,7 @@
 		19EC61CE215243B800A80DA4 /* QuizButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EC61CD215243B800A80DA4 /* QuizButton.swift */; };
 		9E51A59652BFAA932928067F /* Pods_FruitSchool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F105C82803FFC63FD567EBBB /* Pods_FruitSchool.framework */; };
 		DB4EAB8C21652A810054E41C /* BackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4EAB8B21652A810054E41C /* BackView.swift */; };
+		DB9DDC3021659F8600D43E9D /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9DDC2F21659F8600D43E9D /* NutritionView.swift */; };
 		DBF51B892157CE0900AA85DF /* Tutorial4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF51B862157CE0900AA85DF /* Tutorial4ViewController.swift */; };
 		DBF51B8A2157CE0900AA85DF /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBF51B872157CE0900AA85DF /* Tutorial.storyboard */; };
 		DBF51B8B2157CE0900AA85DF /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF51B882157CE0900AA85DF /* TutorialViewController.swift */; };
@@ -118,6 +119,7 @@
 		AE308E65D83414C1D0945E8F /* Pods-FruitSchool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.release.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.release.xcconfig"; sourceTree = "<group>"; };
 		DA48AB07292D5B1D20B98DFD /* Pods-FruitSchool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.debug.xcconfig"; sourceTree = "<group>"; };
 		DB4EAB8B21652A810054E41C /* BackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackView.swift; sourceTree = "<group>"; };
+		DB9DDC2F21659F8600D43E9D /* NutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionView.swift; sourceTree = "<group>"; };
 		DBF51B862157CE0900AA85DF /* Tutorial4ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tutorial4ViewController.swift; sourceTree = "<group>"; };
 		DBF51B872157CE0900AA85DF /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
 		DBF51B882157CE0900AA85DF /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				1947C575214F2F9000BF6521 /* DetailNutritionTipCell.swift */,
 				1947C577214F2FA500BF6521 /* DetailQuizCell.swift */,
 				DB4EAB8B21652A810054E41C /* BackView.swift */,
+				DB9DDC2F21659F8600D43E9D /* NutritionView.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				190983CC2156723B00E2461A /* PromotionReviewViewController.swift in Sources */,
 				199715C22153E695001D5276 /* UserResponse.swift in Sources */,
 				1947C58A214FBF5800BF6521 /* CertificateView.swift in Sources */,
+				DB9DDC3021659F8600D43E9D /* NutritionView.swift in Sources */,
 				1947C55F214F27C000BF6521 /* GuideBookViewController.swift in Sources */,
 				190983D021568C9300E2461A /* FruitBookCell.swift in Sources */,
 				DBF51B8B2157CE0900AA85DF /* TutorialViewController.swift in Sources */,

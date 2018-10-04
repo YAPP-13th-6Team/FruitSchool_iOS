@@ -20,6 +20,13 @@ class DetailNutritionTipCell: UITableViewCell {
     
         let backView = BackView(frame: CGRect(x: 0, y: 10.0, width: width, height: height))
         nutritionTipView.addSubview(backView)
+        
+        let nutritionView = NutritionView(frame: CGRect(x: 0, y: 10.0, width: width, height: height))
+        nutritionTipView.addSubview(nutritionView)
+        
+        UIView.animate(withDuration: TimeInterval(3.0)) {
+            nutritionView.alpha = 0.7
+        }
     }
     
     func setProperties(_ object: NutritionTip) {

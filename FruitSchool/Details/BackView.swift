@@ -12,7 +12,10 @@ class BackView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.drawBackground()
+        drawBackground()
+        createLine1()
+        createLine2()
+        createLine3()
     }
     
     func drawBackground() {
@@ -47,30 +50,81 @@ class BackView: UIView {
         shapeLayer1.path = path1.cgPath
         shapeLayer1.fillColor = UIColor.white.cgColor
         shapeLayer1.strokeColor = UIColor.lightGray.cgColor
-        shapeLayer1.lineWidth = 3.0
+        shapeLayer1.lineWidth = 1.0
         
         let shapeLayer2 = CAShapeLayer()
         shapeLayer2.path = path2.cgPath
         shapeLayer2.fillColor = UIColor.white.cgColor
         shapeLayer2.strokeColor = UIColor.lightGray.cgColor
-        shapeLayer2.lineWidth = 3.0
+        shapeLayer2.lineWidth = 1.0
         
         let shapeLayer3 = CAShapeLayer()
         shapeLayer3.path = path3.cgPath
         shapeLayer3.fillColor = UIColor.white.cgColor
         shapeLayer3.strokeColor = UIColor.lightGray.cgColor
-        shapeLayer3.lineWidth = 3.0
+        shapeLayer3.lineWidth = 1.0
         
         let shapeLayer4 = CAShapeLayer()
         shapeLayer4.path = path4.cgPath
         shapeLayer4.fillColor = UIColor.white.cgColor
         shapeLayer4.strokeColor = UIColor.lightGray.cgColor
-        shapeLayer4.lineWidth = 3.0
+        shapeLayer4.lineWidth = 1.0
         
         self.layer.addSublayer(shapeLayer1)
         self.layer.addSublayer(shapeLayer2)
         self.layer.addSublayer(shapeLayer3)
         self.layer.addSublayer(shapeLayer4)
+    }
+    
+    func createLine1() {
+        let width: CGFloat = self.frame.size.width
+        let height: CGFloat = self.frame.size.height
+        
+        let path1 = UIBezierPath()
+        path1.move(to: CGPoint(x: (width + width/2)/3, y: height*2/3))
+        path1.addLine(to: CGPoint(x: width/2, y: 0.0))
+        path1.close()
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path1.cgPath
+        shapeLayer.strokeColor = UIColor.lightGray.cgColor
+        shapeLayer.lineWidth = 1.0
+        
+        self.layer.addSublayer(shapeLayer)
+    }
+    
+    func createLine2() {
+        let width: CGFloat = self.frame.size.width
+        let height: CGFloat = self.frame.size.height
+        
+        let path1 = UIBezierPath()
+        path1.move(to: CGPoint(x: (width + width/2)/3, y: height*2/3))
+        path1.addLine(to: CGPoint(x: 0.0, y: height))
+        path1.close()
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path1.cgPath
+        shapeLayer.strokeColor = UIColor.lightGray.cgColor
+        shapeLayer.lineWidth = 1.0
+        
+        self.layer.addSublayer(shapeLayer)
+    }
+    
+    func createLine3() {
+        let width: CGFloat = self.frame.size.width
+        let height: CGFloat = self.frame.size.height
+        
+        let path1 = UIBezierPath()
+        path1.move(to: CGPoint(x: (width + width/2)/3, y: height*2/3))
+        path1.addLine(to: CGPoint(x: width, y: height))
+        path1.close()
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path1.cgPath
+        shapeLayer.strokeColor = UIColor.lightGray.cgColor
+        shapeLayer.lineWidth = 1.0
+        
+        self.layer.addSublayer(shapeLayer)
     }
     
     required init?(coder aDecoder: NSCoder) {
