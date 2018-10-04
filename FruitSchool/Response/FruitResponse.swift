@@ -7,23 +7,27 @@
 //
 
 struct FruitResponse: Codable {
-    let id: String
-    let title: String
-    let grade: Int      //0: 서당개, 1: 학도, 2: 훈장
-    let category: String
-    let calorie: Double
-    let season: String
-    let standardTip: StandardTip
-    let intakeTip: IntakeTip
-    let nutritionTip: NutritionTip
-    let quizs: [QuizTip]
-    var calorieText: String {
-        return "\(calorie)kcal/100g"
+    struct Data: Codable {
+        let id: String
+        let title: String
+        let grade: Int      //0: 서당개, 1: 학도, 2: 훈장
+        let category: String
+        let calorie: Double
+        let season: String
+        let standardTip: StandardTip
+        let intakeTip: IntakeTip
+        let nutritionTip: NutritionTip
+        let quizs: [QuizResponse]
+        var calorieText: String {
+            return "\(calorie)kcal/100g"
+        }
+        enum CodingKeys: String, CodingKey {
+            case id = "_id"
+            case title, grade, category, calorie, season, standardTip, intakeTip, nutritionTip, quizs
+        }
     }
-    enum CodingKeys: String, CodingKey {
-        case id = "_id"
-        case title, grade, category, calorie, season, standardTip, intakeTip, nutritionTip, quizs
-    }
+    let message: String
+    let data: [Data]
 }
 
 struct StandardTip: Codable {
@@ -97,11 +101,4 @@ struct NutritionTip: Codable {
     var sugarText: String {
         return "\(sugar)g"
     }
-}
-
-struct QuizTip: Codable {
-    //let level: Int      //몇개 난이도가 있을까?
-    let title: String
-    let correctAnswer: String
-    let incorrectAnswers: [String]
 }

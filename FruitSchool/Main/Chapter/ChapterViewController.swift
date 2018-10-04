@@ -14,8 +14,8 @@ class ChapterViewController: UIViewController {
     let cellIdentifier = "chapterCell"
     var searchBar: UISearchBar!
     var searchButton: UIBarButtonItem!
-    var fruits: [FruitResponse] = []
-    var searchedFruits: [FruitResponse] = []
+    var fruits: [FruitListResponse.Data] = []
+    var searchedFruits: [FruitListResponse.Data] = []
     var isSearching: Bool {
         return searchBar.isFirstResponder
     }
@@ -33,15 +33,18 @@ class ChapterViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        API.requestFruits(grade: grade) { (response, error) in
+        API.requestFruitList { response, statusCode, error in
             if let error = error {
                 DispatchQueue.main.async { [weak self] in
-                    UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription)
+                    UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription, handler: {
+                        self?.navigationController?.popViewController(animated: true)
+                    })
                 }
                 return
             }
-            guard let fruits = response else { return }
-            self.fruits = fruits
+            guard let response = response else { return }
+            let filtered = response.data.filter { $0.grade == self.grade }
+            self.fruits = filtered
             DispatchQueue.main.async { [weak self] in
                 self?.collectionView.reloadData()
             }
@@ -99,7 +102,7 @@ extension ChapterViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         guard let next = UIViewController.instantiate(storyboard: "Detail", identifier: "DetailViewController") as? DetailViewController else { return }
-        next.fruit = fruits[indexPath.item]
+        next.id = fruits[indexPath.item].id
         self.navigationController?.pushViewController(next, animated: true)
     }
 }

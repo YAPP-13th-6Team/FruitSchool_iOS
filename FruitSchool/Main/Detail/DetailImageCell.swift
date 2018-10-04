@@ -30,7 +30,8 @@ class DetailImageCell: UITableViewCell {
         delegate?.didTouchUpBackButton(sender)
     }
     
-    func setProperties(_ object: FruitResponse) {
+    func setProperties(_ object: FruitResponse.Data?) {
+        guard let object = object else { return }
         fruitImageView.image = nil
         fruitTitleLabel.text = object.title
         fruitGradeLabel.text = Grade(rawValue: object.grade)?.expression

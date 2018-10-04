@@ -28,7 +28,7 @@ class ChapterCell: UICollectionViewCell {
         alpha = 1
     }
     
-    func setProperties(_ object: FruitResponse) {
+    func setProperties(_ object: FruitListResponse.Data) {
         let myGrade = UserDefaults.standard.integer(forKey: "grade")
         if myGrade < object.grade {
             alpha = 0.5

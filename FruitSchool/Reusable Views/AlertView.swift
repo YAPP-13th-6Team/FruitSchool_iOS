@@ -9,17 +9,24 @@
 import UIKit
 
 protocol AlertViewDelegate: class {
-    var title: String { get set }
-    var message: String { get set }
-    var positiveButtonTitle: String { get set }
-    var negativeButtonTitle: String { get set }
+    var title: String { get }
+    var message: String { get }
+    var positiveButtonTitle: String { get }
+    var negativeButtonTitle: String { get }
     func didTouchUpPositiveButton(_ sender: UIButton)
     func didTouchUpNegativeButton(_ sender: UIButton)
 }
 
 class AlertView: UIView {
 
-    weak var delegate: AlertViewDelegate?
+    weak var delegate: AlertViewDelegate? {
+        didSet {
+            titleLabel.text = delegate?.title
+            messageLabel.text = delegate?.message
+            positiveButton.setTitle(delegate?.positiveButtonTitle, for: [])
+            negativeButton.setTitle(delegate?.negativeButtonTitle, for: [])
+        }
+    }
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
@@ -29,10 +36,6 @@ class AlertView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         contentView.layer.cornerRadius = 10
-        titleLabel.text = delegate?.title
-        messageLabel.text = delegate?.message
-        positiveButton.setTitle(delegate?.positiveButtonTitle, for: [])
-        negativeButton.setTitle(delegate?.negativeButtonTitle, for: [])
         positiveButton.addTarget(self, action: #selector(didTouchUpPositiveButton(_:)), for: .touchUpInside)
         negativeButton.addTarget(self, action: #selector(didTouchUpNegativeButton(_:)), for: .touchUpInside)
     }
