@@ -9,9 +9,9 @@
 import UIKit
 
 protocol UnlockViewDelegate: class {
-    var description: String { get set }
-    var fruitImage: UIImage { get set }
-    var fruitTitle: String { get set }
+    var description: String { get }
+    var fruitImage: UIImage { get }
+    var fruitTitle: String { get }
     func didTouchUpConfirmButton(_ sender: UIButton)
 }
 

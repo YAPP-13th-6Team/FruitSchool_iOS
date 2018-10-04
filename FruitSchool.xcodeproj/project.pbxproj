@@ -22,10 +22,15 @@
 		191F02452157E8CC008EA81C /* DetailNutritionTipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C575214F2F9000BF6521 /* DetailNutritionTipCell.swift */; };
 		191F02482157E92B008EA81C /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191F02472157E92B008EA81C /* MainTabBarController.swift */; };
 		191F024A2157E92F008EA81C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 191F02492157E92F008EA81C /* Main.storyboard */; };
+		192366492165AF390043F9BB /* FruitListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192366482165AF390043F9BB /* FruitListResponse.swift */; };
+		1923664B2165B6BE0043F9BB /* ExamResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1923664A2165B6BE0043F9BB /* ExamResponse.swift */; };
+		1923664D2165BF170043F9BB /* QuizResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1923664C2165BF170043F9BB /* QuizResponse.swift */; };
+		1923664F2165D0CD0043F9BB /* Exercise.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1923664E2165D0CD0043F9BB /* Exercise.storyboard */; };
+		192366512165D0DB0043F9BB /* ExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192366502165D0DB0043F9BB /* ExerciseViewController.swift */; };
 		1947C55D214F27B800BF6521 /* Chapter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1947C55C214F27B800BF6521 /* Chapter.storyboard */; };
 		1947C55F214F27C000BF6521 /* ChapterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C55E214F27C000BF6521 /* ChapterViewController.swift */; };
 		1947C562214F2B7800BF6521 /* ChapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C561214F2B7800BF6521 /* ChapterCell.swift */; };
-		1947C568214F2DC700BF6521 /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C567214F2DC700BF6521 /* Fruit.swift */; };
+		1947C568214F2DC700BF6521 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C567214F2DC700BF6521 /* Record.swift */; };
 		1947C56A214F2E0C00BF6521 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1947C569214F2E0C00BF6521 /* Detail.storyboard */; };
 		1947C56C214F2E1500BF6521 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C56B214F2E1500BF6521 /* DetailViewController.swift */; };
 		1947C570214F2F2600BF6521 /* DetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C56F214F2F2600BF6521 /* DetailImageCell.swift */; };
@@ -45,10 +50,10 @@
 		19784243215FC9BD00D53F48 /* Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19784242215FC9BD00D53F48 /* Community.storyboard */; };
 		19784245215FC9C500D53F48 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19784244215FC9C500D53F48 /* CommunityViewController.swift */; };
 		197E55BE21512550003A610D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 197E55BD21512550003A610D /* .swiftlint.yml */; };
-		199715C42153F59D001D5276 /* CommonSenseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199715C32153F59D001D5276 /* CommonSenseResponse.swift */; };
 		19A113652157E5E80017292E /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A113642157E5E80017292E /* KakaoOpenSDK.framework */; };
 		19A76F732161B69500C7C05F /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A76F722161B69500C7C05F /* AlertView.swift */; };
 		19A76F752161B6F600C7C05F /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A76F742161B6F600C7C05F /* AlertView.xib */; };
+		19A76F7B2162333200C7C05F /* ExerciseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A76F7A2162333200C7C05F /* ExerciseResponse.swift */; };
 		19E274C72144D74E00E2F6D2 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274C62144D74E00E2F6D2 /* Network.swift */; };
 		19E274C92144D75300E2F6D2 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274C82144D75300E2F6D2 /* API.swift */; };
 		19E274CB2144D93F00E2F6D2 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19E274CA2144D93F00E2F6D2 /* Login.storyboard */; };
@@ -82,10 +87,15 @@
 		190FC3C6213A689D00DD333F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		191F02472157E92B008EA81C /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		191F02492157E92F008EA81C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		192366482165AF390043F9BB /* FruitListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitListResponse.swift; sourceTree = "<group>"; };
+		1923664A2165B6BE0043F9BB /* ExamResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamResponse.swift; sourceTree = "<group>"; };
+		1923664C2165BF170043F9BB /* QuizResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResponse.swift; sourceTree = "<group>"; };
+		1923664E2165D0CD0043F9BB /* Exercise.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Exercise.storyboard; sourceTree = "<group>"; };
+		192366502165D0DB0043F9BB /* ExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewController.swift; sourceTree = "<group>"; };
 		1947C55C214F27B800BF6521 /* Chapter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chapter.storyboard; sourceTree = "<group>"; };
 		1947C55E214F27C000BF6521 /* ChapterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterViewController.swift; sourceTree = "<group>"; };
 		1947C561214F2B7800BF6521 /* ChapterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterCell.swift; sourceTree = "<group>"; };
-		1947C567214F2DC700BF6521 /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
+		1947C567214F2DC700BF6521 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		1947C569214F2E0C00BF6521 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		1947C56B214F2E1500BF6521 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1947C56F214F2F2600BF6521 /* DetailImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageCell.swift; sourceTree = "<group>"; };
@@ -106,10 +116,10 @@
 		19784242215FC9BD00D53F48 /* Community.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Community.storyboard; sourceTree = "<group>"; };
 		19784244215FC9C500D53F48 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		197E55BD21512550003A610D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
-		199715C32153F59D001D5276 /* CommonSenseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonSenseResponse.swift; sourceTree = "<group>"; };
 		19A113642157E5E80017292E /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		19A76F722161B69500C7C05F /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		19A76F742161B6F600C7C05F /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
+		19A76F7A2162333200C7C05F /* ExerciseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseResponse.swift; sourceTree = "<group>"; };
 		19E274C62144D74E00E2F6D2 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		19E274C82144D75300E2F6D2 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		19E274CA2144D93F00E2F6D2 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -205,7 +215,7 @@
 				19784246215FCA0500D53F48 /* Book */,
 				19784247215FCA0E00D53F48 /* Chapter */,
 				1947C560214F281F00BF6521 /* Promotion Review */,
-				19784249215FD0A200D53F48 /* Quiz */,
+				19784249215FD0A200D53F48 /* Exercise */,
 				1947C563214F2CFF00BF6521 /* Detail */,
 				19784241215FC9B000D53F48 /* Community */,
 				19784237215FBEFA00D53F48 /* MyPage */,
@@ -240,8 +250,11 @@
 		1947C564214F2DB000BF6521 /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				1923664C2165BF170043F9BB /* QuizResponse.swift */,
 				1947C57B214F9E5F00BF6521 /* FruitResponse.swift */,
-				199715C32153F59D001D5276 /* CommonSenseResponse.swift */,
+				192366482165AF390043F9BB /* FruitListResponse.swift */,
+				19A76F7A2162333200C7C05F /* ExerciseResponse.swift */,
+				1923664A2165B6BE0043F9BB /* ExamResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -329,11 +342,13 @@
 			path = Chapter;
 			sourceTree = "<group>";
 		};
-		19784249215FD0A200D53F48 /* Quiz */ = {
+		19784249215FD0A200D53F48 /* Exercise */ = {
 			isa = PBXGroup;
 			children = (
+				1923664E2165D0CD0043F9BB /* Exercise.storyboard */,
+				192366502165D0DB0043F9BB /* ExerciseViewController.swift */,
 			);
-			path = Quiz;
+			path = Exercise;
 			sourceTree = "<group>";
 		};
 		19E274C22144D6EB00E2F6D2 /* Start */ = {
@@ -350,7 +365,7 @@
 		19E274C42144D73C00E2F6D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1947C567214F2DC700BF6521 /* Fruit.swift */,
+				1947C567214F2DC700BF6521 /* Record.swift */,
 				19FCF23F2160FE9600BCC3F7 /* Grade.swift */,
 			);
 			path = Model;
@@ -454,6 +469,7 @@
 				1947C588214FBF4A00BF6521 /* CertificateView.xib in Resources */,
 				190FC3C5213A689D00DD333F /* LaunchScreen.storyboard in Resources */,
 				19A76F752161B6F600C7C05F /* AlertView.xib in Resources */,
+				1923664F2165D0CD0043F9BB /* Exercise.storyboard in Resources */,
 				191F024A2157E92F008EA81C /* Main.storyboard in Resources */,
 				190FC3C2213A689D00DD333F /* Assets.xcassets in Resources */,
 				1947C55D214F27B800BF6521 /* Chapter.storyboard in Resources */,
@@ -531,22 +547,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				1947C572214F2F2E00BF6521 /* DetailIntakeTipCell.swift in Sources */,
-				199715C42153F59D001D5276 /* CommonSenseResponse.swift in Sources */,
 				191F02482157E92B008EA81C /* MainTabBarController.swift in Sources */,
 				19E274D42144DA7600E2F6D2 /* BookViewController.swift in Sources */,
 				190F74B0213E34B00038234A /* UIAlertController+.swift in Sources */,
 				190F74AC213E340F0038234A /* UIView+.swift in Sources */,
 				1978423B215FBF1600D53F48 /* MyPageViewController.swift in Sources */,
+				192366512165D0DB0043F9BB /* ExerciseViewController.swift in Sources */,
+				192366492165AF390043F9BB /* FruitListResponse.swift in Sources */,
 				190983CE215672EB00E2461A /* PromotionReviewCell.swift in Sources */,
 				190983CC2156723B00E2461A /* PromotionReviewViewController.swift in Sources */,
 				19FCF24421610AF000BCC3F7 /* UnlockView.swift in Sources */,
+				1923664D2165BF170043F9BB /* QuizResponse.swift in Sources */,
 				19784240215FC68600D53F48 /* CertificateViewController.swift in Sources */,
 				1947C58A214FBF5800BF6521 /* CertificateView.swift in Sources */,
+				19A76F7B2162333200C7C05F /* ExerciseResponse.swift in Sources */,
 				19FCF2402160FE9600BCC3F7 /* Grade.swift in Sources */,
 				1947C55F214F27C000BF6521 /* ChapterViewController.swift in Sources */,
 				190983D021568C9300E2461A /* BookCell.swift in Sources */,
 				DBF51B8B2157CE0900AA85DF /* TutorialViewController.swift in Sources */,
-				1947C568214F2DC700BF6521 /* Fruit.swift in Sources */,
+				1923664B2165B6BE0043F9BB /* ExamResponse.swift in Sources */,
+				1947C568214F2DC700BF6521 /* Record.swift in Sources */,
 				195F2672215BA45000A6EED4 /* ResultView.swift in Sources */,
 				190FC3BB213A689C00DD333F /* AppDelegate.swift in Sources */,
 				1947C56C214F2E1500BF6521 /* DetailViewController.swift in Sources */,

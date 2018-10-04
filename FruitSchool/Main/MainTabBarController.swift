@@ -18,7 +18,7 @@ class MainTabBarController: UITabBarController {
         let secondTabBar = UITabBarItem(title: "커뮤니티", image: nil, tag: 1)
         secondController.tabBarItem = secondTabBar
         guard let thirdController = UIViewController.instantiate(storyboard: "MyPage", identifier: "MyPageNavigationController") else { return }
-        let thirdTabBar = UITabBarItem(title: "내정보", image: nil, tag: 2)
+        let thirdTabBar = UITabBarItem(title: "마이페이지", image: nil, tag: 2)
         thirdController.tabBarItem = thirdTabBar
         viewControllers = [firstController, secondController, thirdController]
     }

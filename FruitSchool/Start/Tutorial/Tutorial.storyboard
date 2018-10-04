@@ -63,8 +63,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="TQb-fr-ukz">
-                                <rect key="frame" x="95" y="154.5" width="187.5" height="225"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="TQb-fr-ukz">
+                                <rect key="frame" x="94" y="154.5" width="187.5" height="225"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="도감에 있는 과일을 하나하나 채워보는 즐거움을 느껴보세요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niz-e7-y1s">
                                 <rect key="frame" x="16" y="399.5" width="343" height="41"/>
@@ -81,6 +81,7 @@
                             <constraint firstItem="TQb-fr-ukz" firstAttribute="width" secondItem="kqR-Ni-uMd" secondAttribute="width" multiplier="0.5" id="ePh-D3-5YL"/>
                             <constraint firstItem="aVZ-KU-VdL" firstAttribute="trailing" secondItem="niz-e7-y1s" secondAttribute="trailing" constant="16" id="fwl-gb-okw"/>
                             <constraint firstItem="niz-e7-y1s" firstAttribute="leading" secondItem="aVZ-KU-VdL" secondAttribute="leading" constant="16" id="rnr-L6-gLD"/>
+                            <constraint firstItem="TQb-fr-ukz" firstAttribute="centerX" secondItem="kqR-Ni-uMd" secondAttribute="centerX" id="yoA-e6-fDP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aVZ-KU-VdL"/>
                     </view>

@@ -27,7 +27,8 @@ class DetailNutritionTipCell: UITableViewCell {
         backView.layer.addSublayer(shapeLayer)
     }
     
-    func setProperties(_ object: NutritionTip) {
+    func setProperties(_ object: NutritionTip?) {
+        guard let object = object else { return }
         
     }
 }

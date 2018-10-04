@@ -19,7 +19,6 @@ class BookViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //레이블은 동적으로 생성하여 퍼센트 표시하기...
         percentLabel = UILabel()
         searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTouchUpSearchButton(_:)))
         searchBar.delegate = self
