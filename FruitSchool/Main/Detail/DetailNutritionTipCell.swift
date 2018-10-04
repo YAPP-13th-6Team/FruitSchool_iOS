@@ -10,21 +10,23 @@ import UIKit
 
 class DetailNutritionTipCell: UITableViewCell {
 
-    @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var nutritionTipView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        let height = backView.frame.height
-        let path = UIBezierPath()
-        path.move(to: CGPoint(x: self.center.x, y: 0))
-        path.addLine(to: CGPoint(x: self.center.x - height / 2, y: height))
-        path.addLine(to: CGPoint(x: self.center.x + height / 2, y: height))
-        path.close()
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.path = path.cgPath
-        shapeLayer.strokeColor = UIColor.green.cgColor
-        shapeLayer.lineWidth = 5
-        backView.layer.addSublayer(shapeLayer)
+        
+        let width: CGFloat = nutritionTipView.frame.width
+        let height: CGFloat = CGFloat(Double(width) * 3.0.squareRoot() / 2)
+    
+        let backView = BackView(frame: CGRect(x: 0, y: 10.0, width: width, height: height))
+        nutritionTipView.addSubview(backView)
+        
+        let nutritionView = NutritionView(frame: CGRect(x: 0, y: 10.0, width: width, height: height))
+        nutritionTipView.addSubview(nutritionView)
+        
+        UIView.animate(withDuration: TimeInterval(3.0)) {
+            nutritionView.alpha = 0.7
+        }
     }
     
     func setProperties(_ object: NutritionTip?) {
