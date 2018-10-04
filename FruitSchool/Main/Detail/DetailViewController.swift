@@ -10,7 +10,8 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    var fruit: FruitResponse!
+    var id: String = ""
+    var fruit: FruitResponse.Data?
     let cellIdentifiers = ["detailImageCell", "detailStandardTipCell", "detailIntakeTipCell", "detailNutritionTipCell", "detailQuizCell"]
     let sectionTitles = ["기본 정보", "섭취 정보", "영양 정보"]
     var springsStandardTipSection: Bool = false
@@ -24,6 +25,25 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        API.requestFruit(by: id) { response, statusCode, error in
+            if let error = error {
+                DispatchQueue.main.async { [weak self] in
+                    UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription, handler: {
+                        self?.navigationController?.popViewController(animated: true)
+                    })
+                }
+                return
+            }
+            guard let response = response else { return }
+            self.fruit = response.data.first
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.reloadData()
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -57,13 +77,13 @@ extension DetailViewController: UITableViewDataSource {
             (cell as? DetailImageCell)?.delegate = self
             (cell as? DetailImageCell)?.setProperties(fruit)
         case 1:
-            (cell as? DetailStandardTipCell)?.setProperties(fruit.standardTip, at: indexPath.row)
+            (cell as? DetailStandardTipCell)?.setProperties(fruit?.standardTip, at: indexPath.row)
         case 2:
-            (cell as? DetailIntakeTipCell)?.setProperties(fruit.intakeTip, at: indexPath.row)
+            (cell as? DetailIntakeTipCell)?.setProperties(fruit?.intakeTip, at: indexPath.row)
         case 3:
-            (cell as? DetailNutritionTipCell)?.setProperties(fruit.nutritionTip)
+            (cell as? DetailNutritionTipCell)?.setProperties(fruit?.nutritionTip)
         case 4:
-            (cell as? DetailQuizCell)?.setProperties(fruit.quizs)
+            (cell as? DetailQuizCell)?.setProperties(fruit?.quizs)
         default:
             break
         }
@@ -75,9 +95,9 @@ extension DetailViewController: UITableViewDataSource {
         case 0:
             return 1
         case 1 where springsStandardTipSection:
-            return fruit.standardTip.validCount
+            return fruit?.standardTip.validCount ?? 0
         case 2 where springsIntakeTipSection:
-            return fruit.intakeTip.validCount
+            return fruit?.intakeTip.validCount ?? 0
         case 3 where springsNutritionTipSection:
             return 1
         case 4:

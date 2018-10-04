@@ -30,7 +30,7 @@
                             <state key="normal" title="no"/>
                         </button>
                         <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Vs1-iA-QfM">
-                            <rect key="frame" x="83" y="75" width="150" height="150"/>
+                            <rect key="frame" x="75" y="75" width="150" height="150"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Vs1-iA-QfM" secondAttribute="height" id="UaY-CZ-782"/>
                             </constraints>
@@ -62,7 +62,7 @@
                         <constraint firstItem="x9Q-SS-wze" firstAttribute="centerX" secondItem="ofp-kW-0og" secondAttribute="centerX" id="P7t-Tf-KwG"/>
                         <constraint firstItem="Vs1-iA-QfM" firstAttribute="width" secondItem="ofp-kW-0og" secondAttribute="width" multiplier="0.5" id="SaZ-8p-WHf"/>
                         <constraint firstItem="eMp-TN-Lk3" firstAttribute="width" secondItem="4e6-7c-iH0" secondAttribute="width" id="axv-1h-ndj"/>
-                        <constraint firstItem="Vs1-iA-QfM" firstAttribute="centerX" secondItem="ofp-kW-0og" secondAttribute="centerX" constant="8" id="csu-uM-cmu"/>
+                        <constraint firstItem="Vs1-iA-QfM" firstAttribute="centerX" secondItem="ofp-kW-0og" secondAttribute="centerX" id="csu-uM-cmu"/>
                         <constraint firstItem="4e6-7c-iH0" firstAttribute="width" secondItem="ofp-kW-0og" secondAttribute="width" multiplier="0.4" id="ggG-dz-Gvi"/>
                         <constraint firstItem="Vs1-iA-QfM" firstAttribute="centerY" secondItem="ofp-kW-0og" secondAttribute="centerY" id="rE3-Ho-Srs"/>
                         <constraint firstAttribute="bottom" secondItem="eMp-TN-Lk3" secondAttribute="bottom" constant="20" id="v33-KI-oUk"/>
