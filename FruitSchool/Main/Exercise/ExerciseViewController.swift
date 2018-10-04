@@ -19,6 +19,10 @@ class ExerciseViewController: UIViewController {
     var quizs: [QuizResponse]? {
         return exerciseResponse?.quizs
     }
+    var quizsCount: Int {
+        return quizs?.count ?? 0
+    }
+    var selectedCount: Int = 0
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -27,7 +31,9 @@ class ExerciseViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        IndicatorView.shared.showIndicator(to: view)
         API.requestExercises(by: id) { response, statusCode, error in
+            IndicatorView.shared.hideIndicator()
             if let error = error {
                 DispatchQueue.main.async { [weak self] in
                     UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription, handler: {
@@ -45,11 +51,68 @@ class ExerciseViewController: UIViewController {
     }
 }
 
+extension ExerciseViewController: QuizViewDelegate {
+    func didTouchUpQuizButtons(_ sender: UIButton) {
+        var count = 0
+        for index in 0..<quizsCount {
+            guard let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? ExerciseCell else { return }
+            if cell.quizView.isChecked {
+                count += 1
+            }
+        }
+        if count == quizsCount {
+            var score = 0
+            guard let alertView = UIView.instantiateFromXib(xibName: "AlertView") as? AlertView else { return }
+            alertView.titleLabel.text = "타이틀"
+            alertView.messageLabel.text = "메세지?"
+            alertView.positiveHandler = { [weak self] in
+                // 채점 로직 개더럽다진짜
+                guard let `self` = self else { return }
+                for index in 0..<self.quizsCount {
+                    guard let cell = self.collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? ExerciseCell else { return }
+                    guard let quizView = cell.quizView else { return }
+                    let answer = quizView.answer
+                    let answers = quizView.answers
+                    print(answer, answers)
+                    for asdf in 0..<4 {
+                        if answers[asdf] == answer {
+                            let button = quizView[asdf]
+                            if button.isSelected {
+                                score += 1
+                                break
+                            }
+                        }
+                    }
+                }
+                guard let resultView = UIView.instantiateFromXib(xibName: "ResultView") as? ResultView else { return }
+                resultView.frame = self.view.bounds
+                resultView.titleLabel.text = "결과"
+                if score == self.quizsCount {
+                    resultView.descriptionLabel.text = "통과"
+                    resultView.handler = {
+                        Record.update(Record.fetch().filter("id = %@", self.id).first!, keyValue: ["isPassed": true])
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                } else {
+                    resultView.descriptionLabel.text = "불통"
+                    resultView.handler = {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+                self.view.addSubview(resultView)
+            }
+            alertView.frame = view.bounds
+            view.addSubview(alertView)
+        }
+    }
+}
+
 extension ExerciseViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? ExerciseCell else { return UICollectionViewCell() }
+        cell.quizView.delegate = self
         let quiz = quizs?[indexPath.item]
-        cell.setProperties(quiz)
+        cell.setProperties(quiz, at: indexPath.item)
         return cell
     }
     

@@ -27,10 +27,11 @@ class ExerciseCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        quizView = nil
     }
     
-    func setProperties(_ object: QuizResponse?) {
+    func setProperties(_ object: QuizResponse?, at item: Int) {
         guard let object = object else { return }
-        
+        quizView.setProperties(object, at: item)
     }
 }

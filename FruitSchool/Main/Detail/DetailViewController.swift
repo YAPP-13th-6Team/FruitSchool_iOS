@@ -29,7 +29,9 @@ class DetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        IndicatorView.shared.showIndicator(to: view)
         API.requestFruit(by: id) { response, statusCode, error in
+            IndicatorView.shared.hideIndicator()
             if let error = error {
                 DispatchQueue.main.async { [weak self] in
                     UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription, handler: {

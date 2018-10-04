@@ -9,20 +9,12 @@
 import UIKit
 
 protocol QuizViewDelegate: class {
-    var title: String { get }
-    var answers: [String] { get }
-    var number: Int { get }
-    var answerIndex: Int { get }
     func didTouchUpQuizButtons(_ sender: UIButton)
 }
 
 class QuizView: UIView {
     
-    weak var delegate: QuizViewDelegate? {
-        didSet {
-            titleLabel.text = delegate?.title
-        }
-    }
+    weak var delegate: QuizViewDelegate?
     var firstLineStackView: UIStackView! {
         return stackView.arrangedSubviews.first as? UIStackView
     }
@@ -44,7 +36,11 @@ class QuizView: UIView {
     var buttons: [UIButton] {
         return [answer1Button, answer2Button, answer3Button, answer4Button]
     }
-    var isYesOrNo: Bool = false
+    var isChecked: Bool {
+        return answer1Button.isSelected || answer2Button.isSelected || answer3Button.isSelected || answer4Button.isSelected
+    }
+    var answer: String = ""
+    var answers: [String] = []
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var numberLabel: UILabel!
@@ -52,14 +48,25 @@ class QuizView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        numberLabel.text = "\(delegate?.number ?? 0)"
-        titleLabel.text = delegate?.title
-        answer1Button.setTitle(delegate?.answers[0], for: [])
-        answer2Button.setTitle(delegate?.answers[1], for: [])
-        answer3Button.setTitle(delegate?.answers[2], for: [])
-        answer4Button.setTitle(delegate?.answers[3], for: [])
         layer.borderWidth = 3
         layer.borderColor = UIColor.black.cgColor
+    }
+    
+    func setProperties(_ object: QuizResponse, at item: Int) {
+        numberLabel.text = "\(item + 1)."
+        titleLabel.text = object.title
+        self.answer = object.correctAnswer
+        var answers = [String]()
+        answers.append(object.correctAnswer)
+        for answer in object.incorrectAnswers {
+            answers.append(answer)
+        }
+        answers.shuffle()
+        self.answers = answers
+        answer1Button.setTitle(answers[0], for: [])
+        answer2Button.setTitle(answers[1], for: [])
+        answer3Button.setTitle(answers[2], for: [])
+        answer4Button.setTitle(answers[3], for: [])
     }
     
     subscript(_ index: Int) -> UIButton {

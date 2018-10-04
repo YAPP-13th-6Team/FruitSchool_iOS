@@ -28,8 +28,12 @@ class ChapterCell: UICollectionViewCell {
         alpha = 1
     }
     
-    func setProperties(_ object: FruitListResponse.Data) {
-        alpha = 0.5
+    func setProperties(_ object: FruitListResponse.Data, isPassed: Bool) {
+        if isPassed {
+            alpha = 1
+        } else {
+            alpha = 0.5
+        }
         nameLabel.text = object.title
     }
 }
