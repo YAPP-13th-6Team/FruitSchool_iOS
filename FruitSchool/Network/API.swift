@@ -8,50 +8,148 @@
 
 import Foundation
 
+enum APIError: Error {
+    case invalidGradeError
+}
+
 class API {
     //private static let baseURL = "http://localhost:3000"
-    private static let baseURL = "http://ec2-13-125-249-84.ap-northeast-2.compute.amazonaws.com:3000"
+    private static let baseURL = "http://13.125.249.84:3000"
     private static let jsonDecoder: JSONDecoder = {
         let jsonDecoder = JSONDecoder()
         jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
         return jsonDecoder
     }()
 }
-
-// MARK: - Guide Book
+// MARK: - 메인 플로우 관련
 extension API {
-    ///과일 정보 요청.
-    static func requestFruits() {
-        Network.get("\(baseURL)/fruits", successHandler: { data in
+    /// 모든 과일 정보 요청.
+    ///
+    /// - Parameters:
+    ///   - completion: 컴플리션 핸들러
+    static func requestFruits(completion: @escaping (FruitResponse?, Int?, Error?) -> Void) {
+        Network.get("\(baseURL)/fruits", successHandler: { data, statusCode in
             do {
-                let decoded = try jsonDecoder.decode([FruitResponse].self, from: data)
-                NotificationCenter.default.post(name: .didReceiveFruits, object: nil, userInfo: ["fruits": decoded])
+                let decoded = try jsonDecoder.decode(FruitResponse.self, from: data)
+                completion(decoded, statusCode, nil)
             } catch {
-                NotificationCenter.default.post(name: .errorReceiveFruits, object: nil, userInfo: ["error": error.localizedDescription])
+                completion(nil, statusCode, error)
             }
         }, errorHandler: { error in
-            NotificationCenter.default.post(name: .errorReceiveFruits, object: nil, userInfo: ["error": error.localizedDescription])
+            completion(nil, nil, error)
+        })
+    }
+    /// 특정 id의 과일 정보 요청
+    ///
+    /// - Parameters:
+    ///   - id: 과일 고유 id
+    ///   - completion: 컴플리션 핸들러
+    /// - Note: 디코딩된 값의 data 프로퍼티는 Array이지만 항상 한 개의 요소만 가지므로 first 프로퍼티로 접근하여 사용한다.
+    static func requestFruit(by id: String, completion: @escaping (FruitResponse?, Int?, Error?) -> Void) {
+        Network.get("\(baseURL)/fruits/\(id)", successHandler: { data, statusCode in
+            do {
+                let decoded = try jsonDecoder.decode(FruitResponse.self, from: data)
+                completion(decoded, statusCode, nil)
+            } catch {
+                completion(nil, statusCode, error)
+            }
+        }, errorHandler: { error in
+            completion(nil, nil, error)
+        })
+    }
+    /// 모든 과일의 리스트 요청. 챕터 화면을 그릴 때 사용한다.
+    ///
+    /// - Parameter completion: 컴플리션 핸들러
+    static func requestFruitList(completion: @escaping (FruitListResponse?, Int?, Error?) -> Void) {
+        Network.get("\(baseURL)/fruits/lists", successHandler: { data, statusCode in
+            do {
+                let decoded = try jsonDecoder.decode(FruitListResponse.self, from: data)
+                completion(decoded, statusCode, nil)
+            } catch {
+                completion(nil, statusCode, error)
+            }
+        }, errorHandler: { error in
+            completion(nil, nil, error)
+        })
+    }
+    /// 특정 과일의 문제 정보 요청.
+    ///
+    /// - Parameters:
+    ///   - id: 과일 고유 id
+    ///   - completion: 컴플리션 핸들러
+    static func requestExercises(by id: String, completion: @escaping (ExerciseResponse?, Int?, Error?) -> Void) {
+        Network.get("\(baseURL)/fruits/exercises/\(id)", successHandler: { data, statusCode in
+            do {
+                let decoded = try jsonDecoder.decode(ExerciseResponse.self, from: data)
+                completion(decoded, statusCode, nil)
+            } catch {
+                completion(nil, statusCode, error)
+            }
+        }, errorHandler: { error in
+            completion(nil, nil, error)
+        })
+    }
+    /// 등급에 따른 승급심사 정보 요청.
+    ///
+    /// - Parameters:
+    ///   - grade: 사용자 등급
+    ///   - completion: 컴플리션 핸들러
+    static func requestExam(by grade: Int, completion: @escaping (ExamResponse?, Int?, Error?) -> Void) {
+        Network.get("\(baseURL)/fruits/exams/\(grade)", successHandler: { data, statusCode in
+            do {
+                let decoded = try jsonDecoder.decode(ExamResponse.self, from: data)
+                completion(decoded, statusCode, nil)
+            } catch {
+                completion(nil, statusCode, error)
+            }
+        }, errorHandler: { error in
+            completion(nil, nil, error)
+        })
+    }
+}
+// MARK: - 사용자 관리 관련
+extension API {
+    /**
+     서버에 회원 정보 업로드.
+     - Parameter id: 카카오 고유 ID
+     - Parameter nickname: 카카오 사용자의 닉네임
+     */
+    static func requestCreatingUser(id: String, nickname: String, completion: @escaping (Int?, Error?) -> Void) {
+        let parameter = ["id": id, "nickname": nickname]
+        Network.post("\(baseURL)/users/user", parameters: parameter, successHandler: { (_, statusCode) in
+            completion(statusCode, nil)
+        }, errorHandler: { (error) in
+            completion(nil, error)
         })
     }
     /**
-     상식 정보 요청.
-     - Parameter grade: 등급 (0: 서당개 / 1: 학도 / 2: 훈장).
-     - Note: 잘못된 등급이 인자로 넘어가면 에러 노티피케이션 포스트.
-    */
-    static func requestCommonSenses(grade: Int) {
-        if !(0...2).contains(grade) {
-            NotificationCenter.default.post(name: .errorReceiveCommonSenses, object: nil, userInfo: ["error": "올바르지 않은 요청"])
-            return
-        }
-        Network.get("\(baseURL)/commonSenses/\(grade)", successHandler: { data in
-            do {
-                let decoded = try jsonDecoder.decode(CommonSenseResponse.self, from: data)
-                NotificationCenter.default.post(name: .didReceiveCommonSenses, object: nil, userInfo: ["commonSenses": decoded])
-            } catch {
-                NotificationCenter.default.post(name: .errorReceiveCommonSenses, object: nil, userInfo: ["error": error.localizedDescription])
+     사용자 중복 확인.
+     - Parameter id: 카카오 고유 ID
+     - Note: 409 Conflict 에러는 중복 사용자임을 의미.
+     */
+    static func requestCheckingDuplicatedUser(id: String, completion: @escaping (Bool?, Error?) -> Void) {
+        let parameter = ["id": id]
+        Network.post("\(baseURL)/users/duplicated", parameters: parameter, successHandler: { (_, statusCode) in
+            if statusCode == 409 {
+                completion(true, nil)
+            } else {
+                completion(false, nil)
             }
-        }, errorHandler: { error in
-            NotificationCenter.default.post(name: .errorReceiveCommonSenses, object: nil, userInfo: ["error": error.localizedDescription])
+        }, errorHandler: { (error) in
+            completion(nil, error)
+        })
+    }
+    /**
+     서버에 있는 사용자 등급 정보 수정.
+     - Parameter id: 카카오 고유 ID
+     - Parameter grade: 새로운 등급
+     */
+    static func requestUpdatingUserGrade(id: String, grade: Int, completion: @escaping (Int?, Error?) -> Void) {
+        let parameter: [String: Any] = ["id": id, "grade": grade]
+        Network.post("\(baseURL)/users/grade", parameters: parameter, successHandler: { (_, statusCode) in
+            completion(statusCode, nil)
+        }, errorHandler: { (error) in
+            completion(nil, error)
         })
     }
 }
