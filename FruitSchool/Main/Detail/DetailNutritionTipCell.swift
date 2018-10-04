@@ -24,7 +24,7 @@ class DetailNutritionTipCell: UITableViewCell {
         let nutritionView = NutritionView(frame: CGRect(x: 0, y: 10.0, width: width, height: height))
         nutritionTipView.addSubview(nutritionView)
         
-        UIView.animate(withDuration: TimeInterval(3.0)) {
+        UIView.animate(withDuration: TimeInterval(4.5)) {
             nutritionView.alpha = 0.7
         }
     }
