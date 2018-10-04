@@ -46,6 +46,7 @@ class QuizView: UIView {
     }
     var isYesOrNo: Bool = false
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     

@@ -24,7 +24,6 @@ class PromotionReviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "승급 심사"
-        //10개 문제 생성하기
     }
 }
 

@@ -18,11 +18,20 @@ class CertificateViewController: UIViewController {
         certificateView.delegate = self
         return certificateView
     }()
+    @IBOutlet weak var contentView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         certificateView.layer.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-        self.view.addSubview(certificateView)
+        contentView.layer.cornerRadius = 10
+        contentView.addSubview(certificateView)
+        certificateView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            certificateView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            certificateView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            certificateView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            certificateView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            ])
     }
 }
 
@@ -38,6 +47,20 @@ extension CertificateViewController: CertificateViewDelegate {
         userDefaults.set(0, forKey: "grade")
         guard let next = UIViewController.instantiate(storyboard: "Main", identifier: MainTabBarController.classNameToString) else { return }
         next.modalTransitionStyle = .flipHorizontal
-        self.present(next, animated: true)
+        self.present(next, animated: true) {
+            // 리스트 렘에 저장
+            API.requestFruitList(completion: { response, statusCode, error in
+                if let error = error {
+                    DispatchQueue.main.async {
+                        UIAlertController.presentErrorAlert(to: next, error: error.localizedDescription)
+                    }
+                    return
+                }
+                guard let response = response else{ return }
+                response.data.forEach({ data in
+                    Record.add(id: data.id, grade: data.grade)
+                })
+            })
+        }
     }
 }

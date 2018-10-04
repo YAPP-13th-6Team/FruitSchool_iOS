@@ -12,12 +12,14 @@ import RealmSwift
 class Record: Object {
     
     dynamic var id: String = ""
+    dynamic var title: String = ""
+    dynamic var grade: Int = 0
     dynamic var isPassed: Bool = false
     
     /// Record 레코드 생성.
     ///
     /// - Parameter id: 과일의 고유 아이디
-    static func add(id: String) {
+    static func add(id: String, grade: Int) {
         let realm = try! Realm()
         let record = Record()
         record.id = id

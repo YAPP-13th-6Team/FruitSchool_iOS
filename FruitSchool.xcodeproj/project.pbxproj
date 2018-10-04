@@ -30,6 +30,7 @@
 		192366552165D7F30043F9BB /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192366532165D7F30043F9BB /* NutritionView.swift */; };
 		192366562165D9060043F9BB /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190983CF21568C9300E2461A /* BookCell.swift */; };
 		192366572165D90A0043F9BB /* ChapterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C55E214F27C000BF6521 /* ChapterViewController.swift */; };
+		192366592165E2E40043F9BB /* ExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192366582165E2E40043F9BB /* ExerciseCell.swift */; };
 		1947C55D214F27B800BF6521 /* Chapter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1947C55C214F27B800BF6521 /* Chapter.storyboard */; };
 		1947C562214F2B7800BF6521 /* ChapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C561214F2B7800BF6521 /* ChapterCell.swift */; };
 		1947C568214F2DC700BF6521 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C567214F2DC700BF6521 /* Record.swift */; };
@@ -96,6 +97,7 @@
 		192366502165D0DB0043F9BB /* ExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewController.swift; sourceTree = "<group>"; };
 		192366522165D7F30043F9BB /* BackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BackView.swift; path = FruitSchool/Details/BackView.swift; sourceTree = SOURCE_ROOT; };
 		192366532165D7F30043F9BB /* NutritionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NutritionView.swift; path = FruitSchool/Details/NutritionView.swift; sourceTree = SOURCE_ROOT; };
+		192366582165E2E40043F9BB /* ExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCell.swift; sourceTree = "<group>"; };
 		1947C55C214F27B800BF6521 /* Chapter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chapter.storyboard; sourceTree = "<group>"; };
 		1947C55E214F27C000BF6521 /* ChapterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterViewController.swift; sourceTree = "<group>"; };
 		1947C561214F2B7800BF6521 /* ChapterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterCell.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 			children = (
 				1923664E2165D0CD0043F9BB /* Exercise.storyboard */,
 				192366502165D0DB0043F9BB /* ExerciseViewController.swift */,
+				192366582165E2E40043F9BB /* ExerciseCell.swift */,
 			);
 			path = Exercise;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				190F74AE213E34700038234A /* NSObject+.swift in Sources */,
 				1947C57C214F9E5F00BF6521 /* FruitResponse.swift in Sources */,
 				1947C574214F2F3900BF6521 /* DetailStandardTipCell.swift in Sources */,
+				192366592165E2E40043F9BB /* ExerciseCell.swift in Sources */,
 				19A76F732161B69500C7C05F /* AlertView.swift in Sources */,
 				190F74A6213E33850038234A /* UIViewController+.swift in Sources */,
 				1947C570214F2F2600BF6521 /* DetailImageCell.swift in Sources */,

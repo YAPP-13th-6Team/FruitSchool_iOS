@@ -29,11 +29,7 @@ class ChapterCell: UICollectionViewCell {
     }
     
     func setProperties(_ object: FruitListResponse.Data) {
-        let myGrade = UserDefaults.standard.integer(forKey: "grade")
-        if myGrade < object.grade {
-            alpha = 0.5
-            isUserInteractionEnabled = false
-        }
+        alpha = 0.5
         nameLabel.text = object.title
     }
 }
