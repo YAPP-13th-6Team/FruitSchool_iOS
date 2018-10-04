@@ -101,9 +101,11 @@ extension ChapterViewController: UICollectionViewDataSource {
 extension ChapterViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        guard let next = UIViewController.instantiate(storyboard: "Detail", identifier: "DetailViewController") as? DetailViewController else { return }
-        next.id = fruits[indexPath.item].id
-        self.navigationController?.pushViewController(next, animated: true)
+        // 셀 활성화시 Detail로, 비활성화시 Exercise로
+        
+//        guard let next = UIViewController.instantiate(storyboard: "Detail", identifier: "DetailViewController") as? DetailViewController else { return }
+//        next.id = fruits[indexPath.item].id
+//        self.navigationController?.pushViewController(next, animated: true)
     }
 }
 

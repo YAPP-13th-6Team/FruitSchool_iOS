@@ -25,6 +25,8 @@
 		192366492165AF390043F9BB /* FruitListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192366482165AF390043F9BB /* FruitListResponse.swift */; };
 		1923664B2165B6BE0043F9BB /* ExamResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1923664A2165B6BE0043F9BB /* ExamResponse.swift */; };
 		1923664D2165BF170043F9BB /* QuizResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1923664C2165BF170043F9BB /* QuizResponse.swift */; };
+		1923664F2165D0CD0043F9BB /* Exercise.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1923664E2165D0CD0043F9BB /* Exercise.storyboard */; };
+		192366512165D0DB0043F9BB /* ExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192366502165D0DB0043F9BB /* ExerciseViewController.swift */; };
 		1947C55D214F27B800BF6521 /* Chapter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1947C55C214F27B800BF6521 /* Chapter.storyboard */; };
 		1947C55F214F27C000BF6521 /* ChapterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C55E214F27C000BF6521 /* ChapterViewController.swift */; };
 		1947C562214F2B7800BF6521 /* ChapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C561214F2B7800BF6521 /* ChapterCell.swift */; };
@@ -88,6 +90,8 @@
 		192366482165AF390043F9BB /* FruitListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitListResponse.swift; sourceTree = "<group>"; };
 		1923664A2165B6BE0043F9BB /* ExamResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamResponse.swift; sourceTree = "<group>"; };
 		1923664C2165BF170043F9BB /* QuizResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResponse.swift; sourceTree = "<group>"; };
+		1923664E2165D0CD0043F9BB /* Exercise.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Exercise.storyboard; sourceTree = "<group>"; };
+		192366502165D0DB0043F9BB /* ExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewController.swift; sourceTree = "<group>"; };
 		1947C55C214F27B800BF6521 /* Chapter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chapter.storyboard; sourceTree = "<group>"; };
 		1947C55E214F27C000BF6521 /* ChapterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterViewController.swift; sourceTree = "<group>"; };
 		1947C561214F2B7800BF6521 /* ChapterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterCell.swift; sourceTree = "<group>"; };
@@ -211,7 +215,7 @@
 				19784246215FCA0500D53F48 /* Book */,
 				19784247215FCA0E00D53F48 /* Chapter */,
 				1947C560214F281F00BF6521 /* Promotion Review */,
-				19784249215FD0A200D53F48 /* Quiz */,
+				19784249215FD0A200D53F48 /* Exercise */,
 				1947C563214F2CFF00BF6521 /* Detail */,
 				19784241215FC9B000D53F48 /* Community */,
 				19784237215FBEFA00D53F48 /* MyPage */,
@@ -338,11 +342,13 @@
 			path = Chapter;
 			sourceTree = "<group>";
 		};
-		19784249215FD0A200D53F48 /* Quiz */ = {
+		19784249215FD0A200D53F48 /* Exercise */ = {
 			isa = PBXGroup;
 			children = (
+				1923664E2165D0CD0043F9BB /* Exercise.storyboard */,
+				192366502165D0DB0043F9BB /* ExerciseViewController.swift */,
 			);
-			path = Quiz;
+			path = Exercise;
 			sourceTree = "<group>";
 		};
 		19E274C22144D6EB00E2F6D2 /* Start */ = {
@@ -463,6 +469,7 @@
 				1947C588214FBF4A00BF6521 /* CertificateView.xib in Resources */,
 				190FC3C5213A689D00DD333F /* LaunchScreen.storyboard in Resources */,
 				19A76F752161B6F600C7C05F /* AlertView.xib in Resources */,
+				1923664F2165D0CD0043F9BB /* Exercise.storyboard in Resources */,
 				191F024A2157E92F008EA81C /* Main.storyboard in Resources */,
 				190FC3C2213A689D00DD333F /* Assets.xcassets in Resources */,
 				1947C55D214F27B800BF6521 /* Chapter.storyboard in Resources */,
@@ -545,6 +552,7 @@
 				190F74B0213E34B00038234A /* UIAlertController+.swift in Sources */,
 				190F74AC213E340F0038234A /* UIView+.swift in Sources */,
 				1978423B215FBF1600D53F48 /* MyPageViewController.swift in Sources */,
+				192366512165D0DB0043F9BB /* ExerciseViewController.swift in Sources */,
 				192366492165AF390043F9BB /* FruitListResponse.swift in Sources */,
 				190983CE215672EB00E2461A /* PromotionReviewCell.swift in Sources */,
 				190983CC2156723B00E2461A /* PromotionReviewViewController.swift in Sources */,
