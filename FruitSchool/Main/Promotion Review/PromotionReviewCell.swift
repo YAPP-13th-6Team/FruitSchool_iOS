@@ -15,45 +15,24 @@ class PromotionReviewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         quizView = UIView.instantiateFromXib(xibName: "QuizView") as? QuizView
-        quizView.delegate = self
         self.addSubview(quizView)
         quizView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            quizView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            quizView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
-            quizView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            quizView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16)
-            //quizView.heightAnchor.constraint(equalToConstant: self.frame.width)
+            quizView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            quizView.topAnchor.constraint(equalTo: topAnchor),
+            quizView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            quizView.bottomAnchor.constraint(equalTo: bottomAnchor)
             ])
     }
     
     override func prepareForReuse() {
+        super.prepareForReuse()
         quizView = nil
     }
     
-    func setProperties() {
-        
-    }
-}
-
-extension PromotionReviewCell: QuizViewDelegate {
-    var title: String {
-        return ""
-    }
-    
-    var answers: [String] {
-        return [String]()
-    }
-    
-    var number: Int {
-        return 1
-    }
-    
-    var answerIndex: Int {
-        return 0
-    }
-    
-    func didTouchUpQuizButtons(_ sender: UIButton) {
-        
+    func setProperties(_ object: QuizResponse?, at item: Int, handler: @escaping () -> Void) {
+        guard let object = object else { return }
+        quizView.handler = handler
+        quizView.setProperties(object, at: item)
     }
 }

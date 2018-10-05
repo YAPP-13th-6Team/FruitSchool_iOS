@@ -57,7 +57,7 @@ extension CertificateViewController: CertificateViewDelegate {
             }
             guard let response = response else { return }
             for data in response.data {
-                Record.add(id: data.id, grade: data.grade)
+                Record.add(id: data.id, title: data.title, grade: data.grade)
             }
             IndicatorView.shared.hideIndicator()
             DispatchQueue.main.async { [weak self] in

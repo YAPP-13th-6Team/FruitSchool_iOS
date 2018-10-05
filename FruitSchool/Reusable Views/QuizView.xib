@@ -225,9 +225,12 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="answer1Button" destination="k4Z-xt-8GI" id="fGu-Df-zYj"/>
+                <outlet property="answer2Button" destination="uWv-zi-sOH" id="3Ad-ZO-lNF"/>
+                <outlet property="answer3Button" destination="A85-BG-hWz" id="XRO-65-ZVP"/>
+                <outlet property="answer4Button" destination="01h-Gu-YTB" id="Kpn-Qp-hyY"/>
                 <outlet property="imageView" destination="Mwz-WO-9YC" id="zte-l5-XYm"/>
                 <outlet property="numberLabel" destination="3BU-uN-Oc7" id="ZGz-VW-f2m"/>
-                <outlet property="stackView" destination="sq3-Qw-sPq" id="1g9-GZ-jXC"/>
                 <outlet property="titleLabel" destination="3s4-a8-ivz" id="QQR-zk-yHc"/>
             </connections>
             <point key="canvasLocation" x="138.40000000000001" y="46.776611694152926"/>

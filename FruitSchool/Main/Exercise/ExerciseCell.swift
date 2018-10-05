@@ -15,8 +15,8 @@ class ExerciseCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         quizView = UIView.instantiateFromXib(xibName: "QuizView") as? QuizView
-        quizView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(quizView)
+        quizView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             quizView.topAnchor.constraint(equalTo: topAnchor),
             quizView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -30,8 +30,9 @@ class ExerciseCell: UICollectionViewCell {
         quizView = nil
     }
     
-    func setProperties(_ object: QuizResponse?, at item: Int) {
+    func setProperties(_ object: QuizResponse?, at item: Int, handler: @escaping () -> Void) {
         guard let object = object else { return }
+        quizView.handler = handler
         quizView.setProperties(object, at: item)
     }
 }

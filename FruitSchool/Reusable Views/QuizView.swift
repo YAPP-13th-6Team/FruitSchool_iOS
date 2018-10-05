@@ -8,31 +8,13 @@
 
 import UIKit
 
-protocol QuizViewDelegate: class {
-    func didTouchUpQuizButtons(_ sender: UIButton)
-}
+//protocol QuizViewDelegate: class {
+//    func didTouchUpQuizButtons(_ sender: UIButton)
+//}
 
 class QuizView: UIView {
     
-    weak var delegate: QuizViewDelegate?
-    var firstLineStackView: UIStackView! {
-        return stackView.arrangedSubviews.first as? UIStackView
-    }
-    var secondLineStackView: UIStackView! {
-        return stackView.arrangedSubviews.last as? UIStackView
-    }
-    var answer1Button: UIButton! {
-        return firstLineStackView.arrangedSubviews.first as? UIButton
-    }
-    var answer2Button: UIButton! {
-        return firstLineStackView.arrangedSubviews.last as? UIButton
-    }
-    var answer3Button: UIButton! {
-        return secondLineStackView.arrangedSubviews.first as? UIButton
-    }
-    var answer4Button: UIButton! {
-        return secondLineStackView.arrangedSubviews.last as? UIButton
-    }
+//    weak var delegate: QuizViewDelegate?
     var buttons: [UIButton] {
         return [answer1Button, answer2Button, answer3Button, answer4Button]
     }
@@ -41,10 +23,14 @@ class QuizView: UIView {
     }
     var answer: String = ""
     var answers: [String] = []
-    @IBOutlet weak var stackView: UIStackView!
+    var handler: (() -> Void)?
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var answer1Button: QuizButton!
+    @IBOutlet weak var answer2Button: QuizButton!
+    @IBOutlet weak var answer3Button: QuizButton!
+    @IBOutlet weak var answer4Button: QuizButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -55,14 +41,11 @@ class QuizView: UIView {
     func setProperties(_ object: QuizResponse, at item: Int) {
         numberLabel.text = "\(item + 1)."
         titleLabel.text = object.title
-        self.answer = object.correctAnswer
-        var answers = [String]()
-        answers.append(object.correctAnswer)
-        for answer in object.incorrectAnswers {
-            answers.append(answer)
-        }
+        var answers = [[object.correctAnswer], object.incorrectAnswers].flatMap { $0 }
         answers.shuffle()
         self.answers = answers
+        self.answer = object.correctAnswer
+        print(answer, answers)
         answer1Button.setTitle(answers[0], for: [])
         answer2Button.setTitle(answers[1], for: [])
         answer3Button.setTitle(answers[2], for: [])
@@ -92,6 +75,6 @@ class QuizView: UIView {
             button.isSelected = false
         }
         sender.isSelected = true
-        delegate?.didTouchUpQuizButtons(sender)
+        handler?()
     }
 }

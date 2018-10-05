@@ -10,7 +10,11 @@ import UIKit
 
 class IndicatorView: UIView {
 
-    static let shared = UIView.instantiateFromXib(xibName: "IndicatorView") as? IndicatorView ?? IndicatorView()
+    private static let _shared = UIView.instantiateFromXib(xibName: "IndicatorView") as? IndicatorView
+    static let shared: IndicatorView = {
+        guard let shared = _shared else { return IndicatorView() }
+        return shared
+    }()
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     

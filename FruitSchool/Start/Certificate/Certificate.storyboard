@@ -23,7 +23,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Ktg-HZ-cVG" firstAttribute="height" secondItem="RGm-qT-gYU" secondAttribute="height" multiplier="0.8" id="15d-1V-dFq"/>
                             <constraint firstItem="Ktg-HZ-cVG" firstAttribute="width" secondItem="RGm-qT-gYU" secondAttribute="width" multiplier="0.8" id="LcT-oK-qen"/>
