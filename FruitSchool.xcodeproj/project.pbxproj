@@ -233,6 +233,44 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		1923665F216750F40043F9BB /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				19EC61C92152431B00A80DA4 /* QuizView.xib */,
+				19EC61CB2152432400A80DA4 /* QuizView.swift */,
+				19EC61CD215243B800A80DA4 /* QuizButton.swift */,
+			);
+			name = Quiz;
+			path = "뼈ㅑㅋ";
+			sourceTree = "<group>";
+		};
+		19236660216750FF0043F9BB /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				195F266F215BA44200A6EED4 /* ResultView.xib */,
+				195F2671215BA45000A6EED4 /* ResultView.swift */,
+			);
+			path = Result;
+			sourceTree = "<group>";
+		};
+		19236661216751070043F9BB /* Custom Alert */ = {
+			isa = PBXGroup;
+			children = (
+				19A76F742161B6F600C7C05F /* AlertView.xib */,
+				19A76F722161B69500C7C05F /* AlertView.swift */,
+			);
+			path = "Custom Alert";
+			sourceTree = "<group>";
+		};
+		19236662216751180043F9BB /* Activity Indicator */ = {
+			isa = PBXGroup;
+			children = (
+				1923665A216662860043F9BB /* IndicatorView.xib */,
+				1923665C216662950043F9BB /* IndicatorView.swift */,
+			);
+			path = "Activity Indicator";
+			sourceTree = "<group>";
+		};
 		1947C560214F281F00BF6521 /* Promotion Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,15 +330,10 @@
 		1947C586214FBF3500BF6521 /* Reusable Views */ = {
 			isa = PBXGroup;
 			children = (
-				19EC61C92152431B00A80DA4 /* QuizView.xib */,
-				19EC61CB2152432400A80DA4 /* QuizView.swift */,
-				19EC61CD215243B800A80DA4 /* QuizButton.swift */,
-				195F266F215BA44200A6EED4 /* ResultView.xib */,
-				195F2671215BA45000A6EED4 /* ResultView.swift */,
-				19A76F742161B6F600C7C05F /* AlertView.xib */,
-				19A76F722161B69500C7C05F /* AlertView.swift */,
-				1923665A216662860043F9BB /* IndicatorView.xib */,
-				1923665C216662950043F9BB /* IndicatorView.swift */,
+				1923665F216750F40043F9BB /* Quiz */,
+				19236660216750FF0043F9BB /* Result */,
+				19236661216751070043F9BB /* Custom Alert */,
+				19236662216751180043F9BB /* Activity Indicator */,
 			);
 			path = "Reusable Views";
 			sourceTree = "<group>";

@@ -30,7 +30,7 @@ class ExerciseViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        IndicatorView.shared.showIndicator(to: view)
+        IndicatorView.shared.showIndicator(message: "Loading...")
         API.requestExercises(by: id) { response, statusCode, error in
             IndicatorView.shared.hideIndicator()
             if let error = error {

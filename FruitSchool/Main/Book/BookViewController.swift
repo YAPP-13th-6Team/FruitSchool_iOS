@@ -21,6 +21,7 @@ class BookViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         slider.setThumbImage(UIImage(), for: [])
         percentLabel = UILabel()
         percentLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -145,7 +146,7 @@ private extension BookViewController {
         } else {
             NSLayoutConstraint.activate([
                 percentLabel.topAnchor.constraint(equalTo: slider.bottomAnchor, constant: 20),
-                NSLayoutConstraint(item: percentLabel, attribute: .centerX, relatedBy: .equal, toItem: slider, attribute: .trailing, multiplier: CGFloat(slider.value / slider.maximumValue), constant: 0)
+                NSLayoutConstraint(item: percentLabel, attribute: .centerX, relatedBy: .equal, toItem: slider, attribute: .trailing, multiplier: CGFloat(slider.value / slider.maximumValue), constant: CGFloat(32 - 32 * (slider.value / slider.maximumValue)))
                 ])
             percentLabel.text = "\(Int(slider.value * 100 / slider.maximumValue))%"
         }

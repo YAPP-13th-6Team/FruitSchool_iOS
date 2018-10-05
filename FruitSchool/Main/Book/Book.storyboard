@@ -59,7 +59,7 @@
                                     <outlet property="delegate" destination="UiC-e1-WnX" id="HxG-z4-PQQ"/>
                                 </connections>
                             </collectionView>
-                            <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="bq3-X2-038">
+                            <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="7" translatesAutoresizingMaskIntoConstraints="NO" id="bq3-X2-038">
                                 <rect key="frame" x="30" y="383" width="315" height="31"/>
                             </slider>
                         </subviews>

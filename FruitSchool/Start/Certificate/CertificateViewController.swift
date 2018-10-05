@@ -47,7 +47,7 @@ extension CertificateViewController: CertificateViewDelegate {
         userDefaults.set(0, forKey: "grade")
         guard let next = UIViewController.instantiate(storyboard: "Main", identifier: MainTabBarController.classNameToString) else { return }
         next.modalTransitionStyle = .flipHorizontal
-        IndicatorView.shared.showIndicator(to: view)
+        IndicatorView.shared.showIndicator(message: "Loading...")
         API.requestFruitList { response, statusCode, error in
             if let error = error {
                 DispatchQueue.main.async {

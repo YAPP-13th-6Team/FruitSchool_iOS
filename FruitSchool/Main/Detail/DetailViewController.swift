@@ -24,12 +24,11 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        IndicatorView.shared.showIndicator(to: view)
+        IndicatorView.shared.showIndicator(message: "Loading...")
         API.requestFruit(by: id) { response, statusCode, error in
             IndicatorView.shared.hideIndicator()
             if let error = error {
@@ -76,7 +75,6 @@ extension DetailViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers[section], for: indexPath)
         switch section {
         case 0:
-            (cell as? DetailImageCell)?.delegate = self
             (cell as? DetailImageCell)?.setProperties(fruit)
         case 1:
             (cell as? DetailStandardTipCell)?.setProperties(fruit?.standardTip, at: indexPath.row)
@@ -181,11 +179,5 @@ extension DetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
-    }
-}
-
-extension DetailViewController: DetailImageCellDelegate {
-    func didTouchUpBackButton(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
     }
 }

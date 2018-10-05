@@ -16,6 +16,7 @@ class IndicatorView: UIView {
         return shared
     }()
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     override func awakeFromNib() {
@@ -23,13 +24,14 @@ class IndicatorView: UIView {
         contentView.layer.cornerRadius = 10
     }
     
-    func showIndicator(to view: UIView) {
+    func showIndicator(message: String? = nil) {
         DispatchQueue.main.async { [weak self] in
             guard let `self` = self else { return }
-            self.frame = view.bounds
+            self.frame = UIScreen.main.bounds
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            self.messageLabel.text = message
             self.activityIndicatorView.startAnimating()
-            view.addSubview(self)
+            UIApplication.shared.keyWindow?.addSubview(self)
         }
     }
     
