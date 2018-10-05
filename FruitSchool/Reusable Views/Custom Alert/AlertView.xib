@@ -27,9 +27,9 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4e6-7c-iH0">
                             <rect key="frame" x="16" y="250" width="120" height="30"/>
-                            <state key="normal" title="no"/>
+                            <state key="normal" title="아니오"/>
                         </button>
-                        <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Vs1-iA-QfM">
+                        <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Vs1-iA-QfM">
                             <rect key="frame" x="75" y="75" width="150" height="150"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Vs1-iA-QfM" secondAttribute="height" id="UaY-CZ-782"/>
@@ -43,7 +43,7 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMp-TN-Lk3">
                             <rect key="frame" x="164" y="250" width="120" height="30"/>
-                            <state key="normal" title="yes"/>
+                            <state key="normal" title="예"/>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -69,7 +69,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="ofp-kW-0og" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="LgE-v7-zww"/>
                 <constraint firstItem="ofp-kW-0og" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cPC-LT-wwP"/>

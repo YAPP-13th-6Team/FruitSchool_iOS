@@ -28,7 +28,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sH7-2n-bnl">
                             <rect key="frame" x="20" y="460.5" width="260" height="53.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="title"/>
+                            <state key="normal" title="확인"/>
                         </button>
                         <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9vP-jB-PSV">
                             <rect key="frame" x="75" y="192" width="150" height="150"/>
@@ -36,8 +36,8 @@
                                 <constraint firstAttribute="width" secondItem="9vP-jB-PSV" secondAttribute="height" id="Uk7-rW-tPS"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otv-pL-SqC">
-                            <rect key="frame" x="129" y="256.5" width="42" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otv-pL-SqC">
+                            <rect key="frame" x="107" y="256.5" width="86" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -60,7 +60,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="axU-Jt-ZAM" firstAttribute="width" secondItem="a6l-5d-4ZD" secondAttribute="width" multiplier="0.8" id="8NK-w5-weq"/>
                 <constraint firstItem="axU-Jt-ZAM" firstAttribute="centerX" secondItem="a6l-5d-4ZD" secondAttribute="centerX" id="XcL-s0-Vgu"/>
@@ -69,10 +69,9 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="dvE-vh-PXi"/>
             <connections>
-                <outlet property="backgroundView" destination="axU-Jt-ZAM" id="d2s-3h-2wg"/>
                 <outlet property="button" destination="sH7-2n-bnl" id="ogL-dc-Pia"/>
+                <outlet property="contentView" destination="axU-Jt-ZAM" id="xDa-Lj-kzz"/>
                 <outlet property="descriptionLabel" destination="otv-pL-SqC" id="EOv-na-jNa"/>
-                <outlet property="startButton" destination="sH7-2n-bnl" id="MeC-pW-Uty"/>
                 <outlet property="titleLabel" destination="cg1-mQ-EvC" id="ZdT-07-sdC"/>
             </connections>
             <point key="canvasLocation" x="28" y="79.610194902548727"/>

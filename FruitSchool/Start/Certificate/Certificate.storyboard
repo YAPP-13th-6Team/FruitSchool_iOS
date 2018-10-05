@@ -17,9 +17,24 @@
                     <view key="view" contentMode="scaleToFill" id="RGm-qT-gYU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ktg-HZ-cVG">
+                                <rect key="frame" x="37.5" y="66.5" width="300" height="534"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ktg-HZ-cVG" firstAttribute="height" secondItem="RGm-qT-gYU" secondAttribute="height" multiplier="0.8" id="15d-1V-dFq"/>
+                            <constraint firstItem="Ktg-HZ-cVG" firstAttribute="width" secondItem="RGm-qT-gYU" secondAttribute="width" multiplier="0.8" id="LcT-oK-qen"/>
+                            <constraint firstItem="Ktg-HZ-cVG" firstAttribute="centerX" secondItem="RGm-qT-gYU" secondAttribute="centerX" id="mag-AN-Zlb"/>
+                            <constraint firstItem="Ktg-HZ-cVG" firstAttribute="centerY" secondItem="RGm-qT-gYU" secondAttribute="centerY" id="wgU-LH-5Xu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="aAp-SN-eqW"/>
                     </view>
+                    <connections>
+                        <outlet property="contentView" destination="Ktg-HZ-cVG" id="Sky-pJ-pn7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AaZ-CW-RAm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
