@@ -162,7 +162,7 @@ extension DetailViewController: UITableViewDelegate {
         case 1, 2:
             return UITableViewAutomaticDimension
         case 3:
-            return 200
+            return 269
         default:
             return 0
         }
