@@ -27,7 +27,13 @@ class PromotionReviewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        quizView = nil
+        quizView.imageView.image = nil
+        quizView.numberLabel.text = nil
+        quizView.titleLabel.text = nil
+        quizView[0].setTitle(nil, for: [])
+        quizView[1].setTitle(nil, for: [])
+        quizView[2].setTitle(nil, for: [])
+        quizView[3].setTitle(nil, for: [])
     }
     
     func setProperties(_ object: QuizResponse?, at item: Int, handler: @escaping () -> Void) {

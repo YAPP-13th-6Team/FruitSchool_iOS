@@ -15,6 +15,7 @@ class BookViewController: UIViewController {
     var searchBar = UISearchBar()
     var searchButton: UIBarButtonItem!
     var percentLabel: UILabel!
+    var currentCellIndex: Int = 0
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -33,6 +34,12 @@ class BookViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         resetViews()
+    }
+    
+    @objc func didTouchUpPromotionReviewButton(_ sender: UIButton) {
+        guard let next = UIViewController.instantiate(storyboard: "PromotionReview", identifier: PromotionReviewViewController.classNameToString) as? PromotionReviewViewController else { return }
+        next.grade = currentCellIndex
+        navigationController?.pushViewController(next, animated: true)
     }
 }
 // MARK: - Button Touch Event
@@ -104,8 +111,8 @@ extension BookViewController: UICollectionViewDelegateFlowLayout {
 private extension BookViewController {
     func resetViews() {
         setSliderValues()
-        view.viewWithTag(100)?.removeFromSuperview()
         setLabelPositionAndText()
+        showPromotionReviewButton()
     }
     
     func setSliderValues() {
@@ -114,6 +121,7 @@ private extension BookViewController {
         visibleRect.size = collectionView.bounds.size
         let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
         guard let index = collectionView.indexPathForItem(at: visiblePoint)?.item else { return }
+        currentCellIndex = index
         let filtered = record.filter("grade = %d", index)
         let count = filtered.count
         var passedCount = 0
@@ -125,6 +133,7 @@ private extension BookViewController {
     }
     
     func setLabelPositionAndText() {
+        view.viewWithTag(100)?.removeFromSuperview()
         percentLabel.tag = 100
         view.addSubview(percentLabel)
         if slider.value == 0 {
@@ -140,6 +149,24 @@ private extension BookViewController {
                 ])
             percentLabel.text = "\(Int(slider.value * 100 / slider.maximumValue))%"
         }
-        
+    }
+    
+    func showPromotionReviewButton() {
+        view.viewWithTag(101)?.removeFromSuperview()
+        if slider.value == slider.maximumValue {
+            let button = UIButton(type: .system)
+            button.tag = 101
+            button.setTitle("승급 심사", for: [])
+            //button.setTitleColor(.black, for: .normal)
+            button.addTarget(self, action: #selector(didTouchUpPromotionReviewButton(_:)), for: .touchUpInside)
+            button.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(button)
+            NSLayoutConstraint.activate([
+                button.topAnchor.constraint(equalTo: percentLabel.bottomAnchor, constant: 20),
+                button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
+                button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+                button.heightAnchor.constraint(equalToConstant: 40)
+                ])
+        }
     }
 }

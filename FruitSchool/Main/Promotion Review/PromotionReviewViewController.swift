@@ -45,7 +45,7 @@ class PromotionReviewViewController: UIViewController {
         }
     }
 }
-//MARK: - 채점 로직
+// MARK: - 채점 로직
 extension PromotionReviewViewController {
     private func executeScoring() {
         var checkedQuizCount = 0
@@ -78,7 +78,7 @@ extension PromotionReviewViewController {
                 guard let resultView = UIView.instantiateFromXib(xibName: "ResultView") as? ResultView else { return }
                 resultView.frame = self.view.bounds
                 resultView.titleLabel.text = "결과"
-                var message = "\(score) / \(self.quizsCount)"
+                let message = "\(score) / \(self.quizsCount)"
                 if score == self.quizsCount {
                     resultView.descriptionLabel.text = message + "\n통과"
                     resultView.handler = {
@@ -122,7 +122,7 @@ extension PromotionReviewViewController: UICollectionViewDelegate {
 
 extension PromotionReviewViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.bounds.width - 29
+        let width = collectionView.bounds.width - 20
         return CGSize(width: width, height: width * 1.4)
     }
     

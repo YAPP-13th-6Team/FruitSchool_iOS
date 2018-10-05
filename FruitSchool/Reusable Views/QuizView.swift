@@ -8,13 +8,8 @@
 
 import UIKit
 
-//protocol QuizViewDelegate: class {
-//    func didTouchUpQuizButtons(_ sender: UIButton)
-//}
-
 class QuizView: UIView {
     
-//    weak var delegate: QuizViewDelegate?
     var buttons: [UIButton] {
         return [answer1Button, answer2Button, answer3Button, answer4Button]
     }
@@ -45,7 +40,6 @@ class QuizView: UIView {
         answers.shuffle()
         self.answers = answers
         self.answer = object.correctAnswer
-        print(answer, answers)
         answer1Button.setTitle(answers[0], for: [])
         answer2Button.setTitle(answers[1], for: [])
         answer3Button.setTitle(answers[2], for: [])
