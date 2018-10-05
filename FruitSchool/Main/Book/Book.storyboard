@@ -59,18 +59,18 @@
                                     <outlet property="delegate" destination="UiC-e1-WnX" id="HxG-z4-PQQ"/>
                                 </connections>
                             </collectionView>
-                            <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="bq3-X2-038">
-                                <rect key="frame" x="14" y="371" width="347" height="31"/>
+                            <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="7" translatesAutoresizingMaskIntoConstraints="NO" id="bq3-X2-038">
+                                <rect key="frame" x="30" y="383" width="315" height="31"/>
                             </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="9by-d2-Bdc" firstAttribute="top" secondItem="r5v-UU-R6S" secondAttribute="top" constant="20" id="3Cp-Nf-V4o"/>
-                            <constraint firstItem="bq3-X2-038" firstAttribute="top" secondItem="9by-d2-Bdc" secondAttribute="bottom" constant="8" id="8eY-ct-NE3"/>
-                            <constraint firstItem="bq3-X2-038" firstAttribute="leading" secondItem="r5v-UU-R6S" secondAttribute="leading" constant="16" id="Cbe-5H-3mx"/>
+                            <constraint firstItem="bq3-X2-038" firstAttribute="top" secondItem="9by-d2-Bdc" secondAttribute="bottom" constant="20" id="8eY-ct-NE3"/>
+                            <constraint firstItem="bq3-X2-038" firstAttribute="leading" secondItem="r5v-UU-R6S" secondAttribute="leading" constant="32" id="Cbe-5H-3mx"/>
                             <constraint firstItem="r5v-UU-R6S" firstAttribute="trailing" secondItem="9by-d2-Bdc" secondAttribute="trailing" constant="16" id="KIW-GW-cqu"/>
                             <constraint firstItem="9by-d2-Bdc" firstAttribute="leading" secondItem="r5v-UU-R6S" secondAttribute="leading" constant="16" id="kt3-B0-s5e"/>
-                            <constraint firstItem="r5v-UU-R6S" firstAttribute="trailing" secondItem="bq3-X2-038" secondAttribute="trailing" constant="16" id="mpI-G4-GPG"/>
+                            <constraint firstItem="r5v-UU-R6S" firstAttribute="trailing" secondItem="bq3-X2-038" secondAttribute="trailing" constant="32" id="mpI-G4-GPG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="r5v-UU-R6S"/>
                     </view>

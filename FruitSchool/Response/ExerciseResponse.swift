@@ -16,6 +16,6 @@ struct ExerciseResponse: Codable {
             case title, quizs
         }
     }
-    let messsage: String
-    let data: [Data]
+    let message: String
+    let data: Data
 }

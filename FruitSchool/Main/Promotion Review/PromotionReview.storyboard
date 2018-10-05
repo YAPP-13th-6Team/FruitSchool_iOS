@@ -18,11 +18,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Tvc-np-WQi">
-                                <rect key="frame" x="0.0" y="108.5" width="375" height="450"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Tvc-np-WQi">
+                                <rect key="frame" x="16" y="93.5" width="343" height="480"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Tvc-np-WQi" secondAttribute="height" multiplier="1:1.2" id="ULg-zN-8kc"/>
+                                    <constraint firstAttribute="width" secondItem="Tvc-np-WQi" secondAttribute="height" multiplier="1:1.4" id="ULg-zN-8kc"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6zi-H5-Bim">
                                     <size key="itemSize" width="50" height="50"/>
@@ -48,9 +48,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Tvc-np-WQi" firstAttribute="leading" secondItem="1Vl-pK-Eku" secondAttribute="leading" id="3eI-3Z-7HY"/>
+                            <constraint firstItem="Tvc-np-WQi" firstAttribute="leading" secondItem="1Vl-pK-Eku" secondAttribute="leading" constant="16" id="3eI-3Z-7HY"/>
                             <constraint firstItem="Tvc-np-WQi" firstAttribute="centerX" secondItem="bIb-DR-U4T" secondAttribute="centerX" id="99k-ly-PVH"/>
-                            <constraint firstItem="1Vl-pK-Eku" firstAttribute="trailing" secondItem="Tvc-np-WQi" secondAttribute="trailing" id="YHR-9n-fiw"/>
+                            <constraint firstItem="1Vl-pK-Eku" firstAttribute="trailing" secondItem="Tvc-np-WQi" secondAttribute="trailing" constant="16" id="YHR-9n-fiw"/>
                             <constraint firstItem="Tvc-np-WQi" firstAttribute="centerY" secondItem="bIb-DR-U4T" secondAttribute="centerY" id="ffI-Ef-8xh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Vl-pK-Eku"/>
