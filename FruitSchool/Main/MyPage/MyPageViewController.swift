@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import KakaoOpenSDK
 
 class MyPageViewController: UIViewController {
 
     let cellIdentifiers = ["userInfoCell", "myPostCell", "myCommentCell", "myFavoritePostCell"]
-    let sectionTitles = ["작성 글", "댓글", "좋아요"]
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,22 +23,23 @@ class MyPageViewController: UIViewController {
     
 extension MyPageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        switch indexPath.section {
+        let section = indexPath.section
+        
+        switch section {
         case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "userInfoCell", for: indexPath) as? UserInfoCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers[section], for: indexPath) as? UserInfoCell else { return UITableViewCell() }
 
             return cell
         case 1:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "myPostCell", for: indexPath) as? MyPostCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers[section], for: indexPath) as? MyPostCell else { return UITableViewCell() }
             return cell
      
         case 2:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "myCommentCell", for: indexPath) as? MyCommentCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers[section], for: indexPath) as? MyCommentCell else { return UITableViewCell() }
             return cell
          
         case 3:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "myFavoritePostCell", for: indexPath) as? MyFavoritePostCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers[section], for: indexPath) as? MyFavoritePostCell else { return UITableViewCell() }
             return cell
             
         default:
@@ -67,6 +68,7 @@ extension MyPageViewController: UITableViewDataSource {
 extension MyPageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
         switch indexPath.section {
         case 0:
             print("0")
