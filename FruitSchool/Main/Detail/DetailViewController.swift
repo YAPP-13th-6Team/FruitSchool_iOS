@@ -22,6 +22,9 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logo_noncircle"))
         IndicatorView.shared.showIndicator(message: "Loading...")
         API.requestFruit(by: id) { response, statusCode, error in
             IndicatorView.shared.hideIndicator()
