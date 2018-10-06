@@ -12,7 +12,7 @@ class Network {
     static func get(_ urlPath: String, successHandler: ((Data, Int) -> Void)? = nil, errorHandler: ((Error) -> Void)? = nil) {
         let session = URLSession(configuration: .default)
         guard let url = URL(string: urlPath) else { return }
-        let task = session.dataTask(with: url) { (data, response, error) in
+        let task = session.dataTask(with: url) { data, response, error in
             if let error = error {
                 errorHandler?(error)
                 session.finishTasksAndInvalidate()

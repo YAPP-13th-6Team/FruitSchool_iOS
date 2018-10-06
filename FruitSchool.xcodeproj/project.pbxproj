@@ -61,6 +61,7 @@
 		19A76F732161B69500C7C05F /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A76F722161B69500C7C05F /* AlertView.swift */; };
 		19A76F752161B6F600C7C05F /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A76F742161B6F600C7C05F /* AlertView.xib */; };
 		19A76F7B2162333200C7C05F /* ExerciseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A76F7A2162333200C7C05F /* ExerciseResponse.swift */; };
+		19DE4AA62168F5FB000C412A /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE4AA52168F5FB000C412A /* Quiz.swift */; };
 		19E274C72144D74E00E2F6D2 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274C62144D74E00E2F6D2 /* Network.swift */; };
 		19E274C92144D75300E2F6D2 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274C82144D75300E2F6D2 /* API.swift */; };
 		19E274CB2144D93F00E2F6D2 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19E274CA2144D93F00E2F6D2 /* Login.storyboard */; };
@@ -134,6 +135,7 @@
 		19A76F722161B69500C7C05F /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		19A76F742161B6F600C7C05F /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		19A76F7A2162333200C7C05F /* ExerciseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseResponse.swift; sourceTree = "<group>"; };
+		19DE4AA52168F5FB000C412A /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		19E274C62144D74E00E2F6D2 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		19E274C82144D75300E2F6D2 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		19E274CA2144D93F00E2F6D2 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 		1947C564214F2DB000BF6521 /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				19DE4AA52168F5FB000C412A /* Quiz.swift */,
 				1923664C2165BF170043F9BB /* QuizResponse.swift */,
 				1947C57B214F9E5F00BF6521 /* FruitResponse.swift */,
 				192366482165AF390043F9BB /* FruitListResponse.swift */,
@@ -419,8 +422,8 @@
 		19E274C42144D73C00E2F6D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1947C567214F2DC700BF6521 /* Record.swift */,
 				19FCF23F2160FE9600BCC3F7 /* Grade.swift */,
+				1947C567214F2DC700BF6521 /* Record.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 				190F74AE213E34700038234A /* NSObject+.swift in Sources */,
 				1947C57C214F9E5F00BF6521 /* FruitResponse.swift in Sources */,
 				1947C574214F2F3900BF6521 /* DetailStandardTipCell.swift in Sources */,
+				19DE4AA62168F5FB000C412A /* Quiz.swift in Sources */,
 				192366592165E2E40043F9BB /* ExerciseCell.swift in Sources */,
 				19A76F732161B69500C7C05F /* AlertView.swift in Sources */,
 				190F74A6213E33850038234A /* UIViewController+.swift in Sources */,

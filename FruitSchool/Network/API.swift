@@ -15,6 +15,7 @@ enum APIError: Error {
 class API {
     //private static let baseURL = "http://localhost:3000"
     private static let baseURL = "http://13.125.249.84:3000"
+    //private static let baseURL = "http://172.20.10.3:3000"
     private static let jsonDecoder: JSONDecoder = {
         let jsonDecoder = JSONDecoder()
         jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase

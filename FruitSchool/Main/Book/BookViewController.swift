@@ -86,12 +86,12 @@ extension BookViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let myGrade = UserDefaults.standard.integer(forKey: "grade")
-        if myGrade < indexPath.item {
+        if !(0...myGrade).contains(indexPath.item) {
             UIAlertController.presentErrorAlert(to: self, error: "승급심사 보고 오세요")
             return
         }
         guard let next = UIViewController.instantiate(storyboard: "Chapter", identifier: ChapterViewController.classNameToString) as? ChapterViewController else { return }
-        next.grade = UserDefaults.standard.integer(forKey: "grade")
+        next.grade = indexPath.item
         self.navigationController?.pushViewController(next, animated: true)
     }
 }
@@ -160,7 +160,6 @@ private extension BookViewController {
             let button = UIButton(type: .system)
             button.tag = promotionReviewButtonTag
             button.setTitle("승급 심사", for: [])
-            //button.setTitleColor(.black, for: .normal)
             button.addTarget(self, action: #selector(didTouchUpPromotionReviewButton(_:)), for: .touchUpInside)
             button.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(button)
