@@ -24,6 +24,7 @@ class ChapterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = Grade(rawValue: grade)?.expression
         searchBar = UISearchBar()
         searchBar.delegate = self
         searchBar.showsCancelButton = true

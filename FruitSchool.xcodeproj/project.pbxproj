@@ -44,7 +44,6 @@
 		1947C56C214F2E1500BF6521 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C56B214F2E1500BF6521 /* DetailViewController.swift */; };
 		1947C570214F2F2600BF6521 /* DetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C56F214F2F2600BF6521 /* DetailImageCell.swift */; };
 		1947C574214F2F3900BF6521 /* DetailStandardTipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C573214F2F3900BF6521 /* DetailStandardTipCell.swift */; };
-		1947C578214F2FA500BF6521 /* DetailQuizCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C577214F2FA500BF6521 /* DetailQuizCell.swift */; };
 		1947C57C214F9E5F00BF6521 /* FruitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C57B214F9E5F00BF6521 /* FruitResponse.swift */; };
 		1947C57E214FB3FE00BF6521 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C57D214FB3FE00BF6521 /* LoginViewController.swift */; };
 		1947C588214FBF4A00BF6521 /* CertificateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1947C587214FBF4A00BF6521 /* CertificateView.xib */; };
@@ -118,7 +117,6 @@
 		1947C56F214F2F2600BF6521 /* DetailImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageCell.swift; sourceTree = "<group>"; };
 		1947C573214F2F3900BF6521 /* DetailStandardTipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStandardTipCell.swift; sourceTree = "<group>"; };
 		1947C575214F2F9000BF6521 /* DetailNutritionTipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNutritionTipCell.swift; sourceTree = "<group>"; };
-		1947C577214F2FA500BF6521 /* DetailQuizCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailQuizCell.swift; sourceTree = "<group>"; };
 		1947C57B214F9E5F00BF6521 /* FruitResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitResponse.swift; sourceTree = "<group>"; };
 		1947C57D214FB3FE00BF6521 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1947C587214FBF4A00BF6521 /* CertificateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CertificateView.xib; sourceTree = "<group>"; };
@@ -295,7 +293,6 @@
 				1947C56F214F2F2600BF6521 /* DetailImageCell.swift */,
 				1947C573214F2F3900BF6521 /* DetailStandardTipCell.swift */,
 				1947C575214F2F9000BF6521 /* DetailNutritionTipCell.swift */,
-				1947C577214F2FA500BF6521 /* DetailQuizCell.swift */,
 				192366522165D7F30043F9BB /* BackView.swift */,
 				192366532165D7F30043F9BB /* NutritionView.swift */,
 			);
@@ -643,7 +640,6 @@
 				19A76F732161B69500C7C05F /* AlertView.swift in Sources */,
 				190F74A6213E33850038234A /* UIViewController+.swift in Sources */,
 				1947C570214F2F2600BF6521 /* DetailImageCell.swift in Sources */,
-				1947C578214F2FA500BF6521 /* DetailQuizCell.swift in Sources */,
 				19EC61CC2152432400A80DA4 /* QuizView.swift in Sources */,
 				192366552165D7F30043F9BB /* NutritionView.swift in Sources */,
 				1947C57E214FB3FE00BF6521 /* LoginViewController.swift in Sources */,
@@ -785,7 +781,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4U9B5GDBZA;
+				DEVELOPMENT_TEAM = H79MF628K3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -818,7 +814,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4U9B5GDBZA;
+				DEVELOPMENT_TEAM = H79MF628K3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

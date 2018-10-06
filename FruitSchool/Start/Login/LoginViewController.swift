@@ -47,6 +47,7 @@ extension LoginViewController {
                     UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription)
                     return
                 }
+                print(session.token)
                 guard let user = user else { return }
                 guard let id = user.id else { return }
                 let nickname = user.nickname ?? "익명의사용자"

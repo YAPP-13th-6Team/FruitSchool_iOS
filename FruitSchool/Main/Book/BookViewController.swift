@@ -10,6 +10,8 @@ import UIKit
 
 class BookViewController: UIViewController {
 
+    let percentLabelTag = 100
+    let promotionReviewButtonTag = 101
     let cellIdentifier = "bookCell"
     let record = Record.fetch()
     var searchBar = UISearchBar()
@@ -21,7 +23,7 @@ class BookViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.title = "교과서"
         slider.setThumbImage(UIImage(), for: [])
         percentLabel = UILabel()
         percentLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -134,8 +136,8 @@ private extension BookViewController {
     }
     
     func setLabelPositionAndText() {
-        view.viewWithTag(100)?.removeFromSuperview()
-        percentLabel.tag = 100
+        view.viewWithTag(percentLabelTag)?.removeFromSuperview()
+        percentLabel.tag = percentLabelTag
         view.addSubview(percentLabel)
         if slider.value == 0 {
             NSLayoutConstraint.activate([
@@ -153,10 +155,10 @@ private extension BookViewController {
     }
     
     func showPromotionReviewButton() {
-        view.viewWithTag(101)?.removeFromSuperview()
+        view.viewWithTag(promotionReviewButtonTag)?.removeFromSuperview()
         if slider.value == slider.maximumValue {
             let button = UIButton(type: .system)
-            button.tag = 101
+            button.tag = promotionReviewButtonTag
             button.setTitle("승급 심사", for: [])
             //button.setTitleColor(.black, for: .normal)
             button.addTarget(self, action: #selector(didTouchUpPromotionReviewButton(_:)), for: .touchUpInside)

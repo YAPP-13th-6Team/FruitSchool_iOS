@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Promotion Review View Controller-->
+        <!--승급 심사-->
         <scene sceneID="tq0-U0-gri">
             <objects>
-                <viewController storyboardIdentifier="PromotionReviewViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hRr-wI-hcY" customClass="PromotionReviewViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PromotionReviewViewController" title="승급 심사" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hRr-wI-hcY" customClass="PromotionReviewViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bIb-DR-U4T">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
