@@ -28,9 +28,4 @@ class DetailNutritionTipCell: UITableViewCell {
             nutritionView.alpha = 0.7
         }
     }
-    
-    func setProperties(_ object: NutritionTip?) {
-        guard let object = object else { return }
-        
-    }
 }

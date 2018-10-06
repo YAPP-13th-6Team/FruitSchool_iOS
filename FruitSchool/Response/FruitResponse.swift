@@ -11,12 +11,13 @@ struct FruitResponse: Codable {
         let id: String
         let title: String
         let grade: Int      //0: 서당개, 1: 학도, 2: 훈장
+        let season: String
         let standardTip: StandardTip
         let nutritionTip: NutritionTip
         let quizs: [QuizResponse]
         enum CodingKeys: String, CodingKey {
             case id = "_id"
-            case title, grade, standardTip, nutritionTip, quizs
+            case title, grade, season, standardTip, nutritionTip, quizs
         }
     }
     let message: String

@@ -11,9 +11,9 @@ import UIKit
 class DetailViewController: UIViewController {
 
     var id: String = ""
-    var fruit: FruitResponse.Data?
-    let cellIdentifiers = ["detailImageCell", "detailStandardTipCell", "detailNutritionTipCell", "detailQuizCell"]
-    let sectionTitles = ["기본 정보", "섭취 정보", "영양 정보"]
+    var fruitResponse: FruitResponse.Data?
+    let cellIdentifiers = ["detailImageCell", "detailStandardTipCell", "detailNutritionTipCell"]
+    let sectionTitles = ["기본 정보", "영양 정보"]
     var springsStandardTipSection: Bool = false
     var springsNutritionTipSection: Bool = false
     var standardTipButton: UIButton!
@@ -22,10 +22,6 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         IndicatorView.shared.showIndicator(message: "Loading...")
         API.requestFruit(by: id) { response, statusCode, error in
             IndicatorView.shared.hideIndicator()
@@ -38,16 +34,12 @@ class DetailViewController: UIViewController {
                 return
             }
             guard let response = response else { return }
-            self.fruit = response.data.first
+            self.fruitResponse = response.data.first
             DispatchQueue.main.async { [weak self] in
+                self?.navigationItem.title = self?.fruitResponse?.title
                 self?.tableView.reloadData()
             }
         }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }
 // MARK: - Button Touch Event
@@ -71,13 +63,9 @@ extension DetailViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers[section], for: indexPath)
         switch section {
         case 0:
-            (cell as? DetailImageCell)?.setProperties(fruit)
+            (cell as? DetailImageCell)?.setProperties(fruitResponse)
         case 1:
-            (cell as? DetailStandardTipCell)?.setProperties(fruit?.standardTip, at: indexPath.row)
-        case 2:
-            (cell as? DetailNutritionTipCell)?.setProperties(fruit?.nutritionTip)
-        case 3:
-            (cell as? DetailQuizCell)?.setProperties(fruit?.quizs)
+            (cell as? DetailStandardTipCell)?.setProperties(fruitResponse?.standardTip, at: indexPath.row)
         default:
             break
         }
@@ -89,7 +77,7 @@ extension DetailViewController: UITableViewDataSource {
         case 0:
             return 1
         case 1 where springsStandardTipSection:
-            return fruit?.standardTip.validCount ?? 0
+            return fruitResponse?.standardTip.validCount ?? 0
         case 2 where springsNutritionTipSection:
             return 1
         default:
@@ -109,7 +97,7 @@ extension DetailViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 || section == 4 { return nil }
+        if section == 0 { return nil }
         let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 40))
         view.backgroundColor = .white
         let titleLabel = UILabel()

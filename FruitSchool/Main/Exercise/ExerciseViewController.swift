@@ -26,10 +26,6 @@ class ExerciseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         IndicatorView.shared.showIndicator(message: "Loading...")
         API.requestExercises(by: id) { response, statusCode, error in
             IndicatorView.shared.hideIndicator()
@@ -44,6 +40,8 @@ class ExerciseViewController: UIViewController {
             guard let response = response else { return }
             self.exerciseResponse = response.data
             DispatchQueue.main.async { [weak self] in
+                guard let fruitTitle = self?.fruitTitle else { return }
+                self?.navigationItem.title = fruitTitle + " 문제 풀이"
                 self?.collectionView.reloadData()
             }
         }
