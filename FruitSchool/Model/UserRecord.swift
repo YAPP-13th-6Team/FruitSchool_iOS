@@ -1,5 +1,5 @@
 //
-//  BookRecord.swift
+//  UserRecord.swift
 //  FruitSchool
 //
 //  Created by Presto on 07/10/2018.
@@ -11,12 +11,29 @@ import RealmSwift
 @objcMembers
 class UserRecord: Object {
     
+    dynamic var nickname: String = ""
+    dynamic var grade: Int = 0
     dynamic var passesDog: Bool = false
     dynamic var passesStudent: Bool = false
     dynamic var passesBoss: Bool = false
     
+    subscript(_ index: Int) -> Bool {
+        switch index {
+        case 0:
+            return passesDog
+        case 1:
+            return passesStudent
+        case 2:
+            return passesBoss
+        default:
+            return false
+        }
+    }
+    
     /// BookRecord 생성.
-    static func add() {
+    ///
+    /// - Parameter nickname: 카카오 닉네임
+    static func add(nickname: String) {
         let realm = try! Realm()
         let record = UserRecord()
         try! realm.write {

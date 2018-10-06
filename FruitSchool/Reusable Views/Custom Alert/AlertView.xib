@@ -29,7 +29,7 @@
                             <rect key="frame" x="16" y="250" width="120" height="30"/>
                             <state key="normal" title="아니오"/>
                         </button>
-                        <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Vs1-iA-QfM">
+                        <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_circle" translatesAutoresizingMaskIntoConstraints="NO" id="Vs1-iA-QfM">
                             <rect key="frame" x="75" y="75" width="150" height="150"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Vs1-iA-QfM" secondAttribute="height" id="UaY-CZ-782"/>
@@ -87,6 +87,6 @@
         </view>
     </objects>
     <resources>
-        <image name="topLogo" width="57" height="57"/>
+        <image name="logo_circle" width="57" height="57"/>
     </resources>
 </document>
