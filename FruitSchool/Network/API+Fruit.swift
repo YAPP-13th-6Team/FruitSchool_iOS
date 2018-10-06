@@ -142,4 +142,19 @@ extension API {
             completion(nil, error)
         })
     }
+    /// 특정 id의 사용자 정보 요청
+    ///
+    ///   - completion: 컴플리션 핸들러
+    static func requestUserInfo(completion: @escaping (UserInfoResponse?, Int?, Error?) -> Void) {
+        Network.get("\(baseURL)/users/mypage", successHandler: { data, statusCode in
+            do {
+                let decoded = try jsonDecoder.decode(UserInfoResponse.self, from: data)
+                completion(decoded, statusCode, nil)
+            } catch {
+                completion(nil, statusCode, error)
+            }
+        }, errorHandler: { error in
+            completion(nil, nil, error)
+        })
+    }
 }
