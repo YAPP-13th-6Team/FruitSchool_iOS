@@ -10,25 +10,27 @@ import Foundation
 
 struct CommunityListResponse: Codable {
     struct Data: Codable {
-        let userId: String
-        let userGrade: Int
-        let userImagePath: String
-        let postsId: String
-        let postsContent: String
+        struct AuthorInfo: Codable {
+            let id: String
+            let userId: String
+            let grade: String
+            let nickname: String
+            let profileImage: String
+            enum CodingKeys: String, CodingKey {
+                case id = "_id"
+                case userId, grade, nickname, profileImage
+            }
+        }
+        let id: String
+        let createdAt: Date
+        let likes: Int
         let postImage: [String]
-        let postsTag: [String]
         let commentCount: Int
-        let heartCount: Int
+        let content: String
+        let authorInfo: [AuthorInfo]
         enum CodingKeys: String, CodingKey {
-            case userId = "user_id"
-            case userGrade = "user_grade"
-            case userImagePath = "user_image_path"
-            case postsId = "posts_id"
-            case postsContent = "posts_content"
-            case postImage = "posts_image"
-            case postsTag = "posts_tag"
-            case commentCount = "comment_count"
-            case heartCount = "heart_count"
+            case id = "_id"
+            case createdAt, likes, postImage, commentCount, content, authorInfo
         }
     }
     let message: String
@@ -38,14 +40,21 @@ struct CommunityListResponse: Codable {
 //{
 //    “msg”: ” Success get posts list sorted by ${sort}”
 //    “data”: [{
-//    “user_id”:  (string) – 게시자 id
-//    “user_grade”:  (int) – 게시자 등급 ex) 0,1,2
-//    “user_image_path”: (string) – 게시자 프로필 링크
-//
-//    “posts_id” (String) – 게시글 id 
-//“posts_content”: (String) – 게시글 내용
-//    “posts_image”: (String[]) – 게시글 사진 리스트
-//    “posts_tag”: (string[]) – 게시글 태그리스트
+//    “_id” (String) – 게시글 id
+//    “createdAt” (Date) – 글 게시 날짜
+//    “likes”: (int) – 게시글 좋아요 수
+//    “post_image”: (String[]) – 게시글 사진 리스트
 //    “comment_count”: (int) – 댓글 개수
-//    “heart_count” : (int) – 좋아요 개수
+//    “content”: (String) – 게시글 내용
+//    "author_info": (string[]) [
+//    {
+//    "_id": (string) - 게시자 id,
+//    "grade": (string) – 게시자 등급
+//    "user_id": (string) – 게시자 카카오톡 id,
+//    "nickname": (string) - 게시자 닉네임
+//    "profile_image": (string) - 게시자 프로필 사진 링크
+//    }
+//    ], - 게시자 정보(array임 주의)
+//
 //    }]
+//}
