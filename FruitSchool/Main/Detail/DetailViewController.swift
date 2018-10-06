@@ -69,6 +69,8 @@ extension DetailViewController: UITableViewDataSource {
             (cell as? DetailImageCell)?.setProperties(fruitResponse)
         case 1:
             (cell as? DetailStandardTipCell)?.setProperties(fruitResponse?.standardTip, at: indexPath.row)
+        case 2:
+            (cell as? DetailNutritionTipCell)?.setProperties(fruitResponse?.nutritionTip)
         default:
             break
         }
