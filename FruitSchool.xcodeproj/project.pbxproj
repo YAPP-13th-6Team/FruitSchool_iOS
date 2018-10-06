@@ -558,7 +558,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-FruitSchool/Pods-FruitSchool-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
@@ -569,7 +569,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FruitSchool/Pods-FruitSchool-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BE3E69945A6435DACEAB3AB1 /* [CP] Check Pods Manifest.lock */ = {
@@ -599,7 +599,6 @@
 			files = (
 				192366572165D90A0043F9BB /* ChapterViewController.swift in Sources */,
 				192366562165D9060043F9BB /* BookCell.swift in Sources */,
-				1947C572214F2F2E00BF6521 /* DetailIntakeTipCell.swift in Sources */,
 				0001BA4621669C380076932B /* UserInfoCell.swift in Sources */,
 				191F02482157E92B008EA81C /* MainTabBarController.swift in Sources */,
 				19E274D42144DA7600E2F6D2 /* BookViewController.swift in Sources */,
