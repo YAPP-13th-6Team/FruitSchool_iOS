@@ -18,12 +18,15 @@ class BookViewController: UIViewController {
     var searchButton: UIBarButtonItem!
     var percentLabel: UILabel!
     var currentCellIndex: Int = 0
+    let imageNames = ["cover_dog", "cover_student", "cover_boss"]
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "교과서"
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logo_noncircle"))
         slider.setThumbImage(UIImage(), for: [])
         percentLabel = UILabel()
         percentLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -69,6 +72,8 @@ extension BookViewController: UISearchBarDelegate {
 extension BookViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? BookCell else { return UICollectionViewCell() }
+        cell.coverImageView.image = UIImage(named: imageNames[indexPath.item])
+        
         cell.setProperties(at: indexPath.item)
         return cell
     }
@@ -86,20 +91,20 @@ extension BookViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let myGrade = UserDefaults.standard.integer(forKey: "grade")
-        if myGrade < indexPath.item {
+        if !(0...myGrade).contains(indexPath.item) {
             UIAlertController.presentErrorAlert(to: self, error: "승급심사 보고 오세요")
             return
         }
         guard let next = UIViewController.instantiate(storyboard: "Chapter", identifier: ChapterViewController.classNameToString) as? ChapterViewController else { return }
-        next.grade = UserDefaults.standard.integer(forKey: "grade")
+        next.grade = indexPath.item
         self.navigationController?.pushViewController(next, animated: true)
     }
 }
 
 extension BookViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height  = collectionView.bounds.height
-        return CGSize(width: height * 0.8, height: height)
+        let width = collectionView.bounds.width * 0.8
+        return CGSize(width: width, height: width * 1.2)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -160,7 +165,6 @@ private extension BookViewController {
             let button = UIButton(type: .system)
             button.tag = promotionReviewButtonTag
             button.setTitle("승급 심사", for: [])
-            //button.setTitleColor(.black, for: .normal)
             button.addTarget(self, action: #selector(didTouchUpPromotionReviewButton(_:)), for: .touchUpInside)
             button.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(button)

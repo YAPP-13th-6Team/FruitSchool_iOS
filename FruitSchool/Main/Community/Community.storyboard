@@ -17,10 +17,27 @@
                     <view key="view" contentMode="scaleToFill" id="BJ7-MY-pPk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Ak-gP-GU1">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="9rW-1I-GfZ" id="nXN-wI-VpV"/>
+                                    <outlet property="delegate" destination="9rW-1I-GfZ" id="qRD-za-gXJ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="dPS-04-LWR"/>
                     </view>
-                    <navigationItem key="navigationItem" title="커뮤니티" id="qeO-Ly-uQs"/>
+                    <navigationItem key="navigationItem" id="qeO-Ly-uQs">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="s4R-qW-Bhf"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="lj6-iz-QQk"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="3Ak-gP-GU1" id="Sfj-ZY-3dY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vjF-Iw-bxL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

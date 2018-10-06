@@ -15,6 +15,10 @@ class MyPostCell: UITableViewCell {
         // Initialization code
     }
 
+    func setProperties() {
+        textLabel?.text = "작성 글"
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

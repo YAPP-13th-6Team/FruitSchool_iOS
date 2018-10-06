@@ -14,6 +14,10 @@ class MyFavoritePostCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func setProperties() {
+        textLabel?.text = "좋아요"
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
