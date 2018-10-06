@@ -57,7 +57,6 @@ extension CommunityViewController: UITableViewDataSource {
                 cell.profileImageView.image = UIImage(data: imageData)
             }
         }
-        
         //2018-10-06T19:24:44.000Z
         return cell
     }    

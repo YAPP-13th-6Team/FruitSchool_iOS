@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--커뮤니티-->
+        <!--Community View Controller-->
         <scene sceneID="FrN-Qk-K59">
             <objects>
                 <viewController storyboardIdentifier="CommunityViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9rW-1I-GfZ" customClass="CommunityViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
@@ -32,8 +32,8 @@
                         <viewLayoutGuide key="safeArea" id="dPS-04-LWR"/>
                     </view>
                     <navigationItem key="navigationItem" id="qeO-Ly-uQs">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="s4R-qW-Bhf"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="lj6-iz-QQk"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="s4R-qW-Bhf"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="lj6-iz-QQk"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="3Ak-gP-GU1" id="Sfj-ZY-3dY"/>
