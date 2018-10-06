@@ -12,8 +12,8 @@ struct CommunityListResponse: Codable {
     struct Data: Codable {
         struct AuthorInfo: Codable {
             let id: String
-            let userId: String
             let grade: String
+            let userId: String
             let nickname: String
             let profileImage: String
             enum CodingKeys: String, CodingKey {
