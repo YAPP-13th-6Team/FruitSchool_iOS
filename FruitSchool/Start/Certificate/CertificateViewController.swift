@@ -18,11 +18,20 @@ class CertificateViewController: UIViewController {
         certificateView.delegate = self
         return certificateView
     }()
+    @IBOutlet weak var contentView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         certificateView.layer.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-        self.view.addSubview(certificateView)
+        contentView.layer.cornerRadius = 10
+        contentView.addSubview(certificateView)
+        certificateView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            certificateView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            certificateView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            certificateView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            certificateView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            ])
     }
 }
 
@@ -38,6 +47,22 @@ extension CertificateViewController: CertificateViewDelegate {
         userDefaults.set(0, forKey: "grade")
         guard let next = UIViewController.instantiate(storyboard: "Main", identifier: MainTabBarController.classNameToString) else { return }
         next.modalTransitionStyle = .flipHorizontal
-        self.present(next, animated: true)
+        IndicatorView.shared.showIndicator(message: "Loading...")
+        API.requestFruitList { response, statusCode, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    UIAlertController.presentErrorAlert(to: next, error: error.localizedDescription)
+                }
+                return
+            }
+            guard let response = response else { return }
+            for data in response.data {
+                Record.add(id: data.id, title: data.title, grade: data.grade)
+            }
+            IndicatorView.shared.hideIndicator()
+            DispatchQueue.main.async { [weak self] in
+                self?.present(next, animated: true)
+            }
+        }
     }
 }

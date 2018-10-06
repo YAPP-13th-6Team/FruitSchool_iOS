@@ -19,6 +19,7 @@ class ChapterViewController: UIViewController {
     var isSearching: Bool {
         return searchBar.isFirstResponder
     }
+    let records = Record.fetch()
     @IBOutlet weak var collectionView: UICollectionView!
 
     override func viewDidLoad() {
@@ -33,7 +34,9 @@ class ChapterViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        IndicatorView.shared.showIndicator(message: "Loading...")
         API.requestFruitList { response, statusCode, error in
+            IndicatorView.shared.hideIndicator()
             if let error = error {
                 DispatchQueue.main.async { [weak self] in
                     UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription, handler: {
@@ -78,15 +81,14 @@ extension ChapterViewController: UISearchBarDelegate {
 extension ChapterViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? ChapterCell else { return UICollectionViewCell() }
+        let fruit = fruits[indexPath.item]
+        guard let filteredRecord = records.filter("id = %@", fruit.id).first else { return UICollectionViewCell() }
         if !isSearching {
-            let fruit = fruits[indexPath.item]
-            cell.setProperties(fruit)
-            return cell
+            cell.setProperties(fruit, isPassed: filteredRecord.isPassed)
         } else {
-            let fruit = searchedFruits[indexPath.item]
-            cell.setProperties(fruit)
-            return cell
+            cell.setProperties(fruit, isPassed: filteredRecord.isPassed)
         }
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -101,11 +103,17 @@ extension ChapterViewController: UICollectionViewDataSource {
 extension ChapterViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        // 셀 활성화시 Detail로, 비활성화시 Exercise로
-        
-//        guard let next = UIViewController.instantiate(storyboard: "Detail", identifier: "DetailViewController") as? DetailViewController else { return }
-//        next.id = fruits[indexPath.item].id
-//        self.navigationController?.pushViewController(next, animated: true)
+        guard let isPassed = records.filter("id = %@", fruits[indexPath.item].id).first?.isPassed else { return }
+        let id = fruits[indexPath.item].id
+        if isPassed {
+            guard let next = UIViewController.instantiate(storyboard: "Detail", identifier: DetailViewController.classNameToString) as? DetailViewController else { return }
+            next.id = id
+            self.navigationController?.pushViewController(next, animated: true)
+        } else {
+            guard let next = UIViewController.instantiate(storyboard: "Exercise", identifier: ExerciseViewController.classNameToString) as? ExerciseViewController else { return }
+            next.id = id
+            self.navigationController?.pushViewController(next, animated: true)
+        }
     }
 }
 
