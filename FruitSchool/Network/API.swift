@@ -154,11 +154,9 @@ extension API {
     }
     /// 특정 id의 사용자 정보 요청
     ///
-    /// - Parameters:
-    ///   - id: 카카오 고유 id
     ///   - completion: 컴플리션 핸들러
-    static func requestUserInfo(by id: String, completion: @escaping (UserInfoResponse?, Int?, Error?) -> Void) {
-        Network.get("\(baseURL)/users/mypage/\(id)", successHandler: { data, statusCode in
+    static func requestUserInfo(completion: @escaping (UserInfoResponse?, Int?, Error?) -> Void) {
+        Network.get("\(baseURL)/users/mypage", successHandler: { data, statusCode in
             do {
                 let decoded = try jsonDecoder.decode(UserInfoResponse.self, from: data)
                 completion(decoded, statusCode, nil)

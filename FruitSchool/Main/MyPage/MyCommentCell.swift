@@ -15,6 +15,10 @@ class MyCommentCell: UITableViewCell {
         // Initialization code
     }
 
+    func setProperties() {
+        textLabel?.text = "댓글"
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
