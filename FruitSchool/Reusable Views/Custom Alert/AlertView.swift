@@ -8,30 +8,15 @@
 
 import UIKit
 
-protocol AlertViewDelegate: class {
-    var title: String { get }
-    var message: String { get }
-    var positiveButtonTitle: String { get }
-    var negativeButtonTitle: String { get }
-    func didTouchUpPositiveButton(_ sender: UIButton)
-    func didTouchUpNegativeButton(_ sender: UIButton)
-}
-
 class AlertView: UIView {
 
-    weak var delegate: AlertViewDelegate? {
-        didSet {
-            titleLabel.text = delegate?.title
-            messageLabel.text = delegate?.message
-            positiveButton.setTitle(delegate?.positiveButtonTitle, for: [])
-            negativeButton.setTitle(delegate?.negativeButtonTitle, for: [])
-        }
-    }
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var positiveButton: UIButton!
     @IBOutlet weak var negativeButton: UIButton!
+    var positiveHandler: (() -> Void)?
+    var negativeHandler: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,10 +26,12 @@ class AlertView: UIView {
     }
     
     @objc func didTouchUpPositiveButton(_ sender: UIButton) {
-        delegate?.didTouchUpPositiveButton(sender)
+        removeFromSuperview()
+        positiveHandler?()
     }
-    
+
     @objc func didTouchUpNegativeButton(_ sender: UIButton) {
-        delegate?.didTouchUpNegativeButton(sender)
+        removeFromSuperview()
+        negativeHandler?()
     }
 }
