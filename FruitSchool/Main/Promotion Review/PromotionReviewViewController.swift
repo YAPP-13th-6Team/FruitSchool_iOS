@@ -49,7 +49,6 @@ class PromotionReviewViewController: UIViewController {
             for data in response.data {
                 let quiz = Quiz(title: data.title, correctAnswer: data.correctAnswer, answers: [[data.correctAnswer], data.incorrectAnswers].flatMap { $0 }.shuffled())
                 self.quizs.append(quiz)
-                print(data.correctAnswer)
             }
             self.answers = Array.init(repeating: "", count: self.quizs.count)
             DispatchQueue.main.async { [weak self] in
@@ -84,9 +83,10 @@ extension PromotionReviewViewController {
                 resultView.descriptionLabel.text = message + "\n통과"
                 resultView.handler = {
                     // 사용자 등급 올리기
-                    let userGrade = UserDefaults.standard.integer(forKey: "grade")
-                    if userGrade != 2 {
-                        UserDefaults.standard.set(userGrade + 1, forKey: "grade")
+                    guard let userRecord = UserRecord.fetch().first else { return }
+                    let myGrade = userRecord.grade
+                    if myGrade != 2 {
+                        UserRecord.update(userRecord, keyValue: ["grade": myGrade + 1])
                     }
                     self.navigationController?.popViewController(animated: true)
                 }

@@ -22,9 +22,4 @@ class BookCell: UICollectionViewCell {
         coverImageView.image = nil
         stampImageView.image = nil
     }
-    
-    func setProperties(at grade: Int) {
-        let myGrade = UserDefaults.standard.integer(forKey: "grade")
-        
-    }
 }

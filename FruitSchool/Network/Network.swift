@@ -68,7 +68,6 @@ class Network {
             }
             guard let data = data else { return }
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode else { return }
-            print(statusCode)
             successHandler?(data, statusCode)
             session.finishTasksAndInvalidate()
         }
