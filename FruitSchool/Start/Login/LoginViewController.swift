@@ -47,7 +47,6 @@ extension LoginViewController {
                     UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription)
                     return
                 }
-                print(session.token.accessToken)
                 API.requestAuthorization(token: session.token.accessToken, completion: { response, statusCode, error in
                     if let error = error {
                         print(error.localizedDescription)

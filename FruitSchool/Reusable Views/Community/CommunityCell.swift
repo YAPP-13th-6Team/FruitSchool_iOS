@@ -24,8 +24,5 @@ class CommunityCell: UITableViewCell {
         super.awakeFromNib()
         collectionView.register(UINib(nibName: "CommunityImageCell", bundle: nil), forCellWithReuseIdentifier: "imageCell")
         // Initialization code
-    }
-
-
-    
+    }  
 }

@@ -10,25 +10,32 @@ import UIKit
 
 class BookViewController: UIViewController {
 
+    var percentage: CGFloat = 0
+    let descriptionLabelTag = 98
+    let gaugeLabelTag = 99
     let percentLabelTag = 100
     let promotionReviewButtonTag = 101
     let cellIdentifier = "bookCell"
-    let record = Record.fetch()
+    let chapterRecord = ChapterRecord.fetch()
     var searchBar = UISearchBar()
     var searchButton: UIBarButtonItem!
     var percentLabel: UILabel!
     var currentCellIndex: Int = 0
-    let imageNames = ["cover_dog", "cover_student", "cover_boss"]
-    @IBOutlet weak var slider: UISlider!
+    let imageNames = [["cover_dog_unclear", "cover_dog_clear"], ["cover_student_unclear", "cover_student_clear"], ["cover_boss_unclear", "cover_boss_clear"]]
+    @IBOutlet weak var backgroundGaugeView: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let backBarButtonItem = UIBarButtonItem()
+        backBarButtonItem.title = "과일교과서"
+        navigationItem.backBarButtonItem = backBarButtonItem
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logo_noncircle"))
-        slider.setThumbImage(UIImage(), for: [])
         percentLabel = UILabel()
+        percentLabel.textColor = UIColor.main
+        percentLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         percentLabel.translatesAutoresizingMaskIntoConstraints = false
         searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTouchUpSearchButton(_:)))
         searchBar.delegate = self
@@ -40,6 +47,7 @@ class BookViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         resetViews()
+        collectionView.reloadData()
     }
     
     @objc func didTouchUpPromotionReviewButton(_ sender: UIButton) {
@@ -72,9 +80,14 @@ extension BookViewController: UISearchBarDelegate {
 extension BookViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? BookCell else { return UICollectionViewCell() }
-        cell.coverImageView.image = UIImage(named: imageNames[indexPath.item])
-        
-        cell.setProperties(at: indexPath.item)
+        guard let userRecord = UserRecord.fetch().first else { return UICollectionViewCell() }
+        if userRecord[indexPath.item] {
+            cell.coverImageView.image = UIImage(named: imageNames[indexPath.item][1])
+            cell.stampImageView.image = #imageLiteral(resourceName: "stamp_clear")
+        } else {
+            cell.coverImageView.image = UIImage(named: imageNames[indexPath.item][0])
+            cell.stampImageView.image = nil
+        }
         return cell
     }
     
@@ -90,7 +103,7 @@ extension BookViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        let myGrade = UserDefaults.standard.integer(forKey: "grade")
+        let myGrade = UserRecord.fetch().first?.grade ?? 0
         if !(0...myGrade).contains(indexPath.item) {
             UIAlertController.presentErrorAlert(to: self, error: "승급심사 보고 오세요")
             return
@@ -118,50 +131,79 @@ extension BookViewController: UICollectionViewDelegateFlowLayout {
 
 private extension BookViewController {
     func resetViews() {
-        setSliderValues()
-        setLabelPositionAndText()
+        setGaugeView()
+        setPercentLabelPositionAndText()
         showPromotionReviewButton()
+        view.viewWithTag(descriptionLabelTag)?.removeFromSuperview()
+        let label = UILabel()
+        label.tag = descriptionLabelTag
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.textColor = UIColor.main
+        label.text = "조금만 힘을 내게"
+        view.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        if let percentLabel = view.viewWithTag(percentLabelTag) {
+            NSLayoutConstraint.activate([
+                label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                label.topAnchor.constraint(equalTo: percentLabel.bottomAnchor, constant: 8)
+                ])
+        }
     }
     
-    func setSliderValues() {
+    func setGaugeView() {
         var visibleRect = CGRect()
         visibleRect.origin = collectionView.contentOffset
         visibleRect.size = collectionView.bounds.size
         let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
         guard let index = collectionView.indexPathForItem(at: visiblePoint)?.item else { return }
         currentCellIndex = index
-        let filtered = record.filter("grade = %d", index)
+        let filtered = chapterRecord.filter("grade = %d", index)
         let count = filtered.count
         var passedCount = 0
         for element in filtered where element.isPassed {
             passedCount += 1
         }
-        slider.maximumValue = Float(count)
-        slider.value = Float(passedCount)
+        view.viewWithTag(gaugeLabelTag)?.removeFromSuperview()
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        label.textColor = UIColor.main
+        label.tag = gaugeLabelTag
+        label.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(label)
+        label.backgroundColor = #colorLiteral(red: 0.7803921569, green: 0.737254902, blue: 0.7137254902, alpha: 1)
+        let percentage = CGFloat(passedCount) / CGFloat(count)
+        NSLayoutConstraint.activate([
+            label.heightAnchor.constraint(equalTo: backgroundGaugeView.heightAnchor),
+            label.leadingAnchor.constraint(equalTo: backgroundGaugeView.leadingAnchor),
+            label.centerYAnchor.constraint(equalTo: backgroundGaugeView.centerYAnchor),
+            label.widthAnchor.constraint(equalTo: backgroundGaugeView.widthAnchor, multiplier: percentage)
+            ])
+        self.percentage = percentage
     }
     
-    func setLabelPositionAndText() {
+    func setPercentLabelPositionAndText() {
+        let leading = backgroundGaugeView.frame.origin.x
         view.viewWithTag(percentLabelTag)?.removeFromSuperview()
         percentLabel.tag = percentLabelTag
         view.addSubview(percentLabel)
-        if slider.value == 0 {
+        if percentage == 0 {
             NSLayoutConstraint.activate([
-                percentLabel.topAnchor.constraint(equalTo: slider.bottomAnchor, constant: 20),
-                percentLabel.centerXAnchor.constraint(equalTo: slider.leadingAnchor, constant: 0)
+                percentLabel.topAnchor.constraint(equalTo: backgroundGaugeView.bottomAnchor, constant: 6),
+                percentLabel.centerXAnchor.constraint(equalTo: backgroundGaugeView.leadingAnchor, constant: 0)
                 ])
             percentLabel.text = "0%"
         } else {
             NSLayoutConstraint.activate([
-                percentLabel.topAnchor.constraint(equalTo: slider.bottomAnchor, constant: 20),
-                NSLayoutConstraint(item: percentLabel, attribute: .centerX, relatedBy: .equal, toItem: slider, attribute: .trailing, multiplier: CGFloat(slider.value / slider.maximumValue), constant: CGFloat(32 - 32 * (slider.value / slider.maximumValue)))
+                percentLabel.topAnchor.constraint(equalTo: backgroundGaugeView.bottomAnchor, constant: 6),
+                NSLayoutConstraint(item: percentLabel, attribute: .centerX, relatedBy: .equal, toItem: backgroundGaugeView, attribute: .trailing, multiplier: percentage, constant: leading - leading * percentage)
                 ])
-            percentLabel.text = "\(Int(slider.value * 100 / slider.maximumValue))%"
+            percentLabel.text = "\(Int(percentage * 100))%"
         }
     }
     
     func showPromotionReviewButton() {
         view.viewWithTag(promotionReviewButtonTag)?.removeFromSuperview()
-        if slider.value == slider.maximumValue {
+        if percentage == 1 {
             let button = UIButton(type: .system)
             button.tag = promotionReviewButtonTag
             button.setTitle("승급 심사", for: [])
@@ -169,7 +211,7 @@ private extension BookViewController {
             button.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(button)
             NSLayoutConstraint.activate([
-                button.topAnchor.constraint(equalTo: percentLabel.bottomAnchor, constant: 20),
+                button.topAnchor.constraint(equalTo: percentLabel.bottomAnchor, constant: 40),
                 button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
                 button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
                 button.heightAnchor.constraint(equalToConstant: 40)

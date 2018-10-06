@@ -19,7 +19,7 @@ class ChapterViewController: UIViewController {
     var isSearching: Bool {
         return searchBar.isFirstResponder
     }
-    let records = Record.fetch()
+    let records = ChapterRecord.fetch()
     @IBOutlet weak var collectionView: UICollectionView!
 
     override func viewDidLoad() {

@@ -41,10 +41,8 @@ extension CertificateViewController: CertificateViewDelegate {
     }
     
     func didTouchUpButton(_ sender: UIButton) {
-        let userDefaults = UserDefaults.standard
-        userDefaults.set(id, forKey: "id")
-        userDefaults.set(nickname, forKey: "nickname")
-        userDefaults.set(0, forKey: "grade")
+        UserDefaults.standard.set(id, forKey: "id")
+        UserRecord.add(nickname: nickname)
         guard let next = UIViewController.instantiate(storyboard: "Main", identifier: MainTabBarController.classNameToString) else { return }
         next.modalTransitionStyle = .flipHorizontal
         IndicatorView.shared.showIndicator(message: "Loading...")
@@ -57,7 +55,7 @@ extension CertificateViewController: CertificateViewDelegate {
             }
             guard let response = response else { return }
             for data in response.data {
-                Record.add(id: data.id, title: data.title, grade: data.grade)
+                ChapterRecord.add(id: data.id, title: data.title, grade: data.grade)
             }
             IndicatorView.shared.hideIndicator()
             DispatchQueue.main.async { [weak self] in

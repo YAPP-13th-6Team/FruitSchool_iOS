@@ -77,8 +77,8 @@ extension ExerciseViewController {
             if score == self.quizsCount {
                 resultView.descriptionLabel.text = "통과"
                 resultView.handler = {
-                    guard let record = Record.fetch().filter("id = %@", self.id).first else { return }
-                    Record.update(record, keyValue: ["isPassed": true])
+                    guard let record = ChapterRecord.fetch().filter("id = %@", self.id).first else { return }
+                    ChapterRecord.update(record, keyValue: ["isPassed": true])
                     self.navigationController?.popViewController(animated: true)
                 }
             } else {

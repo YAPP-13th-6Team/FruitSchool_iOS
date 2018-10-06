@@ -39,7 +39,7 @@
 		1923665D216662950043F9BB /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1923665C216662950043F9BB /* IndicatorView.swift */; };
 		1947C55D214F27B800BF6521 /* Chapter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1947C55C214F27B800BF6521 /* Chapter.storyboard */; };
 		1947C562214F2B7800BF6521 /* ChapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C561214F2B7800BF6521 /* ChapterCell.swift */; };
-		1947C568214F2DC700BF6521 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C567214F2DC700BF6521 /* Record.swift */; };
+		1947C568214F2DC700BF6521 /* ChapterRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C567214F2DC700BF6521 /* ChapterRecord.swift */; };
 		1947C56A214F2E0C00BF6521 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1947C569214F2E0C00BF6521 /* Detail.storyboard */; };
 		1947C56C214F2E1500BF6521 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C56B214F2E1500BF6521 /* DetailViewController.swift */; };
 		1947C570214F2F2600BF6521 /* DetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C56F214F2F2600BF6521 /* DetailImageCell.swift */; };
@@ -69,6 +69,8 @@
 		19E274CB2144D93F00E2F6D2 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19E274CA2144D93F00E2F6D2 /* Login.storyboard */; };
 		19E274D22144DA6300E2F6D2 /* Book.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19E274D12144DA6300E2F6D2 /* Book.storyboard */; };
 		19E274D42144DA7600E2F6D2 /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274D32144DA7600E2F6D2 /* BookViewController.swift */; };
+		19E708262169371E00C6F452 /* UserInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E708252169371E00C6F452 /* UserInfoResponse.swift */; };
+		19E70828216941B700C6F452 /* UserRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E70827216941B700C6F452 /* UserRecord.swift */; };
 		19EC61CA2152431B00A80DA4 /* QuizView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19EC61C92152431B00A80DA4 /* QuizView.xib */; };
 		19EC61CC2152432400A80DA4 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EC61CB2152432400A80DA4 /* QuizView.swift */; };
 		19EC61CE215243B800A80DA4 /* QuizButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EC61CD215243B800A80DA4 /* QuizButton.swift */; };
@@ -82,7 +84,10 @@
 		99A52D1F2168AFF2000BC360 /* CommunityImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99A52D1D2168AFF2000BC360 /* CommunityImageCell.xib */; };
 		99A52D212168D329000BC360 /* CommunityListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A52D202168D329000BC360 /* CommunityListResponse.swift */; };
 		99A52D2321692489000BC360 /* CommunityDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A52D2221692489000BC360 /* CommunityDetailResponse.swift */; };
+		99A52D25216937CA000BC360 /* UserInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A52D24216937CA000BC360 /* UserInfoResponse.swift */; };
+		99A52D27216937FD000BC360 /* API+Community.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A52D26216937FD000BC360 /* API+Community.swift */; };
 		9E51A59652BFAA932928067F /* Pods_FruitSchool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F105C82803FFC63FD567EBBB /* Pods_FruitSchool.framework */; };
+		DB934B192169382B002A4B17 /* UserInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB934B182169382B002A4B17 /* UserInfoResponse.swift */; };
 		DBF51B8A2157CE0900AA85DF /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBF51B872157CE0900AA85DF /* Tutorial.storyboard */; };
 		DBF51B8B2157CE0900AA85DF /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF51B882157CE0900AA85DF /* TutorialViewController.swift */; };
 /* End PBXBuildFile section */
@@ -121,7 +126,7 @@
 		1947C55C214F27B800BF6521 /* Chapter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chapter.storyboard; sourceTree = "<group>"; };
 		1947C55E214F27C000BF6521 /* ChapterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterViewController.swift; sourceTree = "<group>"; };
 		1947C561214F2B7800BF6521 /* ChapterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterCell.swift; sourceTree = "<group>"; };
-		1947C567214F2DC700BF6521 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		1947C567214F2DC700BF6521 /* ChapterRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterRecord.swift; sourceTree = "<group>"; };
 		1947C569214F2E0C00BF6521 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		1947C56B214F2E1500BF6521 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1947C56F214F2F2600BF6521 /* DetailImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageCell.swift; sourceTree = "<group>"; };
@@ -152,6 +157,8 @@
 		19E274CA2144D93F00E2F6D2 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		19E274D12144DA6300E2F6D2 /* Book.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Book.storyboard; sourceTree = "<group>"; };
 		19E274D32144DA7600E2F6D2 /* BookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
+		19E708252169371E00C6F452 /* UserInfoResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoResponse.swift; sourceTree = "<group>"; };
+		19E70827216941B700C6F452 /* UserRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRecord.swift; sourceTree = "<group>"; };
 		19EC61C92152431B00A80DA4 /* QuizView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizView.xib; sourceTree = "<group>"; };
 		19EC61CB2152432400A80DA4 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		19EC61CD215243B800A80DA4 /* QuizButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizButton.swift; sourceTree = "<group>"; };
@@ -165,8 +172,11 @@
 		99A52D1D2168AFF2000BC360 /* CommunityImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommunityImageCell.xib; sourceTree = "<group>"; };
 		99A52D202168D329000BC360 /* CommunityListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityListResponse.swift; sourceTree = "<group>"; };
 		99A52D2221692489000BC360 /* CommunityDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDetailResponse.swift; sourceTree = "<group>"; };
+		99A52D24216937CA000BC360 /* UserInfoResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoResponse.swift; sourceTree = "<group>"; };
+		99A52D26216937FD000BC360 /* API+Community.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Community.swift"; sourceTree = "<group>"; };
 		AE308E65D83414C1D0945E8F /* Pods-FruitSchool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.release.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.release.xcconfig"; sourceTree = "<group>"; };
 		DA48AB07292D5B1D20B98DFD /* Pods-FruitSchool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.debug.xcconfig"; sourceTree = "<group>"; };
+		DB934B182169382B002A4B17 /* UserInfoResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoResponse.swift; sourceTree = "<group>"; };
 		DBF51B872157CE0900AA85DF /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
 		DBF51B882157CE0900AA85DF /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		F105C82803FFC63FD567EBBB /* Pods_FruitSchool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FruitSchool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -322,6 +332,7 @@
 		1947C564214F2DB000BF6521 /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				DB934B182169382B002A4B17 /* UserInfoResponse.swift */,
 				19DE4AA721691DB9000C412A /* LoginResponse.swift */,
 				19DE4AA52168F5FB000C412A /* Quiz.swift */,
 				1923664C2165BF170043F9BB /* QuizResponse.swift */,
@@ -331,6 +342,7 @@
 				1923664A2165B6BE0043F9BB /* ExamResponse.swift */,
 				99A52D202168D329000BC360 /* CommunityListResponse.swift */,
 				99A52D2221692489000BC360 /* CommunityDetailResponse.swift */,
+				19E708252169371E00C6F452 /* UserInfoResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -445,7 +457,8 @@
 			isa = PBXGroup;
 			children = (
 				19FCF23F2160FE9600BCC3F7 /* Grade.swift */,
-				1947C567214F2DC700BF6521 /* Record.swift */,
+				19E70827216941B700C6F452 /* UserRecord.swift */,
+				1947C567214F2DC700BF6521 /* ChapterRecord.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -457,6 +470,7 @@
 				19DE4AAB21691E0F000C412A /* API+Base.swift */,
 				19DE4AA921691DFC000C412A /* API+Auth.swift */,
 				19E274C82144D75300E2F6D2 /* API+Fruit.swift */,
+				99A52D26216937FD000BC360 /* API+Community.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -661,10 +675,12 @@
 				19A76F7B2162333200C7C05F /* ExerciseResponse.swift in Sources */,
 				19FCF2402160FE9600BCC3F7 /* Grade.swift in Sources */,
 				DBF51B8B2157CE0900AA85DF /* TutorialViewController.swift in Sources */,
+				19E708262169371E00C6F452 /* UserInfoResponse.swift in Sources */,
 				1923664B2165B6BE0043F9BB /* ExamResponse.swift in Sources */,
-				1947C568214F2DC700BF6521 /* Record.swift in Sources */,
+				1947C568214F2DC700BF6521 /* ChapterRecord.swift in Sources */,
 				195F2672215BA45000A6EED4 /* ResultView.swift in Sources */,
 				190FC3BB213A689C00DD333F /* AppDelegate.swift in Sources */,
+				19E70828216941B700C6F452 /* UserRecord.swift in Sources */,
 				1947C56C214F2E1500BF6521 /* DetailViewController.swift in Sources */,
 				1947C562214F2B7800BF6521 /* ChapterCell.swift in Sources */,
 				19E274C92144D75300E2F6D2 /* API+Fruit.swift in Sources */,
@@ -676,6 +692,7 @@
 				192366542165D7F30043F9BB /* BackView.swift in Sources */,
 				19E274C72144D74E00E2F6D2 /* Network.swift in Sources */,
 				99A52D2321692489000BC360 /* CommunityDetailResponse.swift in Sources */,
+				99A52D27216937FD000BC360 /* API+Community.swift in Sources */,
 				190F74AE213E34700038234A /* NSObject+.swift in Sources */,
 				1947C57C214F9E5F00BF6521 /* FruitResponse.swift in Sources */,
 				1947C574214F2F3900BF6521 /* DetailStandardTipCell.swift in Sources */,
@@ -828,7 +845,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9RVFJQPN7Q;
 				DEVELOPMENT_TEAM = H79MF628K3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -862,7 +878,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9RVFJQPN7Q;
 				DEVELOPMENT_TEAM = H79MF628K3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
