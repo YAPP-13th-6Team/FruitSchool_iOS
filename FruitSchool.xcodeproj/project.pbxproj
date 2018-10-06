@@ -85,6 +85,7 @@
 		99A52D212168D329000BC360 /* CommunityListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A52D202168D329000BC360 /* CommunityListResponse.swift */; };
 		99A52D2321692489000BC360 /* CommunityDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A52D2221692489000BC360 /* CommunityDetailResponse.swift */; };
 		9E51A59652BFAA932928067F /* Pods_FruitSchool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F105C82803FFC63FD567EBBB /* Pods_FruitSchool.framework */; };
+		DB934B192169382B002A4B17 /* UserInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB934B182169382B002A4B17 /* UserInfoResponse.swift */; };
 		DBF51B8A2157CE0900AA85DF /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBF51B872157CE0900AA85DF /* Tutorial.storyboard */; };
 		DBF51B8B2157CE0900AA85DF /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF51B882157CE0900AA85DF /* TutorialViewController.swift */; };
 /* End PBXBuildFile section */
@@ -171,6 +172,7 @@
 		99A52D2221692489000BC360 /* CommunityDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDetailResponse.swift; sourceTree = "<group>"; };
 		AE308E65D83414C1D0945E8F /* Pods-FruitSchool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.release.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.release.xcconfig"; sourceTree = "<group>"; };
 		DA48AB07292D5B1D20B98DFD /* Pods-FruitSchool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.debug.xcconfig"; sourceTree = "<group>"; };
+		DB934B182169382B002A4B17 /* UserInfoResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoResponse.swift; sourceTree = "<group>"; };
 		DBF51B872157CE0900AA85DF /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
 		DBF51B882157CE0900AA85DF /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		F105C82803FFC63FD567EBBB /* Pods_FruitSchool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FruitSchool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -326,6 +328,7 @@
 		1947C564214F2DB000BF6521 /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				DB934B182169382B002A4B17 /* UserInfoResponse.swift */,
 				19DE4AA721691DB9000C412A /* LoginResponse.swift */,
 				19DE4AA52168F5FB000C412A /* Quiz.swift */,
 				1923664C2165BF170043F9BB /* QuizResponse.swift */,

@@ -9,37 +9,55 @@
 import UIKit
 
 class NutritionView: UIView {
-
-    override init(frame: CGRect) {
+    
+    init(frame: CGRect, object: NutritionTip) {
         super.init(frame: frame)
-        drawNutrition()
+        print(object)
+        drawNutrition(object: object)
     }
     
-    func drawNutrition() {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    func drawNutrition(object: NutritionTip) {
+        
+        let sodiumValue: Double =  {
+            if object.sodium >= 10 {
+                return 100
+            } else {
+                return object.sodium / 10 * 100
+            }
+        }()
+        
+        let proteinValue: Double = {
+            if object.protein >= 1 {
+                return 100
+            } else {
+                return object.protein * 100
+            }
+        }()
+        
+        let sugarValue: Double = {
+            if object.sugar >= 20 {
+                return 100
+            } else {
+                return object.sugar / 20 * 100
+            }
+        }()
+        
         let width: CGFloat = self.frame.size.width
         let height: CGFloat = self.frame.size.height
         
-        // 일단 보여주기 용으로 0 ~ 100 사이 랜덤값 적용
-        let sodiumValue: CGFloat  = {
-            return CGFloat.random(in: 0...100)
-        }()
-        
-        let proteinValue: CGFloat = {
-            return CGFloat.random(in: 0...100)
-        }()
-        
-        let sugarValue: CGFloat = {
-            return CGFloat.random(in: 0...100)
-        }()
-        
         let path = UIBezierPath()
-        // 나트륨
-        path.move(to: CGPoint(x: (width + width/2)/3, y: (height*2/3) * (100-sodiumValue) / 100))
-        // 단백질
-        path.addLine(to: CGPoint(x: ((width + width/2)/3) * (100-proteinValue) / 100, y: (height*2/3) + ((height*2/3)/2) * proteinValue / 100))
-        // 당질
-        path.addLine(to: CGPoint(x: ((width + width/2)/3) * (100+sugarValue) / 100, y: (height*2/3) + ((height*2/3)/2) * sugarValue / 100))
+        path.move(to: CGPoint(x: (width + width/2)/3, y: (height*2/3) * (100-CGFloat(sodiumValue)) / 100))
+        path.addLine(to: CGPoint(x: ((width + width/2)/3) * (100-CGFloat(proteinValue)) / 100, y: (height*2/3) + ((height*2/3)/2) * CGFloat(proteinValue) / 100))
+        path.addLine(to: CGPoint(x: ((width + width/2)/3) * (100+CGFloat(sugarValue)) / 100, y: (height*2/3) + ((height*2/3)/2) * CGFloat(sugarValue) / 100))
         path.close()
+        
+        print(sodiumValue)
+        print(proteinValue)
+        print(sugarValue)
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.cgPath
@@ -50,9 +68,4 @@ class NutritionView: UIView {
         self.alpha = 0.0
         self.layer.addSublayer(shapeLayer)
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
 }
