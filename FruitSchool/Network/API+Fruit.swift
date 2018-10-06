@@ -12,16 +12,6 @@ enum APIError: Error {
     case invalidGradeError
 }
 
-class API {
-    //private static let baseURL = "http://localhost:3000"
-    private static let baseURL = "http://13.125.249.84:3000"
-    private static let jsonDecoder: JSONDecoder = {
-        let jsonDecoder = JSONDecoder()
-        jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-        return jsonDecoder
-    }()
-}
-// MARK: - 메인 플로우 관련
 extension API {
     /// 모든 과일 정보 요청.
     ///

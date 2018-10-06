@@ -27,12 +27,15 @@ class ExerciseCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        quizView = nil
-    }
-    
-    func setProperties(_ object: QuizResponse?, at item: Int, handler: @escaping () -> Void) {
-        guard let object = object else { return }
-        quizView.handler = handler
-        quizView.setProperties(object, at: item)
+        for index in 0..<4 {
+            quizView[index].isSelected = false
+        }
+        quizView.imageView.image = nil
+        quizView.numberLabel.text = nil
+        quizView.titleLabel.text = nil
+        quizView[0].setTitle(nil, for: [])
+        quizView[1].setTitle(nil, for: [])
+        quizView[2].setTitle(nil, for: [])
+        quizView[3].setTitle(nil, for: [])
     }
 }
