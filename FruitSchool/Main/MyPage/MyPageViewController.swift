@@ -18,10 +18,7 @@ class MyPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logo_noncircle"))
-        self.navigationItem.title = "생활기록부"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIImageView(image: #imageLiteral(resourceName: "logo_noncircle")))
         IndicatorView.shared.showIndicator(message: "Loading...")
         API.requestUserInfo { response, statusCode, error in
             IndicatorView.shared.hideIndicator()

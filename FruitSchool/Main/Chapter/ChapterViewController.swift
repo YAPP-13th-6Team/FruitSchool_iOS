@@ -24,9 +24,16 @@ class ChapterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logo_noncircle"))
+        switch grade {
+         case 0:
+            navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "dog_top"))
+        case 1:
+            break
+        case 2:
+            break
+        default:
+            break
+        }
         searchBar = UISearchBar()
         searchBar.delegate = self
         searchBar.showsCancelButton = true

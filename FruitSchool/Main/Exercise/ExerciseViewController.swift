@@ -28,9 +28,7 @@ class ExerciseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logo_noncircle"))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIImageView(image: #imageLiteral(resourceName: "logo_noncircle")))
         IndicatorView.shared.showIndicator(message: "Loading...")
         API.requestExercises(by: id) { response, statusCode, error in
             IndicatorView.shared.hideIndicator()

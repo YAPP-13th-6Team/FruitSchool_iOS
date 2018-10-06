@@ -17,9 +17,7 @@ class CommunityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logo_noncircle"))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIImageView(image: #imageLiteral(resourceName: "logo_noncircle")))
         tableView.register(UINib(nibName: "CommunityCell", bundle: nil), forCellReuseIdentifier: "communityCell")
         API.requestCommunityList { response, statusCode, error in
             if let error = error {

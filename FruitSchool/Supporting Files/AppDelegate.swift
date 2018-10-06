@@ -31,12 +31,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = controller
         window?.makeKeyAndVisible()
         UIApplication.shared.isStatusBarHidden = false
-        //페이지 인디케이터 전역 프로퍼티 설정
+        // 페이지 인디케이터 전역 프로퍼티 설정
         let pageControl = UIPageControl.appearance()
         pageControl.pageIndicatorTintColor = UIColor.lightGray
         pageControl.currentPageIndicatorTintColor = UIColor.black
         pageControl.backgroundColor = UIColor.white
-        
+        // 내비게이션바 투명
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().backgroundColor = .clear
+        UINavigationBar.appearance().isTranslucent = true
         return true
     }
 

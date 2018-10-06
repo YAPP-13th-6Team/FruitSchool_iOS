@@ -28,11 +28,9 @@ class BookViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let backBarButtonItem = UIBarButtonItem()
-        backBarButtonItem.title = "과일교과서"
+        backBarButtonItem.title = "교과서"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIImageView(image: #imageLiteral(resourceName: "logo_noncircle")))
         navigationItem.backBarButtonItem = backBarButtonItem
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logo_noncircle"))
         percentLabel = UILabel()
         percentLabel.textColor = UIColor.main
         percentLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
