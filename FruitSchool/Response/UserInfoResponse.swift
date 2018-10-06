@@ -13,5 +13,5 @@ struct UserInfoResponse: Codable {
         let profileImage: String
     }
     let message: String
-    let data: [Data]
+    let data: Data
 }

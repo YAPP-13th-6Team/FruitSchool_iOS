@@ -24,6 +24,7 @@ class UserInfoCell: UITableViewCell {
     func setProperties(_ object: UserInfoResponse.Data?) {
         guard let object = object else { return }
         nickNameLabel.text = object.nickname
+        gradeLabel.text = Grade(rawValue: object.grade)?.expression
         let imageUrl = object.profileImage
         guard let url = URL(string: imageUrl) else { return }
         guard let data = try? Data(contentsOf: url) else { return }
@@ -31,7 +32,6 @@ class UserInfoCell: UITableViewCell {
         profileImageView.layer.masksToBounds = false
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         profileImageView.clipsToBounds = true
-        gradeLabel.text = Grade(rawValue: object.grade)?.expression
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
