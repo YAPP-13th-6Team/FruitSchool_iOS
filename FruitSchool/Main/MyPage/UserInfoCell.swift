@@ -25,6 +25,7 @@ class UserInfoCell: UITableViewCell {
         guard let object = object else { return }
         nickNameLabel.text = object.nickname
         gradeLabel.text = Grade(rawValue: object.grade)?.expression
+        print(object.userId)
         let imageUrl = object.profileImage
         guard let url = URL(string: imageUrl) else { return }
         guard let data = try? Data(contentsOf: url) else { return }
