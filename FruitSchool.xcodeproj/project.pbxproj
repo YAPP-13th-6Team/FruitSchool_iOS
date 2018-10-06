@@ -82,6 +82,8 @@
 		99A52D1F2168AFF2000BC360 /* CommunityImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99A52D1D2168AFF2000BC360 /* CommunityImageCell.xib */; };
 		99A52D212168D329000BC360 /* CommunityListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A52D202168D329000BC360 /* CommunityListResponse.swift */; };
 		99A52D2321692489000BC360 /* CommunityDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A52D2221692489000BC360 /* CommunityDetailResponse.swift */; };
+		99A52D25216937CA000BC360 /* UserInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A52D24216937CA000BC360 /* UserInfoResponse.swift */; };
+		99A52D27216937FD000BC360 /* API+Community.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A52D26216937FD000BC360 /* API+Community.swift */; };
 		9E51A59652BFAA932928067F /* Pods_FruitSchool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F105C82803FFC63FD567EBBB /* Pods_FruitSchool.framework */; };
 		DBF51B8A2157CE0900AA85DF /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBF51B872157CE0900AA85DF /* Tutorial.storyboard */; };
 		DBF51B8B2157CE0900AA85DF /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF51B882157CE0900AA85DF /* TutorialViewController.swift */; };
@@ -165,6 +167,8 @@
 		99A52D1D2168AFF2000BC360 /* CommunityImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommunityImageCell.xib; sourceTree = "<group>"; };
 		99A52D202168D329000BC360 /* CommunityListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityListResponse.swift; sourceTree = "<group>"; };
 		99A52D2221692489000BC360 /* CommunityDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDetailResponse.swift; sourceTree = "<group>"; };
+		99A52D24216937CA000BC360 /* UserInfoResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoResponse.swift; sourceTree = "<group>"; };
+		99A52D26216937FD000BC360 /* API+Community.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Community.swift"; sourceTree = "<group>"; };
 		AE308E65D83414C1D0945E8F /* Pods-FruitSchool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.release.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.release.xcconfig"; sourceTree = "<group>"; };
 		DA48AB07292D5B1D20B98DFD /* Pods-FruitSchool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.debug.xcconfig"; sourceTree = "<group>"; };
 		DBF51B872157CE0900AA85DF /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
@@ -331,6 +335,7 @@
 				1923664A2165B6BE0043F9BB /* ExamResponse.swift */,
 				99A52D202168D329000BC360 /* CommunityListResponse.swift */,
 				99A52D2221692489000BC360 /* CommunityDetailResponse.swift */,
+				99A52D24216937CA000BC360 /* UserInfoResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -457,6 +462,7 @@
 				19DE4AAB21691E0F000C412A /* API+Base.swift */,
 				19DE4AA921691DFC000C412A /* API+Auth.swift */,
 				19E274C82144D75300E2F6D2 /* API+Fruit.swift */,
+				99A52D26216937FD000BC360 /* API+Community.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -661,6 +667,7 @@
 				19A76F7B2162333200C7C05F /* ExerciseResponse.swift in Sources */,
 				19FCF2402160FE9600BCC3F7 /* Grade.swift in Sources */,
 				DBF51B8B2157CE0900AA85DF /* TutorialViewController.swift in Sources */,
+				99A52D25216937CA000BC360 /* UserInfoResponse.swift in Sources */,
 				1923664B2165B6BE0043F9BB /* ExamResponse.swift in Sources */,
 				1947C568214F2DC700BF6521 /* Record.swift in Sources */,
 				195F2672215BA45000A6EED4 /* ResultView.swift in Sources */,
@@ -676,6 +683,7 @@
 				192366542165D7F30043F9BB /* BackView.swift in Sources */,
 				19E274C72144D74E00E2F6D2 /* Network.swift in Sources */,
 				99A52D2321692489000BC360 /* CommunityDetailResponse.swift in Sources */,
+				99A52D27216937FD000BC360 /* API+Community.swift in Sources */,
 				190F74AE213E34700038234A /* NSObject+.swift in Sources */,
 				1947C57C214F9E5F00BF6521 /* FruitResponse.swift in Sources */,
 				1947C574214F2F3900BF6521 /* DetailStandardTipCell.swift in Sources */,
@@ -828,7 +836,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9RVFJQPN7Q;
 				DEVELOPMENT_TEAM = H79MF628K3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -862,7 +869,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9RVFJQPN7Q;
 				DEVELOPMENT_TEAM = H79MF628K3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
