@@ -18,12 +18,15 @@ class BookViewController: UIViewController {
     var searchButton: UIBarButtonItem!
     var percentLabel: UILabel!
     var currentCellIndex: Int = 0
+    let imageNames = ["cover_dog", "cover_student", "cover_boss"]
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "교과서"
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logo_noncircle"))
         slider.setThumbImage(UIImage(), for: [])
         percentLabel = UILabel()
         percentLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -69,6 +72,8 @@ extension BookViewController: UISearchBarDelegate {
 extension BookViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? BookCell else { return UICollectionViewCell() }
+        cell.coverImageView.image = UIImage(named: imageNames[indexPath.item])
+        
         cell.setProperties(at: indexPath.item)
         return cell
     }
@@ -98,8 +103,8 @@ extension BookViewController: UICollectionViewDelegate {
 
 extension BookViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height  = collectionView.bounds.height
-        return CGSize(width: height * 0.8, height: height)
+        let width = collectionView.bounds.width * 0.8
+        return CGSize(width: width, height: width * 1.2)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

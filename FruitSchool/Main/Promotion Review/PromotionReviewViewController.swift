@@ -29,7 +29,9 @@ class PromotionReviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "승급 심사"
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logo_noncircle"))
         IndicatorView.shared.showIndicator(message: "Loading...")
         API.requestExam(by: grade) { [weak self] response, statusCode, error in
             guard let `self` = self else { return }
