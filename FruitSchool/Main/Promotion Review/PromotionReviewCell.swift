@@ -27,6 +27,9 @@ class PromotionReviewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        for index in 0..<4 {
+            quizView[index].isSelected = false
+        }
         quizView.imageView.image = nil
         quizView.numberLabel.text = nil
         quizView.titleLabel.text = nil
@@ -34,11 +37,5 @@ class PromotionReviewCell: UICollectionViewCell {
         quizView[1].setTitle(nil, for: [])
         quizView[2].setTitle(nil, for: [])
         quizView[3].setTitle(nil, for: [])
-    }
-    
-    func setProperties(_ object: QuizResponse?, at item: Int, handler: @escaping () -> Void) {
-        guard let object = object else { return }
-        quizView.handler = handler
-        quizView.setProperties(object, at: item)
     }
 }

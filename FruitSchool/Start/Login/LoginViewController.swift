@@ -47,20 +47,27 @@ extension LoginViewController {
                     UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription)
                     return
                 }
-                print(session.token)
-                guard let user = user else { return }
-                guard let id = user.id else { return }
-                let nickname = user.nickname ?? "익명의사용자"
-                // 중복 사용자 검증.
-                // 사용자가 이미 서비스에 가입한 상태라면 nickname, grade를 UserDefaults에 저장하고 Main으로 이동
-                // 사용자가 서비스를 처음 사용한다면 CertificateViewController로 이동하여 사용자 등록 절차 진행
-                guard let next = UIViewController.instantiate(storyboard: "Certificate", identifier: CertificateViewController.classNameToString) as? CertificateViewController else { return }
-                next.id = id
-                next.nickname = nickname
-                next.modalTransitionStyle = .flipHorizontal
-                DispatchQueue.main.async { [weak self] in
-                    self?.present(next, animated: true, completion: nil)
-                }
+                print(session.token.accessToken)
+                API.requestAuthorization(token: session.token.accessToken, completion: { response, statusCode, error in
+                    if let error = error {
+                        print(error.localizedDescription)
+                        DispatchQueue.main.async { [weak self] in
+                            UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription)
+                            return
+                        }
+                    }
+                    guard let response = response else { return }
+                    // 서버에서 토큰 내려오면 키체인에 저장. 개발 단계에서는 UserDefaults에 저장.
+                    print(response.data.authorization)
+                    UserDefaults.standard.set(response.data.authorization, forKey: "authorization")
+                    guard let next = UIViewController.instantiate(storyboard: "Certificate", identifier: CertificateViewController.classNameToString) as? CertificateViewController else { return }
+                    next.id = user?.id ?? ""
+                    next.nickname = user?.nickname ?? "익명의사용자"
+                    next.modalTransitionStyle = .flipHorizontal
+                    DispatchQueue.main.async { [weak self] in
+                        self?.present(next, animated: true, completion: nil)
+                    }
+                })
             })
         }
     }

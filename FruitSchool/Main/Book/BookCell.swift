@@ -10,24 +10,21 @@ import UIKit
 
 class BookCell: UICollectionViewCell {
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var coverImageView: UIImageView!
+    @IBOutlet weak var stampImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        layer.borderWidth = 3
-        layer.borderColor = UIColor.black.cgColor
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        imageView.image = nil
-        alpha = 1
+        coverImageView.image = nil
+        stampImageView.image = nil
     }
     
     func setProperties(at grade: Int) {
         let myGrade = UserDefaults.standard.integer(forKey: "grade")
-        if myGrade < grade {
-            alpha = 0.7
-        }
+        
     }
 }

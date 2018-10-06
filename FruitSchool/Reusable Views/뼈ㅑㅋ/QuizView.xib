@@ -150,9 +150,6 @@
                                                     <real key="value" value="5"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="didTouchUpQuizButtons:" destination="iN0-l3-epB" eventType="touchUpInside" id="PgA-fq-rIt"/>
-                                            </connections>
                                         </button>
                                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWv-zi-sOH" customClass="QuizButton" customModule="FruitSchool" customModuleProvider="target">
                                             <rect key="frame" x="181.5" y="0.0" width="161.5" height="61"/>
@@ -162,9 +159,6 @@
                                                     <real key="value" value="5"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="didTouchUpQuizButtons:" destination="iN0-l3-epB" eventType="touchUpInside" id="HNR-5u-GXk"/>
-                                            </connections>
                                         </button>
                                     </subviews>
                                 </stackView>
@@ -179,9 +173,6 @@
                                                     <real key="value" value="5"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="didTouchUpQuizButtons:" destination="iN0-l3-epB" eventType="touchUpInside" id="85c-BD-398"/>
-                                            </connections>
                                         </button>
                                         <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01h-Gu-YTB" customClass="QuizButton" customModule="FruitSchool" customModuleProvider="target">
                                             <rect key="frame" x="181.5" y="0.0" width="161.5" height="61.5"/>
@@ -191,9 +182,6 @@
                                                     <real key="value" value="5"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="didTouchUpQuizButtons:" destination="iN0-l3-epB" eventType="touchUpInside" id="MsF-yE-tkh"/>
-                                            </connections>
                                         </button>
                                     </subviews>
                                 </stackView>

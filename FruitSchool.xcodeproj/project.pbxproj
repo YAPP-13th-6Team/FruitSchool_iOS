@@ -57,12 +57,15 @@
 		19784243215FC9BD00D53F48 /* Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19784242215FC9BD00D53F48 /* Community.storyboard */; };
 		19784245215FC9C500D53F48 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19784244215FC9C500D53F48 /* CommunityViewController.swift */; };
 		197E55BE21512550003A610D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 197E55BD21512550003A610D /* .swiftlint.yml */; };
-		19A113652157E5E80017292E /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A113642157E5E80017292E /* KakaoOpenSDK.framework */; };
 		19A76F732161B69500C7C05F /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A76F722161B69500C7C05F /* AlertView.swift */; };
 		19A76F752161B6F600C7C05F /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A76F742161B6F600C7C05F /* AlertView.xib */; };
 		19A76F7B2162333200C7C05F /* ExerciseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A76F7A2162333200C7C05F /* ExerciseResponse.swift */; };
+		19DE4AA62168F5FB000C412A /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE4AA52168F5FB000C412A /* Quiz.swift */; };
+		19DE4AA821691DB9000C412A /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE4AA721691DB9000C412A /* LoginResponse.swift */; };
+		19DE4AAA21691DFC000C412A /* API+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE4AA921691DFC000C412A /* API+Auth.swift */; };
+		19DE4AAC21691E0F000C412A /* API+Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE4AAB21691E0F000C412A /* API+Base.swift */; };
 		19E274C72144D74E00E2F6D2 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274C62144D74E00E2F6D2 /* Network.swift */; };
-		19E274C92144D75300E2F6D2 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274C82144D75300E2F6D2 /* API.swift */; };
+		19E274C92144D75300E2F6D2 /* API+Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274C82144D75300E2F6D2 /* API+Fruit.swift */; };
 		19E274CB2144D93F00E2F6D2 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19E274CA2144D93F00E2F6D2 /* Login.storyboard */; };
 		19E274D22144DA6300E2F6D2 /* Book.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19E274D12144DA6300E2F6D2 /* Book.storyboard */; };
 		19E274D42144DA7600E2F6D2 /* BookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274D32144DA7600E2F6D2 /* BookViewController.swift */; };
@@ -72,6 +75,13 @@
 		19FCF2402160FE9600BCC3F7 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FCF23F2160FE9600BCC3F7 /* Grade.swift */; };
 		19FCF24221610AE500BCC3F7 /* UnlockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19FCF24121610AE500BCC3F7 /* UnlockView.xib */; };
 		19FCF24421610AF000BCC3F7 /* UnlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FCF24321610AF000BCC3F7 /* UnlockView.swift */; };
+		99A52D1621689894000BC360 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99A52D1521689894000BC360 /* KakaoOpenSDK.framework */; };
+		99A52D1A2168AE58000BC360 /* CommunityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A52D182168AE58000BC360 /* CommunityCell.swift */; };
+		99A52D1B2168AE58000BC360 /* CommunityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99A52D192168AE58000BC360 /* CommunityCell.xib */; };
+		99A52D1E2168AFF2000BC360 /* CommunityImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A52D1C2168AFF2000BC360 /* CommunityImageCell.swift */; };
+		99A52D1F2168AFF2000BC360 /* CommunityImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99A52D1D2168AFF2000BC360 /* CommunityImageCell.xib */; };
+		99A52D212168D329000BC360 /* CommunityListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A52D202168D329000BC360 /* CommunityListResponse.swift */; };
+		99A52D2321692489000BC360 /* CommunityDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A52D2221692489000BC360 /* CommunityDetailResponse.swift */; };
 		9E51A59652BFAA932928067F /* Pods_FruitSchool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F105C82803FFC63FD567EBBB /* Pods_FruitSchool.framework */; };
 		DBF51B8A2157CE0900AA85DF /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBF51B872157CE0900AA85DF /* Tutorial.storyboard */; };
 		DBF51B8B2157CE0900AA85DF /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF51B882157CE0900AA85DF /* TutorialViewController.swift */; };
@@ -130,12 +140,15 @@
 		19784242215FC9BD00D53F48 /* Community.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Community.storyboard; sourceTree = "<group>"; };
 		19784244215FC9C500D53F48 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		197E55BD21512550003A610D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
-		19A113642157E5E80017292E /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		19A76F722161B69500C7C05F /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		19A76F742161B6F600C7C05F /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		19A76F7A2162333200C7C05F /* ExerciseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseResponse.swift; sourceTree = "<group>"; };
+		19DE4AA52168F5FB000C412A /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
+		19DE4AA721691DB9000C412A /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		19DE4AA921691DFC000C412A /* API+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Auth.swift"; sourceTree = "<group>"; };
+		19DE4AAB21691E0F000C412A /* API+Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Base.swift"; sourceTree = "<group>"; };
 		19E274C62144D74E00E2F6D2 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		19E274C82144D75300E2F6D2 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		19E274C82144D75300E2F6D2 /* API+Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Fruit.swift"; sourceTree = "<group>"; };
 		19E274CA2144D93F00E2F6D2 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		19E274D12144DA6300E2F6D2 /* Book.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Book.storyboard; sourceTree = "<group>"; };
 		19E274D32144DA7600E2F6D2 /* BookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +158,13 @@
 		19FCF23F2160FE9600BCC3F7 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		19FCF24121610AE500BCC3F7 /* UnlockView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UnlockView.xib; sourceTree = "<group>"; };
 		19FCF24321610AF000BCC3F7 /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockView.swift; sourceTree = "<group>"; };
+		99A52D1521689894000BC360 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
+		99A52D182168AE58000BC360 /* CommunityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCell.swift; sourceTree = "<group>"; };
+		99A52D192168AE58000BC360 /* CommunityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommunityCell.xib; sourceTree = "<group>"; };
+		99A52D1C2168AFF2000BC360 /* CommunityImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityImageCell.swift; sourceTree = "<group>"; };
+		99A52D1D2168AFF2000BC360 /* CommunityImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommunityImageCell.xib; sourceTree = "<group>"; };
+		99A52D202168D329000BC360 /* CommunityListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityListResponse.swift; sourceTree = "<group>"; };
+		99A52D2221692489000BC360 /* CommunityDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDetailResponse.swift; sourceTree = "<group>"; };
 		AE308E65D83414C1D0945E8F /* Pods-FruitSchool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.release.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.release.xcconfig"; sourceTree = "<group>"; };
 		DA48AB07292D5B1D20B98DFD /* Pods-FruitSchool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.debug.xcconfig"; sourceTree = "<group>"; };
 		DBF51B872157CE0900AA85DF /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
@@ -157,8 +177,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19A113652157E5E80017292E /* KakaoOpenSDK.framework in Frameworks */,
 				9E51A59652BFAA932928067F /* Pods_FruitSchool.framework in Frameworks */,
+				99A52D1621689894000BC360 /* KakaoOpenSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,11 +322,15 @@
 		1947C564214F2DB000BF6521 /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				19DE4AA721691DB9000C412A /* LoginResponse.swift */,
+				19DE4AA52168F5FB000C412A /* Quiz.swift */,
 				1923664C2165BF170043F9BB /* QuizResponse.swift */,
 				1947C57B214F9E5F00BF6521 /* FruitResponse.swift */,
 				192366482165AF390043F9BB /* FruitListResponse.swift */,
 				19A76F7A2162333200C7C05F /* ExerciseResponse.swift */,
 				1923664A2165B6BE0043F9BB /* ExamResponse.swift */,
+				99A52D202168D329000BC360 /* CommunityListResponse.swift */,
+				99A52D2221692489000BC360 /* CommunityDetailResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -332,6 +356,7 @@
 		1947C586214FBF3500BF6521 /* Reusable Views */ = {
 			isa = PBXGroup;
 			children = (
+				99A52D172168AE05000BC360 /* Community */,
 				1923665F216750F40043F9BB /* Quiz */,
 				19236660216750FF0043F9BB /* Result */,
 				19236661216751070043F9BB /* Custom Alert */,
@@ -419,8 +444,8 @@
 		19E274C42144D73C00E2F6D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1947C567214F2DC700BF6521 /* Record.swift */,
 				19FCF23F2160FE9600BCC3F7 /* Grade.swift */,
+				1947C567214F2DC700BF6521 /* Record.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -429,7 +454,9 @@
 			isa = PBXGroup;
 			children = (
 				19E274C62144D74E00E2F6D2 /* Network.swift */,
-				19E274C82144D75300E2F6D2 /* API.swift */,
+				19DE4AAB21691E0F000C412A /* API+Base.swift */,
+				19DE4AA921691DFC000C412A /* API+Auth.swift */,
+				19E274C82144D75300E2F6D2 /* API+Fruit.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -437,10 +464,21 @@
 		416A087A72719A34F32E0F72 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				19A113642157E5E80017292E /* KakaoOpenSDK.framework */,
+				99A52D1521689894000BC360 /* KakaoOpenSDK.framework */,
 				F105C82803FFC63FD567EBBB /* Pods_FruitSchool.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		99A52D172168AE05000BC360 /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				99A52D182168AE58000BC360 /* CommunityCell.swift */,
+				99A52D192168AE58000BC360 /* CommunityCell.xib */,
+				99A52D1C2168AFF2000BC360 /* CommunityImageCell.swift */,
+				99A52D1D2168AFF2000BC360 /* CommunityImageCell.xib */,
+			);
+			path = Community;
 			sourceTree = "<group>";
 		};
 		C371771957EB3C97F15BE1BE /* Pods */ = {
@@ -520,6 +558,7 @@
 				190983CA2156722E00E2461A /* PromotionReview.storyboard in Resources */,
 				19E274D22144DA6300E2F6D2 /* Book.storyboard in Resources */,
 				1947C56A214F2E0C00BF6521 /* Detail.storyboard in Resources */,
+				99A52D1B2168AE58000BC360 /* CommunityCell.xib in Resources */,
 				1947C588214FBF4A00BF6521 /* CertificateView.xib in Resources */,
 				190FC3C5213A689D00DD333F /* LaunchScreen.storyboard in Resources */,
 				19A76F752161B6F600C7C05F /* AlertView.xib in Resources */,
@@ -531,6 +570,7 @@
 				19E274CB2144D93F00E2F6D2 /* Login.storyboard in Resources */,
 				DBF51B8A2157CE0900AA85DF /* Tutorial.storyboard in Resources */,
 				19784243215FC9BD00D53F48 /* Community.storyboard in Resources */,
+				99A52D1F2168AFF2000BC360 /* CommunityImageCell.xib in Resources */,
 				19EC61CA2152431B00A80DA4 /* QuizView.xib in Resources */,
 				195F2670215BA44200A6EED4 /* ResultView.xib in Resources */,
 			);
@@ -558,7 +598,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-FruitSchool/Pods-FruitSchool-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
@@ -569,7 +609,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FruitSchool/Pods-FruitSchool-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BE3E69945A6435DACEAB3AB1 /* [CP] Check Pods Manifest.lock */ = {
@@ -599,11 +639,12 @@
 			files = (
 				192366572165D90A0043F9BB /* ChapterViewController.swift in Sources */,
 				192366562165D9060043F9BB /* BookCell.swift in Sources */,
-				1947C572214F2F2E00BF6521 /* DetailIntakeTipCell.swift in Sources */,
 				0001BA4621669C380076932B /* UserInfoCell.swift in Sources */,
 				191F02482157E92B008EA81C /* MainTabBarController.swift in Sources */,
 				19E274D42144DA7600E2F6D2 /* BookViewController.swift in Sources */,
 				190F74B0213E34B00038234A /* UIAlertController+.swift in Sources */,
+				99A52D1E2168AFF2000BC360 /* CommunityImageCell.swift in Sources */,
+				99A52D212168D329000BC360 /* CommunityListResponse.swift in Sources */,
 				190F74AC213E340F0038234A /* UIView+.swift in Sources */,
 				1978423B215FBF1600D53F48 /* MyPageViewController.swift in Sources */,
 				0001BA4A216707900076932B /* MyFavoritePostCell.swift in Sources */,
@@ -616,6 +657,7 @@
 				1923664D2165BF170043F9BB /* QuizResponse.swift in Sources */,
 				19784240215FC68600D53F48 /* CertificateViewController.swift in Sources */,
 				1947C58A214FBF5800BF6521 /* CertificateView.swift in Sources */,
+				99A52D1A2168AE58000BC360 /* CommunityCell.swift in Sources */,
 				19A76F7B2162333200C7C05F /* ExerciseResponse.swift in Sources */,
 				19FCF2402160FE9600BCC3F7 /* Grade.swift in Sources */,
 				DBF51B8B2157CE0900AA85DF /* TutorialViewController.swift in Sources */,
@@ -625,7 +667,7 @@
 				190FC3BB213A689C00DD333F /* AppDelegate.swift in Sources */,
 				1947C56C214F2E1500BF6521 /* DetailViewController.swift in Sources */,
 				1947C562214F2B7800BF6521 /* ChapterCell.swift in Sources */,
-				19E274C92144D75300E2F6D2 /* API.swift in Sources */,
+				19E274C92144D75300E2F6D2 /* API+Fruit.swift in Sources */,
 				1923665D216662950043F9BB /* IndicatorView.swift in Sources */,
 				191F02452157E8CC008EA81C /* DetailNutritionTipCell.swift in Sources */,
 				19EC61CE215243B800A80DA4 /* QuizButton.swift in Sources */,
@@ -633,10 +675,15 @@
 				0001BA48216707770076932B /* MyPostCell.swift in Sources */,
 				192366542165D7F30043F9BB /* BackView.swift in Sources */,
 				19E274C72144D74E00E2F6D2 /* Network.swift in Sources */,
+				99A52D2321692489000BC360 /* CommunityDetailResponse.swift in Sources */,
 				190F74AE213E34700038234A /* NSObject+.swift in Sources */,
 				1947C57C214F9E5F00BF6521 /* FruitResponse.swift in Sources */,
 				1947C574214F2F3900BF6521 /* DetailStandardTipCell.swift in Sources */,
+				19DE4AA821691DB9000C412A /* LoginResponse.swift in Sources */,
+				19DE4AA62168F5FB000C412A /* Quiz.swift in Sources */,
 				192366592165E2E40043F9BB /* ExerciseCell.swift in Sources */,
+				19DE4AAC21691E0F000C412A /* API+Base.swift in Sources */,
+				19DE4AAA21691DFC000C412A /* API+Auth.swift in Sources */,
 				19A76F732161B69500C7C05F /* AlertView.swift in Sources */,
 				190F74A6213E33850038234A /* UIViewController+.swift in Sources */,
 				1947C570214F2F2600BF6521 /* DetailImageCell.swift in Sources */,
@@ -781,6 +828,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9RVFJQPN7Q;
 				DEVELOPMENT_TEAM = H79MF628K3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -814,6 +862,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9RVFJQPN7Q;
 				DEVELOPMENT_TEAM = H79MF628K3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
