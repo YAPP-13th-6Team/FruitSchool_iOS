@@ -9,7 +9,7 @@
 import RealmSwift
 
 @objcMembers
-class Record: Object {
+class ChapterRecord: Object {
     
     dynamic var id: String = ""
     dynamic var title: String = ""
@@ -21,7 +21,7 @@ class Record: Object {
     /// - Parameter id: 과일의 고유 아이디
     static func add(id: String, title: String, grade: Int) {
         let realm = try! Realm()
-        let record = Record()
+        let record = ChapterRecord()
         record.id = id
         record.title = title
         record.grade = grade
@@ -32,16 +32,16 @@ class Record: Object {
     /// Record 가져오기.
     ///
     /// - Returns: 모든 Record 레코드.
-    static func fetch() -> Results<Record> {
+    static func fetch() -> Results<ChapterRecord> {
         let realm = try! Realm()
-        return realm.objects(Record.self)
+        return realm.objects(ChapterRecord.self)
     }
     /// Record의 특정 레코드의 특정 필드 갱신.
     ///
     /// - Parameters:
     ///   - object: 특정 레코드
     ///   - keyValue: 레코드의 특정 필드와 갱신할 값.
-    static func update(_ object: Record, keyValue: [String: Any]) {
+    static func update(_ object: ChapterRecord, keyValue: [String: Any]) {
         let realm = try! Realm()
         for (key, value) in keyValue {
             try! realm.write {
@@ -52,7 +52,7 @@ class Record: Object {
     /// Record의 특정 레코드 삭제.
     ///
     /// - Parameter object: 삭제할 Record 레코드
-    static func remove(_ object: Record) {
+    static func remove(_ object: ChapterRecord) {
         let realm = try! Realm()
         try! realm.write {
             realm.delete(object)
