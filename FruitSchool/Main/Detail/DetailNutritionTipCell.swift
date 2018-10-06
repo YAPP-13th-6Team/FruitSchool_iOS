@@ -14,17 +14,21 @@ class DetailNutritionTipCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    func setProperties(_ object: NutritionTip?) {
+        guard let object = object else { return }
         
         let width: CGFloat = nutritionTipView.frame.width
         let height: CGFloat = CGFloat(Double(width) * 3.0.squareRoot() / 2)
-    
+        
         let backView = BackView(frame: CGRect(x: 0, y: 10.0, width: width, height: height))
         nutritionTipView.addSubview(backView)
         
-        let nutritionView = NutritionView(frame: CGRect(x: 0, y: 10.0, width: width, height: height))
+        let nutritionView = NutritionView(frame: CGRect(x: 0, y: 10.0, width: width, height: height), object: object)
         nutritionTipView.addSubview(nutritionView)
         
-        UIView.animate(withDuration: TimeInterval(4.5)) {
+        UIView.animate(withDuration: TimeInterval(3)) {
             nutritionView.alpha = 0.7
         }
     }
