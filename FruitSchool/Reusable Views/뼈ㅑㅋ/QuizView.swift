@@ -8,17 +8,16 @@
 
 import UIKit
 
+protocol QuizViewDelegate: class {
+    func didTouchUpQuizButtons(_ sender: UIButton)
+}
+
 class QuizView: UIView {
     
+    weak var delegate: QuizViewDelegate?
     var buttons: [UIButton] {
         return [answer1Button, answer2Button, answer3Button, answer4Button]
     }
-    var isChecked: Bool {
-        return answer1Button.isSelected || answer2Button.isSelected || answer3Button.isSelected || answer4Button.isSelected
-    }
-    var answer: String = ""
-    var answers: [String] = []
-    var handler: (() -> Void)?
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -31,21 +30,11 @@ class QuizView: UIView {
         super.awakeFromNib()
         layer.borderWidth = 3
         layer.borderColor = UIColor.black.cgColor
+        buttons.forEach { button in
+            button.addTarget(self, action: #selector(didTouchUpQuizButtons(_:)), for: .touchUpInside)
+        }
     }
-    
-    func setProperties(_ object: QuizResponse, at item: Int) {
-        numberLabel.text = "\(item + 1)."
-        titleLabel.text = object.title
-        var answers = [[object.correctAnswer], object.incorrectAnswers].flatMap { $0 }
-        answers.shuffle()
-        self.answers = answers
-        self.answer = object.correctAnswer
-        answer1Button.setTitle(answers[0], for: [])
-        answer2Button.setTitle(answers[1], for: [])
-        answer3Button.setTitle(answers[2], for: [])
-        answer4Button.setTitle(answers[3], for: [])
-    }
-    
+
     subscript(_ index: Int) -> UIButton {
         if !(0...3).contains(index) {
             fatalError("IndexOutOfBoundsException")
@@ -64,11 +53,10 @@ class QuizView: UIView {
         }
     }
     
-    @IBAction func didTouchUpQuizButtons(_ sender: UIButton) {
+    @objc func didTouchUpQuizButtons(_ sender: UIButton) {
         for button in buttons {
             button.isSelected = false
         }
-        sender.isSelected = true
-        handler?()
+        delegate?.didTouchUpQuizButtons(sender)
     }
 }

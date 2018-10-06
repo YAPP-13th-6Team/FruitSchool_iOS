@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Community View Controller-->
+        <!--커뮤니티-->
         <scene sceneID="FrN-Qk-K59">
             <objects>
                 <viewController storyboardIdentifier="CommunityViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9rW-1I-GfZ" customClass="CommunityViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">

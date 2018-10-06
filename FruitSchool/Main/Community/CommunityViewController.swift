@@ -17,6 +17,9 @@ class CommunityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logo_noncircle"))
         tableView.register(UINib(nibName: "CommunityCell", bundle: nil), forCellReuseIdentifier: "communityCell")
         guard let url: URL = URL(string: "http://ec2-13-125-249-84.ap-northeast-2.compute.amazonaws.com:3000/posts/lists/sort/0") else { return }
         let session: URLSession = URLSession(configuration: .default)
