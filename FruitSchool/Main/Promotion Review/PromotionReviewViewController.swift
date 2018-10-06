@@ -40,7 +40,9 @@ class PromotionReviewViewController: UIViewController {
             guard let response = response else { return }
             self.quizs = response.data
             DispatchQueue.main.async { [weak self] in
-                self?.collectionView.reloadData()
+                guard let `self` = self else { return }
+                self.navigationItem.title = "\(Grade(rawValue: self.grade)?.rawValue ?? 0) 승급 심사"
+                self.collectionView.reloadData()
             }
         }
     }

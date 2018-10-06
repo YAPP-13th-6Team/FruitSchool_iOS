@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--My Page View Controller-->
+        <!--마이페이지-->
         <scene sceneID="7zK-vd-eOh">
             <objects>
                 <viewController storyboardIdentifier="MyPageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ORe-r7-oav" customClass="MyPageViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,7 +20,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="zEu-uy-QUG"/>
                     </view>
-                    <navigationItem key="navigationItem" id="A7v-7L-98P"/>
+                    <navigationItem key="navigationItem" title="마이페이지" id="A7v-7L-98P"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kvh-zH-vMd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
