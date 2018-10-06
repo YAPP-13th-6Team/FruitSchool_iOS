@@ -12,7 +12,7 @@ struct CommunityListResponse: Codable {
     struct Data: Codable {
         struct AuthorInfo: Codable {
             let id: String
-            let grade: String
+            let grade: Int
             let userId: String
             let nickname: String
             let profileImage: String
@@ -22,7 +22,7 @@ struct CommunityListResponse: Codable {
             }
         }
         let id: String
-        let createdAt: Date
+        let createdAt: String
         let likes: Int
         let postImage: [String]
         let commentCount: Int
