@@ -34,10 +34,9 @@ class MyPageViewController: UIViewController {
                 return
             }
             guard let response = response else { return }
-            self.userInfoResponse = response.data.first
+            self.userInfoResponse = response.data
             DispatchQueue.main.async { [weak self] in
                 self?.tableView.reloadData()
-                
             }
         }
         self.tableView.tableFooterView = UIView()

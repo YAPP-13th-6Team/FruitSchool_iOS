@@ -11,7 +11,8 @@ struct UserInfoResponse: Codable {
         let grade: Int
         let nickname: String
         let profileImage: String
+        let userId: String
     }
     let message: String
-    let data: [Data]
+    let data: Data
 }
