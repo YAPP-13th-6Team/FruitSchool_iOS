@@ -50,6 +50,8 @@
 		1947C58A214FBF5800BF6521 /* CertificateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C589214FBF5800BF6521 /* CertificateView.swift */; };
 		195F2670215BA44200A6EED4 /* ResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 195F266F215BA44200A6EED4 /* ResultView.xib */; };
 		195F2672215BA45000A6EED4 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195F2671215BA45000A6EED4 /* ResultView.swift */; };
+		1975DD13216A5E8A0092B93C /* ExerciseContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1975DD12216A5E8A0092B93C /* ExerciseContainerViewController.swift */; };
+		1975DD16216A5EA30092B93C /* ExerciseContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1975DD15216A5EA30092B93C /* ExerciseContentViewController.swift */; };
 		19784239215FBF0C00D53F48 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19784238215FBF0C00D53F48 /* MyPage.storyboard */; };
 		1978423B215FBF1600D53F48 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1978423A215FBF1600D53F48 /* MyPageViewController.swift */; };
 		1978423E215FC68000D53F48 /* Certificate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1978423D215FC68000D53F48 /* Certificate.storyboard */; };
@@ -136,6 +138,8 @@
 		1947C589214FBF5800BF6521 /* CertificateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateView.swift; sourceTree = "<group>"; };
 		195F266F215BA44200A6EED4 /* ResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultView.xib; sourceTree = "<group>"; };
 		195F2671215BA45000A6EED4 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		1975DD12216A5E8A0092B93C /* ExerciseContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseContainerViewController.swift; sourceTree = "<group>"; };
+		1975DD15216A5EA30092B93C /* ExerciseContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseContentViewController.swift; sourceTree = "<group>"; };
 		19784238215FBF0C00D53F48 /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		1978423A215FBF1600D53F48 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		1978423D215FC68000D53F48 /* Certificate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Certificate.storyboard; sourceTree = "<group>"; };
@@ -374,6 +378,15 @@
 			path = "Reusable Views";
 			sourceTree = "<group>";
 		};
+		1975DD14216A5E900092B93C /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				192366502165D0DB0043F9BB /* ExerciseViewController.swift */,
+				192366582165E2E40043F9BB /* ExerciseCell.swift */,
+			);
+			path = Deprecated;
+			sourceTree = "<group>";
+		};
 		19784237215FBEFA00D53F48 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -433,8 +446,9 @@
 			isa = PBXGroup;
 			children = (
 				1923664E2165D0CD0043F9BB /* Exercise.storyboard */,
-				192366502165D0DB0043F9BB /* ExerciseViewController.swift */,
-				192366582165E2E40043F9BB /* ExerciseCell.swift */,
+				1975DD12216A5E8A0092B93C /* ExerciseContainerViewController.swift */,
+				1975DD15216A5EA30092B93C /* ExerciseContentViewController.swift */,
+				1975DD14216A5E900092B93C /* Deprecated */,
 			);
 			path = Exercise;
 			sourceTree = "<group>";
@@ -694,6 +708,7 @@
 				1947C57C214F9E5F00BF6521 /* FruitResponse.swift in Sources */,
 				1947C574214F2F3900BF6521 /* DetailStandardTipCell.swift in Sources */,
 				19DE4AA821691DB9000C412A /* LoginResponse.swift in Sources */,
+				1975DD13216A5E8A0092B93C /* ExerciseContainerViewController.swift in Sources */,
 				19DE4AA62168F5FB000C412A /* Quiz.swift in Sources */,
 				192366592165E2E40043F9BB /* ExerciseCell.swift in Sources */,
 				19DE4AAC21691E0F000C412A /* API+Base.swift in Sources */,
@@ -701,6 +716,7 @@
 				19A76F732161B69500C7C05F /* AlertView.swift in Sources */,
 				190F74A6213E33850038234A /* UIViewController+.swift in Sources */,
 				1947C570214F2F2600BF6521 /* DetailImageCell.swift in Sources */,
+				1975DD16216A5EA30092B93C /* ExerciseContentViewController.swift in Sources */,
 				19EC61CC2152432400A80DA4 /* QuizView.swift in Sources */,
 				192366552165D7F30043F9BB /* NutritionView.swift in Sources */,
 				1947C57E214FB3FE00BF6521 /* LoginViewController.swift in Sources */,

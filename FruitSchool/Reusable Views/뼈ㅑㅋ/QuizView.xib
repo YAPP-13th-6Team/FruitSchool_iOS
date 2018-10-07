@@ -16,199 +16,99 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="582"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u1c-kO-7PO">
-                    <rect key="frame" x="0.0" y="20" width="375" height="387.5"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="1." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3BU-uN-Oc7">
-                            <rect key="frame" x="20" y="85" width="16" height="24"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mwz-WO-9YC">
-                            <rect key="frame" x="20" y="134" width="335" height="245.5"/>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3s4-a8-ivz">
-                            <rect key="frame" x="44" y="85" width="311" height="41"/>
-                            <attributedString key="attributedText">
-                                <fragment content="다음">
-                                    <attributes>
-                                        <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                                <fragment content=" ">
-                                    <attributes>
-                                        <font key="NSFont" metaFont="system" size="17"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                                <fragment content="중">
-                                    <attributes>
-                                        <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                                <fragment content=" ">
-                                    <attributes>
-                                        <font key="NSFont" metaFont="system" size="17"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                                <fragment content="바나나의">
-                                    <attributes>
-                                        <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                                <fragment content=" ">
-                                    <attributes>
-                                        <font key="NSFont" metaFont="system" size="17"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                                <fragment content="기원지가">
-                                    <attributes>
-                                        <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                                <fragment content=" ">
-                                    <attributes>
-                                        <font key="NSFont" metaFont="system" size="17"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                                <fragment content="어느">
-                                    <attributes>
-                                        <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                                <fragment content=" ">
-                                    <attributes>
-                                        <font key="NSFont" metaFont="system" size="17"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                                <fragment content="지역인지">
-                                    <attributes>
-                                        <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                                <fragment content=" ">
-                                    <attributes>
-                                        <font key="NSFont" metaFont="system" size="17"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                                <fragment content="응답하시오">
-                                    <attributes>
-                                        <font key="NSFont" size="17" name=".AppleSDGothicNeoI-Regular"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                                <fragment content=".">
-                                    <attributes>
-                                        <font key="NSFont" metaFont="system" size="17"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                            </attributedString>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="Mwz-WO-9YC" firstAttribute="leading" secondItem="u1c-kO-7PO" secondAttribute="leading" constant="20" id="HFw-gJ-RJW"/>
-                        <constraint firstItem="Mwz-WO-9YC" firstAttribute="top" secondItem="3s4-a8-ivz" secondAttribute="bottom" constant="8" id="I5Q-5q-d5M"/>
-                        <constraint firstAttribute="bottom" secondItem="Mwz-WO-9YC" secondAttribute="bottom" constant="8" id="LWC-Om-OGx"/>
-                        <constraint firstAttribute="trailing" secondItem="Mwz-WO-9YC" secondAttribute="trailing" constant="20" id="NEN-OG-FbT"/>
-                        <constraint firstItem="3s4-a8-ivz" firstAttribute="leading" secondItem="3BU-uN-Oc7" secondAttribute="trailing" constant="8" id="hjW-35-fDp"/>
-                        <constraint firstItem="3BU-uN-Oc7" firstAttribute="leading" secondItem="u1c-kO-7PO" secondAttribute="leading" constant="20" id="pCU-OU-Te1"/>
-                        <constraint firstItem="3BU-uN-Oc7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="u1c-kO-7PO" secondAttribute="top" id="vpb-on-0IQ"/>
-                        <constraint firstItem="3s4-a8-ivz" firstAttribute="top" secondItem="3BU-uN-Oc7" secondAttribute="top" id="wwv-Mj-KjS"/>
-                        <constraint firstAttribute="trailing" secondItem="3s4-a8-ivz" secondAttribute="trailing" constant="20" id="x7P-OW-gDs"/>
-                        <constraint firstItem="3BU-uN-Oc7" firstAttribute="centerY" secondItem="u1c-kO-7PO" secondAttribute="centerY" multiplier="0.5" id="xDg-WK-2Ba"/>
-                    </constraints>
-                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="문제 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3BU-uN-Oc7">
+                    <rect key="frame" x="25" y="20" width="49" height="24"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UCk-yG-lS5">
-                    <rect key="frame" x="0.0" y="407.5" width="375" height="174.5"/>
+                    <rect key="frame" x="0.0" y="244.5" width="375" height="337.5"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="sq3-Qw-sPq">
-                            <rect key="frame" x="16" y="16" width="343" height="142.5"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="RAj-Cm-Niu">
+                            <rect key="frame" x="16" y="32" width="343" height="273.5"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="lQL-7B-bwX">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4Z-xt-8GI" customClass="QuizButton" customModule="FruitSchool" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="343" height="61"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4Z-xt-8GI" customClass="QuizButton" customModule="FruitSchool" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="161.5" height="61"/>
-                                            <state key="normal" title="파푸아뉴기니"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="5"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </button>
-                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWv-zi-sOH" customClass="QuizButton" customModule="FruitSchool" customModuleProvider="target">
-                                            <rect key="frame" x="181.5" y="0.0" width="161.5" height="61"/>
-                                            <state key="normal" title="아마존"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="5"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </button>
-                                    </subviews>
-                                </stackView>
-                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="oeD-0F-uZ2">
-                                    <rect key="frame" x="0.0" y="81" width="343" height="61.5"/>
-                                    <subviews>
-                                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A85-BG-hWz" customClass="QuizButton" customModule="FruitSchool" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="161.5" height="61.5"/>
-                                            <state key="normal" title="베트남"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="5"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </button>
-                                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01h-Gu-YTB" customClass="QuizButton" customModule="FruitSchool" customModuleProvider="target">
-                                            <rect key="frame" x="181.5" y="0.0" width="161.5" height="61.5"/>
-                                            <state key="normal" title="태국"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="5"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </button>
-                                    </subviews>
-                                </stackView>
+                                    <state key="normal" title="파푸아뉴기니"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWv-zi-sOH" customClass="QuizButton" customModule="FruitSchool" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="71" width="343" height="60.5"/>
+                                    <state key="normal" title="아마존"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A85-BG-hWz" customClass="QuizButton" customModule="FruitSchool" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="141.5" width="343" height="61"/>
+                                    <state key="normal" title="베트남"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01h-Gu-YTB" customClass="QuizButton" customModule="FruitSchool" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="212.5" width="343" height="61"/>
+                                    <state key="normal" title="태국"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="uWv-zi-sOH" firstAttribute="width" secondItem="RAj-Cm-Niu" secondAttribute="width" id="0mO-wa-xQL"/>
+                                <constraint firstItem="01h-Gu-YTB" firstAttribute="width" secondItem="RAj-Cm-Niu" secondAttribute="width" id="4U1-2h-Tn5"/>
+                                <constraint firstItem="k4Z-xt-8GI" firstAttribute="width" secondItem="RAj-Cm-Niu" secondAttribute="width" id="MXI-er-VwP"/>
+                                <constraint firstItem="A85-BG-hWz" firstAttribute="width" secondItem="RAj-Cm-Niu" secondAttribute="width" id="d8L-V2-eYl"/>
+                            </constraints>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="sq3-Qw-sPq" secondAttribute="bottom" constant="16" id="PBM-26-rrG"/>
-                        <constraint firstAttribute="trailing" secondItem="sq3-Qw-sPq" secondAttribute="trailing" constant="16" id="Po9-9h-EEk"/>
-                        <constraint firstItem="sq3-Qw-sPq" firstAttribute="centerX" secondItem="UCk-yG-lS5" secondAttribute="centerX" id="Stj-e4-jVL"/>
-                        <constraint firstItem="sq3-Qw-sPq" firstAttribute="leading" secondItem="UCk-yG-lS5" secondAttribute="leading" constant="16" id="XdD-Fl-08a"/>
-                        <constraint firstItem="sq3-Qw-sPq" firstAttribute="top" secondItem="UCk-yG-lS5" secondAttribute="top" constant="16" id="dnD-I8-E8x"/>
-                        <constraint firstItem="sq3-Qw-sPq" firstAttribute="centerY" secondItem="UCk-yG-lS5" secondAttribute="centerY" id="r7c-9z-oYc"/>
+                        <constraint firstAttribute="trailing" secondItem="RAj-Cm-Niu" secondAttribute="trailing" constant="16" id="729-3y-Anx"/>
+                        <constraint firstAttribute="bottom" secondItem="RAj-Cm-Niu" secondAttribute="bottom" constant="32" id="Dsu-nB-MIc"/>
+                        <constraint firstItem="RAj-Cm-Niu" firstAttribute="leading" secondItem="UCk-yG-lS5" secondAttribute="leading" constant="16" id="QVS-B6-eoZ"/>
+                        <constraint firstItem="RAj-Cm-Niu" firstAttribute="top" secondItem="UCk-yG-lS5" secondAttribute="top" constant="32" id="Wbd-CW-dvw"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wZE-Vc-xkO">
+                    <rect key="frame" x="326" y="20" width="24" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="PgU-0J-0iM"/>
+                        <constraint firstAttribute="width" constant="24" id="o4p-hj-RJY"/>
+                    </constraints>
+                    <state key="normal" image="cancel"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="다음 중 바나나의 기원지가 어느 지역인지 응답하시오." lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3s4-a8-ivz">
+                    <rect key="frame" x="25" y="164.5" width="325" height="72"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="UCk-yG-lS5" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.3" id="0b8-2a-kXv"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="u1c-kO-7PO" secondAttribute="trailing" id="Gjs-fJ-SgW"/>
+                <constraint firstItem="UCk-yG-lS5" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.58" id="0b8-2a-kXv"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3s4-a8-ivz" secondAttribute="trailing" constant="25" id="EaH-hy-qqr"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="UCk-yG-lS5" secondAttribute="trailing" id="HFz-jN-9nV"/>
-                <constraint firstItem="u1c-kO-7PO" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="NOK-Bg-NBq"/>
-                <constraint firstItem="u1c-kO-7PO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="OON-LO-Mcc"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="wZE-Vc-xkO" secondAttribute="trailing" constant="25" id="KKw-nA-YSy"/>
+                <constraint firstItem="3BU-uN-Oc7" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="NgV-x4-LYo"/>
+                <constraint firstItem="3BU-uN-Oc7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="SS4-7D-McY"/>
                 <constraint firstItem="UCk-yG-lS5" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="YRH-a7-6iA"/>
-                <constraint firstItem="UCk-yG-lS5" firstAttribute="top" secondItem="u1c-kO-7PO" secondAttribute="bottom" id="c00-7Y-2oT"/>
                 <constraint firstItem="UCk-yG-lS5" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="krO-D6-TaQ"/>
+                <constraint firstItem="3s4-a8-ivz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="nm1-zp-oWK"/>
+                <constraint firstItem="UCk-yG-lS5" firstAttribute="top" secondItem="3s4-a8-ivz" secondAttribute="bottom" constant="8" id="nmG-YA-YtU"/>
+                <constraint firstItem="wZE-Vc-xkO" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="qsv-je-dW4"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -217,11 +117,13 @@
                 <outlet property="answer2Button" destination="uWv-zi-sOH" id="3Ad-ZO-lNF"/>
                 <outlet property="answer3Button" destination="A85-BG-hWz" id="XRO-65-ZVP"/>
                 <outlet property="answer4Button" destination="01h-Gu-YTB" id="Kpn-Qp-hyY"/>
-                <outlet property="imageView" destination="Mwz-WO-9YC" id="zte-l5-XYm"/>
                 <outlet property="numberLabel" destination="3BU-uN-Oc7" id="ZGz-VW-f2m"/>
                 <outlet property="titleLabel" destination="3s4-a8-ivz" id="QQR-zk-yHc"/>
             </connections>
             <point key="canvasLocation" x="138.40000000000001" y="46.776611694152926"/>
         </view>
     </objects>
+    <resources>
+        <image name="cancel" width="25" height="25"/>
+    </resources>
 </document>

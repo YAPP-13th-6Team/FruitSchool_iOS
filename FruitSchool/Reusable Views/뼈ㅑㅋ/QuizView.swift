@@ -18,7 +18,6 @@ class QuizView: UIView {
     var buttons: [UIButton] {
         return [answer1Button, answer2Button, answer3Button, answer4Button]
     }
-    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var answer1Button: QuizButton!

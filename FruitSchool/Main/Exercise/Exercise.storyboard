@@ -10,6 +10,71 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="tLT-SQ-2w1">
+            <objects>
+                <viewController id="LDZ-DX-JeE" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="tcr-YL-klx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygs-Hq-cwZ">
+                                <rect key="frame" x="16" y="100" width="343" height="467"/>
+                                <connections>
+                                    <segue destination="lat-3a-bO5" kind="embed" id="NrC-bZ-u0B"/>
+                                </connections>
+                            </containerView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="VSG-HB-I4U">
+                                <rect key="frame" x="168" y="530" width="39" height="37"/>
+                                <color key="pageIndicatorTintColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.68000000000000005" colorSpace="calibratedRGB"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ygs-Hq-cwZ" firstAttribute="height" secondItem="tcr-YL-klx" secondAttribute="height" multiplier="0.7" id="32u-Hl-Yg8"/>
+                            <constraint firstItem="VSG-HB-I4U" firstAttribute="bottom" secondItem="ygs-Hq-cwZ" secondAttribute="bottom" id="5ez-sy-eX6"/>
+                            <constraint firstItem="VSG-HB-I4U" firstAttribute="centerX" secondItem="tcr-YL-klx" secondAttribute="centerX" id="Bw7-Zt-8Wn"/>
+                            <constraint firstItem="UmB-vE-JWF" firstAttribute="trailing" secondItem="ygs-Hq-cwZ" secondAttribute="trailing" constant="16" id="DEi-o0-unW"/>
+                            <constraint firstItem="ygs-Hq-cwZ" firstAttribute="centerX" secondItem="tcr-YL-klx" secondAttribute="centerX" id="XmY-xP-mnl"/>
+                            <constraint firstItem="ygs-Hq-cwZ" firstAttribute="centerY" secondItem="tcr-YL-klx" secondAttribute="centerY" id="dTG-WF-eJm"/>
+                            <constraint firstItem="ygs-Hq-cwZ" firstAttribute="leading" secondItem="UmB-vE-JWF" secondAttribute="leading" constant="16" id="ljP-XO-I68"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UmB-vE-JWF"/>
+                        <connections>
+                            <outlet property="containerViewCenterYConstraint" destination="dTG-WF-eJm" id="gTv-7W-VUO"/>
+                            <outlet property="contentView" destination="ygs-Hq-cwZ" id="QV4-y9-F4g"/>
+                            <outlet property="pageControl" destination="VSG-HB-I4U" id="51I-Ju-meZ"/>
+                        </connections>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wqv-rM-Mh5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2086" y="-258"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="kDz-n4-Qd5">
+            <objects>
+                <viewController id="qun-xy-2cK" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="htZ-1g-47k">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="SMB-pK-LY2"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qni-kf-7AK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-860" y="-259"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="52W-By-E3a">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="lat-3a-bO5" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s2S-ga-tvu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1464" y="-259"/>
+        </scene>
         <!--Exercise View Controller-->
         <scene sceneID="ABk-ae-3hK">
             <objects>
@@ -61,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oMd-Qh-PhV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-426.39999999999998" y="-45.42728635682159"/>
+            <point key="canvasLocation" x="36" y="-235"/>
         </scene>
     </scenes>
 </document>

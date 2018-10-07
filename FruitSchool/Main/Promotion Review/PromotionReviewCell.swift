@@ -30,7 +30,6 @@ class PromotionReviewCell: UICollectionViewCell {
         for index in 0..<4 {
             quizView[index].isSelected = false
         }
-        quizView.imageView.image = nil
         quizView.numberLabel.text = nil
         quizView.titleLabel.text = nil
         quizView[0].setTitle(nil, for: [])
