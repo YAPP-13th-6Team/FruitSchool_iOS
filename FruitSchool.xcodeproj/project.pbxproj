@@ -50,6 +50,8 @@
 		1947C58A214FBF5800BF6521 /* CertificateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C589214FBF5800BF6521 /* CertificateView.swift */; };
 		195F2670215BA44200A6EED4 /* ResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 195F266F215BA44200A6EED4 /* ResultView.xib */; };
 		195F2672215BA45000A6EED4 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195F2671215BA45000A6EED4 /* ResultView.swift */; };
+		1971E87C216A6902001378CA /* PromotionReviewContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1971E87B216A6902001378CA /* PromotionReviewContainerViewController.swift */; };
+		1971E87E216A690F001378CA /* PromotionReviewContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1971E87D216A690F001378CA /* PromotionReviewContentViewController.swift */; };
 		1975DD13216A5E8A0092B93C /* ExerciseContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1975DD12216A5E8A0092B93C /* ExerciseContainerViewController.swift */; };
 		1975DD16216A5EA30092B93C /* ExerciseContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1975DD15216A5EA30092B93C /* ExerciseContentViewController.swift */; };
 		19784239215FBF0C00D53F48 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19784238215FBF0C00D53F48 /* MyPage.storyboard */; };
@@ -138,6 +140,8 @@
 		1947C589214FBF5800BF6521 /* CertificateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateView.swift; sourceTree = "<group>"; };
 		195F266F215BA44200A6EED4 /* ResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultView.xib; sourceTree = "<group>"; };
 		195F2671215BA45000A6EED4 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		1971E87B216A6902001378CA /* PromotionReviewContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionReviewContainerViewController.swift; sourceTree = "<group>"; };
+		1971E87D216A690F001378CA /* PromotionReviewContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionReviewContentViewController.swift; sourceTree = "<group>"; };
 		1975DD12216A5E8A0092B93C /* ExerciseContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseContainerViewController.swift; sourceTree = "<group>"; };
 		1975DD15216A5EA30092B93C /* ExerciseContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseContentViewController.swift; sourceTree = "<group>"; };
 		19784238215FBF0C00D53F48 /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
@@ -310,8 +314,9 @@
 			isa = PBXGroup;
 			children = (
 				190983C92156722E00E2461A /* PromotionReview.storyboard */,
-				190983CB2156723B00E2461A /* PromotionReviewViewController.swift */,
-				190983CD215672EB00E2461A /* PromotionReviewCell.swift */,
+				1971E87B216A6902001378CA /* PromotionReviewContainerViewController.swift */,
+				1971E87D216A690F001378CA /* PromotionReviewContentViewController.swift */,
+				1971E87A216A6865001378CA /* Deprecated */,
 			);
 			path = "Promotion Review";
 			sourceTree = "<group>";
@@ -376,6 +381,15 @@
 				19236662216751180043F9BB /* Activity Indicator */,
 			);
 			path = "Reusable Views";
+			sourceTree = "<group>";
+		};
+		1971E87A216A6865001378CA /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				190983CB2156723B00E2461A /* PromotionReviewViewController.swift */,
+				190983CD215672EB00E2461A /* PromotionReviewCell.swift */,
+			);
+			path = Deprecated;
 			sourceTree = "<group>";
 		};
 		1975DD14216A5E900092B93C /* Deprecated */ = {
@@ -696,6 +710,7 @@
 				1947C562214F2B7800BF6521 /* ChapterCell.swift in Sources */,
 				19E274C92144D75300E2F6D2 /* API+Fruit.swift in Sources */,
 				1923665D216662950043F9BB /* IndicatorView.swift in Sources */,
+				1971E87C216A6902001378CA /* PromotionReviewContainerViewController.swift in Sources */,
 				191F02452157E8CC008EA81C /* DetailNutritionTipCell.swift in Sources */,
 				19EC61CE215243B800A80DA4 /* QuizButton.swift in Sources */,
 				19784245215FC9C500D53F48 /* CommunityViewController.swift in Sources */,
@@ -708,6 +723,7 @@
 				1947C57C214F9E5F00BF6521 /* FruitResponse.swift in Sources */,
 				1947C574214F2F3900BF6521 /* DetailStandardTipCell.swift in Sources */,
 				19DE4AA821691DB9000C412A /* LoginResponse.swift in Sources */,
+				1971E87E216A690F001378CA /* PromotionReviewContentViewController.swift in Sources */,
 				1975DD13216A5E8A0092B93C /* ExerciseContainerViewController.swift in Sources */,
 				19DE4AA62168F5FB000C412A /* Quiz.swift in Sources */,
 				192366592165E2E40043F9BB /* ExerciseCell.swift in Sources */,

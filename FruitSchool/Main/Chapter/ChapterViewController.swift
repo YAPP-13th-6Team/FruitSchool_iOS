@@ -121,6 +121,7 @@ extension ChapterViewController: UICollectionViewDelegate {
             self.navigationController?.pushViewController(next, animated: true)
         } else {
             guard let next = UIViewController.instantiate(storyboard: "Exercise", identifier: ExerciseContainerViewController.classNameToString) as? ExerciseContainerViewController else { return }
+            self.present(next, animated: true, completion: nil)
             //guard let next = UIViewController.instantiate(storyboard: "Exercise", identifier: ExerciseViewController.classNameToString) as? ExerciseViewController else { return }
             //next.id = id
             //self.navigationController?.pushViewController(next, animated: true)

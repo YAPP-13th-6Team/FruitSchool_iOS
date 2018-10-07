@@ -20,7 +20,6 @@ class PromotionReviewViewController: UIViewController {
     }
     var grade: Int = 0
     let cellIdentifier = "promotionReviewCell"
-    var quizResponse: [QuizResponse]?
     var quizs: [Quiz] = []
     var quizsCount: Int {
         return quizs.count
