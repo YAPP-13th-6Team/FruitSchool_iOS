@@ -50,6 +50,7 @@ class BookViewController: UIViewController {
     
     @objc func didTouchUpPromotionReviewButton(_ sender: UIButton) {
         guard let next = UIViewController.instantiate(storyboard: "PromotionReview", identifier: PromotionReviewContainerViewController.classNameToString) as? PromotionReviewContainerViewController else { return }
+        next.delegate = self
         next.grade = currentCellIndex
         self.present(next, animated: true, completion: nil)
     }
@@ -72,6 +73,12 @@ extension BookViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         navigationItem.titleView = nil
         navigationItem.setRightBarButton(searchButton, animated: true)
+    }
+}
+
+extension BookViewController: PromotionReviewDelegate {
+    func didDismissPromotionReviewViewController() {
+        collectionView.reloadSections(IndexSet(0...0))
     }
 }
 

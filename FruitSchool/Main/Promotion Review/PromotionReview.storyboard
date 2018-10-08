@@ -19,21 +19,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2eb-Rn-jWG">
-                                <rect key="frame" x="16" y="100" width="343" height="467"/>
+                                <rect key="frame" x="16" y="90" width="343" height="487"/>
                                 <connections>
                                     <segue destination="Jev-KV-q2G" kind="embed" id="E9E-nf-XeQ"/>
                                 </connections>
                             </containerView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Rrt-17-lkf">
-                                <rect key="frame" x="168" y="530" width="39" height="37"/>
-                                <color key="pageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <pageControl opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="Rrt-17-lkf">
+                                <rect key="frame" x="184" y="540" width="7" height="37"/>
+                                <color key="pageIndicatorTintColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.68000000000000005" colorSpace="calibratedRGB"/>
                             </pageControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a9D-Eo-8Y1">
-                                <rect key="frame" x="0.0" y="567" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="577" width="375" height="90"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBc-3w-tY9" customClass="QuizButton" customModule="FruitSchool" customModuleProvider="target">
-                                        <rect key="frame" x="75" y="25" width="225" height="50"/>
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBc-3w-tY9">
+                                        <rect key="frame" x="75" y="22.5" width="225" height="45"/>
                                         <state key="normal" title="제출하기"/>
                                     </button>
                                 </subviews>
@@ -53,7 +53,7 @@
                             <constraint firstItem="2eb-Rn-jWG" firstAttribute="centerX" secondItem="ZJL-Eu-wal" secondAttribute="centerX" id="Lgw-Hz-ZVS"/>
                             <constraint firstItem="q4i-8W-PfM" firstAttribute="trailing" secondItem="a9D-Eo-8Y1" secondAttribute="trailing" id="RVt-EN-xxj"/>
                             <constraint firstItem="a9D-Eo-8Y1" firstAttribute="top" secondItem="2eb-Rn-jWG" secondAttribute="bottom" id="UD4-V1-MLv"/>
-                            <constraint firstItem="2eb-Rn-jWG" firstAttribute="height" secondItem="ZJL-Eu-wal" secondAttribute="height" multiplier="0.7" id="cq4-06-kC1"/>
+                            <constraint firstItem="2eb-Rn-jWG" firstAttribute="height" secondItem="ZJL-Eu-wal" secondAttribute="height" multiplier="0.73" id="cq4-06-kC1"/>
                             <constraint firstItem="2eb-Rn-jWG" firstAttribute="leading" secondItem="q4i-8W-PfM" secondAttribute="leading" constant="16" id="gFq-BO-qPb"/>
                             <constraint firstItem="2eb-Rn-jWG" firstAttribute="centerY" secondItem="ZJL-Eu-wal" secondAttribute="centerY" id="gYn-Ra-O6D"/>
                             <constraint firstItem="Rrt-17-lkf" firstAttribute="bottom" secondItem="2eb-Rn-jWG" secondAttribute="bottom" id="hIr-NY-16U"/>
@@ -76,7 +76,7 @@
         <!--Page View Controller-->
         <scene sceneID="DSW-vQ-Ee1">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="Jev-KV-q2G" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" pageSpacing="20" navigationOrientation="horizontal" spineLocation="none" id="Jev-KV-q2G" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VpG-E1-kbi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-722" y="-235"/>

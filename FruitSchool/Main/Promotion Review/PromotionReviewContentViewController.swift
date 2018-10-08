@@ -20,12 +20,14 @@ class PromotionReviewContentViewController: UIViewController {
     }
 
     func setup() {
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = 15
         view.layer.masksToBounds = true
     }
     
     func makeQuizView() {
-        quizView = UIView.instantiateFromXib(xibName: "QuizView") as? QuizView
+        if quizView == nil {
+            quizView = UIView.instantiateFromXib(xibName: "QuizView") as? QuizView
+        }
         view.addSubview(quizView)
         quizView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

@@ -25,7 +25,9 @@ class ExerciseContentViewController: UIViewController {
     }
     
     func makeQuizView() {
-        quizView = UIView.instantiateFromXib(xibName: "QuizView") as? QuizView
+        if quizView == nil {
+            quizView = UIView.instantiateFromXib(xibName: "QuizView") as? QuizView
+        }
         view.addSubview(quizView)
         quizView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

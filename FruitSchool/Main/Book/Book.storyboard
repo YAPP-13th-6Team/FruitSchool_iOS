@@ -42,7 +42,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="312" height="398"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="teC-i4-ffq">
-                                                    <rect key="frame" x="187" y="273" width="125" height="125"/>
+                                                    <rect key="frame" x="210.5" y="296.5" width="93.5" height="93.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="teC-i4-ffq" secondAttribute="height" id="dKm-3j-AxV"/>
                                                     </constraints>
@@ -52,10 +52,10 @@
                                         <constraints>
                                             <constraint firstItem="uuA-Ol-eZv" firstAttribute="leading" secondItem="7VE-cP-pQN" secondAttribute="leading" id="8ez-tL-JXs"/>
                                             <constraint firstItem="uuA-Ol-eZv" firstAttribute="top" secondItem="7VE-cP-pQN" secondAttribute="top" id="9Fc-ey-NpX"/>
-                                            <constraint firstItem="teC-i4-ffq" firstAttribute="width" secondItem="uuA-Ol-eZv" secondAttribute="width" multiplier="0.4" id="E2c-Pw-sOk"/>
-                                            <constraint firstAttribute="trailing" secondItem="teC-i4-ffq" secondAttribute="trailing" id="KeZ-J8-Al7"/>
+                                            <constraint firstItem="teC-i4-ffq" firstAttribute="width" secondItem="uuA-Ol-eZv" secondAttribute="width" multiplier="0.3" id="E2c-Pw-sOk"/>
+                                            <constraint firstAttribute="trailing" secondItem="teC-i4-ffq" secondAttribute="trailing" constant="8" id="KeZ-J8-Al7"/>
                                             <constraint firstAttribute="trailing" secondItem="uuA-Ol-eZv" secondAttribute="trailing" id="Qtv-y2-4FJ"/>
-                                            <constraint firstAttribute="bottom" secondItem="teC-i4-ffq" secondAttribute="bottom" id="evq-90-645"/>
+                                            <constraint firstAttribute="bottom" secondItem="teC-i4-ffq" secondAttribute="bottom" constant="8" id="evq-90-645"/>
                                             <constraint firstAttribute="bottom" secondItem="uuA-Ol-eZv" secondAttribute="bottom" id="rrv-bm-aoj"/>
                                         </constraints>
                                         <connections>

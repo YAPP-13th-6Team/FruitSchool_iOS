@@ -44,6 +44,11 @@ class PromotionReviewContainerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        submitButton.addTarget(self, action: #selector(didTouchUpSubmitButton(_:)), for: .touchUpInside)
+        submitButton.layer.cornerRadius = 15
+        submitButton.backgroundColor = .white
+        submitButton.titleLabel?.font = UIFont.systemFont(ofSize: 22)
+        submitButton.setTitleColor(.black, for: [])
         IndicatorView.shared.showIndicator(message: "Loading...")
         API.requestExam(by: grade) { response, statusCode, error in
             IndicatorView.shared.hideIndicator()
@@ -59,45 +64,36 @@ class PromotionReviewContainerViewController: UIViewController {
             for data in response.data {
                 let quiz = Quiz(title: data.title, correctAnswer: data.correctAnswer, answers: [[data.correctAnswer], data.incorrectAnswers].flatMap { $0 }.shuffled())
                 self.quizs.append(quiz)
+                print(quiz.correctAnswer, quiz.answers)
             }
-            self.answers = Array(repeating: "", count: self.quizs.count)
+            self.answers = Array(repeating: "", count: self.quizsCount)
             DispatchQueue.main.async {
                 self.setUp()
                 self.containerView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
                 UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
                     self.containerView.transform = CGAffineTransform.identity
-                }, completion: nil)
+                }, completion: { _ in
+                    UIView.animate(withDuration: 0.3, animations: {
+                        self.pageControl.alpha = 1
+                    })
+                })
             }
         }
     }
+    
     func setUp() {
-        containerView.layer.cornerRadius = 10
+        containerView.layer.cornerRadius = 15
         containerView.layer.masksToBounds = true
         containerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(didPanContentView(_:))))
+        pageControl.numberOfPages = quizs.count
         self.pageViewController = childViewControllers.first as? UIPageViewController
         pageViewController.dataSource = self
         pageViewController.delegate = self
-        guard let start = self.viewController(at: 0) else { return }
-        let viewControllers = NSArray(object: start)
-        pageViewController.setViewControllers(viewControllers as? [UIViewController], direction: .forward, animated: true, completion: nil)
-        guard let contentViewControllers = pageViewController.viewControllers as? [PromotionReviewContentViewController] else { return }
-        for index in 0..<contentViewControllers.count {
-            let contentViewController = contentViewControllers[index]
-            guard let quizView = contentViewController.quizView else { return }
-            let quiz = quizs[index]
-            quizView.numberLabel.text = "\(index + 1)번 문제"
-            quizView.titleLabel.text = quiz.title
-            for buttonIndex in 0..<4 {
-                quizView[buttonIndex].setTitle(quiz.answers[buttonIndex], for: [])
-            }
-            contentViewController.quizView.delegate = self
-        }
-        pageControl.numberOfPages = quizs.count
+        pageViewController.setViewControllers([makeContentViewController(at: 0) ?? UIViewController()], direction: .forward, animated: true, completion: nil)
     }
     
     @objc func didPanContentView(_ gesture: UIPanGestureRecognizer) {
         let velocityY = gesture.translation(in: view).y
-        print(gesture.velocity(in: view).y)
         switch gesture.state {
         case .changed:
             if velocityY >= 0 {
@@ -106,7 +102,7 @@ class PromotionReviewContainerViewController: UIViewController {
         case .ended:
             if gesture.velocity(in: view).y > 1000 {
                 containerViewCenterYConstraint.constant = view.bounds.height
-                UIView.animate(withDuration: 0.5, animations: {
+                UIView.animate(withDuration: 0.2, animations: {
                     self.view.layoutIfNeeded()
                 }, completion: { _ in
                     self.dismiss(animated: true, completion: nil)
@@ -114,7 +110,7 @@ class PromotionReviewContainerViewController: UIViewController {
                 return
             } else {
                 containerViewCenterYConstraint.constant = 0
-                UIView.animate(withDuration: 0.5) {
+                UIView.animate(withDuration: 0.2) {
                     self.view.layoutIfNeeded()
                 }
             }
@@ -123,9 +119,25 @@ class PromotionReviewContainerViewController: UIViewController {
         }
     }
     
-    func viewController(at index: Int) -> PromotionReviewContentViewController? {
-        guard let controller = self.storyboard?.instantiateViewController(withIdentifier: PromotionReviewContentViewController.classNameToString) as? PromotionReviewContentViewController else { return nil }
+    @objc func didTouchUpSubmitButton(_ sender: UIButton) {
+        executeScoring()
+    }
+    
+    func makeContentViewController(at index: Int) -> PromotionReviewContentViewController? {
+        guard let controller = UIViewController.instantiate(storyboard: "PromotionReview", identifier: PromotionReviewContentViewController.classNameToString) as? PromotionReviewContentViewController else { return nil }
         controller.pageIndex = index
+        guard let quizView = UIView.instantiateFromXib(xibName: "QuizView") as? QuizView else { return nil }
+        let quiz = quizs[index]
+        quizView.numberLabel.text = "\(index + 1)번 문제"
+        quizView.titleLabel.text = quiz.title
+        for buttonIndex in 0..<4 {
+            quizView[buttonIndex].setTitle(quiz.answers[buttonIndex], for: [])
+        }
+        if let selectedIndex = quizs[index].answers.index(of: answers[index]) {
+            quizView[selectedIndex].backgroundColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
+        }
+        quizView.delegate = self
+        controller.quizView = quizView
         return controller
     }
 }
@@ -149,21 +161,33 @@ extension PromotionReviewContainerViewController {
             resultView.frame = self.view.bounds
             resultView.titleLabel.text = "결과"
             let message = "\(score) / \(self.quizsCount)"
-            if score == self.quizsCount {
+            let percent = Double(score) / Double(self.quizsCount)
+            if percent > 0.7 {
                 resultView.descriptionLabel.text = message + "\n통과"
                 resultView.handler = {
-                    // 사용자 등급 올리기
                     guard let userRecord = UserRecord.fetch().first else { return }
                     let myGrade = userRecord.grade
                     if myGrade != 2 {
                         UserRecord.update(userRecord, keyValue: ["grade": myGrade + 1])
+                        switch self.grade {
+                        case 0:
+                            UserRecord.update(userRecord, keyValue: ["passesDog": true])
+                        case 1:
+                            UserRecord.update(userRecord, keyValue: ["passesStudent": true])
+                        case 2:
+                            UserRecord.update(userRecord, keyValue: ["passesBoss": true])
+                        default:
+                            break
+                        }
                     }
-                    self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: {
+                        self.delegate?.didDismissPromotionReviewViewController()
+                    })
                 }
             } else {
                 resultView.descriptionLabel.text = message + "\n불통"
                 resultView.handler = {
-                    self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
                 }
             }
             self.view.addSubview(resultView)
@@ -175,12 +199,19 @@ extension PromotionReviewContainerViewController {
 
 extension PromotionReviewContainerViewController: QuizViewDelegate {
     func didTouchUpQuizButtons(_ sender: UIButton) {
-        let index = pageControl.currentPage
-        guard let quizView = (pageViewController.viewControllers?[index] as? PromotionReviewContentViewController)?.quizView else { return }
+        let currentPageIndex = pageControl.currentPage
+        guard let quizView = (pageViewController.viewControllers?.first as? PromotionReviewContentViewController)?.quizView else { return }
         guard let title = sender.titleLabel?.text else { return }
-        self.answers[index] = title
-        if let selectedIndex = quizs[index].answers.index(of: title) {
-            quizView[selectedIndex].isSelected = true
+        self.answers[currentPageIndex] = title
+        for index in 0..<4 {
+            UIView.animate(withDuration: 0.2) {
+                quizView[index].backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
+            }
+        }
+        if let selectedIndex = quizs[currentPageIndex].answers.index(of: title) {
+            UIView.animate(withDuration: 0.2) {
+                quizView[selectedIndex].backgroundColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
+            }
         }
     }
     
@@ -191,23 +222,23 @@ extension PromotionReviewContainerViewController: QuizViewDelegate {
 
 extension PromotionReviewContainerViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let controller = viewController as? PromotionReviewContentViewController else { return nil }
-        guard let index = controller.pageIndex else { return nil }
+        guard let viewController = viewController as? PromotionReviewContentViewController else { return nil }
+        guard let index = viewController.pageIndex else { return nil }
         let previousIndex = index - 1
         if previousIndex < 0 {
             return nil
         }
-        return self.viewController(at: previousIndex)
+        return makeContentViewController(at: previousIndex)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let controller = viewController as? PromotionReviewContentViewController else { return nil }
-        guard let index = controller.pageIndex else { return nil }
+        guard let viewController = viewController as? PromotionReviewContentViewController else { return nil }
+        guard let index = viewController.pageIndex else { return nil }
         let nextIndex = index + 1
         if nextIndex >= quizs.count {
             return nil
         }
-        return self.viewController(at: nextIndex)
+        return makeContentViewController(at: nextIndex)
     }
 }
 

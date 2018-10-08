@@ -23,15 +23,12 @@ class ExerciseContainerViewController: UIViewController {
                     UIView.animate(withDuration: 0.2) {
                         self.submitButton.alpha = 1
                     }
-                } else {
-                    UIView.animate(withDuration: 0.2) {
-                        self.submitButton.alpha = 0
-                    }
                 }
             }
         }
     }
     var id: String = ""
+    var fruitTitle: String = ""
     var quizs: [Quiz] = []
     var quizsCount: Int {
         return quizs.count
@@ -45,6 +42,10 @@ class ExerciseContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         submitButton.addTarget(self, action: #selector(didTouchUpSubmitButton(_:)), for: .touchUpInside)
+        submitButton.layer.cornerRadius = 15
+        submitButton.backgroundColor = .white
+        submitButton.titleLabel?.font = UIFont.systemFont(ofSize: 22)
+        submitButton.setTitleColor(.black, for: [])
         IndicatorView.shared.showIndicator(message: "Loading...")
         API.requestExercises(by: id) { response, statusCode, error in
             IndicatorView.shared.hideIndicator()
@@ -67,7 +68,7 @@ class ExerciseContainerViewController: UIViewController {
                 self.containerView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
                 UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
                     self.containerView.transform = CGAffineTransform.identity
-                }, completion: { isSuccess in
+                }, completion: { _ in
                     UIView.animate(withDuration: 0.3, animations: {
                         self.pageControl.alpha = 1
                     })
@@ -81,30 +82,15 @@ class ExerciseContainerViewController: UIViewController {
         containerView.layer.cornerRadius = 15
         containerView.layer.masksToBounds = true
         containerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(didPanContentView(_:))))
+        pageControl.numberOfPages = quizs.count
         self.pageViewController = childViewControllers.first as? UIPageViewController
         pageViewController.dataSource = self
         pageViewController.delegate = self
-        guard let start = self.viewController(at: 0) else { return }
-        let viewControllers = NSArray(object: start)
-        pageViewController.setViewControllers(viewControllers as? [UIViewController], direction: .forward, animated: true, completion: nil)
-        guard let contentViewControllers = pageViewController.viewControllers as? [ExerciseContentViewController] else { return }
-        for index in 0..<contentViewControllers.count {
-            let contentViewController = contentViewControllers[index]
-            guard let quizView = contentViewController.quizView else { return }
-            let quiz = quizs[index]
-            quizView.numberLabel.text = "\(index + 1)번 문제"
-            quizView.titleLabel.text = quiz.title
-            for buttonIndex in 0..<4 {
-                quizView[buttonIndex].setTitle(quiz.answers[buttonIndex], for: [])
-            }
-            contentViewController.quizView.delegate = self
-        }
-        pageControl.numberOfPages = quizs.count
+        pageViewController.setViewControllers([makeContentViewController(at: 0) ?? UIViewController()], direction: .forward, animated: true, completion: nil)
     }
     
     @objc func didPanContentView(_ gesture: UIPanGestureRecognizer) {
         let velocityY = gesture.translation(in: view).y
-        print(gesture.velocity(in: view).y)
         switch gesture.state {
         case .changed:
             if velocityY >= 0 {
@@ -113,7 +99,7 @@ class ExerciseContainerViewController: UIViewController {
         case .ended:
             if gesture.velocity(in: view).y > 1000 {
                 containerViewCenterYConstraint.constant = view.bounds.height
-                UIView.animate(withDuration: 0.5, animations: {
+                UIView.animate(withDuration: 0.2, animations: {
                     self.view.layoutIfNeeded()
                 }, completion: { _ in
                     self.dismiss(animated: true, completion: nil)
@@ -134,9 +120,22 @@ class ExerciseContainerViewController: UIViewController {
         executeScoring()
     }
     
-    func viewController(at index: Int) -> ExerciseContentViewController? {
-        guard let controller = self.storyboard?.instantiateViewController(withIdentifier: ExerciseContentViewController.classNameToString) as? ExerciseContentViewController else { return nil }
+    func makeContentViewController(at index: Int) -> ExerciseContentViewController? {
+        guard let controller = UIViewController.instantiate(storyboard: "Exercise", identifier: ExerciseContentViewController.classNameToString) as? ExerciseContentViewController else { return nil }
         controller.pageIndex = index
+        guard let quizView = UIView.instantiateFromXib(xibName: "QuizView") as? QuizView else { return nil }
+        let quiz = quizs[index]
+        quizView.numberLabel.text = "\(index + 1)번 문제"
+        let attributedString = NSMutableAttributedString(string: quiz.title, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 30, weight: .ultraLight)])
+        let boldFontAttribute = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 30, weight: .medium)]
+        let range = (quiz.title as NSString).range(of: fruitTitle)
+        attributedString.addAttributes(boldFontAttribute, range: range)
+        quizView.titleLabel.attributedText = attributedString
+        for buttonIndex in 0..<4 {
+            quizView[buttonIndex].setTitle(quiz.answers[buttonIndex], for: [])
+        }
+        quizView.delegate = self
+        controller.quizView = quizView
         return controller
     }
 }
@@ -183,16 +182,19 @@ extension ExerciseContainerViewController {
 
 extension ExerciseContainerViewController: QuizViewDelegate {
     func didTouchUpQuizButtons(_ sender: UIButton) {
-        let index = pageControl.currentPage
-        guard let quizView = (pageViewController.viewControllers?[index] as? ExerciseContentViewController)?.quizView else { return }
+        let currentPageIndex = pageControl.currentPage
+        guard let quizView = (pageViewController.viewControllers?[currentPageIndex] as? ExerciseContentViewController)?.quizView else { return }
         guard let title = sender.titleLabel?.text else { return }
-        self.answers[index] = title
+        self.answers[currentPageIndex] = title
         for index in 0..<4 {
-            quizView[index].backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
+            UIView.animate(withDuration: 0.2) {
+                quizView[index].backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
+            }
         }
-        if let selectedIndex = quizs[index].answers.index(of: title) {
-            //quizView[selectedIndex].isSelected = true
-            quizView[selectedIndex].backgroundColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
+        if let selectedIndex = quizs[currentPageIndex].answers.index(of: title) {
+            UIView.animate(withDuration: 0.2) {
+                quizView[selectedIndex].backgroundColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
+            }
         }
     }
     
@@ -209,7 +211,7 @@ extension ExerciseContainerViewController: UIPageViewControllerDataSource {
         if previousIndex < 0 {
             return nil
         }
-        return self.viewController(at: previousIndex)
+        return makeContentViewController(at: previousIndex)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
@@ -219,7 +221,7 @@ extension ExerciseContainerViewController: UIPageViewControllerDataSource {
         if nextIndex >= quizs.count {
             return nil
         }
-        return self.viewController(at: nextIndex)
+        return makeContentViewController(at: nextIndex)
     }
 }
 

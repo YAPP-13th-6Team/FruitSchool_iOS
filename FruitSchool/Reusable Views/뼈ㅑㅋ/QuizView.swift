@@ -54,9 +54,6 @@ class QuizView: UIView {
     }
     
     @objc func didTouchUpQuizButtons(_ sender: UIButton) {
-        for button in buttons {
-            button.isSelected = false
-        }
         delegate?.didTouchUpQuizButtons(sender)
     }
     

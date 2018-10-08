@@ -107,13 +107,9 @@ extension ChapterViewController: ExerciseDelegate {
 extension ChapterViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? ChapterCell else { return UICollectionViewCell() }
-        let fruit = fruits[indexPath.item]
+        let fruit = !isSearching ? fruits[indexPath.item] : searchedFruits[indexPath.item]
         guard let filteredRecord = records.filter("id = %@", fruit.id).first else { return UICollectionViewCell() }
-        if !isSearching {
-            cell.setProperties(fruit, isPassed: filteredRecord.isPassed)
-        } else {
-            cell.setProperties(fruit, isPassed: filteredRecord.isPassed)
-        }
+        cell.setProperties(fruit, isPassed: filteredRecord.isPassed)
         return cell
     }
     
@@ -130,16 +126,34 @@ extension ChapterViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         guard let isPassed = records.filter("id = %@", fruits[indexPath.item].id).first?.isPassed else { return }
-        let id = fruits[indexPath.item].id
-        if isPassed {
-            guard let next = UIViewController.instantiate(storyboard: "Detail", identifier: DetailViewController.classNameToString) as? DetailViewController else { return }
-            next.id = id
-            self.navigationController?.pushViewController(next, animated: true)
+        if !isSearching {
+            let fruit = fruits[indexPath.item]
+            let id = fruit.id
+            if isPassed {
+                guard let next = UIViewController.instantiate(storyboard: "Detail", identifier: DetailViewController.classNameToString) as? DetailViewController else { return }
+                next.id = id
+                self.navigationController?.pushViewController(next, animated: true)
+            } else {
+                guard let next = UIViewController.instantiate(storyboard: "Exercise", identifier: ExerciseContainerViewController.classNameToString) as? ExerciseContainerViewController else { return }
+                next.delegate = self
+                next.id = id
+                next.fruitTitle = fruit.title
+                self.present(next, animated: true, completion: nil)
+            }
         } else {
-            guard let next = UIViewController.instantiate(storyboard: "Exercise", identifier: ExerciseContainerViewController.classNameToString) as? ExerciseContainerViewController else { return }
-            next.delegate = self
-            next.id = id
-            self.present(next, animated: true, completion: nil)
+            let fruit = searchedFruits[indexPath.item]
+            let id = fruit.id
+            if isPassed {
+                guard let next = UIViewController.instantiate(storyboard: "Detail", identifier: DetailViewController.classNameToString) as? DetailViewController else { return }
+                next.id = id
+                self.navigationController?.pushViewController(next, animated: true)
+            } else {
+                guard let next = UIViewController.instantiate(storyboard: "Exercise", identifier: ExerciseContainerViewController.classNameToString) as? ExerciseContainerViewController else { return }
+                next.delegate = self
+                next.id = id
+                next.fruitTitle = fruit.title
+                self.present(next, animated: true, completion: nil)
+            }
         }
     }
 }
