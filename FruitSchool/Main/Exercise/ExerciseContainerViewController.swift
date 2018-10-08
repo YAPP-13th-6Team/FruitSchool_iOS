@@ -125,7 +125,7 @@ class ExerciseContainerViewController: UIViewController {
         controller.pageIndex = index
         guard let quizView = UIView.instantiateFromXib(xibName: "QuizView") as? QuizView else { return nil }
         let quiz = quizs[index]
-        quizView.numberLabel.text = "\(index + 1)번 문제"
+        quizView.numberLabel.text = "문제 \(index + 1)"
         let attributedString = NSMutableAttributedString(string: quiz.title, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 30, weight: .ultraLight)])
         let boldFontAttribute = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 30, weight: .medium)]
         let range = (quiz.title as NSString).range(of: fruitTitle)

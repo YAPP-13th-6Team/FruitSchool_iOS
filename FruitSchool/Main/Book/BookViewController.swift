@@ -11,13 +11,13 @@ import UIKit
 class BookViewController: UIViewController {
 
     var percentage: CGFloat = 0
-    let descriptionLabelTag = 98
-    let gaugeLabelTag = 99
-    let percentLabelTag = 100
+    let gaugeLabelTag = 98
+    let percentLabelTag = 99
+    let descriptionLabelTag = 100
     let promotionReviewButtonTag = 101
     let cellIdentifier = "bookCell"
     let chapterRecord = ChapterRecord.fetch()
-    var searchBar = UISearchBar()
+    var searchBar: UISearchBar!
     var searchButton: UIBarButtonItem!
     var percentLabel: UILabel!
     var currentCellIndex: Int = 0
@@ -31,28 +31,26 @@ class BookViewController: UIViewController {
         backBarButtonItem.title = "교과서"
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIImageView(image: #imageLiteral(resourceName: "logo_noncircle")))
         navigationItem.backBarButtonItem = backBarButtonItem
+        navigationItem.setRightBarButton(searchButton, animated: true)
+        searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTouchUpSearchButton(_:)))
+        searchBar = UISearchBar()
+        searchBar.delegate = self
+        searchBar.showsCancelButton = true
+        searchBar.searchBarStyle = .minimal
         percentLabel = UILabel()
         percentLabel.textColor = UIColor.main
         percentLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         percentLabel.translatesAutoresizingMaskIntoConstraints = false
-        searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTouchUpSearchButton(_:)))
-        searchBar.delegate = self
-        navigationItem.setRightBarButton(searchButton, animated: true)
-        searchBar.showsCancelButton = true
-        searchBar.searchBarStyle = .minimal
+        let shapeLayer = CAShapeLayer()
+        let path = UIBezierPath(roundedRect: backgroundGaugeView.bounds, cornerRadius: backgroundGaugeView.bounds.height / 2)
+        shapeLayer.path = path.cgPath
+        backgroundGaugeView.layer.mask = shapeLayer
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         resetViews()
-        collectionView.reloadData()
-    }
-    
-    @objc func didTouchUpPromotionReviewButton(_ sender: UIButton) {
-        guard let next = UIViewController.instantiate(storyboard: "PromotionReview", identifier: PromotionReviewContainerViewController.classNameToString) as? PromotionReviewContainerViewController else { return }
-        next.delegate = self
-        next.grade = currentCellIndex
-        self.present(next, animated: true, completion: nil)
+        collectionView.reloadSections(IndexSet(0...0))
     }
 }
 // MARK: - Button Touch Event
@@ -61,6 +59,13 @@ extension BookViewController {
         searchBar.becomeFirstResponder()
         navigationItem.setRightBarButton(nil, animated: true)
         navigationItem.titleView = searchBar
+    }
+    
+    @objc func didTouchUpPromotionReviewButton(_ sender: UIButton) {
+        guard let next = UIViewController.instantiate(storyboard: "PromotionReview", identifier: PromotionReviewContainerViewController.classNameToString) as? PromotionReviewContainerViewController else { return }
+        next.delegate = self
+        next.grade = currentCellIndex
+        self.present(next, animated: true, completion: nil)
     }
 }
 
@@ -86,11 +91,17 @@ extension BookViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? BookCell else { return UICollectionViewCell() }
         guard let userRecord = UserRecord.fetch().first else { return UICollectionViewCell() }
+        let fruitsInBook = chapterRecord.filter { $0.grade == indexPath.item }
+        let passedFruitsInBook = fruitsInBook.filter { $0.isPassed }
         if userRecord[indexPath.item] {
             cell.coverImageView.image = UIImage(named: imageNames[indexPath.item][1])
             cell.stampImageView.image = #imageLiteral(resourceName: "stamp_clear")
         } else {
-            cell.coverImageView.image = UIImage(named: imageNames[indexPath.item][0])
+            if fruitsInBook.count == passedFruitsInBook.count {
+                cell.coverImageView.image = UIImage(named: imageNames[indexPath.item][1])
+            } else {
+                cell.coverImageView.image = UIImage(named: imageNames[indexPath.item][0])
+            }
             cell.stampImageView.image = nil
         }
         return cell
@@ -110,7 +121,7 @@ extension BookViewController: UICollectionViewDelegate {
         collectionView.deselectItem(at: indexPath, animated: true)
         let myGrade = UserRecord.fetch().first?.grade ?? 0
         if !(0...myGrade).contains(indexPath.item) {
-            UIAlertController.presentErrorAlert(to: self, error: "승급심사 보고 오세요")
+            UIAlertController.presentErrorAlert(to: self, error: "당신은 아직 \(Grade(rawValue: myGrade)?.expression ?? "")예요!")
             return
         }
         guard let next = UIViewController.instantiate(storyboard: "Chapter", identifier: ChapterViewController.classNameToString) as? ChapterViewController else { return }
@@ -135,27 +146,7 @@ extension BookViewController: UICollectionViewDelegateFlowLayout {
 }
 
 private extension BookViewController {
-    func resetViews() {
-        setGaugeView()
-        setPercentLabelPositionAndText()
-        showPromotionReviewButton()
-        view.viewWithTag(descriptionLabelTag)?.removeFromSuperview()
-        let label = UILabel()
-        label.tag = descriptionLabelTag
-        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        label.textColor = UIColor.main
-        label.text = "조금만 힘을 내게"
-        view.addSubview(label)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        if let percentLabel = view.viewWithTag(percentLabelTag) {
-            NSLayoutConstraint.activate([
-                label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                label.topAnchor.constraint(equalTo: percentLabel.bottomAnchor, constant: 8)
-                ])
-        }
-    }
-    
-    func setGaugeView() {
+    func makeGaugeLabel() {
         var visibleRect = CGRect()
         visibleRect.origin = collectionView.contentOffset
         visibleRect.size = collectionView.bounds.size
@@ -170,8 +161,8 @@ private extension BookViewController {
         }
         view.viewWithTag(gaugeLabelTag)?.removeFromSuperview()
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        label.textColor = UIColor.main
+        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        label.textColor = .main
         label.tag = gaugeLabelTag
         label.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(label)
@@ -183,10 +174,15 @@ private extension BookViewController {
             label.centerYAnchor.constraint(equalTo: backgroundGaugeView.centerYAnchor),
             label.widthAnchor.constraint(equalTo: backgroundGaugeView.widthAnchor, multiplier: percentage)
             ])
+        view.layoutIfNeeded()
+        let shapeLayer = CAShapeLayer()
+        let path = UIBezierPath(roundedRect: label.bounds, cornerRadius: label.bounds.height / 2)
+        shapeLayer.path = path.cgPath
+        label.layer.mask = shapeLayer
         self.percentage = percentage
     }
     
-    func setPercentLabelPositionAndText() {
+    func makePercentLabel() {
         let leading = backgroundGaugeView.frame.origin.x
         view.viewWithTag(percentLabelTag)?.removeFromSuperview()
         percentLabel.tag = percentLabelTag
@@ -196,19 +192,34 @@ private extension BookViewController {
                 percentLabel.topAnchor.constraint(equalTo: backgroundGaugeView.bottomAnchor, constant: 6),
                 percentLabel.centerXAnchor.constraint(equalTo: backgroundGaugeView.leadingAnchor, constant: 0)
                 ])
-            percentLabel.text = "0%"
         } else {
             NSLayoutConstraint.activate([
                 percentLabel.topAnchor.constraint(equalTo: backgroundGaugeView.bottomAnchor, constant: 6),
                 NSLayoutConstraint(item: percentLabel, attribute: .centerX, relatedBy: .equal, toItem: backgroundGaugeView, attribute: .trailing, multiplier: percentage, constant: leading - leading * percentage)
                 ])
-            percentLabel.text = "\(Int(percentage * 100))%"
         }
+        percentLabel.text = "\(Int(percentage * 100))%"
     }
     
-    func showPromotionReviewButton() {
+    func makeDescriptionLabel() {
+        view.viewWithTag(descriptionLabelTag)?.removeFromSuperview()
+        let label = UILabel()
+        label.tag = descriptionLabelTag
+        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        label.textColor = .main
+        label.text = "화면을 채워주는 문구"
+        view.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            label.topAnchor.constraint(equalTo: percentLabel.bottomAnchor, constant: 8)
+            ])
+    }
+    
+    func makePromotionReviewButton() {
         view.viewWithTag(promotionReviewButtonTag)?.removeFromSuperview()
-        if percentage == 1 {
+        let passesCurrentBook = UserRecord.fetch().first?[currentCellIndex] ?? false
+        if percentage == 1 && !passesCurrentBook {
             let button = UIButton(type: .system)
             button.tag = promotionReviewButtonTag
             button.setTitle("승급 심사", for: [])
@@ -222,5 +233,12 @@ private extension BookViewController {
                 button.heightAnchor.constraint(equalToConstant: 40)
                 ])
         }
+    }
+    
+    func resetViews() {
+        makeGaugeLabel()
+        makePercentLabel()
+        makeDescriptionLabel()
+        makePromotionReviewButton()
     }
 }

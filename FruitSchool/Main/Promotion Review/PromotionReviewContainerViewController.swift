@@ -128,7 +128,7 @@ class PromotionReviewContainerViewController: UIViewController {
         controller.pageIndex = index
         guard let quizView = UIView.instantiateFromXib(xibName: "QuizView") as? QuizView else { return nil }
         let quiz = quizs[index]
-        quizView.numberLabel.text = "\(index + 1)번 문제"
+        quizView.numberLabel.text = "문제 \(index + 1)"
         quizView.titleLabel.text = quiz.title
         for buttonIndex in 0..<4 {
             quizView[buttonIndex].setTitle(quiz.answers[buttonIndex], for: [])

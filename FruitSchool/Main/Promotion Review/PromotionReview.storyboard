@@ -76,7 +76,7 @@
         <!--Page View Controller-->
         <scene sceneID="DSW-vQ-Ee1">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" pageSpacing="20" navigationOrientation="horizontal" spineLocation="none" id="Jev-KV-q2G" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="20" navigationOrientation="horizontal" spineLocation="none" id="Jev-KV-q2G" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VpG-E1-kbi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-722" y="-235"/>

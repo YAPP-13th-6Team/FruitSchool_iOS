@@ -43,8 +43,9 @@ extension CertificateViewController: CertificateViewDelegate {
     func didTouchUpButton(_ sender: UIButton) {
         UserDefaults.standard.set(id, forKey: "id")
         UserRecord.add(nickname: nickname)
-        guard let next = UIViewController.instantiate(storyboard: "Main", identifier: MainTabBarController.classNameToString) else { return }
-        next.modalTransitionStyle = .flipHorizontal
+        //guard let next = UIViewController.instantiate(storyboard: "Main", identifier: MainTabBarController.classNameToString) else { return }
+        guard let next = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController") else { return }
+        next.modalTransitionStyle = .crossDissolve
         IndicatorView.shared.showIndicator(message: "Loading...")
         API.requestFruitList { response, statusCode, error in
             if let error = error {
