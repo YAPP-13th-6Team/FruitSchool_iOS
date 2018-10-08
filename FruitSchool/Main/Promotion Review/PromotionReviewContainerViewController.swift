@@ -8,13 +8,26 @@
 
 import UIKit
 
+protocol PromotionReviewDelegate: class {
+    func didDismissPromotionReviewViewController()
+}
+
 class PromotionReviewContainerViewController: UIViewController {
 
+    weak var delegate: PromotionReviewDelegate?
     var answers: [String] = [] {
         didSet {
             let filtered = answers.filter { !$0.isEmpty }
-            if filtered.count == quizsCount {
-                executeScoring()
+            DispatchQueue.main.async {
+                if filtered.count == self.quizsCount {
+                    UIView.animate(withDuration: 0.5) {
+                        self.submitButton.alpha = 1
+                    }
+                } else {
+                    UIView.animate(withDuration: 0.5) {
+                        self.submitButton.alpha = 0
+                    }
+                }
             }
         }
     }
@@ -24,6 +37,7 @@ class PromotionReviewContainerViewController: UIViewController {
         return quizs.count
     }
     var pageViewController: UIPageViewController!
+    @IBOutlet weak var submitButton: QuizButton!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var containerViewCenterYConstraint: NSLayoutConstraint!
     @IBOutlet weak var containerView: UIView!
@@ -49,6 +63,10 @@ class PromotionReviewContainerViewController: UIViewController {
             self.answers = Array(repeating: "", count: self.quizs.count)
             DispatchQueue.main.async {
                 self.setUp()
+                self.containerView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
+                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                    self.containerView.transform = CGAffineTransform.identity
+                }, completion: nil)
             }
         }
     }
@@ -62,6 +80,18 @@ class PromotionReviewContainerViewController: UIViewController {
         guard let start = self.viewController(at: 0) else { return }
         let viewControllers = NSArray(object: start)
         pageViewController.setViewControllers(viewControllers as? [UIViewController], direction: .forward, animated: true, completion: nil)
+        guard let contentViewControllers = pageViewController.viewControllers as? [PromotionReviewContentViewController] else { return }
+        for index in 0..<contentViewControllers.count {
+            let contentViewController = contentViewControllers[index]
+            guard let quizView = contentViewController.quizView else { return }
+            let quiz = quizs[index]
+            quizView.numberLabel.text = "\(index + 1)번 문제"
+            quizView.titleLabel.text = quiz.title
+            for buttonIndex in 0..<4 {
+                quizView[buttonIndex].setTitle(quiz.answers[buttonIndex], for: [])
+            }
+            contentViewController.quizView.delegate = self
+        }
         pageControl.numberOfPages = quizs.count
     }
     
@@ -95,10 +125,7 @@ class PromotionReviewContainerViewController: UIViewController {
     
     func viewController(at index: Int) -> PromotionReviewContentViewController? {
         guard let controller = self.storyboard?.instantiateViewController(withIdentifier: PromotionReviewContentViewController.classNameToString) as? PromotionReviewContentViewController else { return nil }
-        guard let quizView = controller.quizView else { return nil }
-        quizView.delegate = self
         controller.pageIndex = index
-        // 인덱스 따라서 뷰에 뿌려주기
         return controller
     }
 }
@@ -149,12 +176,16 @@ extension PromotionReviewContainerViewController {
 extension PromotionReviewContainerViewController: QuizViewDelegate {
     func didTouchUpQuizButtons(_ sender: UIButton) {
         let index = pageControl.currentPage
-        guard let quizView = viewController(at: index)?.quizView else { return }
+        guard let quizView = (pageViewController.viewControllers?[index] as? PromotionReviewContentViewController)?.quizView else { return }
         guard let title = sender.titleLabel?.text else { return }
         self.answers[index] = title
         if let selectedIndex = quizs[index].answers.index(of: title) {
             quizView[selectedIndex].isSelected = true
         }
+    }
+    
+    func didTouchUpCancelButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

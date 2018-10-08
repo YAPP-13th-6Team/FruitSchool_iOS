@@ -22,7 +22,6 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIImageView(image: #imageLiteral(resourceName: "logo_noncircle")))
         IndicatorView.shared.showIndicator(message: "Loading...")
         API.requestFruit(by: id) { response, statusCode, error in
             IndicatorView.shared.hideIndicator()

@@ -20,7 +20,7 @@ class ExerciseContentViewController: UIViewController {
     }
     
     func setup() {
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = 15
         view.layer.masksToBounds = true
     }
     

@@ -25,12 +25,12 @@ class ChapterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         switch grade {
-         case 0:
+        case 0:
             navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "dog_top"))
         case 1:
-            break
+            navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "student_top"))
         case 2:
-            break
+            navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "boss_top"))
         default:
             break
         }
@@ -40,10 +40,15 @@ class ChapterViewController: UIViewController {
         searchBar.searchBarStyle = .minimal
         searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTouchUpSearchButton(_:)))
         self.navigationItem.setRightBarButton(searchButton, animated: false)
+        let backBarButtonItem = UIBarButtonItem()
+        backBarButtonItem.title = "과일목록"
+        navigationItem.backBarButtonItem = backBarButtonItem
+        requestFrultList()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+}
+
+extension ChapterViewController {
+    func requestFrultList() {
         IndicatorView.shared.showIndicator(message: "Loading...")
         API.requestFruitList { response, statusCode, error in
             IndicatorView.shared.hideIndicator()
@@ -64,6 +69,7 @@ class ChapterViewController: UIViewController {
         }
     }
 }
+
 // MARK: - Button Touch Event
 extension ChapterViewController {
     @objc func didTouchUpSearchButton(_ sender: UIBarButtonItem) {
@@ -88,6 +94,16 @@ extension ChapterViewController: UISearchBarDelegate {
     }
 }
 
+// MARK: - ExerciseContainerViewController Delegate
+extension ChapterViewController: ExerciseDelegate {
+    func didDismissExerciseViewController() {
+        requestFrultList()
+        // 모든 문제를 다 풀었다면 해당 교과서의 모든 문제를 다 풀었음을 축하함
+        // 그렇지 않으면 해당 과일 카드 획득을 알림
+    }
+}
+
+// MARK: - UICollectionView Delegate
 extension ChapterViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? ChapterCell else { return UICollectionViewCell() }
@@ -121,10 +137,9 @@ extension ChapterViewController: UICollectionViewDelegate {
             self.navigationController?.pushViewController(next, animated: true)
         } else {
             guard let next = UIViewController.instantiate(storyboard: "Exercise", identifier: ExerciseContainerViewController.classNameToString) as? ExerciseContainerViewController else { return }
+            next.delegate = self
+            next.id = id
             self.present(next, animated: true, completion: nil)
-            //guard let next = UIViewController.instantiate(storyboard: "Exercise", identifier: ExerciseViewController.classNameToString) as? ExerciseViewController else { return }
-            //next.id = id
-            //self.navigationController?.pushViewController(next, animated: true)
         }
     }
 }

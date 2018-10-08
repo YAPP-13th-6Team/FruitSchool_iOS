@@ -10,6 +10,7 @@ import UIKit
 
 protocol QuizViewDelegate: class {
     func didTouchUpQuizButtons(_ sender: UIButton)
+    func didTouchUpCancelButton(_ sender: UIButton)
 }
 
 class QuizView: UIView {
@@ -20,6 +21,7 @@ class QuizView: UIView {
     }
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var answer1Button: QuizButton!
     @IBOutlet weak var answer2Button: QuizButton!
     @IBOutlet weak var answer3Button: QuizButton!
@@ -27,8 +29,7 @@ class QuizView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        layer.borderWidth = 3
-        layer.borderColor = UIColor.black.cgColor
+        cancelButton.addTarget(self, action: #selector(didTouchUpCancelButton(_:)), for: .touchUpInside)
         buttons.forEach { button in
             button.addTarget(self, action: #selector(didTouchUpQuizButtons(_:)), for: .touchUpInside)
         }
@@ -57,5 +58,9 @@ class QuizView: UIView {
             button.isSelected = false
         }
         delegate?.didTouchUpQuizButtons(sender)
+    }
+    
+    @objc func didTouchUpCancelButton(_ sender: UIButton) {
+        delegate?.didTouchUpCancelButton(sender)
     }
 }

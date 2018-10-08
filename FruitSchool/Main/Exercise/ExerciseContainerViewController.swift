@@ -8,13 +8,26 @@
 
 import UIKit
 
+protocol ExerciseDelegate: class {
+    func didDismissExerciseViewController()
+}
+
 class ExerciseContainerViewController: UIViewController {
 
+    weak var delegate: ExerciseDelegate?
     var answers: [String] = [] {
         didSet {
             let filtered = answers.filter { !$0.isEmpty }
-            if filtered.count == quizsCount {
-                executeScoring()
+            DispatchQueue.main.async {
+                if filtered.count == self.quizsCount {
+                    UIView.animate(withDuration: 0.2) {
+                        self.submitButton.alpha = 1
+                    }
+                } else {
+                    UIView.animate(withDuration: 0.2) {
+                        self.submitButton.alpha = 0
+                    }
+                }
             }
         }
     }
@@ -24,13 +37,14 @@ class ExerciseContainerViewController: UIViewController {
         return quizs.count
     }
     var pageViewController: UIPageViewController!
+    @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var containerViewCenterYConstraint: NSLayoutConstraint!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        submitButton.addTarget(self, action: #selector(didTouchUpSubmitButton(_:)), for: .touchUpInside)
         IndicatorView.shared.showIndicator(message: "Loading...")
         API.requestExercises(by: id) { response, statusCode, error in
             IndicatorView.shared.hideIndicator()
@@ -50,12 +64,21 @@ class ExerciseContainerViewController: UIViewController {
             self.answers = Array(repeating: "", count: self.quizs.count)
             DispatchQueue.main.async {
                 self.setUp()
+                self.containerView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
+                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                    self.containerView.transform = CGAffineTransform.identity
+                }, completion: { isSuccess in
+                    UIView.animate(withDuration: 0.3, animations: {
+                        self.pageControl.alpha = 1
+                    })
+                    
+                })
             }
         }
     }
     
     func setUp() {
-        containerView.layer.cornerRadius = 10
+        containerView.layer.cornerRadius = 15
         containerView.layer.masksToBounds = true
         containerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(didPanContentView(_:))))
         self.pageViewController = childViewControllers.first as? UIPageViewController
@@ -64,6 +87,18 @@ class ExerciseContainerViewController: UIViewController {
         guard let start = self.viewController(at: 0) else { return }
         let viewControllers = NSArray(object: start)
         pageViewController.setViewControllers(viewControllers as? [UIViewController], direction: .forward, animated: true, completion: nil)
+        guard let contentViewControllers = pageViewController.viewControllers as? [ExerciseContentViewController] else { return }
+        for index in 0..<contentViewControllers.count {
+            let contentViewController = contentViewControllers[index]
+            guard let quizView = contentViewController.quizView else { return }
+            let quiz = quizs[index]
+            quizView.numberLabel.text = "\(index + 1)번 문제"
+            quizView.titleLabel.text = quiz.title
+            for buttonIndex in 0..<4 {
+                quizView[buttonIndex].setTitle(quiz.answers[buttonIndex], for: [])
+            }
+            contentViewController.quizView.delegate = self
+        }
         pageControl.numberOfPages = quizs.count
     }
     
@@ -86,7 +121,7 @@ class ExerciseContainerViewController: UIViewController {
                 return
             } else {
                 containerViewCenterYConstraint.constant = 0
-                UIView.animate(withDuration: 0.5) {
+                UIView.animate(withDuration: 0.2) {
                     self.view.layoutIfNeeded()
                 }
             }
@@ -95,12 +130,13 @@ class ExerciseContainerViewController: UIViewController {
         }
     }
     
+    @objc func didTouchUpSubmitButton(_ sender: UIButton) {
+        executeScoring()
+    }
+    
     func viewController(at index: Int) -> ExerciseContentViewController? {
         guard let controller = self.storyboard?.instantiateViewController(withIdentifier: ExerciseContentViewController.classNameToString) as? ExerciseContentViewController else { return nil }
-        guard let quizView = controller.quizView else { return nil }
-        quizView.delegate = self
         controller.pageIndex = index
-        // 인덱스 따라서 뷰에 뿌려주기
         return controller
     }
 }
@@ -109,7 +145,7 @@ extension ExerciseContainerViewController {
     private func executeScoring() {
         var score = 0
         guard let alertView = UIView.instantiateFromXib(xibName: "AlertView") as? AlertView else { return }
-        alertView.titleLabel.text = "승급 심사"
+        alertView.titleLabel.text = "과일 문제 풀이"
         alertView.messageLabel.text = "제출?"
         alertView.positiveHandler = { [weak self] in
             guard let `self` = self else { return }
@@ -128,12 +164,14 @@ extension ExerciseContainerViewController {
                 resultView.handler = {
                     guard let record = ChapterRecord.fetch().filter("id = %@", self.id).first else { return }
                     ChapterRecord.update(record, keyValue: ["isPassed": true])
-                    self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: {
+                        self.delegate?.didDismissExerciseViewController()
+                    })
                 }
             } else {
                 resultView.descriptionLabel.text = "불통"
                 resultView.handler = {
-                    self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
                 }
             }
             self.view.addSubview(resultView)
@@ -146,12 +184,20 @@ extension ExerciseContainerViewController {
 extension ExerciseContainerViewController: QuizViewDelegate {
     func didTouchUpQuizButtons(_ sender: UIButton) {
         let index = pageControl.currentPage
-        guard let quizView = viewController(at: index)?.quizView else { return }
+        guard let quizView = (pageViewController.viewControllers?[index] as? ExerciseContentViewController)?.quizView else { return }
         guard let title = sender.titleLabel?.text else { return }
         self.answers[index] = title
-        if let selectedIndex = quizs[index].answers.index(of: title) {
-            quizView[selectedIndex].isSelected = true
+        for index in 0..<4 {
+            quizView[index].backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
         }
+        if let selectedIndex = quizs[index].answers.index(of: title) {
+            //quizView[selectedIndex].isSelected = true
+            quizView[selectedIndex].backgroundColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
+        }
+    }
+    
+    func didTouchUpCancelButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

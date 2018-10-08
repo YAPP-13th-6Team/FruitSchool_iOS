@@ -49,11 +49,9 @@ class BookViewController: UIViewController {
     }
     
     @objc func didTouchUpPromotionReviewButton(_ sender: UIButton) {
-        //guard let next = UIViewController.instantiate(storyboard: "PromotionReview", identifier: PromotionReviewViewController.classNameToString) as? PromotionReviewViewController else { return }
         guard let next = UIViewController.instantiate(storyboard: "PromotionReview", identifier: PromotionReviewContainerViewController.classNameToString) as? PromotionReviewContainerViewController else { return }
         next.grade = currentCellIndex
         self.present(next, animated: true, completion: nil)
-        //navigationController?.pushViewController(next, animated: true)
     }
 }
 // MARK: - Button Touch Event

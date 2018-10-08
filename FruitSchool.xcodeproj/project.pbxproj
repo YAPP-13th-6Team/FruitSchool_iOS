@@ -12,8 +12,6 @@
 		0001BA4A216707900076932B /* MyFavoritePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0001BA49216707900076932B /* MyFavoritePostCell.swift */; };
 		0001BA4C2167079D0076932B /* MyCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0001BA4B2167079D0076932B /* MyCommentCell.swift */; };
 		190983CA2156722E00E2461A /* PromotionReview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 190983C92156722E00E2461A /* PromotionReview.storyboard */; };
-		190983CC2156723B00E2461A /* PromotionReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190983CB2156723B00E2461A /* PromotionReviewViewController.swift */; };
-		190983CE215672EB00E2461A /* PromotionReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190983CD215672EB00E2461A /* PromotionReviewCell.swift */; };
 		190F74A6213E33850038234A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F74A5213E33850038234A /* UIViewController+.swift */; };
 		190F74AA213E34020038234A /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F74A9213E34020038234A /* UIColor+.swift */; };
 		190F74AC213E340F0038234A /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190F74AB213E340F0038234A /* UIView+.swift */; };
@@ -29,12 +27,10 @@
 		1923664B2165B6BE0043F9BB /* ExamResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1923664A2165B6BE0043F9BB /* ExamResponse.swift */; };
 		1923664D2165BF170043F9BB /* QuizResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1923664C2165BF170043F9BB /* QuizResponse.swift */; };
 		1923664F2165D0CD0043F9BB /* Exercise.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1923664E2165D0CD0043F9BB /* Exercise.storyboard */; };
-		192366512165D0DB0043F9BB /* ExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192366502165D0DB0043F9BB /* ExerciseViewController.swift */; };
 		192366542165D7F30043F9BB /* BackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192366522165D7F30043F9BB /* BackView.swift */; };
 		192366552165D7F30043F9BB /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192366532165D7F30043F9BB /* NutritionView.swift */; };
 		192366562165D9060043F9BB /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190983CF21568C9300E2461A /* BookCell.swift */; };
 		192366572165D90A0043F9BB /* ChapterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C55E214F27C000BF6521 /* ChapterViewController.swift */; };
-		192366592165E2E40043F9BB /* ExerciseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192366582165E2E40043F9BB /* ExerciseCell.swift */; };
 		1923665B216662860043F9BB /* IndicatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1923665A216662860043F9BB /* IndicatorView.xib */; };
 		1923665D216662950043F9BB /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1923665C216662950043F9BB /* IndicatorView.swift */; };
 		1947C55D214F27B800BF6521 /* Chapter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1947C55C214F27B800BF6521 /* Chapter.storyboard */; };
@@ -100,8 +96,6 @@
 		0001BA49216707900076932B /* MyFavoritePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavoritePostCell.swift; sourceTree = "<group>"; };
 		0001BA4B2167079D0076932B /* MyCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommentCell.swift; sourceTree = "<group>"; };
 		190983C92156722E00E2461A /* PromotionReview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PromotionReview.storyboard; sourceTree = "<group>"; };
-		190983CB2156723B00E2461A /* PromotionReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionReviewViewController.swift; sourceTree = "<group>"; };
-		190983CD215672EB00E2461A /* PromotionReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionReviewCell.swift; sourceTree = "<group>"; };
 		190983CF21568C9300E2461A /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		190F74A5213E33850038234A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		190F74A9213E34020038234A /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
@@ -119,10 +113,8 @@
 		1923664A2165B6BE0043F9BB /* ExamResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamResponse.swift; sourceTree = "<group>"; };
 		1923664C2165BF170043F9BB /* QuizResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResponse.swift; sourceTree = "<group>"; };
 		1923664E2165D0CD0043F9BB /* Exercise.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Exercise.storyboard; sourceTree = "<group>"; };
-		192366502165D0DB0043F9BB /* ExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewController.swift; sourceTree = "<group>"; };
 		192366522165D7F30043F9BB /* BackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BackView.swift; path = FruitSchool/Details/BackView.swift; sourceTree = SOURCE_ROOT; };
 		192366532165D7F30043F9BB /* NutritionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NutritionView.swift; path = FruitSchool/Details/NutritionView.swift; sourceTree = SOURCE_ROOT; };
-		192366582165E2E40043F9BB /* ExerciseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCell.swift; sourceTree = "<group>"; };
 		1923665A216662860043F9BB /* IndicatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndicatorView.xib; sourceTree = "<group>"; };
 		1923665C216662950043F9BB /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		1947C55C214F27B800BF6521 /* Chapter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chapter.storyboard; sourceTree = "<group>"; };
@@ -316,7 +308,6 @@
 				190983C92156722E00E2461A /* PromotionReview.storyboard */,
 				1971E87B216A6902001378CA /* PromotionReviewContainerViewController.swift */,
 				1971E87D216A690F001378CA /* PromotionReviewContentViewController.swift */,
-				1971E87A216A6865001378CA /* Deprecated */,
 			);
 			path = "Promotion Review";
 			sourceTree = "<group>";
@@ -383,24 +374,6 @@
 			path = "Reusable Views";
 			sourceTree = "<group>";
 		};
-		1971E87A216A6865001378CA /* Deprecated */ = {
-			isa = PBXGroup;
-			children = (
-				190983CB2156723B00E2461A /* PromotionReviewViewController.swift */,
-				190983CD215672EB00E2461A /* PromotionReviewCell.swift */,
-			);
-			path = Deprecated;
-			sourceTree = "<group>";
-		};
-		1975DD14216A5E900092B93C /* Deprecated */ = {
-			isa = PBXGroup;
-			children = (
-				192366502165D0DB0043F9BB /* ExerciseViewController.swift */,
-				192366582165E2E40043F9BB /* ExerciseCell.swift */,
-			);
-			path = Deprecated;
-			sourceTree = "<group>";
-		};
 		19784237215FBEFA00D53F48 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -462,7 +435,6 @@
 				1923664E2165D0CD0043F9BB /* Exercise.storyboard */,
 				1975DD12216A5E8A0092B93C /* ExerciseContainerViewController.swift */,
 				1975DD15216A5EA30092B93C /* ExerciseContentViewController.swift */,
-				1975DD14216A5E900092B93C /* Deprecated */,
 			);
 			path = Exercise;
 			sourceTree = "<group>";
@@ -687,11 +659,8 @@
 				190F74AC213E340F0038234A /* UIView+.swift in Sources */,
 				1978423B215FBF1600D53F48 /* MyPageViewController.swift in Sources */,
 				0001BA4A216707900076932B /* MyFavoritePostCell.swift in Sources */,
-				192366512165D0DB0043F9BB /* ExerciseViewController.swift in Sources */,
 				192366492165AF390043F9BB /* FruitListResponse.swift in Sources */,
-				190983CE215672EB00E2461A /* PromotionReviewCell.swift in Sources */,
 				0001BA4C2167079D0076932B /* MyCommentCell.swift in Sources */,
-				190983CC2156723B00E2461A /* PromotionReviewViewController.swift in Sources */,
 				19FCF24421610AF000BCC3F7 /* UnlockView.swift in Sources */,
 				1923664D2165BF170043F9BB /* QuizResponse.swift in Sources */,
 				19784240215FC68600D53F48 /* CertificateViewController.swift in Sources */,
@@ -726,7 +695,6 @@
 				1971E87E216A690F001378CA /* PromotionReviewContentViewController.swift in Sources */,
 				1975DD13216A5E8A0092B93C /* ExerciseContainerViewController.swift in Sources */,
 				19DE4AA62168F5FB000C412A /* Quiz.swift in Sources */,
-				192366592165E2E40043F9BB /* ExerciseCell.swift in Sources */,
 				19DE4AAC21691E0F000C412A /* API+Base.swift in Sources */,
 				19DE4AAA21691DFC000C412A /* API+Auth.swift in Sources */,
 				19A76F732161B69500C7C05F /* AlertView.swift in Sources */,

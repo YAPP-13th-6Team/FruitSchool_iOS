@@ -11,7 +11,11 @@ import UIKit
 @IBDesignable
 class QuizButton: UIButton {
     
-    @IBInspectable var cornerRadius: CGFloat = 5
+    override var isHighlighted: Bool {
+        didSet {
+            backgroundColor = isHighlighted ? #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1) : #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,7 +29,11 @@ class QuizButton: UIButton {
     
     func setup() {
         setTitleColor(.black, for: [])
-        layer.cornerRadius = cornerRadius
-        backgroundColor = .white
+        titleLabel?.font = UIFont.systemFont(ofSize: 22)
+        backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
+        let shapeLayer = CAShapeLayer()
+        let path = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.height / 2)
+        shapeLayer.path = path.cgPath
+        layer.mask = shapeLayer
     }
 }

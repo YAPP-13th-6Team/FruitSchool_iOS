@@ -26,16 +26,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if UserDefaults.standard.string(forKey: "id") == nil {
             controller = UIViewController.instantiate(storyboard: "Login", identifier: LoginViewController.classNameToString)
         } else {
-            controller = UIViewController.instantiate(storyboard: "Main", identifier: MainTabBarController.classNameToString)
+            controller = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController")
+            //controller = UIViewController.instantiate(storyboard: "Main", identifier: MainTabBarController.classNameToString)
         }
         window?.rootViewController = controller
         window?.makeKeyAndVisible()
         UIApplication.shared.isStatusBarHidden = false
-        // 페이지 인디케이터 전역 프로퍼티 설정
-        let pageControl = UIPageControl.appearance()
-        pageControl.pageIndicatorTintColor = UIColor.lightGray
-        pageControl.currentPageIndicatorTintColor = UIColor.black
-        pageControl.backgroundColor = UIColor.white
+//        // 페이지 인디케이터 전역 프로퍼티 설정
+//        let pageControl = UIPageControl.appearance()
+//        pageControl.pageIndicatorTintColor = UIColor.lightGray
+//        pageControl.currentPageIndicatorTintColor = UIColor.black
+//        pageControl.backgroundColor = UIColor.white
         // 내비게이션바 투명
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         UINavigationBar.appearance().shadowImage = UIImage()
