@@ -84,6 +84,7 @@ extension BookViewController: UISearchBarDelegate {
 extension BookViewController: PromotionReviewDelegate {
     func didDismissPromotionReviewViewController() {
         collectionView.reloadSections(IndexSet(0...0))
+        resetViews()
     }
 }
 
