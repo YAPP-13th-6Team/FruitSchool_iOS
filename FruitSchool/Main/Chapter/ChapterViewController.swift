@@ -43,12 +43,12 @@ class ChapterViewController: UIViewController {
         let backBarButtonItem = UIBarButtonItem()
         backBarButtonItem.title = "과일목록"
         navigationItem.backBarButtonItem = backBarButtonItem
-        requestFrultList()
+        requestFruitList()
     }
 }
-
+// MARK: - Making Fruit List
 extension ChapterViewController {
-    func requestFrultList() {
+    func requestFruitList() {
         IndicatorView.shared.showIndicator(message: "Loading...")
         API.requestFruitList { response, statusCode, error in
             IndicatorView.shared.hideIndicator()
@@ -78,7 +78,7 @@ extension ChapterViewController {
         navigationItem.titleView = searchBar
     }
 }
-// MARK: - Search Bar Delegate
+// MARK: - UISearchBar Delegate Implementation
 extension ChapterViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let filtered = fruits.filter { $0.title.range(of: searchText) != nil }
@@ -94,16 +94,27 @@ extension ChapterViewController: UISearchBarDelegate {
     }
 }
 
-// MARK: - ExerciseContainerViewController Delegate
+// MARK: - ExerciseContainerViewController Custom Delegate Implementation
 extension ChapterViewController: ExerciseDelegate {
-    func didDismissExerciseViewController() {
-        requestFrultList()
-        // 모든 문제를 다 풀었다면 해당 교과서의 모든 문제를 다 풀었음을 축하함
-        // 그렇지 않으면 해당 과일 카드 획득을 알림
+    func didDismissExerciseViewController(_ fruitTitle: String) {
+        UIAlertController
+            .alert(title: "\(fruitTitle) 학습 완료!", message: nil)
+            .action(title: "확인") { _ in
+                self.requestFruitList()
+                let filtered = self.records.filter("grade = %d", self.grade)
+                let passed = filtered.filter("isPassed = true")
+                if filtered.count == passed.count {
+                    UIAlertController
+                        .alert(title: "축하합니다!\n\(Grade(rawValue: self.grade)?.expression ?? "") 등급의 모든 문제를 풀었습니다.", message: nil)
+                        .action(title: "확인")
+                        .present(to: self)
+                }
+            }
+            .present(to: self)
     }
 }
 
-// MARK: - UICollectionView Delegate
+// MARK: - UICollectionView DataSource Implementation
 extension ChapterViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? ChapterCell else { return UICollectionViewCell() }
@@ -121,7 +132,7 @@ extension ChapterViewController: UICollectionViewDataSource {
         return !isSearching ? fruits.count : searchedFruits.count
     }
 }
-
+// MARK: - UICollectionView Delegate Implementation
 extension ChapterViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
@@ -157,7 +168,7 @@ extension ChapterViewController: UICollectionViewDelegate {
         }
     }
 }
-
+// MARK: - UICollectionView DelegateFlowLayout Implementation
 extension ChapterViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.view.frame.width / 4 - 10

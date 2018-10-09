@@ -109,5 +109,37 @@
             </objects>
             <point key="canvasLocation" x="-108" y="268.51574212893553"/>
         </scene>
+        <!--Unlock View Controller-->
+        <scene sceneID="2OA-P9-BZH">
+            <objects>
+                <viewController storyboardIdentifier="UnlockViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d7r-n4-gdV" customClass="UnlockViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2V3-Wk-VnZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KSM-Np-2Vm">
+                                <rect key="frame" x="52.5" y="198.5" width="270" height="270"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="KSM-Np-2Vm" secondAttribute="height" id="Ywm-wH-Jzp"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KSM-Np-2Vm" firstAttribute="width" secondItem="2V3-Wk-VnZ" secondAttribute="width" multiplier="0.72" id="8AE-yp-8yo"/>
+                            <constraint firstItem="KSM-Np-2Vm" firstAttribute="centerY" secondItem="2V3-Wk-VnZ" secondAttribute="centerY" id="YNW-qZ-jmJ"/>
+                            <constraint firstItem="KSM-Np-2Vm" firstAttribute="centerX" secondItem="2V3-Wk-VnZ" secondAttribute="centerX" id="drj-AF-PWh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mF8-kz-a9C"/>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="KSM-Np-2Vm" id="c0L-wR-lOq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QmT-b1-dT3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="802" y="269"/>
+        </scene>
     </scenes>
 </document>

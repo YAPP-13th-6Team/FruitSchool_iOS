@@ -22,6 +22,10 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        requestFruitDetails()
+    }
+    
+    private func requestFruitDetails() {
         IndicatorView.shared.showIndicator(message: "Loading...")
         API.requestFruit(by: id) { response, statusCode, error in
             IndicatorView.shared.hideIndicator()
@@ -56,7 +60,7 @@ extension DetailViewController {
         tableView.reloadSections(IndexSet(integer: sender.tag), with: .automatic)
     }
 }
-
+// MARK: - UITableView DataSource Implementation
 extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = indexPath.section
@@ -92,7 +96,7 @@ extension DetailViewController: UITableViewDataSource {
         return 3
     }
 }
-
+// MARK: - UITableView Delegate Implementation
 extension DetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

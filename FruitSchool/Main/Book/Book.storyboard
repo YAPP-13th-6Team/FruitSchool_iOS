@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9by-d2-Bdc">
-                                <rect key="frame" x="16" y="36" width="343" height="343"/>
+                                <rect key="frame" x="16" y="36" width="343" height="411.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="9by-d2-Bdc" secondAttribute="height" multiplier="1:1" id="39U-02-3ju"/>
+                                    <constraint firstAttribute="width" secondItem="9by-d2-Bdc" secondAttribute="height" multiplier="1:1.2" id="39U-02-3ju"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="y7j-fN-EDE">
                                     <size key="itemSize" width="312" height="398"/>
@@ -32,7 +32,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="bookCell" id="7VE-cP-pQN" customClass="BookCell" customModule="FruitSchool" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-27.5" width="312" height="398"/>
+                                        <rect key="frame" x="0.0" y="7" width="312" height="398"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="312" height="398"/>
@@ -70,7 +70,7 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXR-Iz-acW">
-                                <rect key="frame" x="56.5" y="399" width="262.5" height="6"/>
+                                <rect key="frame" x="56.5" y="467.5" width="262.5" height="6"/>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="6" id="9fa-Xz-Yyh"/>

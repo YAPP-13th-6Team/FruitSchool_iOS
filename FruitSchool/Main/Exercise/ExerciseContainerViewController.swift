@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ExerciseDelegate: class {
-    func didDismissExerciseViewController()
+    func didDismissExerciseViewController(_ fruitTitle: String)
 }
 
 class ExerciseContainerViewController: UIViewController {
@@ -41,11 +41,10 @@ class ExerciseContainerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        submitButton.addTarget(self, action: #selector(didTouchUpSubmitButton(_:)), for: .touchUpInside)
-        submitButton.layer.cornerRadius = 15
-        submitButton.backgroundColor = .white
-        submitButton.titleLabel?.font = UIFont.systemFont(ofSize: 22)
-        submitButton.setTitleColor(.black, for: [])
+        makeExercises()
+    }
+    
+    private func makeExercises() {
         IndicatorView.shared.showIndicator(message: "Loading...")
         API.requestExercises(by: id) { response, statusCode, error in
             IndicatorView.shared.hideIndicator()
@@ -61,6 +60,7 @@ class ExerciseContainerViewController: UIViewController {
             for data in response.data.quizs {
                 let quiz = Quiz(title: data.title, correctAnswer: data.correctAnswer, answers: [[data.correctAnswer], data.incorrectAnswers].flatMap { $0 }.shuffled())
                 self.quizs.append(quiz)
+                print(quiz.answers, quiz.correctAnswer)
             }
             self.answers = Array(repeating: "", count: self.quizs.count)
             DispatchQueue.main.async {
@@ -78,7 +78,14 @@ class ExerciseContainerViewController: UIViewController {
         }
     }
     
-    func setUp() {
+    private func setUp() {
+        submitButton.addTarget(self, action: #selector(didTouchUpSubmitButton(_:)), for: .touchUpInside)
+        submitButton.layer.cornerRadius = 15
+        submitButton.backgroundColor = .white
+        submitButton.titleLabel?.font = UIFont.systemFont(ofSize: 22)
+        submitButton.titleLabel?.minimumScaleFactor = 0.1
+        submitButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        submitButton.setTitleColor(.black, for: [])
         containerView.layer.cornerRadius = 15
         containerView.layer.masksToBounds = true
         containerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(didPanContentView(_:))))
@@ -89,6 +96,27 @@ class ExerciseContainerViewController: UIViewController {
         pageViewController.setViewControllers([makeContentViewController(at: 0) ?? UIViewController()], direction: .forward, animated: true, completion: nil)
     }
     
+    private func makeContentViewController(at index: Int) -> ExerciseContentViewController? {
+        guard let controller = UIViewController.instantiate(storyboard: "Exercise", identifier: ExerciseContentViewController.classNameToString) as? ExerciseContentViewController else { return nil }
+        controller.pageIndex = index
+        guard let quizView = UIView.instantiateFromXib(xibName: "QuizView") as? QuizView else { return nil }
+        let quiz = quizs[index]
+        quizView.numberLabel.text = "문제 \(index + 1)"
+        let attributedString = NSMutableAttributedString(string: quiz.title, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 30, weight: .ultraLight)])
+        let boldFontAttribute = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 30, weight: .medium)]
+        let range = (quiz.title as NSString).range(of: fruitTitle)
+        attributedString.addAttributes(boldFontAttribute, range: range)
+        quizView.titleLabel.attributedText = attributedString
+        for buttonIndex in 0..<4 {
+            quizView[buttonIndex].setTitle(quiz.answers[buttonIndex], for: [])
+        }
+        quizView.delegate = self
+        controller.quizView = quizView
+        return controller
+    }
+}
+// MARK: - Selectors
+extension ExerciseContainerViewController {
     @objc func didPanContentView(_ gesture: UIPanGestureRecognizer) {
         let velocityY = gesture.translation(in: view).y
         switch gesture.state {
@@ -119,67 +147,47 @@ class ExerciseContainerViewController: UIViewController {
     @objc func didTouchUpSubmitButton(_ sender: UIButton) {
         executeScoring()
     }
-    
-    func makeContentViewController(at index: Int) -> ExerciseContentViewController? {
-        guard let controller = UIViewController.instantiate(storyboard: "Exercise", identifier: ExerciseContentViewController.classNameToString) as? ExerciseContentViewController else { return nil }
-        controller.pageIndex = index
-        guard let quizView = UIView.instantiateFromXib(xibName: "QuizView") as? QuizView else { return nil }
-        let quiz = quizs[index]
-        quizView.numberLabel.text = "문제 \(index + 1)"
-        let attributedString = NSMutableAttributedString(string: quiz.title, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 30, weight: .ultraLight)])
-        let boldFontAttribute = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 30, weight: .medium)]
-        let range = (quiz.title as NSString).range(of: fruitTitle)
-        attributedString.addAttributes(boldFontAttribute, range: range)
-        quizView.titleLabel.attributedText = attributedString
-        for buttonIndex in 0..<4 {
-            quizView[buttonIndex].setTitle(quiz.answers[buttonIndex], for: [])
-        }
-        quizView.delegate = self
-        controller.quizView = quizView
-        return controller
-    }
 }
 
+// MARK: - Scoring Logic
 extension ExerciseContainerViewController {
     private func executeScoring() {
         var score = 0
-        guard let alertView = UIView.instantiateFromXib(xibName: "AlertView") as? AlertView else { return }
-        alertView.titleLabel.text = "과일 문제 풀이"
-        alertView.messageLabel.text = "제출?"
-        alertView.positiveHandler = { [weak self] in
-            guard let `self` = self else { return }
-            for index in 0..<self.quizsCount {
-                let quiz = self.quizs[index]
-                let answer = self.answers[index]
-                if quiz.correctAnswer == answer {
-                    score += 1
+        UIAlertController
+            .alert(title: "", message: "제출할까요?")
+            .action(title: "확인", style: .default) { _ in
+                for index in 0..<self.quizsCount {
+                    let quiz = self.quizs[index]
+                    let answer = self.answers[index]
+                    if quiz.correctAnswer == answer {
+                        score += 1
+                    }
+                }
+                if score == self.quizsCount {
+                    UIAlertController
+                        .alert(title: "결과", message: "통과")
+                        .action(title: "확인", handler: { _ in
+                            guard let record = ChapterRecord.fetch().filter("id = %@", self.id).first else { return }
+                            ChapterRecord.update(record, keyValue: ["isPassed": true])
+                            self.dismiss(animated: true, completion: {
+                                self.delegate?.didDismissExerciseViewController(self.fruitTitle)
+                            })
+                        })
+                        .present(to: self)
+                } else {
+                    UIAlertController
+                        .alert(title: "결과", message: "불통")
+                        .action(title: "확인", handler: { _ in
+                            self.dismiss(animated: true, completion: nil)
+                        })
+                        .present(to: self)
                 }
             }
-            guard let resultView = UIView.instantiateFromXib(xibName: "ResultView") as? ResultView else { return }
-            resultView.frame = self.view.bounds
-            resultView.titleLabel.text = "결과"
-            if score == self.quizsCount {
-                resultView.descriptionLabel.text = "통과"
-                resultView.handler = {
-                    guard let record = ChapterRecord.fetch().filter("id = %@", self.id).first else { return }
-                    ChapterRecord.update(record, keyValue: ["isPassed": true])
-                    self.dismiss(animated: true, completion: {
-                        self.delegate?.didDismissExerciseViewController()
-                    })
-                }
-            } else {
-                resultView.descriptionLabel.text = "불통"
-                resultView.handler = {
-                    self.dismiss(animated: true, completion: nil)
-                }
-            }
-            self.view.addSubview(resultView)
-        }
-        alertView.frame = view.bounds
-        view.addSubview(alertView)
+            .action(title: "취소", style: .cancel)
+            .present(to: self)
     }
 }
-
+// MARK: - QuizView Custom Delegate Implementation
 extension ExerciseContainerViewController: QuizViewDelegate {
     func didTouchUpQuizButtons(_ sender: UIButton) {
         let currentPageIndex = pageControl.currentPage
@@ -202,7 +210,7 @@ extension ExerciseContainerViewController: QuizViewDelegate {
         self.dismiss(animated: true, completion: nil)
     }
 }
-
+// MARK: - UIPageViewController DataSource Implementation
 extension ExerciseContainerViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let controller = viewController as? ExerciseContentViewController else { return nil }
@@ -224,7 +232,7 @@ extension ExerciseContainerViewController: UIPageViewControllerDataSource {
         return makeContentViewController(at: nextIndex)
     }
 }
-
+// MARK: - UIPageViewController Delegate Implementation
 extension ExerciseContainerViewController: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         guard let pageContentViewController = pageViewController.viewControllers?.first as? ExerciseContentViewController else { return }

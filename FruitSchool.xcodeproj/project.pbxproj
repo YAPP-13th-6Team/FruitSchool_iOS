@@ -57,6 +57,7 @@
 		19784243215FC9BD00D53F48 /* Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19784242215FC9BD00D53F48 /* Community.storyboard */; };
 		19784245215FC9C500D53F48 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19784244215FC9C500D53F48 /* CommunityViewController.swift */; };
 		197E55BE21512550003A610D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 197E55BD21512550003A610D /* .swiftlint.yml */; };
+		19A2057E216C4D37005A680D /* UnlockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A2057D216C4D37005A680D /* UnlockViewController.swift */; };
 		19A76F732161B69500C7C05F /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A76F722161B69500C7C05F /* AlertView.swift */; };
 		19A76F752161B6F600C7C05F /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A76F742161B6F600C7C05F /* AlertView.xib */; };
 		19A76F7B2162333200C7C05F /* ExerciseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A76F7A2162333200C7C05F /* ExerciseResponse.swift */; };
@@ -143,6 +144,7 @@
 		19784242215FC9BD00D53F48 /* Community.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Community.storyboard; sourceTree = "<group>"; };
 		19784244215FC9C500D53F48 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		197E55BD21512550003A610D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		19A2057D216C4D37005A680D /* UnlockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockViewController.swift; sourceTree = "<group>"; };
 		19A76F722161B69500C7C05F /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		19A76F742161B6F600C7C05F /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		19A76F7A2162333200C7C05F /* ExerciseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseResponse.swift; sourceTree = "<group>"; };
@@ -423,6 +425,7 @@
 				1947C55C214F27B800BF6521 /* Chapter.storyboard */,
 				1947C55E214F27C000BF6521 /* ChapterViewController.swift */,
 				1947C561214F2B7800BF6521 /* ChapterCell.swift */,
+				19A2057D216C4D37005A680D /* UnlockViewController.swift */,
 				19FCF24121610AE500BCC3F7 /* UnlockView.xib */,
 				19FCF24321610AF000BCC3F7 /* UnlockView.swift */,
 			);
@@ -696,6 +699,7 @@
 				1975DD13216A5E8A0092B93C /* ExerciseContainerViewController.swift in Sources */,
 				19DE4AA62168F5FB000C412A /* Quiz.swift in Sources */,
 				19DE4AAC21691E0F000C412A /* API+Base.swift in Sources */,
+				19A2057E216C4D37005A680D /* UnlockViewController.swift in Sources */,
 				19DE4AAA21691DFC000C412A /* API+Auth.swift in Sources */,
 				19A76F732161B69500C7C05F /* AlertView.swift in Sources */,
 				190F74A6213E33850038234A /* UIViewController+.swift in Sources */,

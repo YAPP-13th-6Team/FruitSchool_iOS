@@ -17,26 +17,28 @@ class BookViewController: UIViewController {
     let promotionReviewButtonTag = 101
     let cellIdentifier = "bookCell"
     let chapterRecord = ChapterRecord.fetch()
-    var searchBar: UISearchBar!
-    var searchButton: UIBarButtonItem!
-    var percentLabel: UILabel!
     var currentCellIndex: Int = 0
     let imageNames = [["cover_dog_unclear", "cover_dog_clear"], ["cover_student_unclear", "cover_student_clear"], ["cover_boss_unclear", "cover_boss_clear"]]
+    var percentLabel: UILabel!
     @IBOutlet weak var backgroundGaugeView: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        resetViews()
+        collectionView.reloadSections(IndexSet(0...0))
+    }
+    
+    private func setup() {
         let backBarButtonItem = UIBarButtonItem()
         backBarButtonItem.title = "교과서"
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIImageView(image: #imageLiteral(resourceName: "logo_noncircle")))
         navigationItem.backBarButtonItem = backBarButtonItem
-        navigationItem.setRightBarButton(searchButton, animated: true)
-        searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTouchUpSearchButton(_:)))
-        searchBar = UISearchBar()
-        searchBar.delegate = self
-        searchBar.showsCancelButton = true
-        searchBar.searchBarStyle = .minimal
         percentLabel = UILabel()
         percentLabel.textColor = UIColor.main
         percentLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
@@ -46,21 +48,9 @@ class BookViewController: UIViewController {
         shapeLayer.path = path.cgPath
         backgroundGaugeView.layer.mask = shapeLayer
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        resetViews()
-        collectionView.reloadSections(IndexSet(0...0))
-    }
 }
 // MARK: - Button Touch Event
 extension BookViewController {
-    @objc func didTouchUpSearchButton(_ sender: UIBarButtonItem) {
-        searchBar.becomeFirstResponder()
-        navigationItem.setRightBarButton(nil, animated: true)
-        navigationItem.titleView = searchBar
-    }
-    
     @objc func didTouchUpPromotionReviewButton(_ sender: UIButton) {
         guard let next = UIViewController.instantiate(storyboard: "PromotionReview", identifier: PromotionReviewContainerViewController.classNameToString) as? PromotionReviewContainerViewController else { return }
         next.delegate = self
@@ -68,26 +58,25 @@ extension BookViewController {
         self.present(next, animated: true, completion: nil)
     }
 }
-
-extension BookViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        navigationItem.titleView = nil
-        navigationItem.setRightBarButton(searchButton, animated: true)
-    }
-}
-
+// MARK: - PromotionReviewContainerViewController Custom Delegate Implementation
 extension BookViewController: PromotionReviewDelegate {
-    func didDismissPromotionReviewViewController() {
-        collectionView.reloadSections(IndexSet(0...0))
-        resetViews()
+    func didDismissPromotionReviewViewController(_ grade: Int) {
+        let title: String
+        if grade == 2 {
+            title = "축하합니다!\n모든 승급심사를 통과했습니다."
+        } else {
+            title = "축하합니다!\n당신은 이제 \(Grade(rawValue: grade + 1)?.expression ?? "")입니다."
+        }
+        UIAlertController
+            .alert(title: title, message: nil)
+            .action(title: "확인", handler: { _ in
+                self.collectionView.reloadSections(IndexSet(0...0))
+                self.resetViews()
+            })
+            .present(to: self)
     }
 }
-
+// MARK: - UICollectionView DataSource Implementation
 extension BookViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? BookCell else { return UICollectionViewCell() }
@@ -112,7 +101,7 @@ extension BookViewController: UICollectionViewDataSource {
         return 3
     }
 }
-
+// MARK: - UICollectionView Delegate Implementation
 extension BookViewController: UICollectionViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         resetViews()
@@ -130,11 +119,11 @@ extension BookViewController: UICollectionViewDelegate {
         self.navigationController?.pushViewController(next, animated: true)
     }
 }
-
+// MARK: - UICollectionView DelegateFlowLayout Implementation
 extension BookViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.bounds.width * 0.8
-        return CGSize(width: width, height: width * 1.2)
+        let width = view.bounds.width * 0.83
+        return CGSize(width: width, height: width * 1.27)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -145,8 +134,15 @@ extension BookViewController: UICollectionViewDelegateFlowLayout {
         return 8
     }
 }
-
+// MARK: - Making Dynamic Views
 private extension BookViewController {
+    func resetViews() {
+        makeGaugeLabel()
+        makePercentLabel()
+        makeDescriptionLabel()
+        makePromotionReviewButton()
+    }
+    
     func makeGaugeLabel() {
         var visibleRect = CGRect()
         visibleRect.origin = collectionView.contentOffset
@@ -208,7 +204,11 @@ private extension BookViewController {
         label.tag = descriptionLabelTag
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.textColor = .main
-        label.text = "화면을 채워주는 문구"
+        if percentage == 1 {
+            label.text = "본 과정을 수료하였군. 축하하오!"
+        } else {
+            label.text = "화면을 비어보이지 않게 하는 디스크립션 레이블"
+        }
         view.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -234,12 +234,5 @@ private extension BookViewController {
                 button.heightAnchor.constraint(equalToConstant: 40)
                 ])
         }
-    }
-    
-    func resetViews() {
-        makeGaugeLabel()
-        makePercentLabel()
-        makeDescriptionLabel()
-        makePromotionReviewButton()
     }
 }

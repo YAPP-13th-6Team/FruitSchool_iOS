@@ -9,13 +9,13 @@
 import UIKit
 
 extension UIAlertController {
-    static func alert(_ style: UIAlertControllerStyle = .alert, title: String?, message: String?) -> UIAlertController {
+    static func alert(title: String?, message: String?, style: UIAlertControllerStyle = .alert) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
         return alert
     }
     
     @discardableResult
-    func action(_ style: UIAlertActionStyle = .default, title: String?, handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertController {
+    func action(title: String?, style: UIAlertActionStyle = .default, handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertController {
         let action = UIAlertAction(title: title, style: style) { (action) in
             handler?(action)
         }
