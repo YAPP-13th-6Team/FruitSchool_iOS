@@ -36,6 +36,7 @@ class UserRecord: Object {
     static func add(nickname: String) {
         let realm = try! Realm()
         let record = UserRecord()
+        record.nickname = nickname
         try! realm.write {
             realm.add(record)
         }

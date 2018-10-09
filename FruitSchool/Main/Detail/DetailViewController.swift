@@ -27,7 +27,7 @@ class DetailViewController: UIViewController {
     
     private func requestFruitDetails() {
         IndicatorView.shared.showIndicator(message: "Loading...")
-        API.requestFruit(by: id) { response, statusCode, error in
+        API.requestFruit(by: id) { response, _, error in
             IndicatorView.shared.hideIndicator()
             if let error = error {
                 DispatchQueue.main.async { [weak self] in

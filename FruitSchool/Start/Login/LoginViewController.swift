@@ -8,6 +8,7 @@
 
 import UIKit
 import KakaoOpenSDK
+import SwiftKeychainWrapper
 
 class LoginViewController: UIViewController {
     
@@ -47,17 +48,15 @@ extension LoginViewController {
                     UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription)
                     return
                 }
-                API.requestAuthorization(token: session.token.accessToken, completion: { response, statusCode, error in
+                API.requestAuthorization(token: session.token.accessToken, completion: { response, _, error in
                     if let error = error {
-                        print(error.localizedDescription)
                         DispatchQueue.main.async { [weak self] in
                             UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription)
                             return
                         }
                     }
                     guard let response = response else { return }
-                    // 서버에서 토큰 내려오면 키체인에 저장. 개발 단계에서는 UserDefaults에 저장.
-                    UserDefaults.standard.set(response.data.authorization, forKey: "authorization")
+                    KeychainWrapper.standard.set(response.data.authorization, forKey: "authorization")
                     guard let next = UIViewController.instantiate(storyboard: "Certificate", identifier: CertificateViewController.classNameToString) as? CertificateViewController else { return }
                     next.id = user?.id ?? ""
                     next.nickname = user?.nickname ?? "익명의사용자"

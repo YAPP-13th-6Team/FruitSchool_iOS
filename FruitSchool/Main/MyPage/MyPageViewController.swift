@@ -20,7 +20,7 @@ class MyPageViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIImageView(image: #imageLiteral(resourceName: "logo_noncircle")))
         IndicatorView.shared.showIndicator(message: "Loading...")
-        API.requestUserInfo { response, statusCode, error in
+        API.requestUserInfo { response, _, error in
             IndicatorView.shared.hideIndicator()
             if let error = error {
                 DispatchQueue.main.async { [weak self] in

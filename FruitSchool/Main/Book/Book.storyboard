@@ -106,7 +106,7 @@
         <!--교과서-->
         <scene sceneID="LeA-30-Eu1">
             <objects>
-                <navigationController storyboardIdentifier="BookNavigationController" title="교과서" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lr6-HW-78d" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="BookNavigationController" title="교과서" automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lr6-HW-78d" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="rJL-c7-j1L">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

@@ -50,7 +50,7 @@ class ChapterViewController: UIViewController {
 extension ChapterViewController {
     func requestFruitList() {
         IndicatorView.shared.showIndicator(message: "Loading...")
-        API.requestFruitList { response, statusCode, error in
+        API.requestFruitList { response, _, error in
             IndicatorView.shared.hideIndicator()
             if let error = error {
                 DispatchQueue.main.async { [weak self] in

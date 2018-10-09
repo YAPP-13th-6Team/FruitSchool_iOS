@@ -22,15 +22,13 @@ class PromotionReviewContainerViewController: UIViewController {
                 if filtered.count == self.quizsCount {
                     UIView.animate(withDuration: 0.5) {
                         self.submitButton.alpha = 1
-                    }
-                } else {
-                    UIView.animate(withDuration: 0.5) {
-                        self.submitButton.alpha = 0
+                        self.checksAllQuiz = true
                     }
                 }
             }
         }
     }
+    var checksAllQuiz: Bool = false
     var grade: Int = 0
     var quizs: [Quiz] = []
     var quizsCount: Int {
@@ -49,7 +47,7 @@ class PromotionReviewContainerViewController: UIViewController {
     
     private func makeExams() {
         IndicatorView.shared.showIndicator(message: "Loading...")
-        API.requestExam(by: grade) { response, statusCode, error in
+        API.requestExam(by: grade) { response, _, error in
             IndicatorView.shared.hideIndicator()
             if let error = error {
                 DispatchQueue.main.async { [weak self] in
@@ -125,6 +123,11 @@ extension PromotionReviewContainerViewController {
             if velocityY >= 0 {
                 containerViewCenterYConstraint.constant = velocityY
             }
+            if checksAllQuiz {
+                UIView.animate(withDuration: 0.1) {
+                    self.submitButton.alpha = 0
+                }
+            }
         case .ended:
             if gesture.velocity(in: view).y > 1000 {
                 containerViewCenterYConstraint.constant = view.bounds.height
@@ -135,6 +138,11 @@ extension PromotionReviewContainerViewController {
                 })
                 return
             } else {
+                if checksAllQuiz {
+                    UIView.animate(withDuration: 0.1) {
+                        self.submitButton.alpha = 1
+                    }
+                }
                 containerViewCenterYConstraint.constant = 0
                 UIView.animate(withDuration: 0.2) {
                     self.view.layoutIfNeeded()
@@ -172,6 +180,13 @@ extension PromotionReviewContainerViewController {
                             let myGrade = userRecord.grade
                             if myGrade != 2 {
                                 UserRecord.update(userRecord, keyValue: ["grade": myGrade + 1])
+                                IndicatorView.shared.showIndicator(message: "Loading...")
+                                API.requestGradeUp(myGrade + 1, completion: { _, _, error in
+                                    if let error = error {
+                                        UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription)
+                                        return
+                                    }
+                                })
                             }
                             switch self.grade {
                             case 0:

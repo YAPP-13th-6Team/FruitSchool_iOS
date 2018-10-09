@@ -45,9 +45,8 @@ extension CertificateViewController: CertificateViewDelegate {
         UserRecord.add(nickname: nickname)
         //guard let next = UIViewController.instantiate(storyboard: "Main", identifier: MainTabBarController.classNameToString) else { return }
         guard let next = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController") else { return }
-        next.modalTransitionStyle = .crossDissolve
         IndicatorView.shared.showIndicator(message: "Loading...")
-        API.requestFruitList { response, statusCode, error in
+        API.requestFruitList { response, _, error in
             if let error = error {
                 DispatchQueue.main.async {
                     UIAlertController.presentErrorAlert(to: next, error: error.localizedDescription)

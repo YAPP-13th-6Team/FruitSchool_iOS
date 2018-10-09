@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftKeychainWrapper
 
 class Network {
     /// HTTP GET 통신 래퍼
@@ -20,7 +21,7 @@ class Network {
         guard let url = URL(string: urlPath) else { return }
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue(UserDefaults.standard.string(forKey: "authorization"), forHTTPHeaderField: "authorization")
+        request.setValue(KeychainWrapper.standard.string(forKey: "authorization"), forHTTPHeaderField: "authorization")
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
                 errorHandler?(error)
@@ -48,6 +49,7 @@ class Network {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(KeychainWrapper.standard.string(forKey: "authorization"), forHTTPHeaderField: "authorization")
         guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return }
         request.httpBody = httpBody
         let task = session.dataTask(with: request) { (data, response, error) in

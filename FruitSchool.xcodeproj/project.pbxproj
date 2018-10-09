@@ -61,6 +61,8 @@
 		19A76F732161B69500C7C05F /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A76F722161B69500C7C05F /* AlertView.swift */; };
 		19A76F752161B6F600C7C05F /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A76F742161B6F600C7C05F /* AlertView.xib */; };
 		19A76F7B2162333200C7C05F /* ExerciseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A76F7A2162333200C7C05F /* ExerciseResponse.swift */; };
+		19AA9B02216CB38000CD46FA /* GradeUpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA9B01216CB38000CD46FA /* GradeUpResponse.swift */; };
+		19AA9B04216CB41000CD46FA /* API+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19AA9B03216CB41000CD46FA /* API+User.swift */; };
 		19DE4AA62168F5FB000C412A /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE4AA52168F5FB000C412A /* Quiz.swift */; };
 		19DE4AA821691DB9000C412A /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE4AA721691DB9000C412A /* LoginResponse.swift */; };
 		19DE4AAA21691DFC000C412A /* API+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE4AA921691DFC000C412A /* API+Auth.swift */; };
@@ -148,6 +150,8 @@
 		19A76F722161B69500C7C05F /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		19A76F742161B6F600C7C05F /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		19A76F7A2162333200C7C05F /* ExerciseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseResponse.swift; sourceTree = "<group>"; };
+		19AA9B01216CB38000CD46FA /* GradeUpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeUpResponse.swift; sourceTree = "<group>"; };
+		19AA9B03216CB41000CD46FA /* API+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+User.swift"; sourceTree = "<group>"; };
 		19DE4AA52168F5FB000C412A /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		19DE4AA721691DB9000C412A /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		19DE4AA921691DFC000C412A /* API+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Auth.swift"; sourceTree = "<group>"; };
@@ -331,14 +335,14 @@
 		1947C564214F2DB000BF6521 /* Response */ = {
 			isa = PBXGroup;
 			children = (
-				DB934B182169382B002A4B17 /* UserInfoResponse.swift */,
 				19DE4AA721691DB9000C412A /* LoginResponse.swift */,
-				19DE4AA52168F5FB000C412A /* Quiz.swift */,
-				1923664C2165BF170043F9BB /* QuizResponse.swift */,
 				1947C57B214F9E5F00BF6521 /* FruitResponse.swift */,
 				192366482165AF390043F9BB /* FruitListResponse.swift */,
+				DB934B182169382B002A4B17 /* UserInfoResponse.swift */,
 				19A76F7A2162333200C7C05F /* ExerciseResponse.swift */,
 				1923664A2165B6BE0043F9BB /* ExamResponse.swift */,
+				19AA9B01216CB38000CD46FA /* GradeUpResponse.swift */,
+				1923664C2165BF170043F9BB /* QuizResponse.swift */,
 				99A52D202168D329000BC360 /* CommunityListResponse.swift */,
 				99A52D2221692489000BC360 /* CommunityDetailResponse.swift */,
 				19E708252169371E00C6F452 /* UserInfoResponse.swift */,
@@ -459,6 +463,7 @@
 				19FCF23F2160FE9600BCC3F7 /* Grade.swift */,
 				19E70827216941B700C6F452 /* UserRecord.swift */,
 				1947C567214F2DC700BF6521 /* ChapterRecord.swift */,
+				19DE4AA52168F5FB000C412A /* Quiz.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -470,6 +475,7 @@
 				19DE4AAB21691E0F000C412A /* API+Base.swift */,
 				19DE4AA921691DFC000C412A /* API+Auth.swift */,
 				19E274C82144D75300E2F6D2 /* API+Fruit.swift */,
+				19AA9B03216CB41000CD46FA /* API+User.swift */,
 				99A52D26216937FD000BC360 /* API+Community.swift */,
 			);
 			path = Network;
@@ -615,11 +621,13 @@
 				"${PODS_ROOT}/Target Support Files/Pods-FruitSchool/Pods-FruitSchool-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -671,6 +679,7 @@
 				99A52D1A2168AE58000BC360 /* CommunityCell.swift in Sources */,
 				19A76F7B2162333200C7C05F /* ExerciseResponse.swift in Sources */,
 				19FCF2402160FE9600BCC3F7 /* Grade.swift in Sources */,
+				19AA9B02216CB38000CD46FA /* GradeUpResponse.swift in Sources */,
 				DBF51B8B2157CE0900AA85DF /* TutorialViewController.swift in Sources */,
 				19E708262169371E00C6F452 /* UserInfoResponse.swift in Sources */,
 				1923664B2165B6BE0043F9BB /* ExamResponse.swift in Sources */,
@@ -695,6 +704,7 @@
 				1947C57C214F9E5F00BF6521 /* FruitResponse.swift in Sources */,
 				1947C574214F2F3900BF6521 /* DetailStandardTipCell.swift in Sources */,
 				19DE4AA821691DB9000C412A /* LoginResponse.swift in Sources */,
+				19AA9B04216CB41000CD46FA /* API+User.swift in Sources */,
 				1971E87E216A690F001378CA /* PromotionReviewContentViewController.swift in Sources */,
 				1975DD13216A5E8A0092B93C /* ExerciseContainerViewController.swift in Sources */,
 				19DE4AA62168F5FB000C412A /* Quiz.swift in Sources */,

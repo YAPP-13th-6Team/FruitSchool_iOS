@@ -22,11 +22,13 @@ class ExerciseContainerViewController: UIViewController {
                 if filtered.count == self.quizsCount {
                     UIView.animate(withDuration: 0.2) {
                         self.submitButton.alpha = 1
+                        self.checksAllQuiz = true
                     }
                 }
             }
         }
     }
+    var checksAllQuiz: Bool = false
     var id: String = ""
     var fruitTitle: String = ""
     var quizs: [Quiz] = []
@@ -46,7 +48,7 @@ class ExerciseContainerViewController: UIViewController {
     
     private func makeExercises() {
         IndicatorView.shared.showIndicator(message: "Loading...")
-        API.requestExercises(by: id) { response, statusCode, error in
+        API.requestExercises(by: id) { response, _, error in
             IndicatorView.shared.hideIndicator()
             if let error = error {
                 DispatchQueue.main.async { [weak self] in
@@ -124,6 +126,11 @@ extension ExerciseContainerViewController {
             if velocityY >= 0 {
                 containerViewCenterYConstraint.constant = velocityY
             }
+            if checksAllQuiz {
+                UIView.animate(withDuration: 0.1) {
+                    self.submitButton.alpha = 0
+                }
+            }
         case .ended:
             if gesture.velocity(in: view).y > 1000 {
                 containerViewCenterYConstraint.constant = view.bounds.height
@@ -134,6 +141,11 @@ extension ExerciseContainerViewController {
                 })
                 return
             } else {
+                if checksAllQuiz {
+                    UIView.animate(withDuration: 0.1) {
+                        self.submitButton.alpha = 1
+                    }
+                }
                 containerViewCenterYConstraint.constant = 0
                 UIView.animate(withDuration: 0.2) {
                     self.view.layoutIfNeeded()
