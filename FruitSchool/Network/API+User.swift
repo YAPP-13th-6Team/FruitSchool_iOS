@@ -10,10 +10,10 @@ extension API {
     /// 승급심사 통과시 서버의 grade값 갱신.
     ///
     /// - Parameters:
-    ///   - grade: ??
+    ///   - grade: 사용자의 현재 등급
     ///   - completion: 컴플리션 핸들러
     static func requestGradeUp(_ grade: Int, completion: @escaping (GradeUpResponse?, Int?, Error?) -> Void) {
-        Network.get("\(baseURL)/users/grade/\(grade)", successHandler: { data, statusCode in
+        Network.post("\(baseURL)/users/grade/\(grade)", parameters: [:], successHandler: { data, statusCode in
             do {
                 let decoded = try jsonDecoder.decode(GradeUpResponse.self, from: data)
                 completion(decoded, statusCode, nil)

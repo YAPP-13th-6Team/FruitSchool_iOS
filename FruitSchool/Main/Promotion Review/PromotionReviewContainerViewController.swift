@@ -181,7 +181,7 @@ extension PromotionReviewContainerViewController {
                             if myGrade != 2 {
                                 UserRecord.update(userRecord, keyValue: ["grade": myGrade + 1])
                                 IndicatorView.shared.showIndicator(message: "Loading...")
-                                API.requestGradeUp(myGrade + 1, completion: { _, _, error in
+                                API.requestGradeUp(myGrade, completion: { _, _, error in
                                     if let error = error {
                                         UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription)
                                         return
