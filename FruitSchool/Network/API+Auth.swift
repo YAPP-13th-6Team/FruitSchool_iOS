@@ -6,6 +6,9 @@
 //  Copyright © 2018 YAPP. All rights reserved.
 //
 
+/*
+ 인증과 관련된 API
+ */
 extension API {
     /// 토큰 발급.
     ///

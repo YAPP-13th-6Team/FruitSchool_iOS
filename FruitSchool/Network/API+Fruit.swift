@@ -8,10 +8,9 @@
 
 import Foundation
 
-enum APIError: Error {
-    case invalidGradeError
-}
-
+/*
+ 과일과 관련된 API
+ */
 extension API {
     /// 모든 과일 정보 요청.
     ///
@@ -84,71 +83,10 @@ extension API {
     /// - Parameters:
     ///   - grade: 사용자 등급
     ///   - completion: 컴플리션 핸들러
-    static func requestExam(by grade: Int, completion: @escaping (ExamResponse?, Int?, Error?) -> Void) {
+    static func requestExam(by grade: Int, completion: @escaping (PromotionReviewResponse?, Int?, Error?) -> Void) {
         Network.get("\(baseURL)/fruits/exams/\(grade)", successHandler: { data, statusCode in
             do {
-                let decoded = try jsonDecoder.decode(ExamResponse.self, from: data)
-                completion(decoded, statusCode, nil)
-            } catch {
-                completion(nil, statusCode, error)
-            }
-        }, errorHandler: { error in
-            completion(nil, nil, error)
-        })
-    }
-}
-// MARK: - 사용자 관리 관련
-extension API {
-    /**
-     서버에 회원 정보 업로드.
-     - Parameter id: 카카오 고유 ID
-     - Parameter nickname: 카카오 사용자의 닉네임
-     */
-    static func requestCreatingUser(id: String, nickname: String, completion: @escaping (Int?, Error?) -> Void) {
-        let parameter = ["id": id, "nickname": nickname]
-        Network.post("\(baseURL)/users/user", parameters: parameter, successHandler: { (_, statusCode) in
-            completion(statusCode, nil)
-        }, errorHandler: { (error) in
-            completion(nil, error)
-        })
-    }
-    /**
-     사용자 중복 확인.
-     - Parameter id: 카카오 고유 ID
-     - Note: 409 Conflict 에러는 중복 사용자임을 의미.
-     */
-    static func requestCheckingDuplicatedUser(id: String, completion: @escaping (Bool?, Error?) -> Void) {
-        let parameter = ["id": id]
-        Network.post("\(baseURL)/users/duplicated", parameters: parameter, successHandler: { (_, statusCode) in
-            if statusCode == 409 {
-                completion(true, nil)
-            } else {
-                completion(false, nil)
-            }
-        }, errorHandler: { (error) in
-            completion(nil, error)
-        })
-    }
-    /**
-     서버에 있는 사용자 등급 정보 수정.
-     - Parameter id: 카카오 고유 ID
-     - Parameter grade: 새로운 등급
-     */
-    static func requestUpdatingUserGrade(id: String, grade: Int, completion: @escaping (Int?, Error?) -> Void) {
-        let parameter: [String: Any] = ["id": id, "grade": grade]
-        Network.post("\(baseURL)/users/grade", parameters: parameter, successHandler: { (_, statusCode) in
-            completion(statusCode, nil)
-        }, errorHandler: { (error) in
-            completion(nil, error)
-        })
-    }
-    /// 특정 id의 사용자 정보 요청
-    ///
-    ///   - completion: 컴플리션 핸들러
-    static func requestUserInfo(completion: @escaping (UserInfoResponse?, Int?, Error?) -> Void) {
-        Network.get("\(baseURL)/users/mypage", successHandler: { data, statusCode in
-            do {
-                let decoded = try jsonDecoder.decode(UserInfoResponse.self, from: data)
+                let decoded = try jsonDecoder.decode(PromotionReviewResponse.self, from: data)
                 completion(decoded, statusCode, nil)
             } catch {
                 completion(nil, statusCode, error)

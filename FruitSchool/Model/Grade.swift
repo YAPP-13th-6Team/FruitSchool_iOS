@@ -6,6 +6,10 @@
 //  Copyright © 2018 YAPP. All rights reserved.
 //
 
+/*
+ 등급을 나타내는 열거형 모델
+ 현재 3단계만 있음
+ */
 enum Grade: Int {
     case dog = 0
     case student = 1

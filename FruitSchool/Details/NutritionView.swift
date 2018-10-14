@@ -22,7 +22,7 @@ class NutritionView: UIView {
     
     func drawNutrition(object: NutritionTip) {
         
-        let sodiumValue: Double =  {
+        let sodiumValue: Double = {
             if object.sodium >= 10 {
                 return 100
             } else {

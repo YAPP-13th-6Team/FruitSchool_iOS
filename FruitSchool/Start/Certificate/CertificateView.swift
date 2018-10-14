@@ -22,6 +22,7 @@ class CertificateView: UIView {
     }
     lazy var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "yyyy. MM. dd"
         return dateFormatter
     }()
