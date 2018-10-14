@@ -25,6 +25,7 @@ class TutorialViewController: UIPageViewController {
         if let firstViewController = pages.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
         }
+        // 마지막 페이지의 시작하기 버튼에 액션 달아놓기
         (pages.last?.view.viewWithTag(100) as? UIButton)?.addTarget(self, action: #selector(didTouchUpStartButton(_:)), for: .touchUpInside)
     }
     

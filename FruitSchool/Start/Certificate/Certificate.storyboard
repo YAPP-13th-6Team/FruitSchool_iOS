@@ -13,7 +13,7 @@
         <!--Certificate View Controller-->
         <scene sceneID="kSW-He-Vxp">
             <objects>
-                <viewController storyboardIdentifier="CertificateViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kJu-cs-EIW" customClass="CertificateViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CertificateViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kJu-cs-EIW" customClass="CertificateViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RGm-qT-gYU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,7 +23,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Ktg-HZ-cVG" firstAttribute="height" secondItem="RGm-qT-gYU" secondAttribute="height" multiplier="0.8" id="15d-1V-dFq"/>
                             <constraint firstItem="Ktg-HZ-cVG" firstAttribute="width" secondItem="RGm-qT-gYU" secondAttribute="width" multiplier="0.8" id="LcT-oK-qen"/>

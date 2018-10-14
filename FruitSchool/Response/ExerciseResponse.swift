@@ -6,11 +6,14 @@
 //  Copyright © 2018 YAPP. All rights reserved.
 //
 
+/*
+ 과일 문제 응답 모델
+ */
 struct ExerciseResponse: Codable {
     struct Data: Codable {
         let id: String
         let title: String
-        let quizs: [QuizResponse]
+        let quizs: [QuestionResponse]
         enum CodingKeys: String, CodingKey {
             case id = "_id"
             case title, quizs

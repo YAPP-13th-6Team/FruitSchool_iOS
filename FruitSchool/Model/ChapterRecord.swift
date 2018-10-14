@@ -8,6 +8,10 @@
 
 import RealmSwift
 
+/*
+ 과일 카드 획득 여부를 저장하는 모델
+ 초기 앱 실행시 입학증서 화면에서 다음으로 넘어갈 때 초기화됨
+ */
 @objcMembers
 class ChapterRecord: Object {
     

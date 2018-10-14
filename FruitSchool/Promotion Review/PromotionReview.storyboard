@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Promotion Review Container View Controller-->
+        <scene sceneID="lnD-lc-Zkk">
+            <objects>
+                <viewController storyboardIdentifier="PromotionReviewContainerViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zlO-Qw-cge" customClass="PromotionReviewContainerViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZJL-Eu-wal">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2eb-Rn-jWG">
+                                <rect key="frame" x="16" y="90" width="343" height="487"/>
+                                <connections>
+                                    <segue destination="Jev-KV-q2G" kind="embed" id="E9E-nf-XeQ"/>
+                                </connections>
+                            </containerView>
+                            <pageControl opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="Rrt-17-lkf">
+                                <rect key="frame" x="184" y="540" width="7" height="37"/>
+                                <color key="pageIndicatorTintColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.68000000000000005" colorSpace="calibratedRGB"/>
+                            </pageControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a9D-Eo-8Y1">
+                                <rect key="frame" x="0.0" y="577" width="375" height="90"/>
+                                <subviews>
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBc-3w-tY9">
+                                        <rect key="frame" x="75" y="22.5" width="225" height="45"/>
+                                        <state key="normal" title="제출하기"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="EBc-3w-tY9" firstAttribute="centerY" secondItem="a9D-Eo-8Y1" secondAttribute="centerY" id="75D-yr-eQD"/>
+                                    <constraint firstItem="EBc-3w-tY9" firstAttribute="width" secondItem="a9D-Eo-8Y1" secondAttribute="width" multiplier="0.6" id="JSN-nS-BBk"/>
+                                    <constraint firstItem="EBc-3w-tY9" firstAttribute="height" secondItem="a9D-Eo-8Y1" secondAttribute="height" multiplier="0.5" id="qKt-so-cgE"/>
+                                    <constraint firstItem="EBc-3w-tY9" firstAttribute="centerX" secondItem="a9D-Eo-8Y1" secondAttribute="centerX" id="z7B-9M-LQt"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="a9D-Eo-8Y1" firstAttribute="leading" secondItem="q4i-8W-PfM" secondAttribute="leading" id="7P0-ld-iem"/>
+                            <constraint firstItem="Rrt-17-lkf" firstAttribute="centerX" secondItem="ZJL-Eu-wal" secondAttribute="centerX" id="AtE-DK-1u4"/>
+                            <constraint firstItem="2eb-Rn-jWG" firstAttribute="centerX" secondItem="ZJL-Eu-wal" secondAttribute="centerX" id="Lgw-Hz-ZVS"/>
+                            <constraint firstItem="q4i-8W-PfM" firstAttribute="trailing" secondItem="a9D-Eo-8Y1" secondAttribute="trailing" id="RVt-EN-xxj"/>
+                            <constraint firstItem="a9D-Eo-8Y1" firstAttribute="top" secondItem="2eb-Rn-jWG" secondAttribute="bottom" id="UD4-V1-MLv"/>
+                            <constraint firstItem="2eb-Rn-jWG" firstAttribute="height" secondItem="ZJL-Eu-wal" secondAttribute="height" multiplier="0.73" id="cq4-06-kC1"/>
+                            <constraint firstItem="2eb-Rn-jWG" firstAttribute="leading" secondItem="q4i-8W-PfM" secondAttribute="leading" constant="16" id="gFq-BO-qPb"/>
+                            <constraint firstItem="2eb-Rn-jWG" firstAttribute="centerY" secondItem="ZJL-Eu-wal" secondAttribute="centerY" id="gYn-Ra-O6D"/>
+                            <constraint firstItem="Rrt-17-lkf" firstAttribute="bottom" secondItem="2eb-Rn-jWG" secondAttribute="bottom" id="hIr-NY-16U"/>
+                            <constraint firstItem="q4i-8W-PfM" firstAttribute="bottom" secondItem="a9D-Eo-8Y1" secondAttribute="bottom" id="qQ3-ub-P8K"/>
+                            <constraint firstItem="q4i-8W-PfM" firstAttribute="trailing" secondItem="2eb-Rn-jWG" secondAttribute="trailing" constant="16" id="qfa-Wg-at5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="q4i-8W-PfM"/>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="2eb-Rn-jWG" id="Q4P-Vt-Bh0"/>
+                        <outlet property="containerViewCenterYConstraint" destination="gYn-Ra-O6D" id="jDu-py-4t4"/>
+                        <outlet property="pageControl" destination="Rrt-17-lkf" id="3ah-Uq-PbW"/>
+                        <outlet property="submitButton" destination="EBc-3w-tY9" id="xaS-ji-Rnd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VFw-o4-aVL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1370.4000000000001" y="-235.23238380809596"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="DSW-vQ-Ee1">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="20" navigationOrientation="horizontal" spineLocation="none" id="Jev-KV-q2G" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VpG-E1-kbi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-722" y="-235"/>
+        </scene>
+        <!--Promotion Review Content View Controller-->
+        <scene sceneID="cgL-up-Hyc">
+            <objects>
+                <viewController storyboardIdentifier="PromotionReviewContentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3dO-1M-BrB" customClass="PromotionReviewContentViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yfO-KK-9Q3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="iQL-UR-6xp"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WpB-dv-g8V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-47" y="-235"/>
+        </scene>
+    </scenes>
+</document>
