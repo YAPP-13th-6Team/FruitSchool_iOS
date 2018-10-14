@@ -10,15 +10,21 @@ import UIKit
 
 class BookViewController: UIViewController {
 
+    // 각 교과서의 달성률을 저장하는 프로퍼티
     var percentage: CGFloat = 0
+    // 게이지(레이블로 표시함)의 태그. backgroundGaugeView 위에 올라가 달성률을 시각적으로 보여줌
     let gaugeLabelTag = 98
+    // 달성률을 표시하는 레이블의 태그
     let percentLabelTag = 99
+    // 화면을 비어보이지 않게 하는 레이블의 태그
     let descriptionLabelTag = 100
+    // 승급심사 버튼의 태그
     let promotionReviewButtonTag = 101
     let cellIdentifier = "bookCell"
     let chapterRecord = ChapterRecord.fetch()
     var currentCellIndex: Int = 0
     let imageNames = [["cover_dog_unclear", "cover_dog_clear"], ["cover_student_unclear", "cover_student_clear"], ["cover_boss_unclear", "cover_boss_clear"]]
+    // 달성률을 표시하는 레이블은 전역 프로퍼티에 할당하여 사용
     var percentLabel: UILabel!
     @IBOutlet weak var backgroundGaugeView: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -43,14 +49,13 @@ class BookViewController: UIViewController {
         percentLabel.textColor = UIColor.main
         percentLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         percentLabel.translatesAutoresizingMaskIntoConstraints = false
-        let shapeLayer = CAShapeLayer()
-        let path = UIBezierPath(roundedRect: backgroundGaugeView.bounds, cornerRadius: backgroundGaugeView.bounds.height / 2)
-        shapeLayer.path = path.cgPath
-        backgroundGaugeView.layer.mask = shapeLayer
+        backgroundGaugeView.layer.cornerRadius = backgroundGaugeView.bounds.height / 2
+        backgroundGaugeView.layer.masksToBounds = true
     }
 }
 // MARK: - Button Touch Event
 extension BookViewController {
+    // 승급심사 버튼을 누르면 승급심사 뷰컨트롤러로 넘어감
     @objc func didTouchUpPromotionReviewButton(_ sender: UIButton) {
         guard let next = UIViewController.instantiate(storyboard: "PromotionReview", identifier: PromotionReviewContainerViewController.classNameToString) as? PromotionReviewContainerViewController else { return }
         next.delegate = self
@@ -60,6 +65,7 @@ extension BookViewController {
 }
 // MARK: - PromotionReviewContainerViewController Custom Delegate Implementation
 extension BookViewController: PromotionReviewDelegate {
+    // 승급심사 종료 후 교과서로 돌아왔을 때의 인터렉션 정의
     func didDismissPromotionReviewViewController(_ grade: Int) {
         let title: String
         if grade == 2 {
@@ -83,6 +89,7 @@ extension BookViewController: UICollectionViewDataSource {
         guard let userRecord = UserRecord.fetch().first else { return UICollectionViewCell() }
         let fruitsInBook = chapterRecord.filter { $0.grade == indexPath.item }
         let passedFruitsInBook = fruitsInBook.filter { $0.isPassed }
+        // 100%가 아니면 색이 없는 표지. 100%이면 색이 들어간 표지. 승급심사까지 통과했으면 색이 들어간 표지에 도장까지.
         if userRecord[indexPath.item] {
             cell.coverImageView.image = UIImage(named: imageNames[indexPath.item][1])
             cell.stampImageView.image = #imageLiteral(resourceName: "stamp_clear")
@@ -103,12 +110,14 @@ extension BookViewController: UICollectionViewDataSource {
 }
 // MARK: - UICollectionView Delegate Implementation
 extension BookViewController: UICollectionViewDelegate {
+    // 스크롤뷰의 스크롤 효과가 끝났음을 받는 델리게이트 메소드
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         resetViews()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        // 현재 등급과 교과서 등급을 비교하여 접근 제한
         let myGrade = UserRecord.fetch().first?.grade ?? 0
         if !(0...myGrade).contains(indexPath.item) {
             UIAlertController.presentErrorAlert(to: self, error: "당신은 아직 \(Grade(rawValue: myGrade)?.expression ?? "")예요!")
@@ -136,35 +145,41 @@ extension BookViewController: UICollectionViewDelegateFlowLayout {
 }
 // MARK: - Making Dynamic Views
 private extension BookViewController {
+    // 컬렉션뷰를 제외한 다른 모든 뷰를 다시 만듦
     func resetViews() {
         makeGaugeLabel()
         makePercentLabel()
         makeDescriptionLabel()
         makePromotionReviewButton()
     }
-    
+    // 달성률을 시각적으로 보여주는 게이지(레이블 활용하여 만듦)를 만듦
     func makeGaugeLabel() {
+        // 현재 보여지고 있는 컬렉션뷰의 셀 인덱스 구하기
         var visibleRect = CGRect()
         visibleRect.origin = collectionView.contentOffset
         visibleRect.size = collectionView.bounds.size
         let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
         guard let index = collectionView.indexPathForItem(at: visiblePoint)?.item else { return }
         currentCellIndex = index
+        // 달성률 구하기
         let filtered = chapterRecord.filter("grade = %d", index)
         let count = filtered.count
         var passedCount = 0
         for element in filtered where element.isPassed {
             passedCount += 1
         }
+        let percentage = CGFloat(passedCount) / CGFloat(count)
+        self.percentage = percentage
         view.viewWithTag(gaugeLabelTag)?.removeFromSuperview()
+        // 레이블 프로퍼티 설정
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.textColor = .main
         label.tag = gaugeLabelTag
+        label.backgroundColor = #colorLiteral(red: 0.7803921569, green: 0.737254902, blue: 0.7137254902, alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(label)
-        label.backgroundColor = #colorLiteral(red: 0.7803921569, green: 0.737254902, blue: 0.7137254902, alpha: 1)
-        let percentage = CGFloat(passedCount) / CGFloat(count)
+        // 오토레이아웃 설정
         NSLayoutConstraint.activate([
             label.heightAnchor.constraint(equalTo: backgroundGaugeView.heightAnchor),
             label.leadingAnchor.constraint(equalTo: backgroundGaugeView.leadingAnchor),
@@ -172,14 +187,13 @@ private extension BookViewController {
             label.widthAnchor.constraint(equalTo: backgroundGaugeView.widthAnchor, multiplier: percentage)
             ])
         view.layoutIfNeeded()
-        let shapeLayer = CAShapeLayer()
-        let path = UIBezierPath(roundedRect: label.bounds, cornerRadius: label.bounds.height / 2)
-        shapeLayer.path = path.cgPath
-        label.layer.mask = shapeLayer
-        self.percentage = percentage
+        // 레이블 외곽선 둥글게 만들기
+        label.layer.cornerRadius = label.bounds.height / 2
+        label.layer.masksToBounds = true
     }
-    
+    // 달성률 표시하는 레이블 만들기
     func makePercentLabel() {
+        // backgroundGaugeView의 슈퍼뷰와의 간격 구하여 percentLabel의 크기 적절하게 설정
         let leading = backgroundGaugeView.frame.origin.x
         view.viewWithTag(percentLabelTag)?.removeFromSuperview()
         percentLabel.tag = percentLabelTag
@@ -197,9 +211,10 @@ private extension BookViewController {
         }
         percentLabel.text = "\(Int(percentage * 100))%"
     }
-    
+    // 화면을 비어보이지 않게 하는 레이블 만들기
     func makeDescriptionLabel() {
         view.viewWithTag(descriptionLabelTag)?.removeFromSuperview()
+        // 레이블 프로퍼티 설정
         let label = UILabel()
         label.tag = descriptionLabelTag
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
@@ -211,22 +226,26 @@ private extension BookViewController {
         }
         view.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
+        // 오토레이아웃 설정
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             label.topAnchor.constraint(equalTo: percentLabel.bottomAnchor, constant: 8)
             ])
     }
-    
+    // 승급심사 버튼 만들기
     func makePromotionReviewButton() {
         view.viewWithTag(promotionReviewButtonTag)?.removeFromSuperview()
         let passesCurrentBook = UserRecord.fetch().first?[currentCellIndex] ?? false
+        // 교과서 달성률이 100%이면 버튼 표시. 100%이나 승급심사를 통과했으면 버튼 표시하지 않음
         if percentage == 1 && !passesCurrentBook {
+            // 버튼 프로퍼티 설정
             let button = UIButton(type: .system)
             button.tag = promotionReviewButtonTag
             button.setTitle("승급 심사", for: [])
             button.addTarget(self, action: #selector(didTouchUpPromotionReviewButton(_:)), for: .touchUpInside)
             button.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(button)
+            // 오토레이아웃 설정
             NSLayoutConstraint.activate([
                 button.topAnchor.constraint(equalTo: percentLabel.bottomAnchor, constant: 40),
                 button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),

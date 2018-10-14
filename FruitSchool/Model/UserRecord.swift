@@ -8,6 +8,10 @@
 
 import RealmSwift
 
+/*
+ 사용자 정보 관련 모델
+ 닉네임 / 현재 등급 / 교과서 통과 여부 저장
+ */
 @objcMembers
 class UserRecord: Object {
     
@@ -29,7 +33,6 @@ class UserRecord: Object {
             return false
         }
     }
-    
     /// BookRecord 생성.
     ///
     /// - Parameter nickname: 카카오 닉네임
@@ -41,7 +44,6 @@ class UserRecord: Object {
             realm.add(record)
         }
     }
-    
     /// BookRecord 가져오기.
     ///
     /// - Returns: 모든 BookRecord 레코드.
@@ -50,7 +52,6 @@ class UserRecord: Object {
         let realm = try! Realm()
         return realm.objects(UserRecord.self)
     }
-    
     /// BookRecord의 특정 레코드의 특정 필드 갱신.
     ///
     /// - Parameters:
@@ -64,7 +65,6 @@ class UserRecord: Object {
             }
         }
     }
-    
     /// BookRecord의 특정 레코드 삭제.
     ///
     /// - Parameter object: 삭제할 BookRecord 레코드.

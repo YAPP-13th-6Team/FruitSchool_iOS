@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QuizButton: UIButton {
+class QuestionButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,10 +21,8 @@ class QuizButton: UIButton {
     }
     
     func setup() {
-        let shapeLayer = CAShapeLayer()
-        let path = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.height / 2)
-        shapeLayer.path = path.cgPath
-        layer.mask = shapeLayer
+        layer.cornerRadius = bounds.height / 2
+        layer.masksToBounds = true
         setTitleColor(.black, for: [])
         titleLabel?.font = UIFont.systemFont(ofSize: 22, weight: .light)
         backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)

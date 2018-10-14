@@ -6,6 +6,9 @@
 //  Copyright © 2018 YAPP. All rights reserved.
 //
 
+/*
+ 교과서 내 과일 목록 응답 모델
+ */
 struct FruitListResponse: Codable {
     struct Data: Codable {
         let id: String

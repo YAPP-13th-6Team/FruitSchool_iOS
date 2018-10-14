@@ -6,15 +6,18 @@
 //  Copyright © 2018년 YAPP. All rights reserved.
 //
 
+/*
+ 과일 세부정보 응답 모델
+ */
 struct FruitResponse: Codable {
     struct Data: Codable {
         let id: String
         let title: String
-        let grade: Int      //0: 서당개, 1: 학도, 2: 훈장
+        let grade: Int
         let season: String
         let standardTip: StandardTip
         let nutritionTip: NutritionTip
-        let quizs: [QuizResponse]
+        let quizs: [QuestionResponse]
         enum CodingKeys: String, CodingKey {
             case id = "_id"
             case title, grade, season, standardTip, nutritionTip, quizs

@@ -8,10 +8,9 @@
 
 import Foundation
 
-enum APIError: Error {
-    case invalidGradeError
-}
-
+/*
+ 과일과 관련된 API
+ */
 extension API {
     /// 모든 과일 정보 요청.
     ///
@@ -84,10 +83,10 @@ extension API {
     /// - Parameters:
     ///   - grade: 사용자 등급
     ///   - completion: 컴플리션 핸들러
-    static func requestExam(by grade: Int, completion: @escaping (ExamResponse?, Int?, Error?) -> Void) {
+    static func requestExam(by grade: Int, completion: @escaping (PromotionReviewResponse?, Int?, Error?) -> Void) {
         Network.get("\(baseURL)/fruits/exams/\(grade)", successHandler: { data, statusCode in
             do {
-                let decoded = try jsonDecoder.decode(ExamResponse.self, from: data)
+                let decoded = try jsonDecoder.decode(PromotionReviewResponse.self, from: data)
                 completion(decoded, statusCode, nil)
             } catch {
                 completion(nil, statusCode, error)

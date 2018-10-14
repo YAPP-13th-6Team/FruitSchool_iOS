@@ -6,6 +6,9 @@
 //  Copyright © 2018 YAPP. All rights reserved.
 //
 
+/*
+ 사용자 정보와 관련된 API
+ */
 extension API {
     /// 승급심사 통과시 서버의 grade값 갱신.
     ///

@@ -12,18 +12,13 @@ class ChapterViewController: UIViewController {
 
     var grade: Int = 0
     let cellIdentifier = "chapterCell"
-//    var searchBar: UISearchBar!
-//    var searchButton: UIBarButtonItem!
     var fruits: [FruitListResponse.Data] = []
-//    var searchedFruits: [FruitListResponse.Data] = []
-//    var isSearching: Bool {
-//        return searchBar.isFirstResponder
-//    }
     let records = ChapterRecord.fetch()
     @IBOutlet weak var collectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // 내비게이션 타이틀에 들어갈 이미지 설정
         switch grade {
         case 0:
             navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "dog_top"))
@@ -34,15 +29,11 @@ class ChapterViewController: UIViewController {
         default:
             break
         }
-//        searchBar = UISearchBar()
-//        searchBar.delegate = self
-//        searchBar.showsCancelButton = true
-//        searchBar.searchBarStyle = .minimal
-//        searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(didTouchUpSearchButton(_:)))
-//        self.navigationItem.setRightBarButton(searchButton, animated: false)
+        // 이전 버튼에 들어갈 문자열 설정
         let backBarButtonItem = UIBarButtonItem()
         backBarButtonItem.title = "과일목록"
         navigationItem.backBarButtonItem = backBarButtonItem
+        // 과일 목록 요청하기
         requestFruitList()
     }
 }
@@ -61,6 +52,7 @@ extension ChapterViewController {
                 return
             }
             guard let response = response else { return }
+            // 교과서의 등급에 맞는 데이터 필터링
             let filtered = response.data.filter { $0.grade == self.grade }
             self.fruits = filtered
             DispatchQueue.main.async { [weak self] in
@@ -69,33 +61,9 @@ extension ChapterViewController {
         }
     }
 }
-
-//// MARK: - Button Touch Event
-//extension ChapterViewController {
-//    @objc func didTouchUpSearchButton(_ sender: UIBarButtonItem) {
-//        searchBar.becomeFirstResponder()
-//        navigationItem.setRightBarButton(nil, animated: true)
-//        navigationItem.titleView = searchBar
-//    }
-//}
-//// MARK: - UISearchBar Delegate Implementation
-//extension ChapterViewController: UISearchBarDelegate {
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        let filtered = fruits.filter { $0.title.range(of: searchText) != nil }
-//        self.searchedFruits = filtered
-//        self.collectionView.reloadSections(IndexSet(0...0))
-//    }
-//
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        searchBar.resignFirstResponder()
-//        self.collectionView.reloadSections(IndexSet(0...0))
-//        navigationItem.titleView = nil
-//        navigationItem.setRightBarButton(searchButton, animated: true)
-//    }
-//}
-
 // MARK: - ExerciseContainerViewController Custom Delegate Implementation
 extension ChapterViewController: ExerciseDelegate {
+    // 과일 문제 풀이 종료 후 챕터로 돌아왔을 때의 인터렉션 정의
     func didDismissExerciseViewController(_ fruitTitle: String) {
         UIAlertController
             .alert(title: "\(fruitTitle) 학습 완료!", message: nil)
@@ -113,12 +81,10 @@ extension ChapterViewController: ExerciseDelegate {
             .present(to: self)
     }
 }
-
 // MARK: - UICollectionView DataSource Implementation
 extension ChapterViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? ChapterCell else { return UICollectionViewCell() }
-        //let fruit = !isSearching ? fruits[indexPath.item] : searchedFruits[indexPath.item]
         let fruit = fruits[indexPath.item]
         guard let filteredRecord = records.filter("id = %@", fruit.id).first else { return UICollectionViewCell() }
         cell.setProperties(fruit, isPassed: filteredRecord.isPassed)
@@ -130,7 +96,6 @@ extension ChapterViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //return !isSearching ? fruits.count : searchedFruits.count
         return fruits.count
     }
 }
@@ -138,6 +103,7 @@ extension ChapterViewController: UICollectionViewDataSource {
 extension ChapterViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        // 과일 카드를 획득했으면 세부 정보 페이지로, 획득하지 않았으면 문제 풀이 페이지로 이동
         guard let isPassed = records.filter("id = %@", fruits[indexPath.item].id).first?.isPassed else { return }
         let fruit = fruits[indexPath.item]
         let id = fruit.id
@@ -152,35 +118,6 @@ extension ChapterViewController: UICollectionViewDelegate {
             next.fruitTitle = fruit.title
             self.present(next, animated: true, completion: nil)
         }
-//        if !isSearching {
-//            let fruit = fruits[indexPath.item]
-//            let id = fruit.id
-//            if isPassed {
-//                guard let next = UIViewController.instantiate(storyboard: "Detail", identifier: DetailViewController.classNameToString) as? DetailViewController else { return }
-//                next.id = id
-//                self.navigationController?.pushViewController(next, animated: true)
-//            } else {
-//                guard let next = UIViewController.instantiate(storyboard: "Exercise", identifier: ExerciseContainerViewController.classNameToString) as? ExerciseContainerViewController else { return }
-//                next.delegate = self
-//                next.id = id
-//                next.fruitTitle = fruit.title
-//                self.present(next, animated: true, completion: nil)
-//            }
-//        } else {
-//            let fruit = searchedFruits[indexPath.item]
-//            let id = fruit.id
-//            if isPassed {
-//                guard let next = UIViewController.instantiate(storyboard: "Detail", identifier: DetailViewController.classNameToString) as? DetailViewController else { return }
-//                next.id = id
-//                self.navigationController?.pushViewController(next, animated: true)
-//            } else {
-//                guard let next = UIViewController.instantiate(storyboard: "Exercise", identifier: ExerciseContainerViewController.classNameToString) as? ExerciseContainerViewController else { return }
-//                next.delegate = self
-//                next.id = id
-//                next.fruitTitle = fruit.title
-//                self.present(next, animated: true, completion: nil)
-//            }
-//        }
     }
 }
 // MARK: - UICollectionView DelegateFlowLayout Implementation

@@ -1,20 +1,20 @@
 //
-//  ExerciseContainerViewController.swift
+//  BaseContainerViewController.swift
 //  FruitSchool
 //
-//  Created by Presto on 08/10/2018.
+//  Created by Presto on 12/10/2018.
 //  Copyright © 2018 YAPP. All rights reserved.
 //
 
 import UIKit
 
-protocol ExerciseDelegate: class {
-    func didDismissExerciseViewController(_ fruitTitle: String)
+protocol Exercisable: class {
+    func executeScoring()
+    func makeExercises()
 }
 
-class ExerciseContainerViewController: UIViewController {
+class BaseContainerViewController: UIViewController {
 
-    weak var delegate: ExerciseDelegate?
     var answers: [String] = [] {
         didSet {
             let filtered = answers.filter { !$0.isEmpty }
@@ -29,58 +29,21 @@ class ExerciseContainerViewController: UIViewController {
         }
     }
     var checksAllQuiz: Bool = false
-    var id: String = ""
-    var fruitTitle: String = ""
-    var quizs: [Quiz] = []
+    var quizs: [Question] = []
     var quizsCount: Int {
         return quizs.count
     }
     var pageViewController: UIPageViewController!
-    @IBOutlet weak var submitButton: UIButton!
-    @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var containerViewCenterYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var submitButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        makeExercises()
     }
     
-    private func makeExercises() {
-        IndicatorView.shared.showIndicator(message: "Loading...")
-        API.requestExercises(by: id) { response, _, error in
-            IndicatorView.shared.hideIndicator()
-            if let error = error {
-                DispatchQueue.main.async { [weak self] in
-                    UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription, handler: {
-                        self?.dismiss(animated: true, completion: nil)
-                    })
-                }
-                return
-            }
-            guard let response = response else { return }
-            for data in response.data.quizs {
-                let quiz = Quiz(title: data.title, correctAnswer: data.correctAnswer, answers: [[data.correctAnswer], data.incorrectAnswers].flatMap { $0 }.shuffled())
-                self.quizs.append(quiz)
-                print(quiz.answers, quiz.correctAnswer)
-            }
-            self.answers = Array(repeating: "", count: self.quizs.count)
-            DispatchQueue.main.async {
-                self.setUp()
-                self.containerView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
-                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
-                    self.containerView.transform = CGAffineTransform.identity
-                }, completion: { _ in
-                    UIView.animate(withDuration: 0.3, animations: {
-                        self.pageControl.alpha = 1
-                    })
-                    
-                })
-            }
-        }
-    }
-    
-    private func setUp() {
+    func setup() {
         submitButton.addTarget(self, action: #selector(didTouchUpSubmitButton(_:)), for: .touchUpInside)
         submitButton.layer.cornerRadius = 15
         submitButton.backgroundColor = .white
@@ -98,19 +61,18 @@ class ExerciseContainerViewController: UIViewController {
         pageViewController.setViewControllers([makeContentViewController(at: 0) ?? UIViewController()], direction: .forward, animated: true, completion: nil)
     }
     
-    private func makeContentViewController(at index: Int) -> ExerciseContentViewController? {
-        guard let controller = UIViewController.instantiate(storyboard: "Exercise", identifier: ExerciseContentViewController.classNameToString) as? ExerciseContentViewController else { return nil }
+    func makeContentViewController(at index: Int) -> BaseContentViewController? {
+        guard let controller = UIViewController.instantiate(storyboard: "Base", identifier: BaseContentViewController.classNameToString) as? BaseContentViewController else { return nil }
         controller.pageIndex = index
-        guard let quizView = UIView.instantiateFromXib(xibName: "QuizView") as? QuizView else { return nil }
+        guard let quizView = UIView.instantiateFromXib(xibName: "QuizView") as? QuestionView else { return nil }
         let quiz = quizs[index]
         quizView.numberLabel.text = "문제 \(index + 1)"
-        let attributedString = NSMutableAttributedString(string: quiz.title, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 30, weight: .ultraLight)])
-        let boldFontAttribute = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 30, weight: .medium)]
-        let range = (quiz.title as NSString).range(of: fruitTitle)
-        attributedString.addAttributes(boldFontAttribute, range: range)
-        quizView.titleLabel.attributedText = attributedString
+        quizView.titleLabel.text = quiz.title
         for buttonIndex in 0..<4 {
             quizView[buttonIndex].setTitle(quiz.answers[buttonIndex], for: [])
+        }
+        if let selectedIndex = quizs[index].answers.index(of: answers[index]) {
+            quizView[selectedIndex].backgroundColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
         }
         quizView.delegate = self
         controller.quizView = quizView
@@ -118,7 +80,7 @@ class ExerciseContainerViewController: UIViewController {
     }
 }
 // MARK: - Selectors
-extension ExerciseContainerViewController {
+extension BaseContainerViewController {
     @objc func didPanContentView(_ gesture: UIPanGestureRecognizer) {
         let velocityY = gesture.translation(in: view).y
         switch gesture.state {
@@ -157,53 +119,14 @@ extension ExerciseContainerViewController {
     }
     
     @objc func didTouchUpSubmitButton(_ sender: UIButton) {
-        executeScoring()
-    }
-}
-
-// MARK: - Scoring Logic
-extension ExerciseContainerViewController {
-    private func executeScoring() {
-        var score = 0
-        UIAlertController
-            .alert(title: "", message: "제출할까요?")
-            .action(title: "확인", style: .default) { _ in
-                for index in 0..<self.quizsCount {
-                    let quiz = self.quizs[index]
-                    let answer = self.answers[index]
-                    if quiz.correctAnswer == answer {
-                        score += 1
-                    }
-                }
-                if score == self.quizsCount {
-                    UIAlertController
-                        .alert(title: "결과", message: "통과")
-                        .action(title: "확인", handler: { _ in
-                            guard let record = ChapterRecord.fetch().filter("id = %@", self.id).first else { return }
-                            ChapterRecord.update(record, keyValue: ["isPassed": true])
-                            self.dismiss(animated: true, completion: {
-                                self.delegate?.didDismissExerciseViewController(self.fruitTitle)
-                            })
-                        })
-                        .present(to: self)
-                } else {
-                    UIAlertController
-                        .alert(title: "결과", message: "불통")
-                        .action(title: "확인", handler: { _ in
-                            self.dismiss(animated: true, completion: nil)
-                        })
-                        .present(to: self)
-                }
-            }
-            .action(title: "취소", style: .cancel)
-            .present(to: self)
+        // 채점 로직
     }
 }
 // MARK: - QuizView Custom Delegate Implementation
-extension ExerciseContainerViewController: QuizViewDelegate {
+extension BaseContainerViewController: QuestionViewDelegate {
     func didTouchUpQuizButtons(_ sender: UIButton) {
         let currentPageIndex = pageControl.currentPage
-        guard let quizView = (pageViewController.viewControllers?[currentPageIndex] as? ExerciseContentViewController)?.quizView else { return }
+        guard let quizView = (pageViewController.viewControllers?[currentPageIndex] as? ExerciseContentViewController)?.questionView else { return }
         guard let title = sender.titleLabel?.text else { return }
         self.answers[currentPageIndex] = title
         for index in 0..<4 {
@@ -223,7 +146,7 @@ extension ExerciseContainerViewController: QuizViewDelegate {
     }
 }
 // MARK: - UIPageViewController DataSource Implementation
-extension ExerciseContainerViewController: UIPageViewControllerDataSource {
+extension BaseContainerViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let controller = viewController as? ExerciseContentViewController else { return nil }
         guard let index = controller.pageIndex else { return nil }
@@ -245,7 +168,7 @@ extension ExerciseContainerViewController: UIPageViewControllerDataSource {
     }
 }
 // MARK: - UIPageViewController Delegate Implementation
-extension ExerciseContainerViewController: UIPageViewControllerDelegate {
+extension BaseContainerViewController: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         guard let pageContentViewController = pageViewController.viewControllers?.first as? ExerciseContentViewController else { return }
         pageControl.currentPage = pageContentViewController.pageIndex

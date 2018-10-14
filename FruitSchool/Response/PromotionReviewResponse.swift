@@ -6,7 +6,10 @@
 //  Copyright © 2018 YAPP. All rights reserved.
 //
 
-struct ExamResponse: Codable {
+/*
+ 승급심사 문제 응답 모델
+ */
+struct PromotionReviewResponse: Codable {
     let message: String
-    let data: [QuizResponse]
+    let data: [QuestionResponse]
 }

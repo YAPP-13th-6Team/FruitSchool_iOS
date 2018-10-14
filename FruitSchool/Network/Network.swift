@@ -10,7 +10,7 @@ import Foundation
 import SwiftKeychainWrapper
 
 class Network {
-    /// HTTP GET 통신 래퍼
+    /// 일반적인 HTTP GET 통신 래퍼
     ///
     /// - Parameters:
     ///   - urlPath: 접속할 URL 문자열
@@ -35,8 +35,7 @@ class Network {
         }
         task.resume()
     }
-
-    /// HTTP POST 통신 래퍼
+    /// 일반적인 HTTP POST 통신 래퍼
     ///
     /// - Parameters:
     ///   - urlPath: 접속할 URL 문자열
@@ -65,7 +64,6 @@ class Network {
         }
         task.resume()
     }
-    
     /// 로그인시 토큰 발급에 사용되는 HTTP POST 통신 래퍼
     ///
     /// - Parameters:

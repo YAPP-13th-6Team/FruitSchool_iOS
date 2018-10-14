@@ -14,9 +14,13 @@ class DetailViewController: UIViewController {
     var fruitResponse: FruitResponse.Data?
     let cellIdentifiers = ["detailImageCell", "detailStandardTipCell", "detailNutritionTipCell"]
     let sectionTitles = ["기본 정보", "영양 정보"]
+    // 기본 정보 섹션을 펼쳤는가
     var springsStandardTipSection: Bool = false
+    // 영양 정보 섹션을 펼쳤는가
     var springsNutritionTipSection: Bool = false
+    // 기본 정보 섹션 펼치기, 숨기기 버튼
     var standardTipButton: UIButton!
+    // 영양 정보 섹션 펼치기, 숨기기 버튼
     var nutritionTipButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
@@ -24,7 +28,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         requestFruitDetails()
     }
-    
+    // 과일 세부 정보 요청하기
     private func requestFruitDetails() {
         IndicatorView.shared.showIndicator(message: "Loading...")
         API.requestFruit(by: id) { response, _, error in
@@ -48,6 +52,7 @@ class DetailViewController: UIViewController {
 }
 // MARK: - Button Touch Event
 extension DetailViewController {
+    // 펼치기 숨기기 버튼 누르기 핸들러
     @objc func touchUpHeaderButtons(_ sender: UIButton) {
         switch sender.tag {
         case 1:
@@ -104,6 +109,7 @@ extension DetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 { return nil }
+        // 섹션 헤더 버튼 동적 생성
         let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 40))
         view.backgroundColor = .white
         let titleLabel = UILabel()

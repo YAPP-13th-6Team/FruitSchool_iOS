@@ -6,8 +6,11 @@
 //  Copyright © 2018 YAPP. All rights reserved.
 //
 
-struct QuizResponse: Codable {
-    //let level: Int      //몇개 난이도가 있을까?
+/*
+ 문제 응답 모델
+ Exercise, PromotionReview에서 공통적으로 사용됨
+ */
+struct QuestionResponse: Codable {
     let title: String
     let correctAnswer: String
     let incorrectAnswers: [String]

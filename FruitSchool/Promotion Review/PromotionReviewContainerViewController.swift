@@ -8,6 +8,7 @@
 
 import UIKit
 
+// 승급심사 뷰컨트롤러의 상태를 다른 뷰컨트롤러에 전달하기 위한 커스텀 델리게이트 정의
 protocol PromotionReviewDelegate: class {
     func didDismissPromotionReviewViewController(_ grade: Int)
 }
@@ -15,37 +16,35 @@ protocol PromotionReviewDelegate: class {
 class PromotionReviewContainerViewController: UIViewController {
 
     weak var delegate: PromotionReviewDelegate?
+    // 사용자가 선택한 보기가 기록되는 전역 프로퍼티
     var answers: [String] = [] {
         didSet {
             let filtered = answers.filter { !$0.isEmpty }
             DispatchQueue.main.async {
-                if filtered.count == self.quizsCount {
+                if filtered.count == self.questions.count {
                     UIView.animate(withDuration: 0.5) {
                         self.submitButton.alpha = 1
-                        self.checksAllQuiz = true
+                        self.checksAllQuestion = true
                     }
                 }
             }
         }
     }
-    var checksAllQuiz: Bool = false
+    var checksAllQuestion: Bool = false
     var grade: Int = 0
-    var quizs: [Quiz] = []
-    var quizsCount: Int {
-        return quizs.count
-    }
+    var questions: [Question] = []
     var pageViewController: UIPageViewController!
-    @IBOutlet weak var submitButton: QuizButton!
+    @IBOutlet weak var submitButton: QuestionButton!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var containerViewCenterYConstraint: NSLayoutConstraint!
     @IBOutlet weak var containerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        makeExams()
+        makeQuestions()
     }
     
-    private func makeExams() {
+    private func makeQuestions() {
         IndicatorView.shared.showIndicator(message: "Loading...")
         API.requestExam(by: grade) { response, _, error in
             IndicatorView.shared.hideIndicator()
@@ -58,12 +57,14 @@ class PromotionReviewContainerViewController: UIViewController {
                 return
             }
             guard let response = response else { return }
+            // 서버에서 받은 데이터를 클라이언트에서 사용하기 좋게 주무르기
             for data in response.data {
-                let quiz = Quiz(title: data.title, correctAnswer: data.correctAnswer, answers: [[data.correctAnswer], data.incorrectAnswers].flatMap { $0 }.shuffled())
-                self.quizs.append(quiz)
-                print(quiz.answers, quiz.correctAnswer)
+                let quiz = Question(title: data.title, correctAnswer: data.correctAnswer, answers: [[data.correctAnswer], data.incorrectAnswers].flatMap { $0 }.shuffled())
+                self.questions.append(quiz)
             }
-            self.answers = Array(repeating: "", count: self.quizsCount)
+            // 정답이 기록될 전역 프로퍼티 배열 초기화
+            self.answers = Array(repeating: "", count: self.questions.count)
+            // 문제 뷰가 커지는 애니메이션 후 페이지 인디케이터 노출
             DispatchQueue.main.async {
                 self.setUp()
                 self.containerView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
@@ -89,33 +90,35 @@ class PromotionReviewContainerViewController: UIViewController {
         containerView.layer.cornerRadius = 15
         containerView.layer.masksToBounds = true
         containerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(didPanContentView(_:))))
-        pageControl.numberOfPages = quizs.count
+        pageControl.numberOfPages = questions.count
         self.pageViewController = childViewControllers.first as? UIPageViewController
         pageViewController.dataSource = self
         pageViewController.delegate = self
         pageViewController.setViewControllers([makeContentViewController(at: 0) ?? UIViewController()], direction: .forward, animated: true, completion: nil)
     }
-    
+    // 페이지 이동시 새로운 뷰컨트롤러 instantiate
     private func makeContentViewController(at index: Int) -> PromotionReviewContentViewController? {
         guard let controller = UIViewController.instantiate(storyboard: "PromotionReview", identifier: PromotionReviewContentViewController.classNameToString) as? PromotionReviewContentViewController else { return nil }
         controller.pageIndex = index
-        guard let quizView = UIView.instantiateFromXib(xibName: "QuizView") as? QuizView else { return nil }
-        let quiz = quizs[index]
+        guard let quizView = UIView.instantiateFromXib(xibName: "QuizView") as? QuestionView else { return nil }
+        let quiz = questions[index]
+        // 문제 뷰에 데이터 뿌리기
         quizView.numberLabel.text = "문제 \(index + 1)"
         quizView.titleLabel.text = quiz.title
         for buttonIndex in 0..<4 {
             quizView[buttonIndex].setTitle(quiz.answers[buttonIndex], for: [])
         }
-        if let selectedIndex = quizs[index].answers.index(of: answers[index]) {
+        if let selectedIndex = questions[index].answers.index(of: answers[index]) {
             quizView[selectedIndex].backgroundColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
         }
         quizView.delegate = self
-        controller.quizView = quizView
+        controller.questionView = quizView
         return controller
     }
 }
 // MARK: - Selectors
 extension PromotionReviewContainerViewController {
+    // 문제 뷰를 아래로 내렸을 때 사라지게 하는 효과
     @objc func didPanContentView(_ gesture: UIPanGestureRecognizer) {
         let velocityY = gesture.translation(in: view).y
         switch gesture.state {
@@ -123,7 +126,7 @@ extension PromotionReviewContainerViewController {
             if velocityY >= 0 {
                 containerViewCenterYConstraint.constant = velocityY
             }
-            if checksAllQuiz {
+            if checksAllQuestion {
                 UIView.animate(withDuration: 0.1) {
                     self.submitButton.alpha = 0
                 }
@@ -138,7 +141,7 @@ extension PromotionReviewContainerViewController {
                 })
                 return
             } else {
-                if checksAllQuiz {
+                if checksAllQuestion {
                     UIView.animate(withDuration: 0.1) {
                         self.submitButton.alpha = 1
                     }
@@ -152,7 +155,7 @@ extension PromotionReviewContainerViewController {
             break
         }
     }
-    
+    // 제출하기 버튼을 눌러서 채점하기
     @objc func didTouchUpSubmitButton(_ sender: UIButton) {
         executeScoring()
     }
@@ -164,14 +167,16 @@ extension PromotionReviewContainerViewController {
         UIAlertController
             .alert(title: "승급 심사", message: "제출할까요?")
             .action(title: "확인") { _ in
-                for index in 0..<self.quizsCount {
-                    let quiz = self.quizs[index]
+                // 맞은 문항 개수 세기
+                for index in 0..<self.questions.count {
+                    let quiz = self.questions[index]
                     let answer = self.answers[index]
                     if quiz.correctAnswer == answer {
                         score += 1
                     }
                 }
-                let percent = Double(score) / Double(self.quizsCount)
+                // 정답율이 70% 이상이면 통과, 그렇지 않으면 불통
+                let percent = Double(score) / Double(self.questions.count)
                 if percent > 0.7 {
                     UIAlertController
                         .alert(title: "결과", message: "통과")
@@ -217,18 +222,19 @@ extension PromotionReviewContainerViewController {
     }
 }
 // MARK: - QuizView Custom Delegate Implementation
-extension PromotionReviewContainerViewController: QuizViewDelegate {
+extension PromotionReviewContainerViewController: QuestionViewDelegate {
     func didTouchUpQuizButtons(_ sender: UIButton) {
         let currentPageIndex = pageControl.currentPage
-        guard let quizView = (pageViewController.viewControllers?.first as? PromotionReviewContentViewController)?.quizView else { return }
+        guard let quizView = (pageViewController.viewControllers?.first as? PromotionReviewContentViewController)?.questionView else { return }
         guard let title = sender.titleLabel?.text else { return }
+        // 사용자가 선택한 보기를 answers 전역프로퍼티에 할당하고, 선택된 효과를 주기
         self.answers[currentPageIndex] = title
         for index in 0..<4 {
             UIView.animate(withDuration: 0.2) {
                 quizView[index].backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
             }
         }
-        if let selectedIndex = quizs[currentPageIndex].answers.index(of: title) {
+        if let selectedIndex = questions[currentPageIndex].answers.index(of: title) {
             UIView.animate(withDuration: 0.2) {
                 quizView[selectedIndex].backgroundColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
             }
@@ -255,7 +261,7 @@ extension PromotionReviewContainerViewController: UIPageViewControllerDataSource
         guard let viewController = viewController as? PromotionReviewContentViewController else { return nil }
         guard let index = viewController.pageIndex else { return nil }
         let nextIndex = index + 1
-        if nextIndex >= quizs.count {
+        if nextIndex >= questions.count {
             return nil
         }
         return makeContentViewController(at: nextIndex)

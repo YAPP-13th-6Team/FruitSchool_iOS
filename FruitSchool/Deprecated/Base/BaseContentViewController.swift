@@ -1,17 +1,17 @@
 //
-//  ExerciseContentViewController.swift
+//  BaseContentViewController.swift
 //  FruitSchool
 //
-//  Created by Presto on 08/10/2018.
+//  Created by Presto on 12/10/2018.
 //  Copyright © 2018 YAPP. All rights reserved.
 //
 
 import UIKit
 
-class ExerciseContentViewController: UIViewController {
+class BaseContentViewController: UIViewController {
 
     var pageIndex: Int!
-    var quizView: QuizView!
+    var quizView: QuestionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,14 +19,14 @@ class ExerciseContentViewController: UIViewController {
         makeQuizView()
     }
     
-    func setup() {
+    private func setup() {
         view.layer.cornerRadius = 15
         view.layer.masksToBounds = true
     }
     
-    func makeQuizView() {
+    private func makeQuizView() {
         if quizView == nil {
-            quizView = UIView.instantiateFromXib(xibName: "QuizView") as? QuizView
+            quizView = UIView.instantiateFromXib(xibName: "QuizView") as? QuestionView
         }
         view.addSubview(quizView)
         quizView.translatesAutoresizingMaskIntoConstraints = false

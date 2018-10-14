@@ -14,7 +14,6 @@ class UnlockViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     func setup() {

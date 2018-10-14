@@ -13,8 +13,7 @@ class CertificateViewController: UIViewController {
     var id: String = ""
     var nickname: String = ""
     lazy var certificateView: UIView = {
-        let dummy = UIView()
-        guard let certificateView = UIView.instantiateFromXib(xibName: "CertificateView") as? CertificateView else { return dummy }
+        guard let certificateView = UIView.instantiateFromXib(xibName: "CertificateView") as? CertificateView else { return UIView() }
         certificateView.delegate = self
         return certificateView
     }()
@@ -40,10 +39,10 @@ extension CertificateViewController: CertificateViewDelegate {
         return nickname
     }
     
+    // UserRecord와 ChapterRecord 모델을 초기화하여 앱 시작 준비를 마침. 메인 플로우로 진입
     func didTouchUpButton(_ sender: UIButton) {
         UserDefaults.standard.set(id, forKey: "id")
         UserRecord.add(nickname: nickname)
-        //guard let next = UIViewController.instantiate(storyboard: "Main", identifier: MainTabBarController.classNameToString) else { return }
         guard let next = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController") else { return }
         IndicatorView.shared.showIndicator(message: "Loading...")
         API.requestFruitList { response, _, error in

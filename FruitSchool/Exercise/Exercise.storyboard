@@ -97,58 +97,5 @@
             </objects>
             <point key="canvasLocation" x="-1464" y="-259"/>
         </scene>
-        <!--Exercise View Controller-->
-        <scene sceneID="ABk-ae-3hK">
-            <objects>
-                <viewController storyboardIdentifier="ExerciseViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cye-93-GiZ" customClass="ExerciseViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="jI8-lQ-4PF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RYi-oh-Cgc">
-                                <rect key="frame" x="16" y="93.5" width="343" height="480"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="RYi-oh-Cgc" secondAttribute="height" multiplier="1:1.4" id="KZo-bQ-KFn"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uYn-zI-3KB">
-                                    <size key="itemSize" width="108" height="115"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="exerciseCell" id="T1r-Qy-Pin" customClass="ExerciseCell" customModule="FruitSchool" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="108" height="115"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="108" height="115"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="cye-93-GiZ" id="mWC-yY-QUo"/>
-                                    <outlet property="delegate" destination="cye-93-GiZ" id="LGy-cH-DBr"/>
-                                </connections>
-                            </collectionView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="RYi-oh-Cgc" firstAttribute="leading" secondItem="bgx-GJ-D2b" secondAttribute="leading" constant="16" id="AEn-8r-LQj"/>
-                            <constraint firstItem="RYi-oh-Cgc" firstAttribute="centerX" secondItem="jI8-lQ-4PF" secondAttribute="centerX" id="Hxt-dp-Gvb"/>
-                            <constraint firstItem="bgx-GJ-D2b" firstAttribute="trailing" secondItem="RYi-oh-Cgc" secondAttribute="trailing" constant="16" id="L17-Bh-9SC"/>
-                            <constraint firstItem="RYi-oh-Cgc" firstAttribute="centerY" secondItem="jI8-lQ-4PF" secondAttribute="centerY" id="oSE-GD-A33"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="bgx-GJ-D2b"/>
-                    </view>
-                    <connections>
-                        <outlet property="collectionView" destination="RYi-oh-Cgc" id="gFx-rz-DFQ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oMd-Qh-PhV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="36" y="-235"/>
-        </scene>
     </scenes>
 </document>
