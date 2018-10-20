@@ -30,7 +30,7 @@ class DetailViewController: UIViewController {
     }
     // 과일 세부 정보 요청하기
     private func requestFruitDetails() {
-        IndicatorView.shared.showIndicator(message: "Loading...")
+        IndicatorView.shared.showIndicator()
         API.requestFruit(by: id) { response, _, error in
             IndicatorView.shared.hideIndicator()
             if let error = error {

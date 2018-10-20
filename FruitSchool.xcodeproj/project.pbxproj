@@ -64,6 +64,9 @@
 		19784245215FC9C500D53F48 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19784244215FC9C500D53F48 /* CommunityViewController.swift */; };
 		197E55BE21512550003A610D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 197E55BD21512550003A610D /* .swiftlint.yml */; };
 		19A2057E216C4D37005A680D /* UnlockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A2057D216C4D37005A680D /* UnlockViewController.swift */; };
+		19A713B9217B7DA9004F8D7C /* ChapterFinishPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A713B8217B7DA9004F8D7C /* ChapterFinishPopupViewController.swift */; };
+		19A713BB217B7DC8004F8D7C /* Popup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19A713BA217B7DC8004F8D7C /* Popup.storyboard */; };
+		19A713BF217B7E19004F8D7C /* FruitCompletePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A713BE217B7E19004F8D7C /* FruitCompletePopupViewController.swift */; };
 		19A76F732161B69500C7C05F /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A76F722161B69500C7C05F /* AlertView.swift */; };
 		19A76F752161B6F600C7C05F /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19A76F742161B6F600C7C05F /* AlertView.xib */; };
 		19A76F7B2162333200C7C05F /* ExerciseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A76F7A2162333200C7C05F /* ExerciseResponse.swift */; };
@@ -158,6 +161,9 @@
 		19784244215FC9C500D53F48 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		197E55BD21512550003A610D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		19A2057D216C4D37005A680D /* UnlockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockViewController.swift; sourceTree = "<group>"; };
+		19A713B8217B7DA9004F8D7C /* ChapterFinishPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterFinishPopupViewController.swift; sourceTree = "<group>"; };
+		19A713BA217B7DC8004F8D7C /* Popup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Popup.storyboard; sourceTree = "<group>"; };
+		19A713BE217B7E19004F8D7C /* FruitCompletePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FruitCompletePopupViewController.swift; path = "/Users/presto/XCode/FruitSchool/FruitSchool/Reusable Views/Popup/FruitCompletePopupViewController.swift"; sourceTree = "<absolute>"; };
 		19A76F722161B69500C7C05F /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		19A76F742161B6F600C7C05F /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		19A76F7A2162333200C7C05F /* ExerciseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseResponse.swift; sourceTree = "<group>"; };
@@ -364,6 +370,7 @@
 			isa = PBXGroup;
 			children = (
 				195A6A1B216F17EB0072D03A /* Question */,
+				19A713B7217B7D4D004F8D7C /* Popup */,
 				19236662216751180043F9BB /* Activity Indicator */,
 			);
 			path = "Reusable Views";
@@ -443,6 +450,16 @@
 				1975DD15216A5EA30092B93C /* ExerciseContentViewController.swift */,
 			);
 			path = Exercise;
+			sourceTree = "<group>";
+		};
+		19A713B7217B7D4D004F8D7C /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				19A713BA217B7DC8004F8D7C /* Popup.storyboard */,
+				19A713BE217B7E19004F8D7C /* FruitCompletePopupViewController.swift */,
+				19A713B8217B7DA9004F8D7C /* ChapterFinishPopupViewController.swift */,
+			);
+			path = Popup;
 			sourceTree = "<group>";
 		};
 		19C84596217069A200669929 /* Deprecated */ = {
@@ -603,6 +620,7 @@
 				19FCF24221610AE500BCC3F7 /* UnlockView.xib in Resources */,
 				1978423E215FC68000D53F48 /* Certificate.storyboard in Resources */,
 				197E55BE21512550003A610D /* .swiftlint.yml in Resources */,
+				19A713BB217B7DC8004F8D7C /* Popup.storyboard in Resources */,
 				19784239215FBF0C00D53F48 /* MyPage.storyboard in Resources */,
 				190983CA2156722E00E2461A /* PromotionReview.storyboard in Resources */,
 				19E274D22144DA6300E2F6D2 /* Book.storyboard in Resources */,
@@ -728,9 +746,11 @@
 				192366542165D7F30043F9BB /* BackView.swift in Sources */,
 				1908FA972170800700D89187 /* PromotionReviewViewController.swift in Sources */,
 				19E274C72144D74E00E2F6D2 /* Network.swift in Sources */,
+				19A713B9217B7DA9004F8D7C /* ChapterFinishPopupViewController.swift in Sources */,
 				99A52D2321692489000BC360 /* CommunityDetailResponse.swift in Sources */,
 				99A52D27216937FD000BC360 /* API+Community.swift in Sources */,
 				190F74AE213E34700038234A /* NSObject+.swift in Sources */,
+				19A713BF217B7E19004F8D7C /* FruitCompletePopupViewController.swift in Sources */,
 				1947C57C214F9E5F00BF6521 /* FruitResponse.swift in Sources */,
 				195881DE217329E500995112 /* UserInfoResponse.swift in Sources */,
 				1908FA9521707FFE00D89187 /* ExerciseViewController.swift in Sources */,

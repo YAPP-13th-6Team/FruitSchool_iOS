@@ -44,7 +44,7 @@ extension CertificateViewController: CertificateViewDelegate {
         UserDefaults.standard.set(id, forKey: "id")
         UserRecord.add(nickname: nickname)
         guard let next = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController") else { return }
-        IndicatorView.shared.showIndicator(message: "Loading...")
+        IndicatorView.shared.showIndicator()
         API.requestFruitList { response, _, error in
             if let error = error {
                 DispatchQueue.main.async {

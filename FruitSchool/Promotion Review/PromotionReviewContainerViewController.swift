@@ -45,7 +45,7 @@ class PromotionReviewContainerViewController: UIViewController {
     }
     
     private func makeQuestions() {
-        IndicatorView.shared.showIndicator(message: "Loading...")
+        IndicatorView.shared.showIndicator()
         API.requestExam(by: grade) { response, _, error in
             IndicatorView.shared.hideIndicator()
             if let error = error {
@@ -185,7 +185,7 @@ extension PromotionReviewContainerViewController {
                             let myGrade = userRecord.grade
                             if myGrade != 2 {
                                 UserRecord.update(userRecord, keyValue: ["grade": myGrade + 1])
-                                IndicatorView.shared.showIndicator(message: "Loading...")
+                                IndicatorView.shared.showIndicator()
                                 API.requestGradeUp(myGrade, completion: { _, _, error in
                                     if let error = error {
                                         UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription)

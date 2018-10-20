@@ -46,7 +46,7 @@ class ExerciseContainerViewController: UIViewController {
     }
     // 문제 만들기
     private func makeQuestions() {
-        IndicatorView.shared.showIndicator(message: "Loading...")
+        IndicatorView.shared.showIndicator()
         API.requestExercises(by: id) { response, _, error in
             IndicatorView.shared.hideIndicator()
             if let error = error {

@@ -40,7 +40,7 @@ class ChapterViewController: UIViewController {
 // MARK: - Making Fruit List
 extension ChapterViewController {
     func requestFruitList() {
-        IndicatorView.shared.showIndicator(message: "Loading...")
+        IndicatorView.shared.showIndicator()
         API.requestFruitList { response, _, error in
             IndicatorView.shared.hideIndicator()
             if let error = error {

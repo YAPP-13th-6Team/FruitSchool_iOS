@@ -22,23 +22,13 @@
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="bTG-Zz-kwd">
                             <rect key="frame" x="31.5" y="31.5" width="37" height="37"/>
                         </activityIndicatorView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UI3-UF-PQB">
-                            <rect key="frame" x="16" y="76" width="68" height="16"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="1ww-cd-azR"/>
-                        <constraint firstItem="UI3-UF-PQB" firstAttribute="leading" secondItem="siJ-DV-FTz" secondAttribute="leading" constant="16" id="4ac-4J-RMd"/>
-                        <constraint firstAttribute="bottom" secondItem="UI3-UF-PQB" secondAttribute="bottom" constant="8" id="9tm-Kq-UWx"/>
                         <constraint firstItem="bTG-Zz-kwd" firstAttribute="centerY" secondItem="siJ-DV-FTz" secondAttribute="centerY" id="Bol-tv-2Uv"/>
                         <constraint firstAttribute="width" constant="100" id="EZU-Yq-bHV"/>
                         <constraint firstItem="bTG-Zz-kwd" firstAttribute="centerX" secondItem="siJ-DV-FTz" secondAttribute="centerX" id="bmC-WX-LLG"/>
-                        <constraint firstAttribute="trailing" secondItem="UI3-UF-PQB" secondAttribute="trailing" constant="16" id="hkD-pn-9r4"/>
-                        <constraint firstItem="UI3-UF-PQB" firstAttribute="centerX" secondItem="siJ-DV-FTz" secondAttribute="centerX" id="jmE-ql-deR"/>
                     </constraints>
                 </view>
             </subviews>
@@ -51,7 +41,6 @@
             <connections>
                 <outlet property="activityIndicatorView" destination="bTG-Zz-kwd" id="s7r-Ep-A5S"/>
                 <outlet property="contentView" destination="siJ-DV-FTz" id="8d1-qa-UmM"/>
-                <outlet property="messageLabel" destination="UI3-UF-PQB" id="TuW-1u-VyZ"/>
             </connections>
         </view>
         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="gsn-HT-FRJ">

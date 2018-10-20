@@ -62,7 +62,7 @@ extension ExerciseViewController: Exercisable {
     }
     
     func makeExercises() {
-        IndicatorView.shared.showIndicator(message: "Loading...")
+        IndicatorView.shared.showIndicator()
         API.requestExercises(by: id) { response, _, error in
             IndicatorView.shared.hideIndicator()
             if let error = error {
