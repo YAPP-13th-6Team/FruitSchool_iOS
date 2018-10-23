@@ -11,6 +11,7 @@ import UIKit
 class ChapterFinishPopupViewController: UIViewController {
 
     var grade: Int!
+    let imageNames = ["dog_clear", "student_clear", "boss_clear"]
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
@@ -26,6 +27,12 @@ class ChapterFinishPopupViewController: UIViewController {
     }
     
     func setup() {
+        titleLabel.text = """
+        축하합니다!
+        \(Grade(rawValue: grade)?.expression ?? "") 등급의 모든 문제를
+        풀었습니다.
+        """
+        imageView.image = UIImage(named: imageNames[grade])
         backgroundView.layer.cornerRadius = 15
         backgroundView.clipsToBounds = true
         confirmButton.layer.cornerRadius = 15

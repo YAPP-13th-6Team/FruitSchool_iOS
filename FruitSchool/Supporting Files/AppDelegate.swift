@@ -31,7 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         window?.rootViewController = controller
         window?.makeKeyAndVisible()
-        UIApplication.shared.isStatusBarHidden = false
 //        // 페이지 인디케이터 전역 프로퍼티 설정
 //        let pageControl = UIPageControl.appearance()
 //        pageControl.pageIndicatorTintColor = UIColor.lightGray

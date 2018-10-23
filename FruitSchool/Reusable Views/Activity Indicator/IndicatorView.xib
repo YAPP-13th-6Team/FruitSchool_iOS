@@ -43,10 +43,5 @@
                 <outlet property="contentView" destination="siJ-DV-FTz" id="8d1-qa-UmM"/>
             </connections>
         </view>
-        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="gsn-HT-FRJ">
-            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <point key="canvasLocation" x="661" y="39"/>
-        </activityIndicatorView>
     </objects>
 </document>

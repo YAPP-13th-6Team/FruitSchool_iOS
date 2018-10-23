@@ -69,13 +69,12 @@ class ExerciseContainerViewController: UIViewController {
             DispatchQueue.main.async {
                 self.setUp()
                 self.containerView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
-                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
                     self.containerView.transform = CGAffineTransform.identity
                 }, completion: { _ in
                     UIView.animate(withDuration: 0.3, animations: {
                         self.pageControl.alpha = 1
                     })
-                    
                 })
             }
         }
@@ -100,9 +99,9 @@ class ExerciseContainerViewController: UIViewController {
     }
     // 페이지 이동시 새로운 뷰컨트롤러 instantiate
     private func makeContentViewController(at index: Int) -> ExerciseContentViewController? {
-        guard let controller = UIViewController.instantiate(storyboard: "Exercise", identifier: ExerciseContentViewController.classNameToString) as? ExerciseContentViewController else { return nil }
+        let controller = ExerciseContentViewController()
         controller.pageIndex = index
-        guard let questionView = UIView.instantiateFromXib(xibName: "QuizView") as? QuestionView else { return nil }
+        guard let questionView = UIView.instantiateFromXib(xibName: "QuestionView") as? QuestionView else { return nil }
         let question = questions[index]
         // 문제 뷰에 데이터 뿌리기
         questionView.numberLabel.text = "문제 \(index + 1)"
@@ -177,9 +176,9 @@ extension ExerciseContainerViewController {
             .action(title: "확인", style: .default) { _ in
                 // 맞은 문항 개수 세기
                 for index in 0..<self.questions.count {
-                    let quiz = self.questions[index]
+                    let question = self.questions[index]
                     let answer = self.answers[index]
-                    if quiz.correctAnswer == answer {
+                    if question.correctAnswer == answer {
                         score += 1
                     }
                 }
@@ -208,27 +207,27 @@ extension ExerciseContainerViewController {
             .present(to: self)
     }
 }
-// MARK: - QuizView Custom Delegate Implementation
+// MARK: - QuestionView Custom Delegate Implementation
 extension ExerciseContainerViewController: QuestionViewDelegate {
-    func didTouchUpQuizButtons(_ sender: UIButton) {
+    func questionButtonsDidTouchUp(_ sender: UIButton) {
         let currentPageIndex = pageControl.currentPage
-        guard let quizView = (pageViewController.viewControllers?[currentPageIndex] as? ExerciseContentViewController)?.questionView else { return }
+        guard let questionView = (pageViewController.viewControllers?[currentPageIndex] as? ExerciseContentViewController)?.questionView else { return }
         guard let title = sender.titleLabel?.text else { return }
         // 사용자가 선택한 보기를 answers 전역프로퍼티에 할당하고, 선택된 효과를 주기
         self.answers[currentPageIndex] = title
         for index in 0..<4 {
             UIView.animate(withDuration: 0.2) {
-                quizView[index].backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
+                questionView[index].backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
             }
         }
         if let selectedIndex = questions[currentPageIndex].answers.index(of: title) {
             UIView.animate(withDuration: 0.2) {
-                quizView[selectedIndex].backgroundColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
+                questionView[selectedIndex].backgroundColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
             }
         }
     }
     
-    func didTouchUpCancelButton(_ sender: UIButton) {
+    func cancelButtonDidTouchUp(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
 }

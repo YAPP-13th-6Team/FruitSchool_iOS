@@ -59,8 +59,8 @@ class PromotionReviewContainerViewController: UIViewController {
             guard let response = response else { return }
             // 서버에서 받은 데이터를 클라이언트에서 사용하기 좋게 주무르기
             for data in response.data {
-                let quiz = Question(title: data.title, correctAnswer: data.correctAnswer, answers: [[data.correctAnswer], data.incorrectAnswers].flatMap { $0 }.shuffled())
-                self.questions.append(quiz)
+                let question = Question(title: data.title, correctAnswer: data.correctAnswer, answers: [[data.correctAnswer], data.incorrectAnswers].flatMap { $0 }.shuffled())
+                self.questions.append(question)
             }
             // 정답이 기록될 전역 프로퍼티 배열 초기화
             self.answers = Array(repeating: "", count: self.questions.count)
@@ -68,7 +68,7 @@ class PromotionReviewContainerViewController: UIViewController {
             DispatchQueue.main.async {
                 self.setUp()
                 self.containerView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
-                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
                     self.containerView.transform = CGAffineTransform.identity
                 }, completion: { _ in
                     UIView.animate(withDuration: 0.3, animations: {
@@ -98,21 +98,21 @@ class PromotionReviewContainerViewController: UIViewController {
     }
     // 페이지 이동시 새로운 뷰컨트롤러 instantiate
     private func makeContentViewController(at index: Int) -> PromotionReviewContentViewController? {
-        guard let controller = UIViewController.instantiate(storyboard: "PromotionReview", identifier: PromotionReviewContentViewController.classNameToString) as? PromotionReviewContentViewController else { return nil }
-        controller.pageIndex = index
-        guard let quizView = UIView.instantiateFromXib(xibName: "QuizView") as? QuestionView else { return nil }
-        let quiz = questions[index]
+        guard let questionView = UIView.instantiateFromXib(xibName: "QuestionView") as? QuestionView else { return nil }
+        questionView.delegate = self
+        let question = questions[index]
         // 문제 뷰에 데이터 뿌리기
-        quizView.numberLabel.text = "문제 \(index + 1)"
-        quizView.titleLabel.text = quiz.title
+        questionView.numberLabel.text = "문제 \(index + 1)"
+        questionView.titleLabel.text = question.title
         for buttonIndex in 0..<4 {
-            quizView[buttonIndex].setTitle(quiz.answers[buttonIndex], for: [])
+            questionView[buttonIndex].setTitle(question.answers[buttonIndex], for: [])
         }
         if let selectedIndex = questions[index].answers.index(of: answers[index]) {
-            quizView[selectedIndex].backgroundColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
+            questionView[selectedIndex].backgroundColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
         }
-        quizView.delegate = self
-        controller.questionView = quizView
+        let controller = PromotionReviewContentViewController()
+        controller.questionView = questionView
+        controller.pageIndex = index
         return controller
     }
 }
@@ -169,9 +169,9 @@ extension PromotionReviewContainerViewController {
             .action(title: "확인") { _ in
                 // 맞은 문항 개수 세기
                 for index in 0..<self.questions.count {
-                    let quiz = self.questions[index]
+                    let question = self.questions[index]
                     let answer = self.answers[index]
-                    if quiz.correctAnswer == answer {
+                    if question.correctAnswer == answer {
                         score += 1
                     }
                 }
@@ -203,6 +203,7 @@ extension PromotionReviewContainerViewController {
                             default:
                                 break
                             }
+                            IndicatorView.shared.hideIndicator()
                             self.dismiss(animated: true, completion: {
                                 self.delegate?.didDismissPromotionReviewViewController(self.grade)
                             })
@@ -221,27 +222,27 @@ extension PromotionReviewContainerViewController {
             .present(to: self)
     }
 }
-// MARK: - QuizView Custom Delegate Implementation
+// MARK: - QuestionView Custom Delegate Implementation
 extension PromotionReviewContainerViewController: QuestionViewDelegate {
-    func didTouchUpQuizButtons(_ sender: UIButton) {
+    func questionButtonsDidTouchUp(_ sender: UIButton) {
         let currentPageIndex = pageControl.currentPage
-        guard let quizView = (pageViewController.viewControllers?.first as? PromotionReviewContentViewController)?.questionView else { return }
+        guard let questionView = (pageViewController.viewControllers?.first as? PromotionReviewContentViewController)?.questionView else { return }
         guard let title = sender.titleLabel?.text else { return }
         // 사용자가 선택한 보기를 answers 전역프로퍼티에 할당하고, 선택된 효과를 주기
         self.answers[currentPageIndex] = title
         for index in 0..<4 {
             UIView.animate(withDuration: 0.2) {
-                quizView[index].backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
+                questionView[index].backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
             }
         }
         if let selectedIndex = questions[currentPageIndex].answers.index(of: title) {
             UIView.animate(withDuration: 0.2) {
-                quizView[selectedIndex].backgroundColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
+                questionView[selectedIndex].backgroundColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
             }
         }
     }
     
-    func didTouchUpCancelButton(_ sender: UIButton) {
+    func cancelButtonDidTouchUp(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
 }

@@ -9,9 +9,9 @@
 import UIKit
 
 class ChapterCell: UICollectionViewCell {
-    
-    let blurViewTag = 99
-    let lockImageViewTag = 100
+
+    var blurView: UIView?
+    var lockImageView: UIImageView?
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -27,16 +27,15 @@ class ChapterCell: UICollectionViewCell {
         super.prepareForReuse()
         imageView.image = nil
         nameLabel.text = nil
-        viewWithTag(blurViewTag)?.removeFromSuperview()
-        viewWithTag(lockImageViewTag)?.removeFromSuperview()
+        lockImageView?.removeFromSuperview()
+        blurView?.removeFromSuperview()
     }
     
     func setProperties(_ object: FruitListResponse.Data, isPassed: Bool) {
         if !isPassed {
-            viewWithTag(blurViewTag)?.removeFromSuperview()
-            let blurEffect = UIBlurEffect(style: .regular)
-            let blurView = UIVisualEffectView(effect: blurEffect)
-            blurView.tag = blurViewTag
+            let blurEffect = UIBlurEffect(style: .light)
+            blurView = UIVisualEffectView(effect: blurEffect)
+            guard let blurView = blurView else { return }
             blurView.translatesAutoresizingMaskIntoConstraints = false
             addSubview(blurView)
             NSLayoutConstraint.activate([
@@ -45,9 +44,8 @@ class ChapterCell: UICollectionViewCell {
                 blurView.trailingAnchor.constraint(equalTo: trailingAnchor),
                 blurView.bottomAnchor.constraint(equalTo: bottomAnchor)
                 ])
-            viewWithTag(lockImageViewTag)?.removeFromSuperview()
-            let lockImageView = UIImageView(image: #imageLiteral(resourceName: "lock"))
-            lockImageView.tag = lockImageViewTag
+            lockImageView = UIImageView(image: #imageLiteral(resourceName: "lock"))
+            guard let lockImageView = lockImageView else { return }
             lockImageView.translatesAutoresizingMaskIntoConstraints = false
             addSubview(lockImageView)
             NSLayoutConstraint.activate([

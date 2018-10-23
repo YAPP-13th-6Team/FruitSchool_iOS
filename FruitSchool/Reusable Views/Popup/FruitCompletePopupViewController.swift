@@ -14,6 +14,7 @@ class FruitCompletePopupViewController: UIViewController {
     var grade: Int!
     var blurView: UIView!
     var lockImageView: UIImageView!
+    var handler: (() -> Void)?
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -27,7 +28,7 @@ class FruitCompletePopupViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UIView.animate(withDuration: 0.5, delay: 1, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 1, delay: 1, options: .curveEaseInOut, animations: {
             self.blurView.alpha = 0
             self.lockImageView.alpha = 0
         }) { _ in
@@ -38,16 +39,26 @@ class FruitCompletePopupViewController: UIViewController {
     }
     
     @objc func confirmButtonDidTouchUp(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true) {
+            self.handler?()
+        }
     }
     
     func setup() {
+        guard let fruitTitle = fruitTitle, let grade = grade else { return }
         backgroundView.layer.cornerRadius = 15
         backgroundView.clipsToBounds = true
         imageView.layer.cornerRadius = 4
+        imageView.clipsToBounds = true
         confirmButton.layer.cornerRadius = 15
         confirmButton.isEnabled = false
-        let blurEffect = UIBlurEffect(style: .light)
+        titleLabel.text = "\(fruitTitle) 학습완료!"
+        //imageView.image = nil
+        descriptionLabel.text = """
+        Lv.\(grade + 1) \(Grade(rawValue: grade)?.expression ?? "")
+        카드 \(fruitTitle)
+        """
+        let blurEffect = UIBlurEffect(style: .prominent)
         blurView = UIVisualEffectView(effect: blurEffect)
         imageView.addSubview(blurView)
         blurView.translatesAutoresizingMaskIntoConstraints = false
@@ -58,11 +69,11 @@ class FruitCompletePopupViewController: UIViewController {
             blurView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor)
             ])
         lockImageView = UIImageView(image: #imageLiteral(resourceName: "lock"))
-        blurView.addSubview(lockImageView)
+        imageView.addSubview(lockImageView)
         lockImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            lockImageView.centerXAnchor.constraint(equalTo: blurView.centerXAnchor),
-            lockImageView.centerYAnchor.constraint(equalTo: blurView.centerYAnchor)
+            lockImageView.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
+            lockImageView.centerYAnchor.constraint(equalTo: imageView.centerYAnchor)
             ])
         confirmButton.addTarget(self, action: #selector(confirmButtonDidTouchUp(_:)), for: .touchUpInside)
     }

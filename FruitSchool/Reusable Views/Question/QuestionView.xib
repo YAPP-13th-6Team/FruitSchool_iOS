@@ -122,13 +122,13 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="answer1Button" destination="k4Z-xt-8GI" id="fGu-Df-zYj"/>
-                <outlet property="answer2Button" destination="uWv-zi-sOH" id="3Ad-ZO-lNF"/>
-                <outlet property="answer3Button" destination="A85-BG-hWz" id="XRO-65-ZVP"/>
-                <outlet property="answer4Button" destination="01h-Gu-YTB" id="Kpn-Qp-hyY"/>
-                <outlet property="cancelButton" destination="wZE-Vc-xkO" id="mcW-f6-UPt"/>
-                <outlet property="numberLabel" destination="3BU-uN-Oc7" id="ZGz-VW-f2m"/>
-                <outlet property="titleLabel" destination="3s4-a8-ivz" id="QQR-zk-yHc"/>
+                <outlet property="answer1Button" destination="k4Z-xt-8GI" id="Jbu-T8-Jzw"/>
+                <outlet property="answer2Button" destination="uWv-zi-sOH" id="3Wc-d5-IPa"/>
+                <outlet property="answer3Button" destination="A85-BG-hWz" id="jsV-Ia-ey3"/>
+                <outlet property="answer4Button" destination="01h-Gu-YTB" id="zht-6l-rEn"/>
+                <outlet property="cancelButton" destination="wZE-Vc-xkO" id="3gg-EX-tBX"/>
+                <outlet property="numberLabel" destination="3BU-uN-Oc7" id="TJ1-41-0pn"/>
+                <outlet property="titleLabel" destination="3s4-a8-ivz" id="eKT-NO-D4C"/>
             </connections>
             <point key="canvasLocation" x="138.40000000000001" y="-55.772113943028494"/>
         </view>

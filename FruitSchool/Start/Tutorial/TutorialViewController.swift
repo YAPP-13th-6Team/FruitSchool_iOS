@@ -18,7 +18,7 @@ class TutorialViewController: UIPageViewController {
         let third = UIViewController.instantiate(storyboard: "Tutorial", identifier: "Tutorial3ViewController") ?? dummy
         return [first, second, third]
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
