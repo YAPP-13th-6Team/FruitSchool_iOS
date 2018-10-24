@@ -13,27 +13,26 @@ class ChapterCell: UICollectionViewCell {
     var blurView: UIView?
     var lockImageView: UIImageView?
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         imageView.backgroundColor = .gray
-        nameLabel.backgroundColor = .lightGray
+        imageView.layer.cornerRadius = 5
+        imageView.clipsToBounds = true
         layer.cornerRadius = 5
         layer.masksToBounds = true
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        imageView.image = nil
-        nameLabel.text = nil
+        //imageView.image = nil
         lockImageView?.removeFromSuperview()
         blurView?.removeFromSuperview()
     }
     
     func setProperties(_ object: FruitListResponse.Data, isPassed: Bool) {
         if !isPassed {
-            let blurEffect = UIBlurEffect(style: .light)
+            let blurEffect = UIBlurEffect(style: .prominent)
             blurView = UIVisualEffectView(effect: blurEffect)
             guard let blurView = blurView else { return }
             blurView.translatesAutoresizingMaskIntoConstraints = false
@@ -53,6 +52,5 @@ class ChapterCell: UICollectionViewCell {
                 lockImageView.centerYAnchor.constraint(equalTo: centerYAnchor)
                 ])
         }
-        nameLabel.text = object.title
     }
 }

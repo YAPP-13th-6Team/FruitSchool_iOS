@@ -19,13 +19,74 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ktg-HZ-cVG">
-                                <rect key="frame" x="37.5" y="66.5" width="300" height="534"/>
+                                <rect key="frame" x="37.5" y="93.5" width="300" height="480"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="입학증서" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HX3-Pk-5Ep">
+                                        <rect key="frame" x="16" y="0.0" width="268" height="72"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGc-IM-kqR">
+                                        <rect key="frame" x="16" y="424" width="268" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <state key="normal" title="시작하기"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vq-57-TGM">
+                                        <rect key="frame" x="16" y="390" width="268" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="닉네임" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xvx-BB-7g9">
+                                        <rect key="frame" x="30" y="72" width="240" height="21"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="kJu-cs-EIW" id="PhP-cB-eEV"/>
+                                        </connections>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서당개반" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7e-ct-jNR">
+                                        <rect key="frame" x="30" y="101" width="240" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="위 학도의 입학을 허가합니다.  과일학당에 입학하신 것을 환영합니다." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVr-Pw-ifq">
+                                        <rect key="frame" x="30" y="199.5" width="240" height="81.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="m7e-ct-jNR" firstAttribute="top" secondItem="xvx-BB-7g9" secondAttribute="bottom" constant="8" id="9hX-Co-epI"/>
+                                    <constraint firstItem="HX3-Pk-5Ep" firstAttribute="bottom" secondItem="Ktg-HZ-cVG" secondAttribute="bottom" multiplier="0.15" id="FQE-Pj-GSt"/>
+                                    <constraint firstItem="VVr-Pw-ifq" firstAttribute="centerX" secondItem="Ktg-HZ-cVG" secondAttribute="centerX" id="G3C-dj-xYM"/>
+                                    <constraint firstItem="m7e-ct-jNR" firstAttribute="centerX" secondItem="Ktg-HZ-cVG" secondAttribute="centerX" id="M40-vr-Ncc"/>
+                                    <constraint firstItem="ZGc-IM-kqR" firstAttribute="top" secondItem="1vq-57-TGM" secondAttribute="bottom" constant="16" id="OcL-AF-azp"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZGc-IM-kqR" secondAttribute="trailing" constant="16" id="QmY-vY-2kG"/>
+                                    <constraint firstItem="m7e-ct-jNR" firstAttribute="width" secondItem="Ktg-HZ-cVG" secondAttribute="width" multiplier="0.8" id="Tiq-cc-Kfg"/>
+                                    <constraint firstItem="xvx-BB-7g9" firstAttribute="centerX" secondItem="Ktg-HZ-cVG" secondAttribute="centerX" id="UK9-3d-7hL"/>
+                                    <constraint firstItem="HX3-Pk-5Ep" firstAttribute="leading" secondItem="Ktg-HZ-cVG" secondAttribute="leading" constant="16" id="Xg3-e9-g5E"/>
+                                    <constraint firstItem="VVr-Pw-ifq" firstAttribute="centerY" secondItem="Ktg-HZ-cVG" secondAttribute="centerY" id="bcZ-5a-vGR"/>
+                                    <constraint firstAttribute="trailing" secondItem="1vq-57-TGM" secondAttribute="trailing" constant="16" id="cs3-Aj-9OB"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZGc-IM-kqR" secondAttribute="bottom" constant="20" id="f0F-Eb-Xan"/>
+                                    <constraint firstItem="xvx-BB-7g9" firstAttribute="width" secondItem="Ktg-HZ-cVG" secondAttribute="width" multiplier="0.8" id="fqg-n8-aqp"/>
+                                    <constraint firstItem="HX3-Pk-5Ep" firstAttribute="top" secondItem="Ktg-HZ-cVG" secondAttribute="top" id="gFP-5R-jWX"/>
+                                    <constraint firstItem="xvx-BB-7g9" firstAttribute="top" secondItem="HX3-Pk-5Ep" secondAttribute="bottom" id="m33-PL-V84"/>
+                                    <constraint firstAttribute="trailing" secondItem="HX3-Pk-5Ep" secondAttribute="trailing" constant="16" id="nai-Wz-6ic"/>
+                                    <constraint firstAttribute="width" secondItem="Ktg-HZ-cVG" secondAttribute="height" multiplier="1:1.6" id="pn3-oU-QpN"/>
+                                    <constraint firstItem="VVr-Pw-ifq" firstAttribute="width" secondItem="Ktg-HZ-cVG" secondAttribute="width" multiplier="0.8" id="trc-16-gpZ"/>
+                                    <constraint firstItem="ZGc-IM-kqR" firstAttribute="leading" secondItem="Ktg-HZ-cVG" secondAttribute="leading" constant="16" id="wH2-7w-BUK"/>
+                                    <constraint firstItem="1vq-57-TGM" firstAttribute="leading" secondItem="Ktg-HZ-cVG" secondAttribute="leading" constant="16" id="zf1-Iw-WXe"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Ktg-HZ-cVG" firstAttribute="height" secondItem="RGm-qT-gYU" secondAttribute="height" multiplier="0.8" id="15d-1V-dFq"/>
                             <constraint firstItem="Ktg-HZ-cVG" firstAttribute="width" secondItem="RGm-qT-gYU" secondAttribute="width" multiplier="0.8" id="LcT-oK-qen"/>
                             <constraint firstItem="Ktg-HZ-cVG" firstAttribute="centerX" secondItem="RGm-qT-gYU" secondAttribute="centerX" id="mag-AN-Zlb"/>
                             <constraint firstItem="Ktg-HZ-cVG" firstAttribute="centerY" secondItem="RGm-qT-gYU" secondAttribute="centerY" id="wgU-LH-5Xu"/>
@@ -34,6 +95,9 @@
                     </view>
                     <connections>
                         <outlet property="contentView" destination="Ktg-HZ-cVG" id="Sky-pJ-pn7"/>
+                        <outlet property="dateLabel" destination="1vq-57-TGM" id="Cdk-wv-WfP"/>
+                        <outlet property="nicknameTextField" destination="xvx-BB-7g9" id="bNO-Fe-xT8"/>
+                        <outlet property="startButton" destination="ZGc-IM-kqR" id="0R2-mK-ezp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AaZ-CW-RAm" userLabel="First Responder" sceneMemberID="firstResponder"/>

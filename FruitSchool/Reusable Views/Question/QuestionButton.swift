@@ -11,11 +11,16 @@ import UIKit
 @IBDesignable
 class QuestionButton: UIButton {
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    override func awakeFromNib() {
+        super.awakeFromNib()
         setup()
     }
     
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        setup()
+//    }
+//    
     func setup() {
         layer.cornerRadius = bounds.height / 2
         layer.masksToBounds = true

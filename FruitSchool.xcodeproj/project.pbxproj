@@ -42,8 +42,6 @@
 		1947C574214F2F3900BF6521 /* DetailStandardTipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C573214F2F3900BF6521 /* DetailStandardTipCell.swift */; };
 		1947C57C214F9E5F00BF6521 /* FruitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C57B214F9E5F00BF6521 /* FruitResponse.swift */; };
 		1947C57E214FB3FE00BF6521 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C57D214FB3FE00BF6521 /* LoginViewController.swift */; };
-		1947C588214FBF4A00BF6521 /* CertificateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1947C587214FBF4A00BF6521 /* CertificateView.xib */; };
-		1947C58A214FBF5800BF6521 /* CertificateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C589214FBF5800BF6521 /* CertificateView.swift */; };
 		195881DE217329E500995112 /* UserInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195881DD217329E500995112 /* UserInfoResponse.swift */; };
 		195A6A1F216F17EB0072D03A /* QuestionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195A6A1C216F17EB0072D03A /* QuestionButton.swift */; };
 		195A6A20216F17EB0072D03A /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195A6A1D216F17EB0072D03A /* QuestionView.swift */; };
@@ -127,8 +125,6 @@
 		1947C575214F2F9000BF6521 /* DetailNutritionTipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNutritionTipCell.swift; sourceTree = "<group>"; };
 		1947C57B214F9E5F00BF6521 /* FruitResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitResponse.swift; sourceTree = "<group>"; };
 		1947C57D214FB3FE00BF6521 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		1947C587214FBF4A00BF6521 /* CertificateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CertificateView.xib; sourceTree = "<group>"; };
-		1947C589214FBF5800BF6521 /* CertificateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateView.swift; sourceTree = "<group>"; };
 		195881DD217329E500995112 /* UserInfoResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoResponse.swift; sourceTree = "<group>"; };
 		195A6A1C216F17EB0072D03A /* QuestionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionButton.swift; sourceTree = "<group>"; };
 		195A6A1D216F17EB0072D03A /* QuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
@@ -362,8 +358,6 @@
 			children = (
 				1978423D215FC68000D53F48 /* Certificate.storyboard */,
 				1978423F215FC68600D53F48 /* CertificateViewController.swift */,
-				1947C587214FBF4A00BF6521 /* CertificateView.xib */,
-				1947C589214FBF5800BF6521 /* CertificateView.swift */,
 			);
 			path = Certificate;
 			sourceTree = "<group>";
@@ -447,9 +441,9 @@
 			isa = PBXGroup;
 			children = (
 				19FCF23F2160FE9600BCC3F7 /* Grade.swift */,
+				19DE4AA52168F5FB000C412A /* Question.swift */,
 				19E70827216941B700C6F452 /* UserRecord.swift */,
 				1947C567214F2DC700BF6521 /* ChapterRecord.swift */,
-				19DE4AA52168F5FB000C412A /* Question.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -565,7 +559,6 @@
 				19E274D22144DA6300E2F6D2 /* Book.storyboard in Resources */,
 				1947C56A214F2E0C00BF6521 /* Detail.storyboard in Resources */,
 				99A52D1B2168AE58000BC360 /* CommunityCell.xib in Resources */,
-				1947C588214FBF4A00BF6521 /* CertificateView.xib in Resources */,
 				190FC3C5213A689D00DD333F /* LaunchScreen.storyboard in Resources */,
 				1923665B216662860043F9BB /* IndicatorView.xib in Resources */,
 				1923664F2165D0CD0043F9BB /* Exercise.storyboard in Resources */,
@@ -658,7 +651,6 @@
 				0001BA4C2167079D0076932B /* MyCommentCell.swift in Sources */,
 				1923664D2165BF170043F9BB /* QuestionResponse.swift in Sources */,
 				19784240215FC68600D53F48 /* CertificateViewController.swift in Sources */,
-				1947C58A214FBF5800BF6521 /* CertificateView.swift in Sources */,
 				19A38B7A217F838400B68F67 /* ExerciseContentViewController.swift in Sources */,
 				195A6A20216F17EB0072D03A /* QuestionView.swift in Sources */,
 				99A52D1A2168AE58000BC360 /* CommunityCell.swift in Sources */,

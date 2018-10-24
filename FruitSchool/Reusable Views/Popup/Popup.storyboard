@@ -29,6 +29,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="DDo-gA-BAP"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <state key="normal" title="확인"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="축하합니다! ?? 등급의 모든 문제를 풀었습니다." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QnB-53-fGO">
@@ -110,6 +111,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="8zx-Il-Iai"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <state key="normal" title="확인"/>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fruit_sample" translatesAutoresizingMaskIntoConstraints="NO" id="Pat-8U-8dz">

@@ -31,11 +31,11 @@ class FruitCompletePopupViewController: UIViewController {
         UIView.animate(withDuration: 1, delay: 1, options: .curveEaseInOut, animations: {
             self.blurView.alpha = 0
             self.lockImageView.alpha = 0
-        }) { _ in
+        }, completion: { _ in
             self.lockImageView.removeFromSuperview()
             self.blurView.removeFromSuperview()
             self.confirmButton.isEnabled = true
-        }
+        })
     }
     
     @objc func confirmButtonDidTouchUp(_ sender: UIButton) {

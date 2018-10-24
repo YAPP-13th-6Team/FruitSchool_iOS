@@ -90,7 +90,7 @@ class ExerciseContainerViewController: UIViewController {
         submitButton.setTitleColor(.black, for: [])
         containerView.layer.cornerRadius = 15
         containerView.layer.masksToBounds = true
-        containerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(didPanContentView(_:))))
+        //containerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(didPanContentView(_:))))
         pageControl.numberOfPages = questions.count
         self.pageViewController = childViewControllers.first as? UIPageViewController
         pageViewController.dataSource = self
@@ -125,42 +125,42 @@ class ExerciseContainerViewController: UIViewController {
 // MARK: - Selectors
 extension ExerciseContainerViewController {
     // 문제 뷰를 아래로 내렸을 때 사라지게 하는 효과
-    @objc func didPanContentView(_ gesture: UIPanGestureRecognizer) {
-        let velocityY = gesture.translation(in: view).y
-        switch gesture.state {
-        case .changed:
-            if velocityY >= 0 {
-                containerViewCenterYConstraint.constant = velocityY
-            }
-            if checksAllQuestion {
-                UIView.animate(withDuration: 0.1) {
-                    self.submitButton.alpha = 0
-                }
-            }
-        case .ended:
-            if gesture.velocity(in: view).y > 1000 {
-                containerViewCenterYConstraint.constant = view.bounds.height
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.view.layoutIfNeeded()
-                }, completion: { _ in
-                    self.dismiss(animated: true, completion: nil)
-                })
-                return
-            } else {
-                if checksAllQuestion {
-                    UIView.animate(withDuration: 0.1) {
-                        self.submitButton.alpha = 1
-                    }
-                }
-                containerViewCenterYConstraint.constant = 0
-                UIView.animate(withDuration: 0.2) {
-                    self.view.layoutIfNeeded()
-                }
-            }
-        default:
-            break
-        }
-    }
+//    @objc func didPanContentView(_ gesture: UIPanGestureRecognizer) {
+//        let velocityY = gesture.translation(in: view).y
+//        switch gesture.state {
+//        case .changed:
+//            if velocityY >= 0 {
+//                containerViewCenterYConstraint.constant = velocityY
+//            }
+//            if checksAllQuestion {
+//                UIView.animate(withDuration: 0.1) {
+//                    self.submitButton.alpha = 0
+//                }
+//            }
+//        case .ended:
+//            if gesture.velocity(in: view).y > 1000 {
+//                containerViewCenterYConstraint.constant = view.bounds.height
+//                UIView.animate(withDuration: 0.2, animations: {
+//                    self.view.layoutIfNeeded()
+//                }, completion: { _ in
+//                    self.dismiss(animated: true, completion: nil)
+//                })
+//                return
+//            } else {
+//                if checksAllQuestion {
+//                    UIView.animate(withDuration: 0.1) {
+//                        self.submitButton.alpha = 1
+//                    }
+//                }
+//                containerViewCenterYConstraint.constant = 0
+//                UIView.animate(withDuration: 0.2) {
+//                    self.view.layoutIfNeeded()
+//                }
+//            }
+//        default:
+//            break
+//        }
+//    }
     // 제출하기 버튼을 눌러서 채점하기
     @objc func didTouchUpSubmitButton(_ sender: UIButton) {
         executeScoring()
@@ -175,13 +175,7 @@ extension ExerciseContainerViewController {
             .alert(title: "", message: "제출할까요?")
             .action(title: "확인", style: .default) { _ in
                 // 맞은 문항 개수 세기
-                for index in 0..<self.questions.count {
-                    let question = self.questions[index]
-                    let answer = self.answers[index]
-                    if question.correctAnswer == answer {
-                        score += 1
-                    }
-                }
+                score = self.numberOfCorrectAnswers()
                 // 문제 수와 맞은 문항 개수가 같으면 통과, 다르면 불통
                 if score == self.questions.count {
                     UIAlertController
@@ -205,6 +199,18 @@ extension ExerciseContainerViewController {
             }
             .action(title: "취소", style: .cancel)
             .present(to: self)
+    }
+    
+    private func numberOfCorrectAnswers() -> Int {
+        var score = 0
+        for index in 0..<questions.count {
+            let question = questions[index]
+            let answer = answers[index]
+            if question.correctAnswer == answer {
+                score += 1
+            }
+        }
+        return score
     }
 }
 // MARK: - QuestionView Custom Delegate Implementation
