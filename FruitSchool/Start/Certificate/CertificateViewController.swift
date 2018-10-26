@@ -10,17 +10,16 @@ import UIKit
 
 class CertificateViewController: UIViewController {
 
-    var id: String = ""
-    var nickname: String {
-        return nicknameTextField.text ?? ""
-    }
     lazy var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko_KR")
-        dateFormatter.dateFormat = "yyyy. MM. dd"
+        dateFormatter.dateFormat = "yyyy.MM.dd"
         return dateFormatter
     }()
-    @IBOutlet weak var contentView: UIView!
+    var nickname: String {
+        return nicknameTextField.text ?? ""
+    }
+    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
@@ -31,10 +30,7 @@ class CertificateViewController: UIViewController {
     }
     
     func setUp() {
-        contentView.layer.cornerRadius = 10
-        startButton.layer.cornerRadius = startButton.bounds.height / 2
-        startButton.layer.borderWidth = 1
-        startButton.layer.borderColor = UIColor.main.cgColor
+        backgroundView.layer.cornerRadius = 13
         dateLabel.text = dateFormatter.string(from: Date())
         startButton.addTarget(self, action: #selector(startButtonDidTouchUp(_:)), for: .touchUpInside)
     }
@@ -47,7 +43,6 @@ class CertificateViewController: UIViewController {
                 .present(to: self)
             return
         }
-        UserDefaults.standard.set(id, forKey: "id")
         UserRecord.add(nickname: nickname)
         guard let next = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController") else { return }
         IndicatorView.shared.showIndicator()

@@ -414,6 +414,7 @@
 		19C84596217069A200669929 /* Deprecated */ = {
 			isa = PBXGroup;
 			children = (
+				1947C57F214FB40700BF6521 /* Login */,
 				99A52D26216937FD000BC360 /* API+Community.swift */,
 				99A52D202168D329000BC360 /* CommunityListResponse.swift */,
 				99A52D2221692489000BC360 /* CommunityDetailResponse.swift */,
@@ -431,7 +432,6 @@
 			children = (
 				190FC3C3213A689D00DD333F /* LaunchScreen.storyboard */,
 				1947C580214FB40B00BF6521 /* Tutorial */,
-				1947C57F214FB40700BF6521 /* Login */,
 				1978423C215FC66C00D53F48 /* Certificate */,
 			);
 			path = Start;
