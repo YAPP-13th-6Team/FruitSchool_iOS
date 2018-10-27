@@ -19,7 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2eb-Rn-jWG">
-                                <rect key="frame" x="16" y="90" width="343" height="487"/>
+                                <rect key="frame" x="11.5" y="90" width="352.5" height="487"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="2eb-Rn-jWG" secondAttribute="height" multiplier="355:490" id="8OD-ju-IxI"/>
+                                </constraints>
                                 <connections>
                                     <segue destination="Jev-KV-q2G" kind="embed" id="E9E-nf-XeQ"/>
                                 </connections>
@@ -33,15 +36,14 @@
                                 <rect key="frame" x="0.0" y="577" width="375" height="90"/>
                                 <subviews>
                                     <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBc-3w-tY9">
-                                        <rect key="frame" x="75" y="22.5" width="225" height="45"/>
+                                        <rect key="frame" x="94" y="30" width="187.5" height="30"/>
                                         <state key="normal" title="제출하기"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="EBc-3w-tY9" firstAttribute="centerY" secondItem="a9D-Eo-8Y1" secondAttribute="centerY" id="75D-yr-eQD"/>
-                                    <constraint firstItem="EBc-3w-tY9" firstAttribute="width" secondItem="a9D-Eo-8Y1" secondAttribute="width" multiplier="0.6" id="JSN-nS-BBk"/>
-                                    <constraint firstItem="EBc-3w-tY9" firstAttribute="height" secondItem="a9D-Eo-8Y1" secondAttribute="height" multiplier="0.5" id="qKt-so-cgE"/>
+                                    <constraint firstItem="EBc-3w-tY9" firstAttribute="width" secondItem="a9D-Eo-8Y1" secondAttribute="width" multiplier="0.5" id="JSN-nS-BBk"/>
                                     <constraint firstItem="EBc-3w-tY9" firstAttribute="centerX" secondItem="a9D-Eo-8Y1" secondAttribute="centerX" id="z7B-9M-LQt"/>
                                 </constraints>
                             </view>
@@ -53,12 +55,10 @@
                             <constraint firstItem="2eb-Rn-jWG" firstAttribute="centerX" secondItem="ZJL-Eu-wal" secondAttribute="centerX" id="Lgw-Hz-ZVS"/>
                             <constraint firstItem="q4i-8W-PfM" firstAttribute="trailing" secondItem="a9D-Eo-8Y1" secondAttribute="trailing" id="RVt-EN-xxj"/>
                             <constraint firstItem="a9D-Eo-8Y1" firstAttribute="top" secondItem="2eb-Rn-jWG" secondAttribute="bottom" id="UD4-V1-MLv"/>
-                            <constraint firstItem="2eb-Rn-jWG" firstAttribute="height" secondItem="ZJL-Eu-wal" secondAttribute="height" multiplier="0.73" id="cq4-06-kC1"/>
-                            <constraint firstItem="2eb-Rn-jWG" firstAttribute="leading" secondItem="q4i-8W-PfM" secondAttribute="leading" constant="16" id="gFq-BO-qPb"/>
                             <constraint firstItem="2eb-Rn-jWG" firstAttribute="centerY" secondItem="ZJL-Eu-wal" secondAttribute="centerY" id="gYn-Ra-O6D"/>
                             <constraint firstItem="Rrt-17-lkf" firstAttribute="bottom" secondItem="2eb-Rn-jWG" secondAttribute="bottom" id="hIr-NY-16U"/>
                             <constraint firstItem="q4i-8W-PfM" firstAttribute="bottom" secondItem="a9D-Eo-8Y1" secondAttribute="bottom" id="qQ3-ub-P8K"/>
-                            <constraint firstItem="q4i-8W-PfM" firstAttribute="trailing" secondItem="2eb-Rn-jWG" secondAttribute="trailing" constant="16" id="qfa-Wg-at5"/>
+                            <constraint firstItem="2eb-Rn-jWG" firstAttribute="width" secondItem="ZJL-Eu-wal" secondAttribute="width" multiplier="0.94" id="zwx-Sd-QCN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="q4i-8W-PfM"/>
                     </view>
@@ -80,21 +80,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VpG-E1-kbi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-722" y="-235"/>
-        </scene>
-        <!--Promotion Review Content View Controller-->
-        <scene sceneID="cgL-up-Hyc">
-            <objects>
-                <viewController storyboardIdentifier="PromotionReviewContentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3dO-1M-BrB" customClass="PromotionReviewContentViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="yfO-KK-9Q3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="iQL-UR-6xp"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WpB-dv-g8V" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-47" y="-235"/>
         </scene>
     </scenes>
 </document>

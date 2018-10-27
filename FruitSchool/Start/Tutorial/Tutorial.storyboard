@@ -10,14 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tutorial View Controller-->
-        <scene sceneID="DYs-Iw-RUD">
-            <objects>
-                <pageViewController storyboardIdentifier="TutorialViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="IGI-vp-58o" customClass="TutorialViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QvN-Tc-0C8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-460" y="-155"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="tbm-m3-o8R">
             <objects>
@@ -54,6 +46,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ocV-bG-clG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="292" y="-859.52023988005999"/>
+        </scene>
+        <!--Tutorial View Controller-->
+        <scene sceneID="PEn-0F-AjS">
+            <objects>
+                <viewController storyboardIdentifier="TutorialViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XiX-bM-rHM" customClass="TutorialViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BwS-Nn-7HX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="PGC-N0-8KI">
+                                <rect key="frame" x="168" y="610" width="39" height="37"/>
+                                <color key="pageIndicatorTintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="0.98039215690000003" green="0.36078431370000003" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JiU-jX-cTT" firstAttribute="bottom" secondItem="PGC-N0-8KI" secondAttribute="bottom" constant="20" id="04k-8H-Yb7"/>
+                            <constraint firstItem="PGC-N0-8KI" firstAttribute="centerX" secondItem="BwS-Nn-7HX" secondAttribute="centerX" id="Onm-Sw-hi5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JiU-jX-cTT"/>
+                    </view>
+                    <connections>
+                        <outlet property="pageControl" destination="PGC-N0-8KI" id="0PV-6L-Fot"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="usG-hR-rwX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-439" y="-156"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Tzu-n2-wes">
