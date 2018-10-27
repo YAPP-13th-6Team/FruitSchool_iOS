@@ -83,6 +83,8 @@
 		99A52D2321692489000BC360 /* CommunityDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A52D2221692489000BC360 /* CommunityDetailResponse.swift */; };
 		99A52D27216937FD000BC360 /* API+Community.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A52D26216937FD000BC360 /* API+Community.swift */; };
 		9E51A59652BFAA932928067F /* Pods_FruitSchool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F105C82803FFC63FD567EBBB /* Pods_FruitSchool.framework */; };
+		DB0B11D321847CD60030B00D /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0B11D221847CD60030B00D /* CarouselView.swift */; };
+		DB0B11D521847CFD0030B00D /* PagingPerCellFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0B11D421847CFD0030B00D /* PagingPerCellFlowLayout.swift */; };
 		DBF51B8A2157CE0900AA85DF /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBF51B872157CE0900AA85DF /* Tutorial.storyboard */; };
 		DBF51B8B2157CE0900AA85DF /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF51B882157CE0900AA85DF /* TutorialViewController.swift */; };
 /* End PBXBuildFile section */
@@ -167,6 +169,8 @@
 		99A52D26216937FD000BC360 /* API+Community.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Community.swift"; sourceTree = "<group>"; };
 		AE308E65D83414C1D0945E8F /* Pods-FruitSchool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.release.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.release.xcconfig"; sourceTree = "<group>"; };
 		DA48AB07292D5B1D20B98DFD /* Pods-FruitSchool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.debug.xcconfig"; sourceTree = "<group>"; };
+		DB0B11D221847CD60030B00D /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		DB0B11D421847CFD0030B00D /* PagingPerCellFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingPerCellFlowLayout.swift; sourceTree = "<group>"; };
 		DBF51B872157CE0900AA85DF /* Tutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
 		DBF51B882157CE0900AA85DF /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		F105C82803FFC63FD567EBBB /* Pods_FruitSchool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FruitSchool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -377,6 +381,8 @@
 				19E274D12144DA6300E2F6D2 /* Book.storyboard */,
 				19E274D32144DA7600E2F6D2 /* BookViewController.swift */,
 				190983CF21568C9300E2461A /* BookCell.swift */,
+				DB0B11D221847CD60030B00D /* CarouselView.swift */,
+				DB0B11D421847CFD0030B00D /* PagingPerCellFlowLayout.swift */,
 			);
 			path = Book;
 			sourceTree = "<group>";
@@ -666,6 +672,7 @@
 				1947C56C214F2E1500BF6521 /* DetailViewController.swift in Sources */,
 				1947C562214F2B7800BF6521 /* ChapterCell.swift in Sources */,
 				19E274C92144D75300E2F6D2 /* API+Fruit.swift in Sources */,
+				DB0B11D321847CD60030B00D /* CarouselView.swift in Sources */,
 				1923665D216662950043F9BB /* IndicatorView.swift in Sources */,
 				1971E87C216A6902001378CA /* PromotionReviewContainerViewController.swift in Sources */,
 				191F02452157E8CC008EA81C /* DetailNutritionTipCell.swift in Sources */,
@@ -688,6 +695,7 @@
 				19DE4AAC21691E0F000C412A /* API+Base.swift in Sources */,
 				19DE4AAA21691DFC000C412A /* API+Auth.swift in Sources */,
 				190F74A6213E33850038234A /* UIViewController+.swift in Sources */,
+				DB0B11D521847CFD0030B00D /* PagingPerCellFlowLayout.swift in Sources */,
 				1947C570214F2F2600BF6521 /* DetailImageCell.swift in Sources */,
 				192366552165D7F30043F9BB /* NutritionView.swift in Sources */,
 				1947C57E214FB3FE00BF6521 /* LoginViewController.swift in Sources */,

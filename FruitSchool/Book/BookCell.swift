@@ -21,5 +21,6 @@ class BookCell: UICollectionViewCell {
         super.prepareForReuse()
         coverImageView.image = nil
         stampImageView.image = nil
+    
     }
 }

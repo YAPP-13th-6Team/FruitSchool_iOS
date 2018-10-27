@@ -27,7 +27,7 @@ class BookViewController: UIViewController {
     // 달성률을 표시하는 레이블은 전역 프로퍼티에 할당하여 사용
     var percentLabel: UILabel!
     @IBOutlet weak var backgroundGaugeView: UILabel!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: CarouselView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +38,7 @@ class BookViewController: UIViewController {
         super.viewWillAppear(animated)
         resetViews()
         collectionView.reloadSections(IndexSet(0...0))
+        collectionView.scrollToFirstItem()
     }
     
     private func setup() {
@@ -51,6 +52,18 @@ class BookViewController: UIViewController {
         percentLabel.translatesAutoresizingMaskIntoConstraints = false
         backgroundGaugeView.layer.cornerRadius = backgroundGaugeView.bounds.height / 2
         backgroundGaugeView.layer.masksToBounds = true
+        
+        // MARK: - Custom UICollectionViewFlowLayout Implementation
+        let layout = PagingPerCellFlowLayout()
+        let width = self.view.bounds.width * 0.7
+        let height = width * 1.27
+        
+        layout.itemSize = CGSize(width: width, height: height)
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        collectionView.setCollectionViewLayout(layout, animated: true)
+        collectionView.showsHorizontalScrollIndicator = false
     }
 }
 // MARK: - Button Touch Event
@@ -128,21 +141,7 @@ extension BookViewController: UICollectionViewDelegate {
         self.navigationController?.pushViewController(next, animated: true)
     }
 }
-// MARK: - UICollectionView DelegateFlowLayout Implementation
-extension BookViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = view.bounds.width * 0.83
-        return CGSize(width: width, height: width / 312 * 398)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
-    }
-}
+
 // MARK: - Making Dynamic Views
 private extension BookViewController {
     // 컬렉션뷰를 제외한 다른 모든 뷰를 다시 만듦
