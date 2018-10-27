@@ -8,6 +8,7 @@
 
 import UIKit
 import KakaoOpenSDK
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,26 +18,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         window?.tintColor = .main
-        /**
-         1. 로그인 안되어 있으면 로그인이 루트 뷰 컨트롤러
-         2. 로그인 되어 있으면 탭 바 컨트롤러가 루트 뷰 컨트롤러
-         */
         let controller: UIViewController?
-        //LoginViewController에서 저장한 id. 나중에 키체인으로 바꿀 것.
-        if UserDefaults.standard.string(forKey: "id") == nil {
-            controller = UIViewController.instantiate(storyboard: "Login", identifier: LoginViewController.classNameToString)
+        if UserRecord.fetch().count == 0 {
+            controller = UIViewController.instantiate(storyboard: "Tutorial", identifier: TutorialViewController.classNameToString)
         } else {
             controller = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController")
-            //controller = UIViewController.instantiate(storyboard: "Main", identifier: MainTabBarController.classNameToString)
         }
         window?.rootViewController = controller
         window?.makeKeyAndVisible()
-        UIApplication.shared.isStatusBarHidden = false
-//        // 페이지 인디케이터 전역 프로퍼티 설정
-//        let pageControl = UIPageControl.appearance()
-//        pageControl.pageIndicatorTintColor = UIColor.lightGray
-//        pageControl.currentPageIndicatorTintColor = UIColor.black
-//        pageControl.backgroundColor = UIColor.white
+        
+        
+        
+//        /**
+//         1. 로그인 안되어 있으면 로그인이 루트 뷰 컨트롤러
+//         2. 로그인 되어 있으면 탭 바 컨트롤러가 루트 뷰 컨트롤러
+//         */
+//        let controller: UIViewController?
+//        //LoginViewController에서 저장한 id. 나중에 키체인으로 바꿀 것.
+//        if UserDefaults.standard.string(forKey: "id") == nil {
+//            controller = UIViewController.instantiate(storyboard: "Login", identifier: LoginViewController.classNameToString)
+//        } else {
+//            controller = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController")
+//            //controller = UIViewController.instantiate(storyboard: "Main", identifier: MainTabBarController.classNameToString)
+//        }
+//        window?.rootViewController = controller
+//        window?.makeKeyAndVisible()
         // 내비게이션바 투명
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         UINavigationBar.appearance().shadowImage = UIImage()

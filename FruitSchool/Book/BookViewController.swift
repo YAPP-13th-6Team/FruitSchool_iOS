@@ -132,7 +132,7 @@ extension BookViewController: UICollectionViewDelegate {
 extension BookViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.bounds.width * 0.83
-        return CGSize(width: width, height: width * 1.27)
+        return CGSize(width: width, height: width / 312 * 398)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
