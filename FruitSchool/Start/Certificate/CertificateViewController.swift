@@ -10,41 +10,42 @@ import UIKit
 
 class CertificateViewController: UIViewController {
 
-    var id: String = ""
-    var nickname: String = ""
-    lazy var certificateView: UIView = {
-        guard let certificateView = UIView.instantiateFromXib(xibName: "CertificateView") as? CertificateView else { return UIView() }
-        certificateView.delegate = self
-        return certificateView
+    lazy var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        return dateFormatter
     }()
-    @IBOutlet weak var contentView: UIView!
+    var nickname: String {
+        return nicknameTextField.text ?? ""
+    }
+    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var nicknameTextField: UITextField!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var startButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        certificateView.layer.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-        contentView.layer.cornerRadius = 10
-        contentView.addSubview(certificateView)
-        certificateView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            certificateView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            certificateView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            certificateView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            certificateView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-            ])
-    }
-}
-
-extension CertificateViewController: CertificateViewDelegate {
-    var certificateNickname: String {
-        return nickname
+        setUp()
     }
     
-    // UserRecord와 ChapterRecord 모델을 초기화하여 앱 시작 준비를 마침. 메인 플로우로 진입
-    func didTouchUpButton(_ sender: UIButton) {
-        UserDefaults.standard.set(id, forKey: "id")
+    func setUp() {
+        backgroundView.layer.cornerRadius = 13
+        dateLabel.text = dateFormatter.string(from: Date())
+        startButton.addTarget(self, action: #selector(startButtonDidTouchUp(_:)), for: .touchUpInside)
+    }
+    
+    @objc func startButtonDidTouchUp(_ sender: UIButton) {
+        if nicknameTextField.text?.isEmpty ?? true {
+            UIAlertController
+                .alert(title: "", message: "닉네임을 입력하세요.")
+                .action(title: "확인")
+                .present(to: self)
+            return
+        }
         UserRecord.add(nickname: nickname)
         guard let next = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController") else { return }
-        IndicatorView.shared.showIndicator(message: "Loading...")
+        IndicatorView.shared.showIndicator()
         API.requestFruitList { response, _, error in
             if let error = error {
                 DispatchQueue.main.async {
@@ -61,5 +62,12 @@ extension CertificateViewController: CertificateViewDelegate {
                 self?.present(next, animated: true)
             }
         }
+    }
+}
+
+extension CertificateViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

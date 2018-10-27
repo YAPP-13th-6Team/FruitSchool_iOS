@@ -9,8 +9,8 @@
 import UIKit
 
 protocol QuestionViewDelegate: class {
-    func didTouchUpQuizButtons(_ sender: UIButton)
-    func didTouchUpCancelButton(_ sender: UIButton)
+    func questionButtonsDidTouchUp(_ sender: UIButton)
+    func cancelButtonDidTouchUp(_ sender: UIButton)
 }
 
 class QuestionView: UIView {
@@ -29,9 +29,9 @@ class QuestionView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        cancelButton.addTarget(self, action: #selector(didTouchUpCancelButton(_:)), for: .touchUpInside)
+        cancelButton.addTarget(self, action: #selector(cancelButtonDidTouchUp(_:)), for: .touchUpInside)
         buttons.forEach { button in
-            button.addTarget(self, action: #selector(didTouchUpQuizButtons(_:)), for: .touchUpInside)
+            button.addTarget(self, action: #selector(questionButtonsDidTouchUp(_:)), for: .touchUpInside)
         }
     }
     // 문제 뷰 버튼에 인덱스로 접근하기 위한 서브스크립트 정의
@@ -53,11 +53,11 @@ class QuestionView: UIView {
         }
     }
     
-    @objc func didTouchUpQuizButtons(_ sender: UIButton) {
-        delegate?.didTouchUpQuizButtons(sender)
+    @objc func questionButtonsDidTouchUp(_ sender: UIButton) {
+        delegate?.questionButtonsDidTouchUp(sender)
     }
     
-    @objc func didTouchUpCancelButton(_ sender: UIButton) {
-        delegate?.didTouchUpCancelButton(sender)
+    @objc func cancelButtonDidTouchUp(_ sender: UIButton) {
+        delegate?.cancelButtonDidTouchUp(sender)
     }
 }

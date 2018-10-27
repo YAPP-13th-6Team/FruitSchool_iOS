@@ -19,7 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygs-Hq-cwZ">
-                                <rect key="frame" x="16" y="90" width="343" height="487"/>
+                                <rect key="frame" x="11.5" y="90" width="352.5" height="487"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ygs-Hq-cwZ" secondAttribute="height" multiplier="355:490" id="HPi-sk-lCs"/>
+                                </constraints>
                                 <connections>
                                     <segue destination="lat-3a-bO5" kind="embed" id="NrC-bZ-u0B"/>
                                 </connections>
@@ -34,14 +37,13 @@
                                 <rect key="frame" x="0.0" y="577" width="375" height="90"/>
                                 <subviews>
                                     <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1d-yV-qh1">
-                                        <rect key="frame" x="75" y="22.5" width="225" height="45"/>
+                                        <rect key="frame" x="94" y="30" width="187.5" height="30"/>
                                         <state key="normal" title="제출하기"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="N1d-yV-qh1" firstAttribute="height" secondItem="zxY-me-sav" secondAttribute="height" multiplier="0.5" id="B9f-DW-hEK"/>
-                                    <constraint firstItem="N1d-yV-qh1" firstAttribute="width" secondItem="zxY-me-sav" secondAttribute="width" multiplier="0.6" id="JHm-el-Ll6"/>
+                                    <constraint firstItem="N1d-yV-qh1" firstAttribute="width" secondItem="zxY-me-sav" secondAttribute="width" multiplier="0.5" id="91K-9S-9nP"/>
                                     <constraint firstItem="N1d-yV-qh1" firstAttribute="centerY" secondItem="zxY-me-sav" secondAttribute="centerY" id="S1i-xy-oyY"/>
                                     <constraint firstItem="N1d-yV-qh1" firstAttribute="centerX" secondItem="zxY-me-sav" secondAttribute="centerX" id="cZc-nY-1zb"/>
                                 </constraints>
@@ -49,14 +51,12 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ygs-Hq-cwZ" firstAttribute="height" secondItem="tcr-YL-klx" secondAttribute="height" multiplier="0.73" id="32u-Hl-Yg8"/>
                             <constraint firstItem="VSG-HB-I4U" firstAttribute="bottom" secondItem="ygs-Hq-cwZ" secondAttribute="bottom" constant="10" id="5ez-sy-eX6"/>
                             <constraint firstItem="UmB-vE-JWF" firstAttribute="trailing" secondItem="zxY-me-sav" secondAttribute="trailing" id="8zd-GH-XKy"/>
                             <constraint firstItem="VSG-HB-I4U" firstAttribute="centerX" secondItem="tcr-YL-klx" secondAttribute="centerX" id="Bw7-Zt-8Wn"/>
-                            <constraint firstItem="UmB-vE-JWF" firstAttribute="trailing" secondItem="ygs-Hq-cwZ" secondAttribute="trailing" constant="16" id="DEi-o0-unW"/>
+                            <constraint firstItem="ygs-Hq-cwZ" firstAttribute="width" secondItem="tcr-YL-klx" secondAttribute="width" multiplier="0.94" id="UgG-81-V2l"/>
                             <constraint firstItem="ygs-Hq-cwZ" firstAttribute="centerX" secondItem="tcr-YL-klx" secondAttribute="centerX" id="XmY-xP-mnl"/>
                             <constraint firstItem="ygs-Hq-cwZ" firstAttribute="centerY" secondItem="tcr-YL-klx" secondAttribute="centerY" id="dTG-WF-eJm"/>
-                            <constraint firstItem="ygs-Hq-cwZ" firstAttribute="leading" secondItem="UmB-vE-JWF" secondAttribute="leading" constant="16" id="ljP-XO-I68"/>
                             <constraint firstItem="UmB-vE-JWF" firstAttribute="bottom" secondItem="zxY-me-sav" secondAttribute="bottom" id="pED-sC-wif"/>
                             <constraint firstItem="zxY-me-sav" firstAttribute="leading" secondItem="UmB-vE-JWF" secondAttribute="leading" id="tgx-4g-ote"/>
                             <constraint firstItem="zxY-me-sav" firstAttribute="top" secondItem="ygs-Hq-cwZ" secondAttribute="bottom" id="wPq-Ok-fLL"/>
@@ -74,28 +74,13 @@
             </objects>
             <point key="canvasLocation" x="-2252" y="-260.41979010494754"/>
         </scene>
-        <!--Exercise Content View Controller-->
-        <scene sceneID="kDz-n4-Qd5">
-            <objects>
-                <viewController storyboardIdentifier="ExerciseContentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qun-xy-2cK" customClass="ExerciseContentViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="htZ-1g-47k">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="SMB-pK-LY2"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qni-kf-7AK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-860" y="-259"/>
-        </scene>
         <!--Page View Controller-->
         <scene sceneID="52W-By-E3a">
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="20" navigationOrientation="horizontal" spineLocation="none" id="lat-3a-bO5" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s2S-ga-tvu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1464" y="-259"/>
+            <point key="canvasLocation" x="-1588" y="-260"/>
         </scene>
     </scenes>
 </document>

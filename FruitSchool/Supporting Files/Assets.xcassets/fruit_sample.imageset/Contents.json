@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "tabbarHome.png",
       "idiom" : "universal",
+      "filename" : "best-fruit-salad-honey-lime-dressing-500x375.jpg",
       "scale" : "1x"
     },
     {
-      "filename" : "tabbarHome@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "tabbarHome@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
