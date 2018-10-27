@@ -19,11 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         window?.tintColor = .main
         let controller: UIViewController?
-        if UserRecord.fetch().count == 0 {
-            controller = UIViewController.instantiate(storyboard: "Tutorial", identifier: TutorialViewController.classNameToString)
-        } else {
-            controller = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController")
-        }
+//        if UserRecord.fetch().count == 0 {
+//            controller = UIViewController.instantiate(storyboard: "Tutorial", identifier: TutorialViewController.classNameToString)
+//        } else {
+//            controller = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController")
+//        }
+        
+        controller = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController")
         window?.rootViewController = controller
         window?.makeKeyAndVisible()
         
