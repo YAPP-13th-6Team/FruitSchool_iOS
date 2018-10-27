@@ -147,7 +147,7 @@ extension BookViewController: UICollectionViewDelegateFlowLayout {
 private extension BookViewController {
     // 컬렉션뷰를 제외한 다른 모든 뷰를 다시 만듦
     func resetViews() {
-        makeGaugeLabel()
+//        makeGaugeLabel()
         makePercentLabel()
         makeDescriptionLabel()
         makePromotionReviewButton()
