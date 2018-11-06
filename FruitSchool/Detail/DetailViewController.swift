@@ -26,6 +26,7 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "카드목록", style: .plain, target: self, action: #selector(backBarButtonDidTouchUp(_:)))
         requestFruitDetails()
     }
     // 과일 세부 정보 요청하기
@@ -48,6 +49,10 @@ class DetailViewController: UIViewController {
                 self?.tableView.reloadData()
             }
         }
+    }
+    
+    @objc func backBarButtonDidTouchUp(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
     }
 }
 // MARK: - Button Touch Event

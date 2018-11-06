@@ -14,6 +14,7 @@ class ChapterViewController: UIViewController {
     let cellIdentifier = "chapterCell"
     var fruits: [FruitListResponse.Data] = []
     let records = ChapterRecord.fetch()
+    var countLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
 
     override func viewDidLoad() {
@@ -33,6 +34,16 @@ class ChapterViewController: UIViewController {
         let backBarButtonItem = UIBarButtonItem()
         backBarButtonItem.title = "과일목록"
         navigationItem.backBarButtonItem = backBarButtonItem
+        // 내비게이션 바 우측에 위치하는 레이블 초기화
+        countLabel = UILabel()
+        countLabel.translatesAutoresizingMaskIntoConstraints = false
+        if let navigationBar = navigationController?.navigationBar {
+            navigationBar.addSubview(countLabel)
+            NSLayoutConstraint.activate([
+                countLabel.trailingAnchor.constraint(equalTo: navigationBar.trailingAnchor, constant: -22),
+                countLabel.centerYAnchor.constraint(equalTo: navigationBar.centerYAnchor)
+                ])
+        }
         // 과일 목록 요청하기
         requestFruitList()
     }
@@ -124,7 +135,7 @@ extension ChapterViewController: UICollectionViewDelegate {
 extension ChapterViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.view.frame.width * 0.28
-        return CGSize(width: width, height: width * 134 / 109)
+        return CGSize(width: width, height: width)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

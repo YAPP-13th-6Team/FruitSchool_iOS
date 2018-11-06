@@ -13,7 +13,7 @@ struct ExerciseResponse: Codable {
     struct Data: Codable {
         let id: String
         let title: String
-        let quizs: [QuestionResponse]
+        let quizs: [ExerciseQuestionResponse]
         enum CodingKeys: String, CodingKey {
             case id = "_id"
             case title, quizs
@@ -21,4 +21,12 @@ struct ExerciseResponse: Codable {
     }
     let message: String
     let data: Data
+}
+
+struct ExerciseQuestionResponse: Codable {
+    let fruitTitle: String
+    let fruitId: String
+    let incorrectAnswers: [String]
+    let correctAnswer: String
+    let title: String
 }
