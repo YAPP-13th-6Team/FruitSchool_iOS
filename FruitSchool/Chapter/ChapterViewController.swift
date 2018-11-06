@@ -79,20 +79,6 @@ extension ChapterViewController: ExerciseDelegate {
             }
         }
         present(popup, animated: true, completion: nil)
-//        UIAlertController
-//            .alert(title: "\(fruitTitle) 학습 완료!", message: nil)
-//            .action(title: "확인") { _ in
-//                self.requestFruitList()
-//                let filtered = self.records.filter("grade = %d", self.grade)
-//                let passed = filtered.filter("isPassed = true")
-//                if filtered.count == passed.count {
-//                    UIAlertController
-//                        .alert(title: "축하합니다!\n\(Grade(rawValue: self.grade)?.expression ?? "") 등급의 모든 문제를 풀었습니다.", message: nil)
-//                        .action(title: "확인")
-//                        .present(to: self)
-//                }
-//            }
-//            .present(to: self)
     }
 }
 // MARK: - UICollectionView DataSource Implementation

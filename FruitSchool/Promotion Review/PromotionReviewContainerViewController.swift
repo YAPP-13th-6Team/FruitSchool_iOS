@@ -89,7 +89,6 @@ class PromotionReviewContainerViewController: UIViewController {
         submitButton.setTitleColor(.black, for: [])
         containerView.layer.cornerRadius = 15
         containerView.layer.masksToBounds = true
-        //containerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(didPanContentView(_:))))
         pageControl.numberOfPages = questions.count
         self.pageViewController = childViewControllers.first as? UIPageViewController
         pageViewController.dataSource = self
@@ -118,43 +117,6 @@ class PromotionReviewContainerViewController: UIViewController {
 }
 // MARK: - Selectors
 extension PromotionReviewContainerViewController {
-    // 문제 뷰를 아래로 내렸을 때 사라지게 하는 효과
-//    @objc func didPanContentView(_ gesture: UIPanGestureRecognizer) {
-//        let velocityY = gesture.translation(in: view).y
-//        switch gesture.state {
-//        case .changed:
-//            if velocityY >= 0 {
-//                containerViewCenterYConstraint.constant = velocityY
-//            }
-//            if checksAllQuestion {
-//                UIView.animate(withDuration: 0.1) {
-//                    self.submitButton.alpha = 0
-//                }
-//            }
-//        case .ended:
-//            if gesture.velocity(in: view).y > 1000 {
-//                containerViewCenterYConstraint.constant = view.bounds.height
-//                UIView.animate(withDuration: 0.2, animations: {
-//                    self.view.layoutIfNeeded()
-//                }, completion: { _ in
-//                    self.dismiss(animated: true, completion: nil)
-//                })
-//                return
-//            } else {
-//                if checksAllQuestion {
-//                    UIView.animate(withDuration: 0.1) {
-//                        self.submitButton.alpha = 1
-//                    }
-//                }
-//                containerViewCenterYConstraint.constant = 0
-//                UIView.animate(withDuration: 0.2) {
-//                    self.view.layoutIfNeeded()
-//                }
-//            }
-//        default:
-//            break
-//        }
-//    }
     // 제출하기 버튼을 눌러서 채점하기
     @objc func didTouchUpSubmitButton(_ sender: UIButton) {
         executeScoring()
@@ -180,12 +142,12 @@ extension PromotionReviewContainerViewController {
                             if myGrade != 2 {
                                 UserRecord.update(userRecord, keyValue: ["grade": myGrade + 1])
                                 IndicatorView.shared.showIndicator()
-                                API.requestGradeUp(myGrade, completion: { _, _, error in
-                                    if let error = error {
-                                        UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription)
-                                        return
-                                    }
-                                })
+//                                API.requestGradeUp(myGrade, completion: { _, _, error in
+//                                    if let error = error {
+//                                        UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription)
+//                                        return
+//                                    }
+//                                })
                             }
                             switch self.grade {
                             case 0:
