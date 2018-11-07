@@ -11,6 +11,7 @@ class FruitCompletePopupViewController: UIViewController {
 
     var fruitImage: UIImage!
     var fruitTitle: String!
+    var english: String!
     var grade: Int!
     var blurView: UIView!
     var lockImageView: UIImageView!
@@ -53,7 +54,7 @@ class FruitCompletePopupViewController: UIViewController {
         confirmButton.layer.cornerRadius = 15
         confirmButton.isEnabled = false
         titleLabel.text = "\(fruitTitle) 학습완료!"
-        //imageView.image = nil
+        imageView.image = UIImage(named: english.toImageName(grade: grade))
         descriptionLabel.text = """
         Lv.\(grade + 1) \(Grade(rawValue: grade)?.expression ?? "")
         카드 \(fruitTitle)

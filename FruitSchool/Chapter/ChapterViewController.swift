@@ -20,16 +20,19 @@ class ChapterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // 내비게이션 타이틀에 들어갈 이미지 설정
+        let topImage = UIImageView()
+        topImage.contentMode = .scaleAspectFit
         switch grade {
         case 0:
-            navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "dog_top"))
+            topImage.image = UIImage(named: "dog_top")
         case 1:
-            navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "student_top"))
+            topImage.image = UIImage(named: "student_top")
         case 2:
-            navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "boss_top"))
+            topImage.image = UIImage(named: "boss_top")
         default:
             break
         }
+        navigationItem.titleView = topImage
         // 이전 버튼에 들어갈 문자열 설정
         let backBarButtonItem = UIBarButtonItem()
         backBarButtonItem.title = "과일목록"
@@ -75,9 +78,10 @@ extension ChapterViewController {
 // MARK: - ExerciseContainerViewController Custom Delegate Implementation
 extension ChapterViewController: ExerciseDelegate {
     // 과일 문제 풀이 종료 후 챕터로 돌아왔을 때의 인터렉션 정의
-    func didDismissExerciseViewController(_ fruitTitle: String) {
+    func didDismissExerciseViewController(fruitTitle: String, english: String) {
         guard let popup = UIViewController.instantiate(storyboard: "Popup", identifier: FruitCompletePopupViewController.classNameToString) as? FruitCompletePopupViewController else { return }
         popup.fruitTitle = fruitTitle
+        popup.english = english
         popup.grade = grade
         popup.handler = {
             self.collectionView.reloadSections(IndexSet(0...0))
@@ -98,7 +102,7 @@ extension ChapterViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? ChapterCell else { return UICollectionViewCell() }
         let fruit = fruits[indexPath.item]
         guard let filteredRecord = records.filter("id = %@", fruit.id).first else { return UICollectionViewCell() }
-        cell.setProperties(fruit, isPassed: filteredRecord.isPassed)
+        cell.setProperties(fruit, grade: grade, isPassed: filteredRecord.isPassed)
         return cell
     }
     
@@ -127,6 +131,7 @@ extension ChapterViewController: UICollectionViewDelegate {
             next.delegate = self
             next.id = id
             next.fruitTitle = fruit.title
+            next.english = fruit.english
             self.present(next, animated: true, completion: nil)
         }
     }

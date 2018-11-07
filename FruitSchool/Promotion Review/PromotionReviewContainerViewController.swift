@@ -24,13 +24,13 @@ class PromotionReviewContainerViewController: UIViewController {
                 if filtered.count == self.questions.count {
                     UIView.animate(withDuration: 0.5) {
                         self.submitButton.alpha = 1
-                        self.checksAllQuestion = true
                     }
                 }
             }
         }
     }
-    var checksAllQuestion: Bool = false
+    var isPassed: [Bool] = []
+    var didExecutesScoring: Bool = false
     var grade: Int = 0
     var questions: [Question] = []
     var pageViewController: UIPageViewController!
@@ -58,12 +58,13 @@ class PromotionReviewContainerViewController: UIViewController {
             }
             guard let response = response else { return }
             // 서버에서 받은 데이터를 클라이언트에서 사용하기 좋게 주무르기
-            for data in response.data {
-                let question = Question(title: data.title, correctAnswer: data.correctAnswer, answers: [[data.correctAnswer], data.incorrectAnswers].flatMap { $0 }.shuffled())
+            for data in response.data.quizs {
+                let question = Question(title: data.title, fruitName: data.fruitTitle, correctAnswer: data.correctAnswer, answers: [[data.correctAnswer], data.incorrectAnswers].flatMap { $0 }.shuffled())
                 self.questions.append(question)
             }
             // 정답이 기록될 전역 프로퍼티 배열 초기화
             self.answers = Array(repeating: "", count: self.questions.count)
+            self.isPassed = Array(repeating: false, count: self.questions.count)
             // 문제 뷰가 커지는 애니메이션 후 페이지 인디케이터 노출
             DispatchQueue.main.async {
                 self.setUp()
@@ -81,11 +82,9 @@ class PromotionReviewContainerViewController: UIViewController {
     
     private func setUp() {
         submitButton.addTarget(self, action: #selector(didTouchUpSubmitButton(_:)), for: .touchUpInside)
-        submitButton.layer.cornerRadius = 15
+        submitButton.layer.cornerRadius = submitButton.bounds.height / 2
         submitButton.backgroundColor = .white
         submitButton.titleLabel?.font = UIFont.systemFont(ofSize: 22)
-        submitButton.titleLabel?.minimumScaleFactor = 0.1
-        submitButton.titleLabel?.adjustsFontSizeToFitWidth = true
         submitButton.setTitleColor(.black, for: [])
         containerView.layer.cornerRadius = 15
         containerView.layer.masksToBounds = true
@@ -102,7 +101,15 @@ class PromotionReviewContainerViewController: UIViewController {
         let question = questions[index]
         // 문제 뷰에 데이터 뿌리기
         questionView.numberLabel.text = "문제 \(index + 1)"
-        questionView.titleLabel.text = question.title
+        if !question.fruitName.isEmpty {
+            let attributedString = NSMutableAttributedString(string: question.title, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 30, weight: .ultraLight)])
+            let boldFontAttribute = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 30, weight: .medium)]
+            let range = (question.title as NSString).range(of: question.fruitName)
+            attributedString.addAttributes(boldFontAttribute, range: range)
+            questionView.titleLabel.attributedText = attributedString
+        } else {
+            questionView.titleLabel.text = question.title
+        }
         for buttonIndex in 0..<4 {
             questionView[buttonIndex].setTitle(question.answers[buttonIndex], for: [])
         }

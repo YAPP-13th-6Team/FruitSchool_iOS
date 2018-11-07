@@ -27,10 +27,10 @@
                     <rect key="frame" x="0.0" y="211" width="375" height="291"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RAj-Cm-Niu">
-                            <rect key="frame" x="16" y="32" width="343" height="227"/>
+                            <rect key="frame" x="10" y="16" width="355" height="231"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4Z-xt-8GI" customClass="QuestionButton" customModule="FruitSchool" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="343" height="42"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="355" height="42"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="42" id="Cnt-XV-eFX"/>
                                     </constraints>
@@ -41,7 +41,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </button>
                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWv-zi-sOH" customClass="QuestionButton" customModule="FruitSchool" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="61.5" width="343" height="42"/>
+                                    <rect key="frame" x="0.0" y="63" width="355" height="42"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                             <real key="value" value="5"/>
@@ -49,7 +49,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </button>
                                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A85-BG-hWz" customClass="QuestionButton" customModule="FruitSchool" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="123.5" width="343" height="42"/>
+                                    <rect key="frame" x="0.0" y="126" width="355" height="42"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                             <real key="value" value="5"/>
@@ -57,7 +57,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </button>
                                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01h-Gu-YTB" customClass="QuestionButton" customModule="FruitSchool" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="185" width="343" height="42"/>
+                                    <rect key="frame" x="0.0" y="189" width="355" height="42"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                     <state key="normal">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -82,20 +82,20 @@
                     </subviews>
                     <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="RAj-Cm-Niu" secondAttribute="trailing" constant="16" id="729-3y-Anx"/>
-                        <constraint firstAttribute="bottom" secondItem="RAj-Cm-Niu" secondAttribute="bottom" constant="32" id="Dsu-nB-MIc"/>
-                        <constraint firstItem="RAj-Cm-Niu" firstAttribute="leading" secondItem="UCk-yG-lS5" secondAttribute="leading" constant="16" id="QVS-B6-eoZ"/>
-                        <constraint firstItem="RAj-Cm-Niu" firstAttribute="top" secondItem="UCk-yG-lS5" secondAttribute="top" constant="32" id="Wbd-CW-dvw"/>
+                        <constraint firstAttribute="trailing" secondItem="RAj-Cm-Niu" secondAttribute="trailing" constant="10" id="729-3y-Anx"/>
+                        <constraint firstAttribute="bottom" secondItem="RAj-Cm-Niu" secondAttribute="bottom" constant="44" id="Dsu-nB-MIc"/>
+                        <constraint firstItem="RAj-Cm-Niu" firstAttribute="leading" secondItem="UCk-yG-lS5" secondAttribute="leading" constant="10" id="QVS-B6-eoZ"/>
+                        <constraint firstItem="RAj-Cm-Niu" firstAttribute="top" secondItem="UCk-yG-lS5" secondAttribute="top" constant="16" id="Wbd-CW-dvw"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Question" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="3s4-a8-ivz">
-                    <rect key="frame" x="20" y="153" width="109" height="36"/>
+                    <rect key="frame" x="20" y="153" width="261" height="36"/>
                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="30"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wZE-Vc-xkO">
-                    <rect key="frame" x="330" y="20" width="25" height="25"/>
+                    <rect key="frame" x="330" y="51" width="25" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="25" id="PaH-gh-ud2"/>
                         <constraint firstAttribute="height" constant="25" id="eSa-qw-LEh"/>
@@ -104,6 +104,10 @@
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mark_correct" translatesAutoresizingMaskIntoConstraints="NO" id="bY0-gZ-pFP">
                     <rect key="frame" x="311" y="145" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="8rd-hn-ujQ"/>
+                        <constraint firstAttribute="width" constant="44" id="LgH-Ti-Ikd"/>
+                    </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -113,6 +117,7 @@
                 <constraint firstItem="3BU-uN-Oc7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="GZa-yN-aIA"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="UCk-yG-lS5" secondAttribute="trailing" id="HFz-jN-9nV"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bY0-gZ-pFP" secondAttribute="trailing" constant="20" id="N6I-rA-uzG"/>
+                <constraint firstItem="wZE-Vc-xkO" firstAttribute="top" secondItem="3BU-uN-Oc7" secondAttribute="top" id="OPp-0U-hOw"/>
                 <constraint firstItem="3BU-uN-Oc7" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="31" id="POt-kU-0ip"/>
                 <constraint firstItem="UCk-yG-lS5" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="QEJ-33-RTJ"/>
                 <constraint firstItem="UCk-yG-lS5" firstAttribute="top" secondItem="bY0-gZ-pFP" secondAttribute="bottom" constant="22" id="X4g-T6-4Pl"/>
@@ -121,7 +126,7 @@
                 <constraint firstItem="3s4-a8-ivz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="nm1-zp-oWK"/>
                 <constraint firstItem="UCk-yG-lS5" firstAttribute="top" secondItem="3s4-a8-ivz" secondAttribute="bottom" constant="22" id="nmG-YA-YtU"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="wZE-Vc-xkO" secondAttribute="trailing" constant="20" id="o5W-MC-NSf"/>
-                <constraint firstItem="wZE-Vc-xkO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="vSj-4h-ZoY"/>
+                <constraint firstItem="bY0-gZ-pFP" firstAttribute="leading" secondItem="3s4-a8-ivz" secondAttribute="trailing" constant="30" id="vXC-D9-s2q"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -131,6 +136,7 @@
                 <outlet property="answer3Button" destination="A85-BG-hWz" id="jsV-Ia-ey3"/>
                 <outlet property="answer4Button" destination="01h-Gu-YTB" id="zht-6l-rEn"/>
                 <outlet property="cancelButton" destination="wZE-Vc-xkO" id="3gg-EX-tBX"/>
+                <outlet property="markImageView" destination="bY0-gZ-pFP" id="Qpy-GY-kiO"/>
                 <outlet property="numberLabel" destination="3BU-uN-Oc7" id="TJ1-41-0pn"/>
                 <outlet property="titleLabel" destination="3s4-a8-ivz" id="eKT-NO-D4C"/>
             </connections>

@@ -10,7 +10,7 @@ import UIKit
 
 // 과일 문제 풀이 뷰컨트롤러의 상태를 다른 뷰컨트롤러에 전달하기 위한 커스텀 델리게이트 정의
 protocol ExerciseDelegate: class {
-    func didDismissExerciseViewController(_ fruitTitle: String)
+    func didDismissExerciseViewController(fruitTitle: String, english: String)
 }
 
 class ExerciseContainerViewController: UIViewController {
@@ -24,15 +24,17 @@ class ExerciseContainerViewController: UIViewController {
                 if filtered.count == self.questions.count {
                     UIView.animate(withDuration: 0.2) {
                         self.submitButton.alpha = 1
-                        self.checksAllQuestion = true
                     }
                 }
             }
         }
     }
-    var checksAllQuestion: Bool = false
+    var score: Int = 0
+    var isPassed: [Bool] = []
+    var didExecutesScoring: Bool = false
     var id: String = ""
     var fruitTitle: String = ""
+    var english: String = ""
     var questions: [Question] = []
     var pageViewController: UIPageViewController!
     @IBOutlet weak var submitButton: UIButton!
@@ -60,11 +62,12 @@ class ExerciseContainerViewController: UIViewController {
             guard let response = response else { return }
             // 서버에서 받은 데이터를 클라이언트에서 사용하기 좋게 주무르기
             for data in response.data.quizs {
-                let question = Question(title: data.title, correctAnswer: data.correctAnswer, answers: [[data.correctAnswer], data.incorrectAnswers].flatMap { $0 }.shuffled())
+                let question = Question(title: data.title, fruitName: data.fruitTitle, correctAnswer: data.correctAnswer, answers: [[data.correctAnswer], data.incorrectAnswers].flatMap { $0 }.shuffled())
                 self.questions.append(question)
             }
             // 정답이 기록될 전역 프로퍼티 배열 초기화
             self.answers = Array(repeating: "", count: self.questions.count)
+            self.isPassed = Array(repeating: false, count: self.questions.count)
             // 문제 뷰가 커지는 애니메이션 후 페이지 인디케이터 노출
             DispatchQueue.main.async {
                 self.setUp()
@@ -82,11 +85,10 @@ class ExerciseContainerViewController: UIViewController {
     
     private func setUp() {
         submitButton.addTarget(self, action: #selector(didTouchUpSubmitButton(_:)), for: .touchUpInside)
-        submitButton.layer.cornerRadius = 15
+        submitButton.layer.cornerRadius = submitButton.bounds.height / 2
+        submitButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         submitButton.backgroundColor = .white
         submitButton.titleLabel?.font = UIFont.systemFont(ofSize: 22)
-        submitButton.titleLabel?.minimumScaleFactor = 0.1
-        submitButton.titleLabel?.adjustsFontSizeToFitWidth = true
         submitButton.setTitleColor(.black, for: [])
         containerView.layer.cornerRadius = 15
         containerView.layer.masksToBounds = true
@@ -106,15 +108,28 @@ class ExerciseContainerViewController: UIViewController {
         questionView.numberLabel.text = "문제 \(index + 1)"
         let attributedString = NSMutableAttributedString(string: question.title, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 30, weight: .ultraLight)])
         let boldFontAttribute = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 30, weight: .medium)]
-        let range = (question.title as NSString).range(of: fruitTitle)
+        let range = (question.title as NSString).range(of: question.fruitName)
         attributedString.addAttributes(boldFontAttribute, range: range)
         questionView.titleLabel.attributedText = attributedString
         for buttonIndex in 0..<4 {
             questionView[buttonIndex].setTitle(question.answers[buttonIndex], for: [])
         }
         // 정답을 기록한 문항에는 정답에 대응하는 보기에 선택된 효과를 주기
-        if let selectedIndex = questions[index].answers.index(of: answers[index]) {
+        if let selectedIndex = question.answers.index(of: answers[index]) {
             questionView[selectedIndex].backgroundColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
+        }
+        // 채점 이후
+        if didExecutesScoring {
+            let correctIndex = question.answers.index(of: question.correctAnswer) ?? 0
+            if isPassed[index] {
+                questionView.markImageView.image = UIImage(named: "mark_correct")
+                questionView[correctIndex].backgroundColor = .correct
+            } else {
+                questionView.markImageView.image = UIImage(named: "mark_incorrect")
+                questionView[correctIndex].layer.borderWidth = 2
+                questionView[correctIndex].layer.borderColor = UIColor.incorrect.cgColor
+            }
+            
         }
         questionView.delegate = self
         controller.questionView = questionView
@@ -132,32 +147,36 @@ extension ExerciseContainerViewController {
 // MARK: - Scoring Logic
 extension ExerciseContainerViewController {
     private func executeScoring() {
-        var score = 0
         UIAlertController
             .alert(title: "", message: "제출할까요?")
             .action(title: "확인", style: .default) { _ in
-                // 맞은 문항 개수 세기
-                score = self.numberOfCorrectAnswers()
-                // 문제 수와 맞은 문항 개수가 같으면 통과, 다르면 불통
-                if score == self.questions.count {
-                    UIAlertController
-                        .alert(title: "결과", message: "통과")
-                        .action(title: "확인", handler: { _ in
-                            guard let record = ChapterRecord.fetch().filter("id = %@", self.id).first else { return }
-                            ChapterRecord.update(record, keyValue: ["isPassed": true])
-                            self.dismiss(animated: true, completion: {
-                                self.delegate?.didDismissExerciseViewController(self.fruitTitle)
-                            })
-                        })
-                        .present(to: self)
-                } else {
-                    UIAlertController
-                        .alert(title: "결과", message: "불통")
-                        .action(title: "확인", handler: { _ in
-                            self.dismiss(animated: true, completion: nil)
-                        })
-                        .present(to: self)
+                self.didExecutesScoring = true
+                for index in 0..<self.questions.count {
+                    let question = self.questions[index]
+                    let answer = self.answers[index]
+                    if question.correctAnswer == answer {
+                        self.isPassed[index] = true
+                    } else {
+                        self.isPassed[index] = false
+                    }
                 }
+                guard let controller = self.pageViewController.viewControllers?.first as? ExerciseContentViewController else { print(1); return }
+                guard let questionView = controller.questionView else { return }
+                let currentIndex = self.pageControl.currentPage
+                let correctIndex = self.questions[currentIndex].answers.index(of: self.questions[currentIndex].correctAnswer) ?? 0
+                if self.isPassed[currentIndex] {
+                    questionView.markImageView.image = UIImage(named: "mark_correct")
+                    questionView[correctIndex].backgroundColor = .correct
+                } else {
+                    questionView.markImageView.image = UIImage(named: "mark_incorrect")
+                    questionView[correctIndex].layer.borderWidth = 2
+                    questionView[correctIndex].layer.borderColor = UIColor.incorrect.cgColor
+                }
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.submitButton.alpha = 0
+                }, completion: { _ in
+                    self.submitButton.isHidden = true
+                })
             }
             .action(title: "취소", style: .cancel)
             .present(to: self)
@@ -196,7 +215,16 @@ extension ExerciseContainerViewController: QuestionViewDelegate {
     }
     
     func cancelButtonDidTouchUp(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        let score = numberOfCorrectAnswers()
+        if score == questions.count {
+            guard let record = ChapterRecord.fetch().filter("id = %@", id).first else { return }
+            ChapterRecord.update(record, keyValue: ["isPassed": true])
+            dismiss(animated: true) {
+                self.delegate?.didDismissExerciseViewController(fruitTitle: self.fruitTitle, english: self.english)
+            }
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
     }
 }
 // MARK: - UIPageViewController DataSource Implementation

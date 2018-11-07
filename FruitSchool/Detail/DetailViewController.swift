@@ -26,7 +26,6 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "카드목록", style: .plain, target: self, action: #selector(backBarButtonDidTouchUp(_:)))
         requestFruitDetails()
     }
     // 과일 세부 정보 요청하기

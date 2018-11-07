@@ -18,7 +18,7 @@ struct QuestionResponse: Codable {
             let correctAnswer: String
             let incorrectAnswers: [String]
         }
-        let quizs: [QuestionResponse]
+        let quizs: [Question]
     }
     let message: String
     let data: Data

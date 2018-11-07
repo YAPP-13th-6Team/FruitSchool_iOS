@@ -7,10 +7,20 @@
 //
 
 extension String {
-    var toImageName: String {
+    func toImageName(grade: Int) -> String {
+        var result = ""
+        switch grade {
+        case 0:
+            result += "dog_"
+        case 1:
+            result += "student_"
+        case 2:
+            result += "boss_"
+        default:
+            break
+        }
         let lowercased = self.lowercased()
         let splitted = lowercased.split(separator: " ").map { String($0) }
-        var result = ""
         let count = splitted.count
         for index in 0..<count - 1 {
             result += splitted[index] + "_"

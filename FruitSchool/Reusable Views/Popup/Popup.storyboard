@@ -123,7 +123,7 @@
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <state key="normal" title="확인"/>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fruit_sample" translatesAutoresizingMaskIntoConstraints="NO" id="Pat-8U-8dz">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pat-8U-8dz">
                                         <rect key="frame" x="81" y="54.5" width="108" height="132.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Pat-8U-8dz" secondAttribute="height" multiplier="109:134" id="w9E-2L-SZd"/>
@@ -199,6 +199,5 @@
     <resources>
         <image name="background_grade_clear" width="270" height="286"/>
         <image name="dog_clear" width="144.5" height="90.5"/>
-        <image name="fruit_sample" width="500" height="375"/>
     </resources>
 </document>

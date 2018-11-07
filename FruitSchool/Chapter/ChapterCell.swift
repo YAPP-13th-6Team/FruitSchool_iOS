@@ -30,8 +30,8 @@ class ChapterCell: UICollectionViewCell {
         blurView?.removeFromSuperview()
     }
     
-    func setProperties(_ object: FruitListResponse.Data, isPassed: Bool) {
-        imageView.image = UIImage(named: "")
+    func setProperties(_ object: FruitListResponse.Data, grade: Int, isPassed: Bool) {
+        imageView.image = UIImage(named: object.english.toImageName(grade: grade))
         if !isPassed {
             let blurEffect = UIBlurEffect(style: .prominent)
             blurView = UIVisualEffectView(effect: blurEffect)

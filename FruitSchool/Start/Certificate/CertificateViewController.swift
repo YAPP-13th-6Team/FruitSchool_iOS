@@ -29,6 +29,11 @@ class CertificateViewController: UIViewController {
         setUp()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        nicknameTextField.becomeFirstResponder()
+    }
+    
     func setUp() {
         backgroundView.layer.cornerRadius = 13
         dateLabel.text = dateFormatter.string(from: Date())
@@ -56,10 +61,10 @@ class CertificateViewController: UIViewController {
             for data in response.data {
                 ChapterRecord.add(id: data.id, title: data.title, english: data.english, grade: data.grade)
             }
-            UserRecord.add(nickname: self.nickname)
             IndicatorView.shared.hideIndicator()
-            DispatchQueue.main.async { [weak self] in
-                self?.present(next, animated: true)
+            DispatchQueue.main.async {
+                UserRecord.add(nickname: self.nickname)
+                self.present(next, animated: true)
             }
         }
     }
