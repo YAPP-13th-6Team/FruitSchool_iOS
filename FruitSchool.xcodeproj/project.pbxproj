@@ -18,7 +18,6 @@
 		190FC3C5213A689D00DD333F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 190FC3C3213A689D00DD333F /* LaunchScreen.storyboard */; };
 		191F02452157E8CC008EA81C /* DetailNutritionTipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C575214F2F9000BF6521 /* DetailNutritionTipCell.swift */; };
 		192366492165AF390043F9BB /* FruitListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192366482165AF390043F9BB /* FruitListResponse.swift */; };
-		1923664B2165B6BE0043F9BB /* PromotionReviewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1923664A2165B6BE0043F9BB /* PromotionReviewResponse.swift */; };
 		1923664D2165BF170043F9BB /* QuestionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1923664C2165BF170043F9BB /* QuestionResponse.swift */; };
 		1923664F2165D0CD0043F9BB /* Exercise.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1923664E2165D0CD0043F9BB /* Exercise.storyboard */; };
 		192366542165D7F30043F9BB /* BackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192366522165D7F30043F9BB /* BackView.swift */; };
@@ -48,7 +47,6 @@
 		19A38B7A217F838400B68F67 /* ExerciseContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A38B79217F838300B68F67 /* ExerciseContentViewController.swift */; };
 		19A713B9217B7DA9004F8D7C /* ChapterFinishPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A713B8217B7DA9004F8D7C /* ChapterFinishPopupViewController.swift */; };
 		19A713BB217B7DC8004F8D7C /* Popup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19A713BA217B7DC8004F8D7C /* Popup.storyboard */; };
-		19A76F7B2162333200C7C05F /* ExerciseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A76F7A2162333200C7C05F /* ExerciseResponse.swift */; };
 		19DE4AA62168F5FB000C412A /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE4AA52168F5FB000C412A /* Question.swift */; };
 		19DE4AAC21691E0F000C412A /* API+Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DE4AAB21691E0F000C412A /* API+Base.swift */; };
 		19E274C72144D74E00E2F6D2 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E274C62144D74E00E2F6D2 /* Network.swift */; };
@@ -76,7 +74,6 @@
 		190FC3C4213A689D00DD333F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		190FC3C6213A689D00DD333F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		192366482165AF390043F9BB /* FruitListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitListResponse.swift; sourceTree = "<group>"; };
-		1923664A2165B6BE0043F9BB /* PromotionReviewResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionReviewResponse.swift; sourceTree = "<group>"; };
 		1923664C2165BF170043F9BB /* QuestionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionResponse.swift; sourceTree = "<group>"; };
 		1923664E2165D0CD0043F9BB /* Exercise.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Exercise.storyboard; sourceTree = "<group>"; };
 		192366522165D7F30043F9BB /* BackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BackView.swift; path = FruitSchool/Details/BackView.swift; sourceTree = SOURCE_ROOT; };
@@ -106,7 +103,6 @@
 		19A38B79217F838300B68F67 /* ExerciseContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseContentViewController.swift; sourceTree = "<group>"; };
 		19A713B8217B7DA9004F8D7C /* ChapterFinishPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterFinishPopupViewController.swift; sourceTree = "<group>"; };
 		19A713BA217B7DC8004F8D7C /* Popup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Popup.storyboard; sourceTree = "<group>"; };
-		19A76F7A2162333200C7C05F /* ExerciseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseResponse.swift; sourceTree = "<group>"; };
 		19DE4AA52168F5FB000C412A /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		19DE4AAB21691E0F000C412A /* API+Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Base.swift"; sourceTree = "<group>"; };
 		19E274C62144D74E00E2F6D2 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -231,11 +227,9 @@
 		1947C564214F2DB000BF6521 /* Response */ = {
 			isa = PBXGroup;
 			children = (
-				1923664C2165BF170043F9BB /* QuestionResponse.swift */,
 				1947C57B214F9E5F00BF6521 /* FruitResponse.swift */,
 				192366482165AF390043F9BB /* FruitListResponse.swift */,
-				19A76F7A2162333200C7C05F /* ExerciseResponse.swift */,
-				1923664A2165B6BE0043F9BB /* PromotionReviewResponse.swift */,
+				1923664C2165BF170043F9BB /* QuestionResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -506,9 +500,7 @@
 				19784240215FC68600D53F48 /* CertificateViewController.swift in Sources */,
 				19A38B7A217F838400B68F67 /* ExerciseContentViewController.swift in Sources */,
 				195A6A20216F17EB0072D03A /* QuestionView.swift in Sources */,
-				19A76F7B2162333200C7C05F /* ExerciseResponse.swift in Sources */,
 				19FCF2402160FE9600BCC3F7 /* Grade.swift in Sources */,
-				1923664B2165B6BE0043F9BB /* PromotionReviewResponse.swift in Sources */,
 				19999573217CA18900B7C843 /* FruitCompletePopupViewController.swift in Sources */,
 				1947C568214F2DC700BF6521 /* ChapterRecord.swift in Sources */,
 				190FC3BB213A689C00DD333F /* AppDelegate.swift in Sources */,

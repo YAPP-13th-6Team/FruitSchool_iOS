@@ -20,10 +20,10 @@ struct FruitResponse: Codable {
         let standardTip: StandardTip
         let intakeTip: IntakeTip
         let nutritionTip: NutritionTip
-        let quizs: [QuestionResponse]
+        //let quizs: [QuestionResponse]
         enum CodingKeys: String, CodingKey {
             case id = "_id"
-            case title, grade, category, calorie, season, standardTip, nutritionTip, quizs
+            case title, grade, category, calorie, season, standardTip, intakeTip, nutritionTip, quizs
         }
     }
     let message: String

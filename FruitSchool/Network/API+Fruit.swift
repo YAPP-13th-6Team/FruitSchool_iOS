@@ -66,10 +66,10 @@ extension API {
     /// - Parameters:
     ///   - id: 과일 고유 id
     ///   - completion: 컴플리션 핸들러
-    static func requestExercises(by id: String, completion: @escaping (ExerciseResponse?, Int?, Error?) -> Void) {
+    static func requestExercises(by id: String, completion: @escaping (QuestionResponse?, Int?, Error?) -> Void) {
         Network.get("\(baseURL)/exercises/\(id)", successHandler: { data, statusCode in
             do {
-                let decoded = try jsonDecoder.decode(ExerciseResponse.self, from: data)
+                let decoded = try jsonDecoder.decode(QuestionResponse.self, from: data)
                 completion(decoded, statusCode, nil)
             } catch {
                 completion(nil, statusCode, error)
@@ -83,10 +83,10 @@ extension API {
     /// - Parameters:
     ///   - grade: 사용자 등급
     ///   - completion: 컴플리션 핸들러
-    static func requestExam(by grade: Int, completion: @escaping (PromotionReviewResponse?, Int?, Error?) -> Void) {
+    static func requestExam(by grade: Int, completion: @escaping (QuestionResponse?, Int?, Error?) -> Void) {
         Network.get("\(baseURL)/exams/\(grade)", successHandler: { data, statusCode in
             do {
-                let decoded = try jsonDecoder.decode(PromotionReviewResponse.self, from: data)
+                let decoded = try jsonDecoder.decode(QuestionResponse.self, from: data)
                 completion(decoded, statusCode, nil)
             } catch {
                 completion(nil, statusCode, error)
