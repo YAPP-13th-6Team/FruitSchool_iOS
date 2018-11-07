@@ -21,7 +21,6 @@ struct FruitResponse: Codable {
         let standardTip: StandardTip
         let intakeTip: IntakeTip
         let nutritionTip: NutritionTip
-        //let quizs: [QuestionResponse]
         enum CodingKeys: String, CodingKey {
             case id = "_id"
             case title, english, grade, category, calorie, season, standardTip, intakeTip, nutritionTip

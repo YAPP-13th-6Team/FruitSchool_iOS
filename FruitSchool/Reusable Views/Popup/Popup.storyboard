@@ -124,9 +124,9 @@
                                         <state key="normal" title="확인"/>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pat-8U-8dz">
-                                        <rect key="frame" x="81" y="54.5" width="108" height="132.5"/>
+                                        <rect key="frame" x="81" y="54.5" width="108" height="108"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="Pat-8U-8dz" secondAttribute="height" multiplier="109:134" id="w9E-2L-SZd"/>
+                                            <constraint firstAttribute="width" secondItem="Pat-8U-8dz" secondAttribute="height" id="w9E-2L-SZd"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="?? 학습완료!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="st0-Gf-aXa">
@@ -136,7 +136,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lv.1 서당개 카드 레몬" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnJ-8s-NAL">
-                                        <rect key="frame" x="0.0" y="187" width="270" height="55"/>
+                                        <rect key="frame" x="0.0" y="162.5" width="270" height="79.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

@@ -129,7 +129,6 @@ class ExerciseContainerViewController: UIViewController {
                 questionView[correctIndex].layer.borderWidth = 2
                 questionView[correctIndex].layer.borderColor = UIColor.incorrect.cgColor
             }
-            
         }
         questionView.delegate = self
         controller.questionView = questionView
@@ -160,7 +159,7 @@ extension ExerciseContainerViewController {
                         self.isPassed[index] = false
                     }
                 }
-                guard let controller = self.pageViewController.viewControllers?.first as? ExerciseContentViewController else { print(1); return }
+                guard let controller = self.pageViewController.viewControllers?.first as? ExerciseContentViewController else { return }
                 guard let questionView = controller.questionView else { return }
                 let currentIndex = self.pageControl.currentPage
                 let correctIndex = self.questions[currentIndex].answers.index(of: self.questions[currentIndex].correctAnswer) ?? 0
@@ -215,6 +214,16 @@ extension ExerciseContainerViewController: QuestionViewDelegate {
     }
     
     func cancelButtonDidTouchUp(_ sender: UIButton) {
+        if !didExecutesScoring {
+            UIAlertController
+                .alert(title: "", message: "퀴즈를 중단하고 나가시겠습니까?")
+                .action(title: "취소", style: .cancel)
+                .action(title: "확인") { _ in
+                    self.dismiss(animated: true, completion: nil)
+                }
+                .present(to: self)
+            return
+        }
         let score = numberOfCorrectAnswers()
         if score == questions.count {
             guard let record = ChapterRecord.fetch().filter("id = %@", id).first else { return }

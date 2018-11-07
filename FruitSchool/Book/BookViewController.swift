@@ -245,18 +245,21 @@ private extension BookViewController {
             NSLayoutConstraint.activate([
                 button.topAnchor.constraint(equalTo: percentLabel.bottomAnchor, constant: 40),
                 button.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6),
-                //button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
-                //button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+                button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                 button.heightAnchor.constraint(equalToConstant: 40)
                 ])
+            view.layoutIfNeeded()
+            button.clipsToBounds = true
             button.layer.cornerRadius = button.bounds.height / 2
             button.layer.borderColor = UIColor.main.cgColor
+            button.layer.borderWidth = 2
         }
     }
 }
 
 private extension BookViewController {
     func labelText() -> String? {
+        print(percentage)
         guard let userInfo = UserRecord.fetch().first else { return nil }
         let userGrade = userInfo.grade
         switch percentage {
@@ -266,7 +269,10 @@ private extension BookViewController {
             } else if userGrade < currentCellIndex {
                 return "아직 당신에겐 수련이 필요하오."
             }
-        case 0..<50, 50..<100:
+        case 0.5:
+            return "벌써 반이나 모았다고? 조금만 더 힘을 내게!"
+        case 0..<0.5, 0.5..<1:
+            
             switch userGrade {
             case 0:
                 return "훈장님이 되고싶개"
@@ -277,9 +283,7 @@ private extension BookViewController {
             default:
                 break
             }
-        case 50:
-            return "벌써 반이나 모았다고? 조금만 더 힘을 내게!"
-        case 100:
+        case 1:
             if currentCellIndex == 0 {
                 if userInfo.passesDog {
                     return "드디어 사람이 되었개! 서당개 인생은 이제 안녕."
