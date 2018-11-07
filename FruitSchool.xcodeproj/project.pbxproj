@@ -38,6 +38,7 @@
 		195A6A20216F17EB0072D03A /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195A6A1D216F17EB0072D03A /* QuestionView.swift */; };
 		195A6A21216F17EB0072D03A /* QuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 195A6A1E216F17EB0072D03A /* QuestionView.xib */; };
 		1971E87C216A6902001378CA /* PromotionReviewContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1971E87B216A6902001378CA /* PromotionReviewContainerViewController.swift */; };
+		1973FD67219324B600FCD8C6 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1973FD66219324B600FCD8C6 /* String+.swift */; };
 		1975DD13216A5E8A0092B93C /* ExerciseContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1975DD12216A5E8A0092B93C /* ExerciseContainerViewController.swift */; };
 		1978423E215FC68000D53F48 /* Certificate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1978423D215FC68000D53F48 /* Certificate.storyboard */; };
 		19784240215FC68600D53F48 /* CertificateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1978423F215FC68600D53F48 /* CertificateViewController.swift */; };
@@ -94,6 +95,7 @@
 		195A6A1D216F17EB0072D03A /* QuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		195A6A1E216F17EB0072D03A /* QuestionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionView.xib; sourceTree = "<group>"; };
 		1971E87B216A6902001378CA /* PromotionReviewContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionReviewContainerViewController.swift; sourceTree = "<group>"; };
+		1973FD66219324B600FCD8C6 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		1975DD12216A5E8A0092B93C /* ExerciseContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseContainerViewController.swift; sourceTree = "<group>"; };
 		1978423D215FC68000D53F48 /* Certificate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Certificate.storyboard; sourceTree = "<group>"; };
 		1978423F215FC68600D53F48 /* CertificateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				190F74A9213E34020038234A /* UIColor+.swift */,
 				190F74A5213E33850038234A /* UIViewController+.swift */,
 				190F74AB213E340F0038234A /* UIView+.swift */,
+				1973FD66219324B600FCD8C6 /* String+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 				19784240215FC68600D53F48 /* CertificateViewController.swift in Sources */,
 				19A38B7A217F838400B68F67 /* ExerciseContentViewController.swift in Sources */,
 				195A6A20216F17EB0072D03A /* QuestionView.swift in Sources */,
+				1973FD67219324B600FCD8C6 /* String+.swift in Sources */,
 				19FCF2402160FE9600BCC3F7 /* Grade.swift in Sources */,
 				19999573217CA18900B7C843 /* FruitCompletePopupViewController.swift in Sources */,
 				1947C568214F2DC700BF6521 /* ChapterRecord.swift in Sources */,

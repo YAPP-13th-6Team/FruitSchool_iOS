@@ -13,6 +13,7 @@ struct FruitResponse: Codable {
     struct Data: Codable {
         let id: String
         let title: String
+        let english: String
         let grade: Int
         let category: String
         let calorie: Int
@@ -23,7 +24,7 @@ struct FruitResponse: Codable {
         //let quizs: [QuestionResponse]
         enum CodingKeys: String, CodingKey {
             case id = "_id"
-            case title, grade, category, calorie, season, standardTip, intakeTip, nutritionTip
+            case title, english, grade, category, calorie, season, standardTip, intakeTip, nutritionTip
         }
     }
     let message: String

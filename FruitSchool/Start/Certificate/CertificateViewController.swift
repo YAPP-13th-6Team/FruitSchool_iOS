@@ -43,7 +43,6 @@ class CertificateViewController: UIViewController {
                 .present(to: self)
             return
         }
-        UserRecord.add(nickname: nickname)
         guard let next = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController") else { return }
         IndicatorView.shared.showIndicator()
         API.requestFruitList { response, _, error in
@@ -55,8 +54,9 @@ class CertificateViewController: UIViewController {
             }
             guard let response = response else { return }
             for data in response.data {
-                ChapterRecord.add(id: data.id, title: data.title, grade: data.grade)
+                ChapterRecord.add(id: data.id, title: data.title, english: data.english, grade: data.grade)
             }
+            UserRecord.add(nickname: self.nickname)
             IndicatorView.shared.hideIndicator()
             DispatchQueue.main.async { [weak self] in
                 self?.present(next, animated: true)

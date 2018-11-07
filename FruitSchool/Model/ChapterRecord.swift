@@ -17,17 +17,19 @@ class ChapterRecord: Object {
     
     dynamic var id: String = ""
     dynamic var title: String = ""
+    dynamic var english: String = ""
     dynamic var grade: Int = 0
     dynamic var isPassed: Bool = false
     
     /// ChapterRecord 레코드 생성.
     ///
     /// - Parameter id: 과일의 고유 아이디
-    static func add(id: String, title: String, grade: Int) {
+    static func add(id: String, title: String, english: String, grade: Int) {
         let realm = try! Realm()
         let record = ChapterRecord()
         record.id = id
         record.title = title
+        record.english = english
         record.grade = grade
         try! realm.write {
             realm.add(record)

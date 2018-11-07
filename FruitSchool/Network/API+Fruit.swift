@@ -12,22 +12,6 @@ import Foundation
  과일과 관련된 API
  */
 extension API {
-    /// 모든 과일 정보 요청.
-    ///
-    /// - Parameters:
-    ///   - completion: 컴플리션 핸들러
-    static func requestFruits(completion: @escaping (FruitResponse?, Int?, Error?) -> Void) {
-        Network.get("\(baseURL)", successHandler: { data, statusCode in
-            do {
-                let decoded = try jsonDecoder.decode(FruitResponse.self, from: data)
-                completion(decoded, statusCode, nil)
-            } catch {
-                completion(nil, statusCode, error)
-            }
-        }, errorHandler: { error in
-            completion(nil, nil, error)
-        })
-    }
     /// 특정 id의 과일 정보 요청
     ///
     /// - Parameters:

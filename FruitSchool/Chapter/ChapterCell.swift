@@ -25,12 +25,13 @@ class ChapterCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        //imageView.image = nil
+        imageView.image = nil
         lockImageView?.removeFromSuperview()
         blurView?.removeFromSuperview()
     }
     
     func setProperties(_ object: FruitListResponse.Data, isPassed: Bool) {
+        imageView.image = UIImage(named: "")
         if !isPassed {
             let blurEffect = UIBlurEffect(style: .prominent)
             blurView = UIVisualEffectView(effect: blurEffect)

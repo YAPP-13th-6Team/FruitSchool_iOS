@@ -11,6 +11,7 @@
  */
 struct Question {
     let title: String
+    let fruitName: String
     let correctAnswer: String
     let answers: [String]
 }
