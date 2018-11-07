@@ -23,7 +23,7 @@ struct FruitResponse: Codable {
         //let quizs: [QuestionResponse]
         enum CodingKeys: String, CodingKey {
             case id = "_id"
-            case title, grade, category, calorie, season, standardTip, intakeTip, nutritionTip, quizs
+            case title, grade, category, calorie, season, standardTip, intakeTip, nutritionTip
         }
     }
     let message: String
