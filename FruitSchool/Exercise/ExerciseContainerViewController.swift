@@ -60,6 +60,17 @@ class ExerciseContainerViewController: UIViewController {
                 return
             }
             guard let response = response else { return }
+            if response.data.quizs.first?.title.isEmpty ?? true {
+                DispatchQueue.main.async {
+                    UIAlertController
+                        .alert(title: "", message: "준비중입니다.")
+                        .action(title: "확인", handler: { _ in
+                            self.dismiss(animated: true, completion: nil)
+                        })
+                        .present(to: self)
+                    return
+                }
+            }
             // 서버에서 받은 데이터를 클라이언트에서 사용하기 좋게 주무르기
             for data in response.data.quizs {
                 let question = Question(title: data.title, fruitName: data.fruitTitle, correctAnswer: data.correctAnswer, answers: [[data.correctAnswer], data.incorrectAnswers].flatMap { $0 }.shuffled())
@@ -120,6 +131,9 @@ class ExerciseContainerViewController: UIViewController {
         }
         // 채점 이후
         if didExecutesScoring {
+            for index in 0..<4 {
+                questionView[index].isUserInteractionEnabled = false
+            }
             let correctIndex = question.answers.index(of: question.correctAnswer) ?? 0
             if isPassed[index] {
                 questionView.markImageView.image = UIImage(named: "mark_correct")

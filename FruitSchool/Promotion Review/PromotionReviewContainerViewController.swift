@@ -122,6 +122,9 @@ class PromotionReviewContainerViewController: UIViewController {
         }
         // 채점 이후
         if didExecutesScoring {
+            for index in 0..<4 {
+                questionView[index].isUserInteractionEnabled = false
+            }
             let correctIndex = question.answers.index(of: question.correctAnswer) ?? 0
             if isPassed[index] {
                 questionView.markImageView.image = UIImage(named: "mark_correct")
