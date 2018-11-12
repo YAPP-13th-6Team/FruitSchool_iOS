@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2eb-Rn-jWG">
-                                <rect key="frame" x="11.5" y="90" width="352.5" height="487"/>
+                                <rect key="frame" x="43" y="134" width="289" height="399"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="2eb-Rn-jWG" secondAttribute="height" multiplier="355:490" id="8OD-ju-IxI"/>
                                 </constraints>
@@ -27,16 +27,16 @@
                                     <segue destination="Jev-KV-q2G" kind="embed" id="E9E-nf-XeQ"/>
                                 </connections>
                             </containerView>
-                            <pageControl opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="Rrt-17-lkf">
-                                <rect key="frame" x="184" y="540" width="7" height="37"/>
+                            <pageControl opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="10" translatesAutoresizingMaskIntoConstraints="NO" id="Rrt-17-lkf">
+                                <rect key="frame" x="112" y="496" width="151" height="37"/>
                                 <color key="pageIndicatorTintColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.68000000000000005" colorSpace="calibratedRGB"/>
                             </pageControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a9D-Eo-8Y1">
-                                <rect key="frame" x="0.0" y="577" width="375" height="90"/>
+                                <rect key="frame" x="0.0" y="533" width="375" height="134"/>
                                 <subviews>
                                     <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBc-3w-tY9">
-                                        <rect key="frame" x="94" y="30" width="187.5" height="30"/>
+                                        <rect key="frame" x="94" y="52" width="187.5" height="30"/>
                                         <state key="normal" title="제출하기"/>
                                     </button>
                                 </subviews>
@@ -58,7 +58,7 @@
                             <constraint firstItem="2eb-Rn-jWG" firstAttribute="centerY" secondItem="ZJL-Eu-wal" secondAttribute="centerY" id="gYn-Ra-O6D"/>
                             <constraint firstItem="Rrt-17-lkf" firstAttribute="bottom" secondItem="2eb-Rn-jWG" secondAttribute="bottom" id="hIr-NY-16U"/>
                             <constraint firstItem="q4i-8W-PfM" firstAttribute="bottom" secondItem="a9D-Eo-8Y1" secondAttribute="bottom" id="qQ3-ub-P8K"/>
-                            <constraint firstItem="2eb-Rn-jWG" firstAttribute="width" secondItem="ZJL-Eu-wal" secondAttribute="width" multiplier="0.94" id="zwx-Sd-QCN"/>
+                            <constraint firstItem="2eb-Rn-jWG" firstAttribute="width" secondItem="ZJL-Eu-wal" secondAttribute="width" multiplier="0.77" id="zwx-Sd-QCN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="q4i-8W-PfM"/>
                     </view>

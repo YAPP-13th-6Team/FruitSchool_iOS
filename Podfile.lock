@@ -4,27 +4,23 @@ PODS:
   - Realm/Headers (3.7.6)
   - RealmSwift (3.7.6):
     - Realm (= 3.7.6)
-  - SwiftKeychainWrapper (3.0.1)
   - SwiftLint (0.27.0)
 
 DEPENDENCIES:
   - RealmSwift
-  - SwiftKeychainWrapper
   - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Realm
     - RealmSwift
-    - SwiftKeychainWrapper
     - SwiftLint
 
 SPEC CHECKSUMS:
   Realm: 9eaecad54712d6246d08ba34c10f354e4715d7d3
   RealmSwift: 1fe08b4ebaeeaacf17f9ba0343f7b25c9fc31fa6
-  SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
-PODFILE CHECKSUM: f508310cfdc89a784dfd05d4977da999158a43f3
+PODFILE CHECKSUM: cf768adbb3690cef7ee24cc8b738db720f96b6df
 
 COCOAPODS: 1.6.0.beta.1

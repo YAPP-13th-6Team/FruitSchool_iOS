@@ -17,20 +17,21 @@ class ChapterCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         imageView.backgroundColor = .gray
-        imageView.layer.cornerRadius = 5
+        //imageView.layer.cornerRadius = 5
         imageView.clipsToBounds = true
-        layer.cornerRadius = 5
+        //layer.cornerRadius = 5
         layer.masksToBounds = true
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        //imageView.image = nil
+        imageView.image = nil
         lockImageView?.removeFromSuperview()
         blurView?.removeFromSuperview()
     }
     
-    func setProperties(_ object: FruitListResponse.Data, isPassed: Bool) {
+    func setProperties(_ object: FruitListResponse.Data, grade: Int, isPassed: Bool) {
+        imageView.image = UIImage(named: object.english.toImageName(grade: grade))
         if !isPassed {
             let blurEffect = UIBlurEffect(style: .prominent)
             blurView = UIVisualEffectView(effect: blurEffect)

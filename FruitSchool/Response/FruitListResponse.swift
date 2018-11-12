@@ -13,10 +13,11 @@ struct FruitListResponse: Codable {
     struct Data: Codable {
         let id: String
         let title: String
+        let english: String
         let grade: Int
         enum CodingKeys: String, CodingKey {
             case id = "_id"
-            case title, grade
+            case title, english, grade
         }
     }
     let message: String

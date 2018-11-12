@@ -22,6 +22,7 @@ class QuestionView: UIView {
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var markImageView: UIImageView!
     @IBOutlet weak var answer1Button: QuestionButton!
     @IBOutlet weak var answer2Button: QuestionButton!
     @IBOutlet weak var answer3Button: QuestionButton!
@@ -29,6 +30,7 @@ class QuestionView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        markImageView.image = nil
         cancelButton.addTarget(self, action: #selector(cancelButtonDidTouchUp(_:)), for: .touchUpInside)
         buttons.forEach { button in
             button.addTarget(self, action: #selector(questionButtonsDidTouchUp(_:)), for: .touchUpInside)

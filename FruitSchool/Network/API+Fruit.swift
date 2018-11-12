@@ -12,22 +12,6 @@ import Foundation
  과일과 관련된 API
  */
 extension API {
-    /// 모든 과일 정보 요청.
-    ///
-    /// - Parameters:
-    ///   - completion: 컴플리션 핸들러
-    static func requestFruits(completion: @escaping (FruitResponse?, Int?, Error?) -> Void) {
-        Network.get("\(baseURL)/fruits", successHandler: { data, statusCode in
-            do {
-                let decoded = try jsonDecoder.decode(FruitResponse.self, from: data)
-                completion(decoded, statusCode, nil)
-            } catch {
-                completion(nil, statusCode, error)
-            }
-        }, errorHandler: { error in
-            completion(nil, nil, error)
-        })
-    }
     /// 특정 id의 과일 정보 요청
     ///
     /// - Parameters:
@@ -35,7 +19,7 @@ extension API {
     ///   - completion: 컴플리션 핸들러
     /// - Note: 디코딩된 값의 data 프로퍼티는 Array이지만 항상 한 개의 요소만 가지므로 first 프로퍼티로 접근하여 사용한다.
     static func requestFruit(by id: String, completion: @escaping (FruitResponse?, Int?, Error?) -> Void) {
-        Network.get("\(baseURL)/fruits/\(id)", successHandler: { data, statusCode in
+        Network.get("\(baseURL)/\(id)", successHandler: { data, statusCode in
             do {
                 let decoded = try jsonDecoder.decode(FruitResponse.self, from: data)
                 completion(decoded, statusCode, nil)
@@ -50,7 +34,7 @@ extension API {
     ///
     /// - Parameter completion: 컴플리션 핸들러
     static func requestFruitList(completion: @escaping (FruitListResponse?, Int?, Error?) -> Void) {
-        Network.get("\(baseURL)/fruits/lists", successHandler: { data, statusCode in
+        Network.get("\(baseURL)/lists", successHandler: { data, statusCode in
             do {
                 let decoded = try jsonDecoder.decode(FruitListResponse.self, from: data)
                 completion(decoded, statusCode, nil)
@@ -66,10 +50,10 @@ extension API {
     /// - Parameters:
     ///   - id: 과일 고유 id
     ///   - completion: 컴플리션 핸들러
-    static func requestExercises(by id: String, completion: @escaping (ExerciseResponse?, Int?, Error?) -> Void) {
-        Network.get("\(baseURL)/fruits/exercises/\(id)", successHandler: { data, statusCode in
+    static func requestExercises(by id: String, completion: @escaping (QuestionResponse?, Int?, Error?) -> Void) {
+        Network.get("\(baseURL)/exercises/\(id)", successHandler: { data, statusCode in
             do {
-                let decoded = try jsonDecoder.decode(ExerciseResponse.self, from: data)
+                let decoded = try jsonDecoder.decode(QuestionResponse.self, from: data)
                 completion(decoded, statusCode, nil)
             } catch {
                 completion(nil, statusCode, error)
@@ -83,10 +67,10 @@ extension API {
     /// - Parameters:
     ///   - grade: 사용자 등급
     ///   - completion: 컴플리션 핸들러
-    static func requestExam(by grade: Int, completion: @escaping (PromotionReviewResponse?, Int?, Error?) -> Void) {
-        Network.get("\(baseURL)/fruits/exams/\(grade)", successHandler: { data, statusCode in
+    static func requestExam(by grade: Int, completion: @escaping (QuestionResponse?, Int?, Error?) -> Void) {
+        Network.get("\(baseURL)/exams/\(grade)", successHandler: { data, statusCode in
             do {
-                let decoded = try jsonDecoder.decode(PromotionReviewResponse.self, from: data)
+                let decoded = try jsonDecoder.decode(QuestionResponse.self, from: data)
                 completion(decoded, statusCode, nil)
             } catch {
                 completion(nil, statusCode, error)
