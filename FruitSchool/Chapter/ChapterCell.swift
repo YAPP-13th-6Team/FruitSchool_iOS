@@ -17,9 +17,9 @@ class ChapterCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         imageView.backgroundColor = .gray
-        imageView.layer.cornerRadius = 5
+        //imageView.layer.cornerRadius = 5
         imageView.clipsToBounds = true
-        layer.cornerRadius = 5
+        //layer.cornerRadius = 5
         layer.masksToBounds = true
     }
     

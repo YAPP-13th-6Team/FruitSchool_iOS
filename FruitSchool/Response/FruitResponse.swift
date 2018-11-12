@@ -15,15 +15,12 @@ struct FruitResponse: Codable {
         let title: String
         let english: String
         let grade: Int
-        let category: String
-        let calorie: Int
         let season: String
         let standardTip: StandardTip
-        let intakeTip: IntakeTip
         let nutritionTip: NutritionTip
         enum CodingKeys: String, CodingKey {
             case id = "_id"
-            case title, english, grade, category, calorie, season, standardTip, intakeTip, nutritionTip
+            case title, english, grade, season, standardTip, nutritionTip
         }
     }
     let message: String
@@ -53,35 +50,6 @@ struct StandardTip: Codable {
             count += 1
         }
         if careMethod != nil {
-            count += 1
-        }
-        return count
-    }
-}
-
-struct IntakeTip: Codable {
-    let intakeMethod: String
-    let chemistry: String?
-    let diet: String?
-    let effect: String?
-    let precaution: String?
-    var tips: [(title: String, content: String)] {
-        let array = [("섭취 방법", intakeMethod), ("궁합 음식 정보", chemistry), ("식이요법", diet), ("효능", effect), ("주의사항", precaution)]
-        let filtered = array.filter { $0.1 != nil }
-        return filtered as? [(title: String, content: String)] ?? [(title: String, content: String)]()
-    }
-    var validCount: Int {
-        var count = 1
-        if chemistry != nil {
-            count += 1
-        }
-        if diet != nil {
-            count += 1
-        }
-        if effect != nil {
-            count += 1
-        }
-        if precaution != nil {
             count += 1
         }
         return count

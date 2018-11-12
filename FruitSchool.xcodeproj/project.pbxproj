@@ -34,6 +34,7 @@
 		1947C570214F2F2600BF6521 /* DetailImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C56F214F2F2600BF6521 /* DetailImageCell.swift */; };
 		1947C574214F2F3900BF6521 /* DetailStandardTipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C573214F2F3900BF6521 /* DetailStandardTipCell.swift */; };
 		1947C57C214F9E5F00BF6521 /* FruitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1947C57B214F9E5F00BF6521 /* FruitResponse.swift */; };
+		195382202199217500A8774E /* Int+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1953821F2199217500A8774E /* Int+.swift */; };
 		195A6A1F216F17EB0072D03A /* QuestionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195A6A1C216F17EB0072D03A /* QuestionButton.swift */; };
 		195A6A20216F17EB0072D03A /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195A6A1D216F17EB0072D03A /* QuestionView.swift */; };
 		195A6A21216F17EB0072D03A /* QuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 195A6A1E216F17EB0072D03A /* QuestionView.xib */; };
@@ -91,6 +92,7 @@
 		1947C573214F2F3900BF6521 /* DetailStandardTipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStandardTipCell.swift; sourceTree = "<group>"; };
 		1947C575214F2F9000BF6521 /* DetailNutritionTipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNutritionTipCell.swift; sourceTree = "<group>"; };
 		1947C57B214F9E5F00BF6521 /* FruitResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitResponse.swift; sourceTree = "<group>"; };
+		1953821F2199217500A8774E /* Int+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+.swift"; sourceTree = "<group>"; };
 		195A6A1C216F17EB0072D03A /* QuestionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionButton.swift; sourceTree = "<group>"; };
 		195A6A1D216F17EB0072D03A /* QuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		195A6A1E216F17EB0072D03A /* QuestionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionView.xib; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				190F74A5213E33850038234A /* UIViewController+.swift */,
 				190F74AB213E340F0038234A /* UIView+.swift */,
 				1973FD66219324B600FCD8C6 /* String+.swift */,
+				1953821F2199217500A8774E /* Int+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				19E274C72144D74E00E2F6D2 /* Network.swift in Sources */,
 				19A713B9217B7DA9004F8D7C /* ChapterFinishPopupViewController.swift in Sources */,
 				190F74AE213E34700038234A /* NSObject+.swift in Sources */,
+				195382202199217500A8774E /* Int+.swift in Sources */,
 				1947C57C214F9E5F00BF6521 /* FruitResponse.swift in Sources */,
 				1947C574214F2F3900BF6521 /* DetailStandardTipCell.swift in Sources */,
 				195A6A1F216F17EB0072D03A /* QuestionButton.swift in Sources */,

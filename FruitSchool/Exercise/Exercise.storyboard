@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygs-Hq-cwZ">
-                                <rect key="frame" x="11.5" y="90" width="352.5" height="487"/>
+                                <rect key="frame" x="43" y="134" width="289" height="399"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ygs-Hq-cwZ" secondAttribute="height" multiplier="355:490" id="HPi-sk-lCs"/>
                                 </constraints>
@@ -28,16 +28,16 @@
                                 </connections>
                             </containerView>
                             <pageControl opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="10" translatesAutoresizingMaskIntoConstraints="NO" id="VSG-HB-I4U">
-                                <rect key="frame" x="112" y="540" width="151" height="37"/>
+                                <rect key="frame" x="112" y="496" width="151" height="37"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="pageIndicatorTintColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.68000000000000005" colorSpace="calibratedRGB"/>
                             </pageControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zxY-me-sav">
-                                <rect key="frame" x="0.0" y="577" width="375" height="90"/>
+                                <rect key="frame" x="0.0" y="533" width="375" height="134"/>
                                 <subviews>
                                     <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1d-yV-qh1">
-                                        <rect key="frame" x="94" y="30" width="187.5" height="30"/>
+                                        <rect key="frame" x="94" y="52" width="187.5" height="30"/>
                                         <state key="normal" title="제출하기"/>
                                     </button>
                                 </subviews>
@@ -54,7 +54,7 @@
                             <constraint firstItem="VSG-HB-I4U" firstAttribute="bottom" secondItem="ygs-Hq-cwZ" secondAttribute="bottom" id="5ez-sy-eX6"/>
                             <constraint firstItem="UmB-vE-JWF" firstAttribute="trailing" secondItem="zxY-me-sav" secondAttribute="trailing" id="8zd-GH-XKy"/>
                             <constraint firstItem="VSG-HB-I4U" firstAttribute="centerX" secondItem="tcr-YL-klx" secondAttribute="centerX" id="Bw7-Zt-8Wn"/>
-                            <constraint firstItem="ygs-Hq-cwZ" firstAttribute="width" secondItem="tcr-YL-klx" secondAttribute="width" multiplier="0.94" id="UgG-81-V2l"/>
+                            <constraint firstItem="ygs-Hq-cwZ" firstAttribute="width" secondItem="tcr-YL-klx" secondAttribute="width" multiplier="0.77" id="UgG-81-V2l"/>
                             <constraint firstItem="ygs-Hq-cwZ" firstAttribute="centerX" secondItem="tcr-YL-klx" secondAttribute="centerX" id="XmY-xP-mnl"/>
                             <constraint firstItem="ygs-Hq-cwZ" firstAttribute="centerY" secondItem="tcr-YL-klx" secondAttribute="centerY" id="dTG-WF-eJm"/>
                             <constraint firstItem="UmB-vE-JWF" firstAttribute="bottom" secondItem="zxY-me-sav" secondAttribute="bottom" id="pED-sC-wif"/>
