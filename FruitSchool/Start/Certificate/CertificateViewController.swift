@@ -29,6 +29,11 @@ class CertificateViewController: UIViewController {
         setUp()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        nicknameTextField.becomeFirstResponder()
+    }
+    
     func setUp() {
         backgroundView.layer.cornerRadius = 13
         dateLabel.text = dateFormatter.string(from: Date())
@@ -43,7 +48,6 @@ class CertificateViewController: UIViewController {
                 .present(to: self)
             return
         }
-        UserRecord.add(nickname: nickname)
         guard let next = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController") else { return }
         IndicatorView.shared.showIndicator()
         API.requestFruitList { response, _, error in
@@ -55,11 +59,12 @@ class CertificateViewController: UIViewController {
             }
             guard let response = response else { return }
             for data in response.data {
-                ChapterRecord.add(id: data.id, title: data.title, grade: data.grade)
+                ChapterRecord.add(id: data.id, title: data.title, english: data.english, grade: data.grade)
             }
             IndicatorView.shared.hideIndicator()
-            DispatchQueue.main.async { [weak self] in
-                self?.present(next, animated: true)
+            DispatchQueue.main.async {
+                UserRecord.add(nickname: self.nickname)
+                self.present(next, animated: true)
             }
         }
     }

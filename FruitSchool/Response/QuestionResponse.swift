@@ -8,10 +8,18 @@
 
 /*
  문제 응답 모델
- Exercise, PromotionReview에서 공통적으로 사용됨
  */
 struct QuestionResponse: Codable {
-    let title: String
-    let correctAnswer: String
-    let incorrectAnswers: [String]
+    struct Data: Codable {
+        struct Question: Codable {
+            let fruitTitle: String
+            let fruitId: String
+            let title: String
+            let correctAnswer: String
+            let incorrectAnswers: [String]
+        }
+        let quizs: [Question]
+    }
+    let message: String
+    let data: Data
 }

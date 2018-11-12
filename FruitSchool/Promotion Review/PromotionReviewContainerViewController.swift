@@ -24,13 +24,14 @@ class PromotionReviewContainerViewController: UIViewController {
                 if filtered.count == self.questions.count {
                     UIView.animate(withDuration: 0.5) {
                         self.submitButton.alpha = 1
-                        self.checksAllQuestion = true
                     }
                 }
             }
         }
     }
-    var checksAllQuestion: Bool = false
+    var score: Int = 0
+    var isPassed: [Bool] = []
+    var didExecutesScoring: Bool = false
     var grade: Int = 0
     var questions: [Question] = []
     var pageViewController: UIPageViewController!
@@ -58,12 +59,13 @@ class PromotionReviewContainerViewController: UIViewController {
             }
             guard let response = response else { return }
             // 서버에서 받은 데이터를 클라이언트에서 사용하기 좋게 주무르기
-            for data in response.data {
-                let question = Question(title: data.title, correctAnswer: data.correctAnswer, answers: [[data.correctAnswer], data.incorrectAnswers].flatMap { $0 }.shuffled())
+            for data in response.data.quizs {
+                let question = Question(title: data.title, fruitName: data.fruitTitle, correctAnswer: data.correctAnswer, answers: [[data.correctAnswer], data.incorrectAnswers].flatMap { $0 }.shuffled())
                 self.questions.append(question)
             }
             // 정답이 기록될 전역 프로퍼티 배열 초기화
             self.answers = Array(repeating: "", count: self.questions.count)
+            self.isPassed = Array(repeating: false, count: self.questions.count)
             // 문제 뷰가 커지는 애니메이션 후 페이지 인디케이터 노출
             DispatchQueue.main.async {
                 self.setUp()
@@ -76,20 +78,20 @@ class PromotionReviewContainerViewController: UIViewController {
                     })
                 })
             }
+            for question in self.questions {
+                print(question.correctAnswer)
+            }
         }
     }
     
     private func setUp() {
         submitButton.addTarget(self, action: #selector(didTouchUpSubmitButton(_:)), for: .touchUpInside)
-        submitButton.layer.cornerRadius = 15
+        submitButton.layer.cornerRadius = submitButton.bounds.height / 2
         submitButton.backgroundColor = .white
         submitButton.titleLabel?.font = UIFont.systemFont(ofSize: 22)
-        submitButton.titleLabel?.minimumScaleFactor = 0.1
-        submitButton.titleLabel?.adjustsFontSizeToFitWidth = true
         submitButton.setTitleColor(.black, for: [])
         containerView.layer.cornerRadius = 15
         containerView.layer.masksToBounds = true
-        //containerView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(didPanContentView(_:))))
         pageControl.numberOfPages = questions.count
         self.pageViewController = childViewControllers.first as? UIPageViewController
         pageViewController.dataSource = self
@@ -103,12 +105,35 @@ class PromotionReviewContainerViewController: UIViewController {
         let question = questions[index]
         // 문제 뷰에 데이터 뿌리기
         questionView.numberLabel.text = "문제 \(index + 1)"
-        questionView.titleLabel.text = question.title
+        if !question.fruitName.isEmpty {
+            let attributedString = NSMutableAttributedString(string: question.title, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 30, weight: .ultraLight)])
+            let boldFontAttribute = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 30, weight: .medium)]
+            let range = (question.title as NSString).range(of: question.fruitName)
+            attributedString.addAttributes(boldFontAttribute, range: range)
+            questionView.titleLabel.attributedText = attributedString
+        } else {
+            questionView.titleLabel.text = question.title
+        }
         for buttonIndex in 0..<4 {
             questionView[buttonIndex].setTitle(question.answers[buttonIndex], for: [])
         }
         if let selectedIndex = questions[index].answers.index(of: answers[index]) {
             questionView[selectedIndex].backgroundColor = #colorLiteral(red: 0.8666666667, green: 0.8666666667, blue: 0.8666666667, alpha: 1)
+        }
+        // 채점 이후
+        if didExecutesScoring {
+            for index in 0..<4 {
+                questionView[index].isUserInteractionEnabled = false
+            }
+            let correctIndex = question.answers.index(of: question.correctAnswer) ?? 0
+            if isPassed[index] {
+                questionView.markImageView.image = UIImage(named: "mark_correct")
+                questionView[correctIndex].backgroundColor = .correct
+            } else {
+                questionView.markImageView.image = UIImage(named: "mark_incorrect")
+                questionView[correctIndex].layer.borderWidth = 2
+                questionView[correctIndex].layer.borderColor = UIColor.incorrect.cgColor
+            }
         }
         let controller = PromotionReviewContentViewController()
         controller.questionView = questionView
@@ -118,43 +143,6 @@ class PromotionReviewContainerViewController: UIViewController {
 }
 // MARK: - Selectors
 extension PromotionReviewContainerViewController {
-    // 문제 뷰를 아래로 내렸을 때 사라지게 하는 효과
-//    @objc func didPanContentView(_ gesture: UIPanGestureRecognizer) {
-//        let velocityY = gesture.translation(in: view).y
-//        switch gesture.state {
-//        case .changed:
-//            if velocityY >= 0 {
-//                containerViewCenterYConstraint.constant = velocityY
-//            }
-//            if checksAllQuestion {
-//                UIView.animate(withDuration: 0.1) {
-//                    self.submitButton.alpha = 0
-//                }
-//            }
-//        case .ended:
-//            if gesture.velocity(in: view).y > 1000 {
-//                containerViewCenterYConstraint.constant = view.bounds.height
-//                UIView.animate(withDuration: 0.2, animations: {
-//                    self.view.layoutIfNeeded()
-//                }, completion: { _ in
-//                    self.dismiss(animated: true, completion: nil)
-//                })
-//                return
-//            } else {
-//                if checksAllQuestion {
-//                    UIView.animate(withDuration: 0.1) {
-//                        self.submitButton.alpha = 1
-//                    }
-//                }
-//                containerViewCenterYConstraint.constant = 0
-//                UIView.animate(withDuration: 0.2) {
-//                    self.view.layoutIfNeeded()
-//                }
-//            }
-//        default:
-//            break
-//        }
-//    }
     // 제출하기 버튼을 눌러서 채점하기
     @objc func didTouchUpSubmitButton(_ sender: UIButton) {
         executeScoring()
@@ -163,54 +151,36 @@ extension PromotionReviewContainerViewController {
 // MARK: - Scoring Logic
 extension PromotionReviewContainerViewController {
     private func executeScoring() {
-        var score = 0
         UIAlertController
             .alert(title: "승급 심사", message: "제출할까요?")
             .action(title: "확인") { _ in
-                // 맞은 문항 개수 세기
-                score = self.numberOfCorrectAnswers()
-                // 정답율이 70% 이상이면 통과, 그렇지 않으면 불통
-                let percent = Double(score) / Double(self.questions.count)
-                if percent > 0.7 {
-                    UIAlertController
-                        .alert(title: "결과", message: "통과")
-                        .action(title: "확인", handler: { _ in
-                            guard let userRecord = UserRecord.fetch().first else { return }
-                            let myGrade = userRecord.grade
-                            if myGrade != 2 {
-                                UserRecord.update(userRecord, keyValue: ["grade": myGrade + 1])
-                                IndicatorView.shared.showIndicator()
-                                API.requestGradeUp(myGrade, completion: { _, _, error in
-                                    if let error = error {
-                                        UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription)
-                                        return
-                                    }
-                                })
-                            }
-                            switch self.grade {
-                            case 0:
-                                UserRecord.update(userRecord, keyValue: ["passesDog": true])
-                            case 1:
-                                UserRecord.update(userRecord, keyValue: ["passesStudent": true])
-                            case 2:
-                                UserRecord.update(userRecord, keyValue: ["passesBoss": true])
-                            default:
-                                break
-                            }
-                            IndicatorView.shared.hideIndicator()
-                            self.dismiss(animated: true, completion: {
-                                self.delegate?.didDismissPromotionReviewViewController(self.grade)
-                            })
-                        })
-                        .present(to: self)
-                } else {
-                    UIAlertController
-                        .alert(title: "결과", message: "불통")
-                        .action(title: "확인", handler: { _ in
-                            self.dismiss(animated: true, completion: nil)
-                        })
-                        .present(to: self)
+                self.didExecutesScoring = true
+                for index in 0..<self.questions.count {
+                    let question = self.questions[index]
+                    let answer = self.answers[index]
+                    if question.correctAnswer == answer {
+                        self.isPassed[index] = true
+                    } else {
+                        self.isPassed[index] = false
+                    }
                 }
+                guard let controller = self.pageViewController.viewControllers?.first as? PromotionReviewContentViewController else { return }
+                guard let questionView = controller.questionView else { return }
+                let currentIndex = self.pageControl.currentPage
+                let correctIndex = self.questions[currentIndex].answers.index(of: self.questions[currentIndex].correctAnswer) ?? 0
+                if self.isPassed[currentIndex] {
+                    questionView.markImageView.image = UIImage(named: "mark_correct")
+                    questionView[correctIndex].backgroundColor = .correct
+                } else {
+                    questionView.markImageView.image = UIImage(named: "mark_incorrect")
+                    questionView[correctIndex].layer.borderWidth = 2
+                    questionView[correctIndex].layer.borderColor = UIColor.incorrect.cgColor
+                }
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.submitButton.alpha = 0
+                }, completion: { _ in
+                    self.submitButton.isHidden = true
+                })
             }
             .action(title: "취소", style: .cancel)
             .present(to: self)
@@ -249,7 +219,37 @@ extension PromotionReviewContainerViewController: QuestionViewDelegate {
     }
     
     func cancelButtonDidTouchUp(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        if !didExecutesScoring {
+            UIAlertController
+                .alert(title: "", message: "퀴즈를 중단하고 나가시겠습니까?")
+                .action(title: "취소", style: .cancel)
+                .action(title: "확인") { _ in
+                    self.dismiss(animated: true, completion: nil)
+                }
+                .present(to: self)
+            return
+        }
+        let score = numberOfCorrectAnswers()
+        if score == questions.count {
+            guard let userInfo = UserRecord.fetch().first else { return }
+            switch grade {
+            case 0:
+                UserRecord.update(userInfo, keyValue: ["passesDog": true])
+            case 1:
+                UserRecord.update(userInfo, keyValue: ["passesStudent": true])
+            case 2:
+                UserRecord.update(userInfo, keyValue: ["passesBoss": true])
+            default:
+                break
+            }
+            let myGrade = userInfo.grade
+            if myGrade != 2 {
+                UserRecord.update(userInfo, keyValue: ["grade": grade + 1])
+            }
+        }
+        self.dismiss(animated: true) {
+            self.delegate?.didDismissPromotionReviewViewController(self.grade)
+        }
     }
 }
 // MARK: - UIPageViewController DataSource Implementation

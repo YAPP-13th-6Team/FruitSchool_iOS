@@ -12,8 +12,8 @@
  */
 enum Grade: Int {
     case dog = 0
-    case student = 1
-    case teacher = 2
+    case student
+    case teacher
     var expression: String {
         switch self {
         case .dog:

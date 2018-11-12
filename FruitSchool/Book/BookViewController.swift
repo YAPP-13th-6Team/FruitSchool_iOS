@@ -146,7 +146,7 @@ extension BookViewController: UICollectionViewDelegate {
 private extension BookViewController {
     // 컬렉션뷰를 제외한 다른 모든 뷰를 다시 만듦
     func resetViews() {
-//        makeGaugeLabel()
+        makeGaugeLabel()
         makePercentLabel()
         makeDescriptionLabel()
         makePromotionReviewButton()
@@ -218,11 +218,7 @@ private extension BookViewController {
         label.tag = descriptionLabelTag
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.textColor = .main
-        if percentage == 1 {
-            label.text = "본 과정을 수료하였군. 축하하오!"
-        } else {
-            label.text = "화면을 비어보이지 않게 하는 디스크립션 레이블"
-        }
+        label.text = labelText()
         view.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         // 오토레이아웃 설정
@@ -241,16 +237,75 @@ private extension BookViewController {
             let button = UIButton(type: .system)
             button.tag = promotionReviewButtonTag
             button.setTitle("승급 심사", for: [])
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
             button.addTarget(self, action: #selector(didTouchUpPromotionReviewButton(_:)), for: .touchUpInside)
             button.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(button)
             // 오토레이아웃 설정
             NSLayoutConstraint.activate([
                 button.topAnchor.constraint(equalTo: percentLabel.bottomAnchor, constant: 40),
-                button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
-                button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+                button.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6),
+                button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                 button.heightAnchor.constraint(equalToConstant: 40)
                 ])
+            view.layoutIfNeeded()
+            button.clipsToBounds = true
+            button.layer.cornerRadius = button.bounds.height / 2
+            button.layer.borderColor = UIColor.main.cgColor
+            button.layer.borderWidth = 2
         }
+    }
+}
+
+private extension BookViewController {
+    func labelText() -> String? {
+        print(percentage)
+        guard let userInfo = UserRecord.fetch().first else { return nil }
+        let userGrade = userInfo.grade
+        switch percentage {
+        case 0:
+            if userGrade == currentCellIndex {
+                return "자, 지금부터 과일 카드를 모아볼까?"
+            } else if userGrade < currentCellIndex {
+                return "아직 당신에겐 수련이 필요하오."
+            }
+        case 0.5:
+            return "벌써 반이나 모았다고? 조금만 더 힘을 내게!"
+        case 0..<0.5, 0.5..<1:
+            
+            switch userGrade {
+            case 0:
+                return "훈장님이 되고싶개"
+            case 1:
+                return "훈장이 되고 싶소"
+            case 2:
+                return "나는 훈장이오 만렙이슈"
+            default:
+                break
+            }
+        case 1:
+            if currentCellIndex == 0 {
+                if userInfo.passesDog {
+                    return "드디어 사람이 되었개! 서당개 인생은 이제 안녕."
+                } else {
+                    return "당신은 이제 학도가 되기에 충분하개!"
+                }
+            } else if currentCellIndex == 1 {
+                if userInfo.passesStudent {
+                    return "나도 어디서 꿀리지 않는 과일인이 되었소."
+                } else {
+                    return "나는 훈장님이 되러 떠나겠어!"
+                }
+            } else if currentCellIndex == 2 {
+                if userInfo.passesBoss {
+                    return "과일학당 훈장이오. 무엇이든 물어보시오."
+                } else {
+                    return "앞으로도 많이 업데이트 할 예정이니 아직 지우지 말아주세요!"
+                }
+            }
+        default:
+            break
+        }
+        return nil
     }
 }

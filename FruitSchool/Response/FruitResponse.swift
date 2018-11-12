@@ -13,14 +13,14 @@ struct FruitResponse: Codable {
     struct Data: Codable {
         let id: String
         let title: String
+        let english: String
         let grade: Int
         let season: String
         let standardTip: StandardTip
         let nutritionTip: NutritionTip
-        let quizs: [QuestionResponse]
         enum CodingKeys: String, CodingKey {
             case id = "_id"
-            case title, grade, season, standardTip, nutritionTip, quizs
+            case title, english, grade, season, standardTip, nutritionTip
         }
     }
     let message: String

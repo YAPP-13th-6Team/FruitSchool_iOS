@@ -11,18 +11,26 @@ import UIKit
 class DetailImageCell: UITableViewCell {
 
     @IBOutlet weak var fruitImageView: UIImageView!
-    @IBOutlet weak var fruitTitleLabel: UILabel!
-    @IBOutlet weak var fruitGradeLabel: UILabel!
+    @IBOutlet weak var nthCardLabel: UILabel!
+    @IBOutlet weak var fruitNameLabel: UILabel!
+    @IBOutlet weak var englishLabel: UILabel!
+    @IBOutlet weak var gradeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = .gray
+        fruitImageView.image = UIImage(named: "detail_sample_image")
+        gradeLabel.backgroundColor = .white
+        gradeLabel.layer.cornerRadius = gradeLabel.bounds.height / 2
+        gradeLabel.clipsToBounds = true
     }
     
-    func setProperties(_ object: FruitResponse.Data?) {
+    func setProperties(_ object: FruitResponse.Data?, at index: Int) {
         guard let object = object else { return }
         fruitImageView.image = nil
-        fruitTitleLabel.text = object.title
-        fruitGradeLabel.text = Grade(rawValue: object.grade)?.expression
+        fruitNameLabel.text = object.title
+        englishLabel.text = object.english
+        nthCardLabel.text = (index + 1).toOrdinalExpression
+        gradeLabel.text = Grade(rawValue: object.grade)?.expression
     }
 }

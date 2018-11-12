@@ -14,25 +14,39 @@ class ChapterViewController: UIViewController {
     let cellIdentifier = "chapterCell"
     var fruits: [FruitListResponse.Data] = []
     let records = ChapterRecord.fetch()
+    var countLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // 내비게이션 타이틀에 들어갈 이미지 설정
+        let topImage = UIImageView()
+        topImage.contentMode = .scaleAspectFit
         switch grade {
         case 0:
-            navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "dog_top"))
+            topImage.image = UIImage(named: "dog_top")
         case 1:
-            navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "student_top"))
+            topImage.image = UIImage(named: "student_top")
         case 2:
-            navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "boss_top"))
+            topImage.image = UIImage(named: "boss_top")
         default:
             break
         }
+        navigationItem.titleView = topImage
         // 이전 버튼에 들어갈 문자열 설정
         let backBarButtonItem = UIBarButtonItem()
         backBarButtonItem.title = "과일목록"
         navigationItem.backBarButtonItem = backBarButtonItem
+        // 내비게이션 바 우측에 위치하는 레이블 초기화
+        countLabel = UILabel()
+        countLabel.translatesAutoresizingMaskIntoConstraints = false
+        if let navigationBar = navigationController?.navigationBar {
+            navigationBar.addSubview(countLabel)
+            NSLayoutConstraint.activate([
+                countLabel.trailingAnchor.constraint(equalTo: navigationBar.trailingAnchor, constant: -22),
+                countLabel.centerYAnchor.constraint(equalTo: navigationBar.centerYAnchor)
+                ])
+        }
         // 과일 목록 요청하기
         requestFruitList()
     }
@@ -64,9 +78,10 @@ extension ChapterViewController {
 // MARK: - ExerciseContainerViewController Custom Delegate Implementation
 extension ChapterViewController: ExerciseDelegate {
     // 과일 문제 풀이 종료 후 챕터로 돌아왔을 때의 인터렉션 정의
-    func didDismissExerciseViewController(_ fruitTitle: String) {
+    func didDismissExerciseViewController(fruitTitle: String, english: String) {
         guard let popup = UIViewController.instantiate(storyboard: "Popup", identifier: FruitCompletePopupViewController.classNameToString) as? FruitCompletePopupViewController else { return }
         popup.fruitTitle = fruitTitle
+        popup.english = english
         popup.grade = grade
         popup.handler = {
             self.collectionView.reloadSections(IndexSet(0...0))
@@ -79,20 +94,6 @@ extension ChapterViewController: ExerciseDelegate {
             }
         }
         present(popup, animated: true, completion: nil)
-//        UIAlertController
-//            .alert(title: "\(fruitTitle) 학습 완료!", message: nil)
-//            .action(title: "확인") { _ in
-//                self.requestFruitList()
-//                let filtered = self.records.filter("grade = %d", self.grade)
-//                let passed = filtered.filter("isPassed = true")
-//                if filtered.count == passed.count {
-//                    UIAlertController
-//                        .alert(title: "축하합니다!\n\(Grade(rawValue: self.grade)?.expression ?? "") 등급의 모든 문제를 풀었습니다.", message: nil)
-//                        .action(title: "확인")
-//                        .present(to: self)
-//                }
-//            }
-//            .present(to: self)
     }
 }
 // MARK: - UICollectionView DataSource Implementation
@@ -101,7 +102,7 @@ extension ChapterViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? ChapterCell else { return UICollectionViewCell() }
         let fruit = fruits[indexPath.item]
         guard let filteredRecord = records.filter("id = %@", fruit.id).first else { return UICollectionViewCell() }
-        cell.setProperties(fruit, isPassed: filteredRecord.isPassed)
+        cell.setProperties(fruit, grade: grade, isPassed: filteredRecord.isPassed)
         return cell
     }
     
@@ -130,6 +131,7 @@ extension ChapterViewController: UICollectionViewDelegate {
             next.delegate = self
             next.id = id
             next.fruitTitle = fruit.title
+            next.english = fruit.english
             self.present(next, animated: true, completion: nil)
         }
     }
@@ -137,12 +139,13 @@ extension ChapterViewController: UICollectionViewDelegate {
 // MARK: - UICollectionView DelegateFlowLayout Implementation
 extension ChapterViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = self.view.frame.width * 0.28
-        return CGSize(width: width, height: width * 134 / 109)
+        let width = (view.bounds.width - 30) / 3
+        //let width = self.view.frame.width * 0.28
+        return CGSize(width: width, height: width)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        return UIEdgeInsets(top: 0, left: 6, bottom: 0, right: 6)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

@@ -28,6 +28,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         requestFruitDetails()
     }
+    
     // 과일 세부 정보 요청하기
     private func requestFruitDetails() {
         IndicatorView.shared.showIndicator()
@@ -44,10 +45,13 @@ class DetailViewController: UIViewController {
             guard let response = response else { return }
             self.fruitResponse = response.data.first
             DispatchQueue.main.async { [weak self] in
-                self?.navigationItem.title = self?.fruitResponse?.title
                 self?.tableView.reloadData()
             }
         }
+    }
+    
+    @objc func backBarButtonDidTouchUp(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
     }
 }
 // MARK: - Button Touch Event
@@ -72,7 +76,7 @@ extension DetailViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers[section], for: indexPath)
         switch section {
         case 0:
-            (cell as? DetailImageCell)?.setProperties(fruitResponse)
+            (cell as? DetailImageCell)?.setProperties(fruitResponse, at: indexPath.row)
         case 1:
             (cell as? DetailStandardTipCell)?.setProperties(fruitResponse?.standardTip, at: indexPath.row)
         case 2:
@@ -143,16 +147,8 @@ extension DetailViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0:
-            return 250
-        case 1:
-            return UITableViewAutomaticDimension
-        case 2:
-            return 269
-        default:
-            return 0
-        }
+        guard indexPath.row == 0 else { return view.bounds.width }
+        return UITableViewAutomaticDimension
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
