@@ -19,7 +19,7 @@ class DetailImageCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = .gray
-        fruitImageView.image = UIImage(named: "detail_sample_image")
+        //fruitImageView.image = UIImage(named: "detail_sample_image")
         gradeLabel.backgroundColor = .white
         gradeLabel.layer.cornerRadius = gradeLabel.bounds.height / 2
         gradeLabel.clipsToBounds = true
@@ -27,7 +27,7 @@ class DetailImageCell: UITableViewCell {
     
     func setProperties(_ object: FruitResponse.Data?, at index: Int) {
         guard let object = object else { return }
-        fruitImageView.image = nil
+        fruitImageView.image = UIImage(named: "detail_sample_image")
         fruitNameLabel.text = object.title
         englishLabel.text = object.english
         nthCardLabel.text = (index + 1).toOrdinalExpression

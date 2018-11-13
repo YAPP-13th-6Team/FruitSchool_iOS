@@ -147,7 +147,7 @@ extension DetailViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard indexPath.row == 0 else { return view.bounds.width }
+        guard indexPath.section != 0 else { return view.bounds.width }
         return UITableViewAutomaticDimension
     }
     
