@@ -22,6 +22,7 @@ class DetailViewController: UIViewController {
         dummyView.backgroundColor = .white
         tableView.contentInset = UIEdgeInsets(top: -66, left: 0, bottom: 0, right: 0)
         view.addSubview(dummyView)
+        navigationController?.hidesBarsOnSwipe = true
         requestFruitDetails()
     }
     
