@@ -110,6 +110,9 @@ extension DetailViewController: UITableViewDelegate {
         if section == 0 || section == 1 {
             headerView.backgroundColor = .white
             return headerView
+        } else if section == 3 {
+            headerView.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
+            return headerView
         }
         headerView.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
         let titleLabel = UILabel()
