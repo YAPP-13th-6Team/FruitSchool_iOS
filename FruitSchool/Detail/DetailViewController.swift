@@ -13,11 +13,15 @@ class DetailViewController: UIViewController {
     var nth: Int = 0
     var id: String = ""
     var fruitResponse: FruitResponse.Data?
+    var dummyView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dummyView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
+        dummyView.backgroundColor = .white
         tableView.contentInset = UIEdgeInsets(top: -66, left: 0, bottom: 0, right: 0)
+        view.addSubview(dummyView)
         requestFruitDetails()
     }
     
@@ -37,6 +41,7 @@ class DetailViewController: UIViewController {
             guard let response = response else { return }
             self.fruitResponse = response.data.first
             DispatchQueue.main.async { [weak self] in
+                self?.dummyView.removeFromSuperview()
                 self?.tableView.reloadData()
             }
         }
@@ -50,12 +55,27 @@ extension DetailViewController: UITableViewDataSource {
         case 0:
             cell = tableView.dequeueReusableCell(withIdentifier: "detailImageCell", for: indexPath) as? DetailImageCell
             (cell as? DetailImageCell)?.setProperties(fruitResponse, at: nth)
-        case 1, 2:
-            cell = tableView.dequeueReusableCell(withIdentifier: "detailTitleAndContentCell", for: indexPath) as? DetailTitleAndContentCell
+        case 1:
+            cell = tableView.dequeueReusableCell(withIdentifier: "detailSeasonCell", for: indexPath)
+            let season = fruitResponse?.season ?? ""
+            let text = "\(fruitResponse?.title ?? "")의 제철은 \(season) 입니다."
+            let range = (text as NSString).range(of: season)
+            let attributedString = NSMutableAttributedString(string: text, attributes: [
+                .font: UIFont.systemFont(ofSize: 14, weight: .ultraLight),
+                .foregroundColor: #colorLiteral(red: 0.3254901961, green: 0.2784313725, blue: 0.2549019608, alpha: 1)
+                ])
+            let seasonAttribute: [NSAttributedString.Key: Any] = [
+                .font: UIFont.systemFont(ofSize: 14, weight: .medium),
+                .foregroundColor: #colorLiteral(red: 0.3254901961, green: 0.2784313725, blue: 0.2549019608, alpha: 1)
+            ]
+            attributedString.addAttributes(seasonAttribute, range: range)
+            cell?.textLabel?.attributedText = attributedString
+        case 2:
+            cell = tableView.dequeueReusableCell(withIdentifier: "detailTitleAndContentCell", for: indexPath) as? DetailStandardTipCell
             if indexPath.section == 2 {
                 cell?.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
             }
-            (cell as? DetailTitleAndContentCell)?.setProperties(fruitResponse, for: indexPath)
+            (cell as? DetailStandardTipCell)?.setProperties(fruitResponse, for: indexPath)
         case 3:
             cell = tableView.dequeueReusableCell(withIdentifier: "detailNutritionTipCell", for: indexPath) as? DetailNutritionTipCell
             cell?.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
@@ -137,9 +157,9 @@ extension DetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 1:
-            return 25
+            return 10
         case 2:
-            return 40
+            return 60
         default:
             return .leastNonzeroMagnitude
         }
@@ -147,12 +167,12 @@ extension DetailViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         switch section {
-        case 0:
-            return .leastNonzeroMagnitude
         case 1:
-            return 25
+            return 10
+        case 2:
+            return 20
         default:
-            return 40
+            return .leastNonzeroMagnitude
         }
     }
     
