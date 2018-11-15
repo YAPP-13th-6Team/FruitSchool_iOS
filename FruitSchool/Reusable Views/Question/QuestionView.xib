@@ -18,9 +18,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="1." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3BU-uN-Oc7">
-                    <rect key="frame" x="25" y="51" width="15" height="24"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                    <nil key="textColor"/>
+                    <rect key="frame" x="25" y="51" width="9.5" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                    <color key="textColor" red="0.34509803921568627" green="0.34509803921568627" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UCk-yG-lS5">
@@ -89,16 +89,16 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Question" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="3s4-a8-ivz">
-                    <rect key="frame" x="20" y="153" width="261" height="36"/>
-                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="30"/>
+                    <rect key="frame" x="20" y="160" width="261" height="29"/>
+                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="24"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wZE-Vc-xkO">
-                    <rect key="frame" x="330" y="51" width="25" height="25"/>
+                    <rect key="frame" x="339" y="51" width="16" height="16"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="25" id="PaH-gh-ud2"/>
-                        <constraint firstAttribute="height" constant="25" id="eSa-qw-LEh"/>
+                        <constraint firstAttribute="width" constant="16" id="PaH-gh-ud2"/>
+                        <constraint firstAttribute="height" constant="16" id="eSa-qw-LEh"/>
                     </constraints>
                     <state key="normal" image="cancel"/>
                 </button>

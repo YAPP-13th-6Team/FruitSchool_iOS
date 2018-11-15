@@ -14,7 +14,7 @@
         <scene sceneID="lnD-lc-Zkk">
             <objects>
                 <viewController storyboardIdentifier="PromotionReviewContainerViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zlO-Qw-cge" customClass="PromotionReviewContainerViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ZJL-Eu-wal">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="ZJL-Eu-wal">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

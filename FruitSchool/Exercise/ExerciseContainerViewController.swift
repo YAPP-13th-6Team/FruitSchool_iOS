@@ -117,8 +117,8 @@ class ExerciseContainerViewController: UIViewController {
         let question = questions[index]
         // 문제 뷰에 데이터 뿌리기
         questionView.numberLabel.text = "문제 \(index + 1)"
-        let attributedString = NSMutableAttributedString(string: question.title, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 30, weight: .ultraLight)])
-        let boldFontAttribute = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 30, weight: .medium)]
+        let attributedString = NSMutableAttributedString(string: question.title, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 24, weight: .ultraLight)])
+        let boldFontAttribute = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 24, weight: .medium)]
         let range = (question.title as NSString).range(of: question.fruitName)
         attributedString.addAttributes(boldFontAttribute, range: range)
         questionView.titleLabel.attributedText = attributedString

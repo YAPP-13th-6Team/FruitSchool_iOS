@@ -61,8 +61,8 @@ class NutritionView: UIView {
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.cgPath
-        shapeLayer.fillColor = UIColor.darkGray.cgColor
-        shapeLayer.strokeColor = UIColor.darkGray.cgColor
+        shapeLayer.fillColor = #colorLiteral(red: 0.4549019608, green: 0.3960784314, blue: 0.3960784314, alpha: 1)
+        shapeLayer.strokeColor = #colorLiteral(red: 0.4549019608, green: 0.3960784314, blue: 0.3960784314, alpha: 1)
         shapeLayer.lineWidth = 1.0
         
         self.alpha = 0.0

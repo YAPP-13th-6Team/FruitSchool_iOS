@@ -10,22 +10,14 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    var nth: Int = 0
     var id: String = ""
     var fruitResponse: FruitResponse.Data?
-    let cellIdentifiers = ["detailImageCell", "detailStandardTipCell", "detailNutritionTipCell"]
-    let sectionTitles = ["기본 정보", "영양 정보"]
-    // 기본 정보 섹션을 펼쳤는가
-    var springsStandardTipSection: Bool = false
-    // 영양 정보 섹션을 펼쳤는가
-    var springsNutritionTipSection: Bool = false
-    // 기본 정보 섹션 펼치기, 숨기기 버튼
-    var standardTipButton: UIButton!
-    // 영양 정보 섹션 펼치기, 숨기기 버튼
-    var nutritionTipButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.contentInset = UIEdgeInsets(top: -66, left: 0, bottom: 0, right: 0)
         requestFruitDetails()
     }
     
@@ -49,60 +41,42 @@ class DetailViewController: UIViewController {
             }
         }
     }
-    
-    @objc func backBarButtonDidTouchUp(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
-    }
-}
-// MARK: - Button Touch Event
-extension DetailViewController {
-    // 펼치기 숨기기 버튼 누르기 핸들러
-    @objc func touchUpHeaderButtons(_ sender: UIButton) {
-        switch sender.tag {
-        case 1:
-            springsStandardTipSection = !springsStandardTipSection
-        case 2:
-            springsNutritionTipSection = !springsNutritionTipSection
-        default:
-            break
-        }
-        tableView.reloadSections(IndexSet(integer: sender.tag), with: .automatic)
-    }
 }
 // MARK: - UITableView DataSource Implementation
 extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let section = indexPath.section
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers[section], for: indexPath)
-        switch section {
+        let cell: UITableViewCell?
+        switch indexPath.section {
         case 0:
-            (cell as? DetailImageCell)?.setProperties(fruitResponse, at: indexPath.row)
-        case 1:
-            (cell as? DetailStandardTipCell)?.setProperties(fruitResponse?.standardTip, at: indexPath.row)
-        case 2:
+            cell = tableView.dequeueReusableCell(withIdentifier: "detailImageCell", for: indexPath) as? DetailImageCell
+            (cell as? DetailImageCell)?.setProperties(fruitResponse, at: nth)
+        case 1, 2:
+            cell = tableView.dequeueReusableCell(withIdentifier: "detailTitleAndContentCell", for: indexPath) as? DetailTitleAndContentCell
+            if indexPath.section == 2 {
+                cell?.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
+            }
+            (cell as? DetailTitleAndContentCell)?.setProperties(fruitResponse, for: indexPath)
+        case 3:
+            cell = tableView.dequeueReusableCell(withIdentifier: "detailNutritionTipCell", for: indexPath) as? DetailNutritionTipCell
+            cell?.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
             (cell as? DetailNutritionTipCell)?.setProperties(fruitResponse?.nutritionTip)
         default:
-            break
+            cell = UITableViewCell()
         }
-        return cell
+        return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0:
-            return 1
-        case 1 where springsStandardTipSection:
+        case 2:
             return fruitResponse?.standardTip.validCount ?? 0
-        case 2 where springsNutritionTipSection:
-            return 1
         default:
-            break
+            return 1
         }
-        return 0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
 }
 // MARK: - UITableView Delegate Implementation
@@ -112,38 +86,47 @@ extension DetailViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 { return nil }
-        // 섹션 헤더 버튼 동적 생성
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 40))
-        view.backgroundColor = .white
-        let titleLabel = UILabel()
-        let dropButton = UIButton(type: .system)
-        view.addSubview(titleLabel)
-        view.addSubview(dropButton)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        dropButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            dropButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            dropButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
-            ])
-        dropButton.tag = section
-        titleLabel.text = sectionTitles[section - 1]
-        dropButton.setTitle("not selected", for: .normal)
-        dropButton.setTitle("selected", for: .selected)
-        dropButton.addTarget(self, action: #selector(touchUpHeaderButtons(_:)), for: .touchUpInside)
-        switch section {
-        case 1:
-            standardTipButton = dropButton
-            standardTipButton.isSelected = springsStandardTipSection
-        case 2:
-            nutritionTipButton = dropButton
-            nutritionTipButton.isSelected = springsNutritionTipSection
-        default:
-            break
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 40))
+        if section == 0 || section == 1 {
+            headerView.backgroundColor = .white
+            return headerView
         }
-        return view
+        headerView.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
+        let titleLabel = UILabel()
+        titleLabel.textColor = #colorLiteral(red: 0.7098039216, green: 0.662745098, blue: 0.6392156863, alpha: 1)
+        titleLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        headerView.addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            titleLabel.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 16)
+            ])
+        if section == 2 {
+            titleLabel.text = "기본정보"
+        } else if section == 3 {
+            titleLabel.text = ""
+        }
+        let line = UILabel()
+        line.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.8862745098, blue: 0.862745098, alpha: 1)
+        headerView.addSubview(line)
+        line.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            line.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
+            line.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -16),
+            line.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 18),
+            line.heightAnchor.constraint(equalToConstant: 1)
+            ])
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 40))
+        if section == 1 {
+            footerView.backgroundColor = .white
+        } else {
+            footerView.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
+        }
+        return footerView
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -152,12 +135,25 @@ extension DetailViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 { return .leastNonzeroMagnitude }
-        return 40
+        switch section {
+        case 1:
+            return 25
+        case 2:
+            return 40
+        default:
+            return .leastNonzeroMagnitude
+        }
     }
-    
+
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return .leastNonzeroMagnitude
+        switch section {
+        case 0:
+            return .leastNonzeroMagnitude
+        case 1:
+            return 25
+        default:
+            return 40
+        }
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
