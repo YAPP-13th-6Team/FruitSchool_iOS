@@ -49,26 +49,26 @@ class BackView: UIView {
         let shapeLayer1 = CAShapeLayer()
         shapeLayer1.path = path1.cgPath
         shapeLayer1.fillColor = UIColor.white.cgColor
-        shapeLayer1.strokeColor = UIColor.lightGray.cgColor
-        shapeLayer1.lineWidth = 1.0
+        shapeLayer1.strokeColor = #colorLiteral(red: 0.4549019608, green: 0.3960784314, blue: 0.3960784314, alpha: 1)
+        shapeLayer1.lineWidth = 0.5
         
         let shapeLayer2 = CAShapeLayer()
         shapeLayer2.path = path2.cgPath
         shapeLayer2.fillColor = UIColor.white.cgColor
-        shapeLayer2.strokeColor = UIColor.lightGray.cgColor
-        shapeLayer2.lineWidth = 1.0
+        shapeLayer2.strokeColor = #colorLiteral(red: 0.4549019608, green: 0.3960784314, blue: 0.3960784314, alpha: 1)
+        shapeLayer2.lineWidth = 0.5
         
         let shapeLayer3 = CAShapeLayer()
         shapeLayer3.path = path3.cgPath
         shapeLayer3.fillColor = UIColor.white.cgColor
-        shapeLayer3.strokeColor = UIColor.lightGray.cgColor
-        shapeLayer3.lineWidth = 1.0
+        shapeLayer3.strokeColor = #colorLiteral(red: 0.4549019608, green: 0.3960784314, blue: 0.3960784314, alpha: 1)
+        shapeLayer3.lineWidth = 0.5
         
         let shapeLayer4 = CAShapeLayer()
         shapeLayer4.path = path4.cgPath
         shapeLayer4.fillColor = UIColor.white.cgColor
-        shapeLayer4.strokeColor = UIColor.lightGray.cgColor
-        shapeLayer4.lineWidth = 1.0
+        shapeLayer4.strokeColor = #colorLiteral(red: 0.4549019608, green: 0.3960784314, blue: 0.3960784314, alpha: 1)
+        shapeLayer4.lineWidth = 0.5
         
         self.layer.addSublayer(shapeLayer1)
         self.layer.addSublayer(shapeLayer2)
@@ -87,8 +87,8 @@ class BackView: UIView {
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path1.cgPath
-        shapeLayer.strokeColor = UIColor.lightGray.cgColor
-        shapeLayer.lineWidth = 1.0
+        shapeLayer.strokeColor = #colorLiteral(red: 0.4549019608, green: 0.3960784314, blue: 0.3960784314, alpha: 1)
+        shapeLayer.lineWidth = 0.5
         
         self.layer.addSublayer(shapeLayer)
     }
@@ -104,8 +104,8 @@ class BackView: UIView {
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path1.cgPath
-        shapeLayer.strokeColor = UIColor.lightGray.cgColor
-        shapeLayer.lineWidth = 1.0
+        shapeLayer.strokeColor = #colorLiteral(red: 0.4549019608, green: 0.3960784314, blue: 0.3960784314, alpha: 1)
+        shapeLayer.lineWidth = 0.5
         
         self.layer.addSublayer(shapeLayer)
     }
@@ -121,8 +121,8 @@ class BackView: UIView {
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path1.cgPath
-        shapeLayer.strokeColor = UIColor.lightGray.cgColor
-        shapeLayer.lineWidth = 1.0
+        shapeLayer.strokeColor = #colorLiteral(red: 0.4549019608, green: 0.3960784314, blue: 0.3960784314, alpha: 1)
+        shapeLayer.lineWidth = 0.5
         
         self.layer.addSublayer(shapeLayer)
     }

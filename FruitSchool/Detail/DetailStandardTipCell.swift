@@ -1,23 +1,35 @@
 //
-//  DetailBasicInfoCell.swift
+//  DetailTitleAndContentCell.swift
 //  FruitSchool
 //
-//  Created by Presto on 2018. 9. 17..
-//  Copyright © 2018년 YAPP. All rights reserved.
+//  Created by Presto on 15/11/2018.
+//  Copyright © 2018 YAPP. All rights reserved.
 //
 
 import UIKit
 
 class DetailStandardTipCell: UITableViewCell {
 
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var contentLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func setProperties(_ object: StandardTip?, at row: Int) {
-        guard let object = object else { return }
-        let tip = object.tips[row]
-        textLabel?.text = tip.title
-        detailTextLabel?.text = tip.content
+    func setProperties(_ object: FruitResponse.Data?, for indexPath: IndexPath) {
+        let section = indexPath.section
+        let row = indexPath.row
+        switch section {
+        case 1:
+            titleLabel.text = "제철"
+            contentLabel.text = object?.season
+        case 2:
+            guard let tip = object?.standardTip.tips[row] else { return }
+            titleLabel.text = tip.title
+            contentLabel.text = tip.content
+        default:
+            break
+        }
     }
 }

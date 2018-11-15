@@ -17,10 +17,6 @@ class ChapterCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         imageView.backgroundColor = .gray
-        //imageView.layer.cornerRadius = 5
-        imageView.clipsToBounds = true
-        //layer.cornerRadius = 5
-        layer.masksToBounds = true
     }
     
     override func prepareForReuse() {
@@ -31,7 +27,7 @@ class ChapterCell: UICollectionViewCell {
     }
     
     func setProperties(_ object: FruitListResponse.Data, grade: Int, isPassed: Bool) {
-        imageView.image = UIImage(named: object.english.toImageName(grade: grade))
+        imageView.image = UIImage(named: object.english.toImageName(grade: grade, isDetail: false))
         if !isPassed {
             let blurEffect = UIBlurEffect(style: .prominent)
             blurView = UIVisualEffectView(effect: blurEffect)

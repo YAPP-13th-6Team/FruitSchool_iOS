@@ -7,8 +7,11 @@
 //
 
 extension String {
-    func toImageName(grade: Int) -> String {
+    func toImageName(grade: Int, isDetail: Bool) -> String {
         var result = ""
+        if isDetail {
+            result += "detail_"
+        }
         switch grade {
         case 0:
             result += "dog_"
