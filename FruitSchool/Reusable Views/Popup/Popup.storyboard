@@ -14,7 +14,7 @@
         <scene sceneID="E9w-xB-qGG">
             <objects>
                 <viewController storyboardIdentifier="ChapterFinishPopupViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aFL-Gf-rfI" customClass="ChapterFinishPopupViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="VaL-DJ-Yyx">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="VaL-DJ-Yyx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -108,7 +108,7 @@
         <scene sceneID="Te9-Ow-Puv">
             <objects>
                 <viewController storyboardIdentifier="FruitCompletePopupViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vo2-WC-BEy" customClass="FruitCompletePopupViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="BQE-63-5g3">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="BQE-63-5g3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

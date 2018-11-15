@@ -125,14 +125,15 @@ extension ChapterViewController: UICollectionViewDelegate {
         if isPassed {
             guard let next = UIViewController.instantiate(storyboard: "Detail", identifier: DetailViewController.classNameToString) as? DetailViewController else { return }
             next.id = id
-            self.navigationController?.pushViewController(next, animated: true)
+            next.nth = indexPath.item + 1
+            navigationController?.pushViewController(next, animated: true)
         } else {
             guard let next = UIViewController.instantiate(storyboard: "Exercise", identifier: ExerciseContainerViewController.classNameToString) as? ExerciseContainerViewController else { return }
             next.delegate = self
             next.id = id
             next.fruitTitle = fruit.title
             next.english = fruit.english
-            self.present(next, animated: true, completion: nil)
+            present(next, animated: true, completion: nil)
         }
     }
 }

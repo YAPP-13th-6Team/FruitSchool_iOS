@@ -14,7 +14,7 @@
         <scene sceneID="tLT-SQ-2w1">
             <objects>
                 <viewController storyboardIdentifier="ExerciseContainerViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LDZ-DX-JeE" customClass="ExerciseContainerViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="tcr-YL-klx">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="tcr-YL-klx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
