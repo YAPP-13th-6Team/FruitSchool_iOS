@@ -14,6 +14,7 @@ class DetailViewController: UIViewController {
     var id: String = ""
     var fruitResponse: FruitResponse.Data?
     var dummyView: UIView!
+    let statusBar: UIView = (UIApplication.shared.value(forKey: "statusBar") as? UIView)!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -23,6 +24,22 @@ class DetailViewController: UIViewController {
         tableView.contentInset = UIEdgeInsets(top: -66, left: 0, bottom: 0, right: 0)
         view.addSubview(dummyView)
         requestFruitDetails()
+    }
+    
+    // 스크롤시 네비바 불투명하게
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offset = scrollView.contentOffset.y / 200
+        if offset > 1 {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.navigationController?.navigationBar.backgroundColor = .white
+                self.statusBar.backgroundColor = .white
+            })
+        } else {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.navigationController?.navigationBar.backgroundColor = .clear
+                self.statusBar.backgroundColor = .clear
+                })
+        }
     }
     
     // 과일 세부 정보 요청하기
