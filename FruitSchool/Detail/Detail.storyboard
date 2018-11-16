@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iwA-P7-KGA">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iwA-P7-KGA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="detailImageCell" rowHeight="375" id="iXZ-Og-H3q" customClass="DetailImageCell" customModule="FruitSchool" customModuleProvider="target">
@@ -216,7 +216,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="VSg-pX-p0L" firstAttribute="trailing" secondItem="iwA-P7-KGA" secondAttribute="trailing" id="17U-El-xzU"/>
-                            <constraint firstItem="iwA-P7-KGA" firstAttribute="top" secondItem="VSg-pX-p0L" secondAttribute="top" id="ShS-BI-p5W"/>
+                            <constraint firstItem="iwA-P7-KGA" firstAttribute="top" secondItem="MVa-PT-I5q" secondAttribute="top" id="ShS-BI-p5W"/>
                             <constraint firstItem="iwA-P7-KGA" firstAttribute="leading" secondItem="VSg-pX-p0L" secondAttribute="leading" id="UeJ-F9-Msf"/>
                             <constraint firstItem="VSg-pX-p0L" firstAttribute="bottom" secondItem="iwA-P7-KGA" secondAttribute="bottom" id="h7H-2w-gxc"/>
                         </constraints>
