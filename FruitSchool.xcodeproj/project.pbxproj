@@ -57,8 +57,6 @@
 		19E70828216941B700C6F452 /* UserRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E70827216941B700C6F452 /* UserRecord.swift */; };
 		19FCF2402160FE9600BCC3F7 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FCF23F2160FE9600BCC3F7 /* Grade.swift */; };
 		9E51A59652BFAA932928067F /* Pods_FruitSchool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F105C82803FFC63FD567EBBB /* Pods_FruitSchool.framework */; };
-		DB0B11D321847CD60030B00D /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0B11D221847CD60030B00D /* CarouselView.swift */; };
-		DB0B11D521847CFD0030B00D /* PagingPerCellFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0B11D421847CFD0030B00D /* PagingPerCellFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,8 +113,6 @@
 		19FCF23F2160FE9600BCC3F7 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		AE308E65D83414C1D0945E8F /* Pods-FruitSchool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.release.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.release.xcconfig"; sourceTree = "<group>"; };
 		DA48AB07292D5B1D20B98DFD /* Pods-FruitSchool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FruitSchool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FruitSchool/Pods-FruitSchool.debug.xcconfig"; sourceTree = "<group>"; };
-		DB0B11D221847CD60030B00D /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
-		DB0B11D421847CFD0030B00D /* PagingPerCellFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingPerCellFlowLayout.swift; sourceTree = "<group>"; };
 		F105C82803FFC63FD567EBBB /* Pods_FruitSchool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FruitSchool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -255,8 +251,6 @@
 				19E274D32144DA7600E2F6D2 /* BookViewController.swift */,
 				1991DBED21A28800009A4C93 /* BookCell.xib */,
 				1991DBEE21A28800009A4C93 /* BookCell.swift */,
-				DB0B11D221847CD60030B00D /* CarouselView.swift */,
-				DB0B11D421847CFD0030B00D /* PagingPerCellFlowLayout.swift */,
 			);
 			path = Book;
 			sourceTree = "<group>";
@@ -500,7 +494,6 @@
 				1947C56C214F2E1500BF6521 /* DetailViewController.swift in Sources */,
 				1947C562214F2B7800BF6521 /* ChapterCell.swift in Sources */,
 				19E274C92144D75300E2F6D2 /* API+Fruit.swift in Sources */,
-				DB0B11D321847CD60030B00D /* CarouselView.swift in Sources */,
 				1971E87C216A6902001378CA /* PromotionReviewContainerViewController.swift in Sources */,
 				191F02452157E8CC008EA81C /* DetailNutritionTipCell.swift in Sources */,
 				192366542165D7F30043F9BB /* BackView.swift in Sources */,
@@ -514,7 +507,6 @@
 				19DE4AA62168F5FB000C412A /* Question.swift in Sources */,
 				19DE4AAC21691E0F000C412A /* API+Base.swift in Sources */,
 				190F74A6213E33850038234A /* UIViewController+.swift in Sources */,
-				DB0B11D521847CFD0030B00D /* PagingPerCellFlowLayout.swift in Sources */,
 				194BF414219D265700FA6124 /* DetailStandardTipCell.swift in Sources */,
 				1947C570214F2F2600BF6521 /* DetailImageCell.swift in Sources */,
 				192366552165D7F30043F9BB /* NutritionView.swift in Sources */,
@@ -657,7 +649,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H79MF628K3;
+				DEVELOPMENT_TEAM = 9RVFJQPN7Q;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -690,7 +682,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = H79MF628K3;
+				DEVELOPMENT_TEAM = 9RVFJQPN7Q;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

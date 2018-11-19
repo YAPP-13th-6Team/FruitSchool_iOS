@@ -224,7 +224,7 @@ extension ExerciseContainerViewController {
 extension ExerciseContainerViewController: QuestionViewDelegate {
     func questionButtonsDidTouchUp(_ sender: UIButton) {
         let currentPageIndex = pageControl.currentPage
-        guard let questionView = (pageViewController.viewControllers?[currentPageIndex] as? ExerciseContentViewController)?.questionView else { return }
+        guard let questionView = (pageViewController.viewControllers?.first as? ExerciseContentViewController)?.questionView else { return }
         guard let title = sender.titleLabel?.text else { return }
         // 사용자가 선택한 보기를 answers 전역프로퍼티에 할당하고, 선택된 효과를 주기
         self.answers[currentPageIndex] = title

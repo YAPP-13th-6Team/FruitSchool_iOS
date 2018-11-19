@@ -22,14 +22,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UAZ-n2-heH" customClass="FSPagerView" customModule="FSPagerView">
-                                <rect key="frame" x="0.0" y="35.999999999999972" width="375" height="478.33333333333326"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="478.33333333333331"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="UAZ-n2-heH" secondAttribute="height" multiplier="312:398" id="7ol-Hb-9B6"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXR-Iz-acW">
-                                <rect key="frame" x="56.333333333333343" y="534.33333333333337" width="262.33333333333326" height="6"/>
+                                <rect key="frame" x="56.333333333333343" y="498.33333333333337" width="262.33333333333326" height="6"/>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="6" id="9fa-Xz-Yyh"/>
@@ -49,7 +49,7 @@
                             <constraint firstAttribute="bottom" secondItem="2lY-sc-1X6" secondAttribute="bottom" id="mfh-0w-uFV"/>
                             <constraint firstItem="wXR-Iz-acW" firstAttribute="width" secondItem="dF1-P7-Oh5" secondAttribute="width" multiplier="0.7" id="nHR-Wz-n8R"/>
                             <constraint firstItem="UAZ-n2-heH" firstAttribute="leading" secondItem="r5v-UU-R6S" secondAttribute="leading" id="qeZ-8G-Okc"/>
-                            <constraint firstItem="UAZ-n2-heH" firstAttribute="top" secondItem="r5v-UU-R6S" secondAttribute="top" constant="36" id="vFz-Ri-bQa"/>
+                            <constraint firstItem="UAZ-n2-heH" firstAttribute="top" secondItem="r5v-UU-R6S" secondAttribute="top" id="vFz-Ri-bQa"/>
                             <constraint firstItem="r5v-UU-R6S" firstAttribute="trailing" secondItem="UAZ-n2-heH" secondAttribute="trailing" id="yQI-At-E8S"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="r5v-UU-R6S"/>

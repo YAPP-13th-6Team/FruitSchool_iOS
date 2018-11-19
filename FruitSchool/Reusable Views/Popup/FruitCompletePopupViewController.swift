@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class FruitCompletePopupViewController: UIViewController {
 
@@ -62,20 +63,17 @@ class FruitCompletePopupViewController: UIViewController {
         let blurEffect = UIBlurEffect(style: .prominent)
         blurView = UIVisualEffectView(effect: blurEffect)
         imageView.addSubview(blurView)
-        blurView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            blurView.topAnchor.constraint(equalTo: imageView.topAnchor),
-            blurView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
-            blurView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
-            blurView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor)
-            ])
+        blurView.snp.makeConstraints { maker in
+            maker.top.equalTo(imageView.snp.top)
+            maker.leading.equalTo(imageView.snp.leading)
+            maker.trailing.equalTo(imageView.snp.trailing)
+            maker.bottom.equalTo(imageView.snp.bottom)
+        }
         lockImageView = UIImageView(image: #imageLiteral(resourceName: "lock"))
         imageView.addSubview(lockImageView)
-        lockImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            lockImageView.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
-            lockImageView.centerYAnchor.constraint(equalTo: imageView.centerYAnchor)
-            ])
+        lockImageView.snp.makeConstraints { maker in
+            maker.center.equalTo(imageView.snp.center)
+        }
         confirmButton.addTarget(self, action: #selector(confirmButtonDidTouchUp(_:)), for: .touchUpInside)
     }
 }

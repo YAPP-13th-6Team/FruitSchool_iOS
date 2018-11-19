@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 import SVProgressHUD
 
 class ChapterViewController: UIViewController {
@@ -40,13 +41,12 @@ class ChapterViewController: UIViewController {
         navigationItem.backBarButtonItem = backBarButtonItem
         // 내비게이션 바 우측에 위치하는 레이블 초기화
         countLabel = UILabel()
-        countLabel.translatesAutoresizingMaskIntoConstraints = false
         if let navigationBar = navigationController?.navigationBar {
             navigationBar.addSubview(countLabel)
-            NSLayoutConstraint.activate([
-                countLabel.trailingAnchor.constraint(equalTo: navigationBar.trailingAnchor, constant: -22),
-                countLabel.centerYAnchor.constraint(equalTo: navigationBar.centerYAnchor)
-                ])
+            countLabel.snp.makeConstraints { maker in
+                maker.trailing.equalTo(navigationBar.snp.trailing).offset(-22)
+                maker.centerY.equalTo(navigationBar.snp.centerY)
+            }
         }
         // 과일 목록 요청하기
         requestFruitList()

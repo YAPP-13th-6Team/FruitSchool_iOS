@@ -310,6 +310,8 @@ private extension BookViewController {
                 maker.height.equalTo(40)
             }
             view.layoutIfNeeded()
+            button.clipsToBounds = true
+            button.layer.cornerRadius = button.bounds.height / 2
         }
     }
 }
