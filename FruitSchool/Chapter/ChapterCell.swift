@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ChapterCell: UICollectionViewCell {
 
@@ -32,22 +33,19 @@ class ChapterCell: UICollectionViewCell {
             let blurEffect = UIBlurEffect(style: .prominent)
             blurView = UIVisualEffectView(effect: blurEffect)
             guard let blurView = blurView else { return }
-            blurView.translatesAutoresizingMaskIntoConstraints = false
             addSubview(blurView)
-            NSLayoutConstraint.activate([
-                blurView.leadingAnchor.constraint(equalTo: leadingAnchor),
-                blurView.topAnchor.constraint(equalTo: topAnchor),
-                blurView.trailingAnchor.constraint(equalTo: trailingAnchor),
-                blurView.bottomAnchor.constraint(equalTo: bottomAnchor)
-                ])
+            blurView.snp.makeConstraints { maker in
+                maker.leading.equalTo(snp.leading)
+                maker.top.equalTo(snp.top)
+                maker.trailing.equalTo(snp.trailing)
+                maker.bottom.equalTo(snp.bottom)
+            }
             lockImageView = UIImageView(image: #imageLiteral(resourceName: "lock"))
             guard let lockImageView = lockImageView else { return }
-            lockImageView.translatesAutoresizingMaskIntoConstraints = false
             addSubview(lockImageView)
-            NSLayoutConstraint.activate([
-                lockImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-                lockImageView.centerYAnchor.constraint(equalTo: centerYAnchor)
-                ])
+            lockImageView.snp.makeConstraints { maker in
+                maker.center.equalTo(snp.center)
+            }
         }
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 // 과일 문제 풀이 뷰컨트롤러의 상태를 다른 뷰컨트롤러에 전달하기 위한 커스텀 델리게이트 정의
 protocol ExerciseDelegate: class {
@@ -48,9 +49,9 @@ class ExerciseContainerViewController: UIViewController {
     }
     // 문제 만들기
     private func makeQuestions() {
-        IndicatorView.shared.showIndicator()
+        SVProgressHUD.show()
         API.requestExercises(by: id) { response, _, error in
-            IndicatorView.shared.hideIndicator()
+            SVProgressHUD.dismiss()
             if let error = error {
                 DispatchQueue.main.async { [weak self] in
                     UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription, handler: {
@@ -190,6 +191,18 @@ extension ExerciseContainerViewController {
                 }, completion: { _ in
                     self.submitButton.isHidden = true
                 })
+                Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
+                    let score = self.numberOfCorrectAnswers()
+                    if score == self.questions.count {
+                        guard let record = ChapterRecord.fetch().filter("id = %@", self.id).first else { return }
+                        ChapterRecord.update(record, keyValue: ["isPassed": true])
+                        self.dismiss(animated: true) {
+                            self.delegate?.didDismissExerciseViewController(fruitTitle: self.fruitTitle, english: self.english)
+                        }
+                    } else {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                })
             }
             .action(title: "취소", style: .cancel)
             .present(to: self)
@@ -211,7 +224,7 @@ extension ExerciseContainerViewController {
 extension ExerciseContainerViewController: QuestionViewDelegate {
     func questionButtonsDidTouchUp(_ sender: UIButton) {
         let currentPageIndex = pageControl.currentPage
-        guard let questionView = (pageViewController.viewControllers?[currentPageIndex] as? ExerciseContentViewController)?.questionView else { return }
+        guard let questionView = (pageViewController.viewControllers?.first as? ExerciseContentViewController)?.questionView else { return }
         guard let title = sender.titleLabel?.text else { return }
         // 사용자가 선택한 보기를 answers 전역프로퍼티에 할당하고, 선택된 효과를 주기
         self.answers[currentPageIndex] = title

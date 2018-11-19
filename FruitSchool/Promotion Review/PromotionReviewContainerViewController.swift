@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 // 승급심사 뷰컨트롤러의 상태를 다른 뷰컨트롤러에 전달하기 위한 커스텀 델리게이트 정의
 protocol PromotionReviewDelegate: class {
@@ -46,9 +47,9 @@ class PromotionReviewContainerViewController: UIViewController {
     }
     
     private func makeQuestions() {
-        IndicatorView.shared.showIndicator()
+        SVProgressHUD.show()
         API.requestExam(by: grade) { response, _, error in
-            IndicatorView.shared.hideIndicator()
+            SVProgressHUD.dismiss()
             if let error = error {
                 DispatchQueue.main.async { [weak self] in
                     UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription, handler: {

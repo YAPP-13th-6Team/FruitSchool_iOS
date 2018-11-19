@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class PromotionReviewContentViewController: UIViewController {
 
@@ -29,12 +30,11 @@ class PromotionReviewContentViewController: UIViewController {
             questionView = UIView.instantiateFromXib(xibName: "QuestionView") as? QuestionView
         }
         view.addSubview(questionView)
-        questionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            questionView.topAnchor.constraint(equalTo: view.topAnchor),
-            questionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            questionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            questionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            ])
+        questionView.snp.makeConstraints { maker in
+            maker.top.equalTo(view.snp.top)
+            maker.leading.equalTo(view.snp.leading)
+            maker.trailing.equalTo(view.snp.trailing)
+            maker.bottom.equalTo(view.snp.bottom)
+        }
     }
 }

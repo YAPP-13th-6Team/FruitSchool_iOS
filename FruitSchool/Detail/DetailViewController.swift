@@ -7,20 +7,30 @@
 //
 
 import UIKit
+import SnapKit
+import SVProgressHUD
 
 class DetailViewController: UIViewController {
 
     var nth: Int = 0
     var id: String = ""
     var fruitResponse: FruitResponse.Data?
-    var dummyView: UIView!
-    let statusBar: UIView = (UIApplication.shared.value(forKey: "statusBar") as? UIView)!
+    lazy var dummyView: UIView = {
+        let dummyView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
+        dummyView.backgroundColor = .white
+        return dummyView
+    }()
+    lazy var statusBarView: UIView = {
+        let statusBarView = UIView(frame: UIApplication.shared.statusBarFrame)
+        statusBarView.backgroundColor = .white
+        statusBarView.alpha = 0
+        view.addSubview(statusBarView)
+        return statusBarView
+    }()
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dummyView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
-        dummyView.backgroundColor = .white
         tableView.contentInset = UIEdgeInsets(top: -66, left: 0, bottom: 0, right: 0)
         view.addSubview(dummyView)
         requestFruitDetails()
@@ -32,21 +42,26 @@ class DetailViewController: UIViewController {
         if offset > 1 {
             UIView.animate(withDuration: 0.2, animations: {
                 self.navigationController?.navigationBar.backgroundColor = .white
-                self.statusBar.backgroundColor = .white
+                self.statusBarView.alpha = 1
             })
         } else {
             UIView.animate(withDuration: 0.2, animations: {
                 self.navigationController?.navigationBar.backgroundColor = .clear
-                self.statusBar.backgroundColor = .clear
+                self.statusBarView.alpha = 0
                 })
         }
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationController?.navigationBar.backgroundColor = .clear
+    }
+    
     // 과일 세부 정보 요청하기
     private func requestFruitDetails() {
-        IndicatorView.shared.showIndicator()
+        SVProgressHUD.show()
         API.requestFruit(by: id) { response, _, error in
-            IndicatorView.shared.hideIndicator()
+            SVProgressHUD.dismiss()
             if let error = error {
                 DispatchQueue.main.async { [weak self] in
                     UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription, handler: {
@@ -132,40 +147,39 @@ extension DetailViewController: UITableViewDelegate {
             return headerView
         }
         headerView.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
-        let titleLabel = UILabel()
-        titleLabel.textColor = #colorLiteral(red: 0.7098039216, green: 0.662745098, blue: 0.6392156863, alpha: 1)
-        titleLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
-        headerView.addSubview(titleLabel)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            titleLabel.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 16)
-            ])
-        if section == 2 {
-            titleLabel.text = "기본정보"
-        } else if section == 3 {
-            titleLabel.text = ""
+        let titleLabel: UILabel = {
+            let label = UILabel()
+            label.textColor = #colorLiteral(red: 0.7098039216, green: 0.662745098, blue: 0.6392156863, alpha: 1)
+            label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+            if section == 2 {
+                label.text = "기본정보"
+            }
+            headerView.addSubview(label)
+            return label
+        }()
+        titleLabel.snp.makeConstraints { maker in
+            maker.centerY.equalTo(headerView.snp.centerY)
+            maker.leading.equalTo(headerView.snp.leading).offset(16)
+            maker.width.equalTo(60)
         }
-        let line = UILabel()
-        line.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.8862745098, blue: 0.862745098, alpha: 1)
-        headerView.addSubview(line)
-        line.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            line.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
-            line.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -16),
-            line.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 18),
-            line.heightAnchor.constraint(equalToConstant: 1)
-            ])
+        let line: UILabel = {
+            let label = UILabel()
+            label.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.8862745098, blue: 0.862745098, alpha: 1)
+            headerView.addSubview(label)
+            return label
+        }()
+        line.snp.makeConstraints { maker in
+            maker.centerY.equalTo(headerView.snp.centerY)
+            maker.trailing.equalTo(headerView.snp.trailing)
+            maker.leading.equalTo(titleLabel.snp.trailing).offset(16)
+            maker.height.equalTo(1)
+        }
         return headerView
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 40))
-        if section == 1 {
-            footerView.backgroundColor = .white
-        } else {
-            footerView.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
-        }
+        footerView.backgroundColor = section == 1 ? .white : #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
         return footerView
     }
     
