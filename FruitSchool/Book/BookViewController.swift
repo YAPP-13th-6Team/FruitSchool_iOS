@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FSPagerView
 import SnapKit
 
 class BookViewController: UIViewController {
@@ -28,7 +29,15 @@ class BookViewController: UIViewController {
     // 달성률을 표시하는 레이블은 전역 프로퍼티에 할당하여 사용
     var percentLabel: UILabel!
     @IBOutlet weak var backgroundGaugeView: UILabel!
-    @IBOutlet weak var collectionView: CarouselView!
+    @IBOutlet weak var pagerView: FSPagerView! {
+        didSet {
+            pagerView.register(UINib(nibName: "BookCell", bundle: nil), forCellWithReuseIdentifier: "bookCell")
+            pagerView.transformer = FSPagerViewTransformer(type: .linear)
+            pagerView.interitemSpacing = 6
+            pagerView.delegate = self
+            pagerView.dataSource = self
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +47,26 @@ class BookViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         resetViews()
-        collectionView.reloadSections(IndexSet(0...0))
-        collectionView.scrollToFirstItem()
+        pagerView.reloadData()
+        pagerView.scrollToItem(at: 0, animated: true)
     }
     
     private func setup() {
+        let pageControl: FSPageControl = {
+            let pageControl = FSPageControl(frame: .zero)
+            pageControl.currentPage = 0
+            pageControl.numberOfPages = 3
+            pageControl.setFillColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.19), for: .normal)
+            pageControl.setFillColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.68), for: .selected)
+            pagerView.addSubview(pageControl)
+            return pageControl
+            
+        }()
+        pageControl.snp.makeConstraints { maker in
+            maker.bottom.equalTo(pagerView.snp.bottom).offset(-8)
+            maker.centerX.equalTo(view.snp.centerX)
+            maker.height.equalTo(20)
+        }
         let backBarButtonItem = UIBarButtonItem()
         backBarButtonItem.title = "교과서"
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIImageView(image: #imageLiteral(resourceName: "logo_noncircle")))
@@ -53,18 +77,6 @@ class BookViewController: UIViewController {
         percentLabel.translatesAutoresizingMaskIntoConstraints = false
         backgroundGaugeView.layer.cornerRadius = backgroundGaugeView.bounds.height / 2
         backgroundGaugeView.layer.masksToBounds = true
-        
-        // MARK: - Custom UICollectionViewFlowLayout Implementation
-        let layout = PagingPerCellFlowLayout()
-        let width = self.view.bounds.width * 0.7
-        let height = width * 1.27
-        
-        layout.itemSize = CGSize(width: width, height: height)
-        layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        collectionView.setCollectionViewLayout(layout, animated: true)
-        collectionView.showsHorizontalScrollIndicator = false
     }
 }
 // MARK: - Button Touch Event
@@ -90,12 +102,58 @@ extension BookViewController: PromotionReviewDelegate {
         UIAlertController
             .alert(title: title, message: nil)
             .action(title: "확인", handler: { _ in
-                self.collectionView.reloadSections(IndexSet(0...0))
                 self.resetViews()
+                self.pagerView.reloadData()
             })
             .present(to: self)
     }
 }
+
+extension BookViewController: FSPagerViewDataSource {
+    func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
+        guard let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "bookCell", at: index) as? BookCell else { return FSPagerViewCell() }
+        guard let userRecord = UserRecord.fetch().first else { return FSPagerViewCell() }
+        let fruitsInBook = chapterRecord.filter { $0.grade == index }
+        let passedFruitsInBook = fruitsInBook.filter { $0.isPassed }
+        // 100%가 아니면 색이 없는 표지. 100%이면 색이 들어간 표지. 승급심사까지 통과했으면 색이 들어간 표지에 도장까지.
+        if userRecord[index] {
+            cell.coverImageView.image = UIImage(named: imageNames[index][1])
+            cell.stampImageView.image = #imageLiteral(resourceName: "stamp_clear")
+        } else {
+            if fruitsInBook.count == passedFruitsInBook.count {
+                cell.coverImageView.image = UIImage(named: imageNames[index][1])
+            } else {
+                cell.coverImageView.image = UIImage(named: imageNames[index][0])
+            }
+            cell.stampImageView.image = nil
+        }
+        return cell
+    }
+    
+    func numberOfItems(in pagerView: FSPagerView) -> Int {
+        return 3
+    }
+}
+
+extension BookViewController: FSPagerViewDelegate {
+    func pagerViewDidEndDecelerating(_ pagerView: FSPagerView) {
+        resetViews()
+    }
+    
+    func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
+        pagerView.deselectItem(at: index, animated: true)
+        // 현재 등급과 교과서 등급을 비교하여 접근 제한
+        let myGrade = UserRecord.fetch().first?.grade ?? 0
+        if !(0...myGrade).contains(index) {
+            UIAlertController.presentErrorAlert(to: self, error: "당신은 아직 \(Grade(rawValue: myGrade)?.expression ?? "")예요!")
+            return
+        }
+        guard let next = UIViewController.instantiate(storyboard: "Chapter", identifier: ChapterViewController.classNameToString) as? ChapterViewController else { return }
+        next.grade = index
+        navigationController?.pushViewController(next, animated: true)
+    }
+}
+
 // MARK: - UICollectionView DataSource Implementation
 extension BookViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -155,14 +213,15 @@ private extension BookViewController {
     // 달성률을 시각적으로 보여주는 게이지(레이블 활용하여 만듦)를 만듦
     func makeGaugeLabel() {
         // 현재 보여지고 있는 컬렉션뷰의 셀 인덱스 구하기
-        var visibleRect = CGRect()
-        visibleRect.origin = collectionView.contentOffset
-        visibleRect.size = collectionView.bounds.size
-        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
-        guard let index = collectionView.indexPathForItem(at: visiblePoint)?.item else { return }
-        currentCellIndex = index
+//        var visibleRect = CGRect()
+//        visibleRect.origin = collectionView.contentOffset
+//        visibleRect.size = collectionView.bounds.size
+//        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+//        guard let index = collectionView.indexPathForItem(at: visiblePoint)?.item else { return }
+//        currentCellIndex = index
+        currentCellIndex = pagerView.currentIndex
         // 달성률 구하기
-        let filtered = chapterRecord.filter("grade = %d", index)
+        let filtered = chapterRecord.filter("grade = %d", currentCellIndex)
         let count = filtered.count
         var passedCount = 0
         for element in filtered where element.isPassed {

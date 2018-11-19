@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 // 과일 문제 풀이 뷰컨트롤러의 상태를 다른 뷰컨트롤러에 전달하기 위한 커스텀 델리게이트 정의
 protocol ExerciseDelegate: class {
@@ -48,9 +49,9 @@ class ExerciseContainerViewController: UIViewController {
     }
     // 문제 만들기
     private func makeQuestions() {
-        IndicatorView.shared.showIndicator()
+        SVProgressHUD.show()
         API.requestExercises(by: id) { response, _, error in
-            IndicatorView.shared.hideIndicator()
+            SVProgressHUD.dismiss()
             if let error = error {
                 DispatchQueue.main.async { [weak self] in
                     UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription, handler: {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class DetailViewController: UIViewController {
 
@@ -44,9 +45,9 @@ class DetailViewController: UIViewController {
     
     // 과일 세부 정보 요청하기
     private func requestFruitDetails() {
-        IndicatorView.shared.showIndicator()
+        SVProgressHUD.show()
         API.requestFruit(by: id) { response, _, error in
-            IndicatorView.shared.hideIndicator()
+            SVProgressHUD.dismiss()
             if let error = error {
                 DispatchQueue.main.async { [weak self] in
                     UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription, handler: {

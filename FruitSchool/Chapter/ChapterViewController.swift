@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class ChapterViewController: UIViewController {
 
@@ -54,9 +55,9 @@ class ChapterViewController: UIViewController {
 // MARK: - Making Fruit List
 extension ChapterViewController {
     func requestFruitList() {
-        IndicatorView.shared.showIndicator()
+        SVProgressHUD.show()
         API.requestFruitList { response, _, error in
-            IndicatorView.shared.hideIndicator()
+            SVProgressHUD.dismiss()
             if let error = error {
                 DispatchQueue.main.async { [weak self] in
                     UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription, handler: {
