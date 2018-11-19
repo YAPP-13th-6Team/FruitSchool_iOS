@@ -23,7 +23,6 @@ class DetailImageCell: UITableViewCell {
         fruitNameLabel.text = nil
         englishLabel.text = nil
         gradeLabel.text = nil
-        backgroundColor = .gray
         gradeLabel.backgroundColor = .white
         gradeLabel.layer.cornerRadius = gradeLabel.bounds.height / 2
         gradeLabel.clipsToBounds = true

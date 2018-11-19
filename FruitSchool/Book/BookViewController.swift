@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FSPagerView
+import SnapKit
 
 class BookViewController: UIViewController {
 
@@ -22,12 +24,30 @@ class BookViewController: UIViewController {
     let promotionReviewButtonTag = 101
     let cellIdentifier = "bookCell"
     let chapterRecord = ChapterRecord.fetch()
-    var currentCellIndex: Int = 0
     let imageNames = [["cover_dog_unclear", "cover_dog_clear"], ["cover_student_unclear", "cover_student_clear"], ["cover_boss_unclear", "cover_boss_clear"]]
     // 달성률을 표시하는 레이블은 전역 프로퍼티에 할당하여 사용
     var percentLabel: UILabel!
+    lazy var pageControl: FSPageControl = {
+        let pageControl = FSPageControl(frame: .zero)
+        pageControl.currentPage = 0
+        pageControl.numberOfPages = 3
+        pageControl.setFillColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.19), for: .normal)
+        pageControl.setFillColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.68), for: .selected)
+        pagerView.addSubview(pageControl)
+        return pageControl
+    }()
     @IBOutlet weak var backgroundGaugeView: UILabel!
-    @IBOutlet weak var collectionView: CarouselView!
+    @IBOutlet weak var pagerView: FSPagerView! {
+        didSet {
+            pagerView.register(UINib(nibName: "BookCell", bundle: nil), forCellWithReuseIdentifier: "bookCell")
+            pagerView.transformer = FSPagerViewTransformer(type: .linear)
+            pagerView.interitemSpacing = 6
+            let width = UIScreen.main.bounds.width * 0.83
+            pagerView.itemSize = CGSize(width: width, height: width * 398 / 312)
+            pagerView.delegate = self
+            pagerView.dataSource = self
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,11 +57,16 @@ class BookViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         resetViews()
-        collectionView.reloadSections(IndexSet(0...0))
-        collectionView.scrollToFirstItem()
+        pagerView.reloadData()
+        pagerView.scrollToItem(at: 0, animated: true)
     }
     
     private func setup() {
+        pageControl.snp.makeConstraints { maker in
+            maker.bottom.equalTo(pagerView.snp.bottom).offset(-8)
+            maker.centerX.equalTo(view.snp.centerX)
+            maker.height.equalTo(20)
+        }
         let backBarButtonItem = UIBarButtonItem()
         backBarButtonItem.title = "교과서"
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIImageView(image: #imageLiteral(resourceName: "logo_noncircle")))
@@ -52,18 +77,6 @@ class BookViewController: UIViewController {
         percentLabel.translatesAutoresizingMaskIntoConstraints = false
         backgroundGaugeView.layer.cornerRadius = backgroundGaugeView.bounds.height / 2
         backgroundGaugeView.layer.masksToBounds = true
-        
-        // MARK: - Custom UICollectionViewFlowLayout Implementation
-        let layout = PagingPerCellFlowLayout()
-        let width = self.view.bounds.width * 0.7
-        let height = width * 1.27
-        
-        layout.itemSize = CGSize(width: width, height: height)
-        layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        collectionView.setCollectionViewLayout(layout, animated: true)
-        collectionView.showsHorizontalScrollIndicator = false
     }
 }
 // MARK: - Button Touch Event
@@ -72,7 +85,7 @@ extension BookViewController {
     @objc func didTouchUpPromotionReviewButton(_ sender: UIButton) {
         guard let next = UIViewController.instantiate(storyboard: "PromotionReview", identifier: PromotionReviewContainerViewController.classNameToString) as? PromotionReviewContainerViewController else { return }
         next.delegate = self
-        next.grade = currentCellIndex
+        next.grade = pagerView.currentIndex
         self.present(next, animated: true, completion: nil)
     }
 }
@@ -89,12 +102,59 @@ extension BookViewController: PromotionReviewDelegate {
         UIAlertController
             .alert(title: title, message: nil)
             .action(title: "확인", handler: { _ in
-                self.collectionView.reloadSections(IndexSet(0...0))
                 self.resetViews()
+                self.pagerView.reloadData()
             })
             .present(to: self)
     }
 }
+
+extension BookViewController: FSPagerViewDataSource {
+    func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
+        guard let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "bookCell", at: index) as? BookCell else { return FSPagerViewCell() }
+        guard let userRecord = UserRecord.fetch().first else { return FSPagerViewCell() }
+        let fruitsInBook = chapterRecord.filter { $0.grade == index }
+        let passedFruitsInBook = fruitsInBook.filter { $0.isPassed }
+        // 100%가 아니면 색이 없는 표지. 100%이면 색이 들어간 표지. 승급심사까지 통과했으면 색이 들어간 표지에 도장까지.
+        if userRecord[index] {
+            cell.coverImageView.image = UIImage(named: imageNames[index][1])
+            cell.stampImageView.image = #imageLiteral(resourceName: "stamp_clear")
+        } else {
+            if fruitsInBook.count == passedFruitsInBook.count {
+                cell.coverImageView.image = UIImage(named: imageNames[index][1])
+            } else {
+                cell.coverImageView.image = UIImage(named: imageNames[index][0])
+            }
+            cell.stampImageView.image = nil
+        }
+        return cell
+    }
+    
+    func numberOfItems(in pagerView: FSPagerView) -> Int {
+        return 3
+    }
+}
+
+extension BookViewController: FSPagerViewDelegate {
+    func pagerViewDidEndDecelerating(_ pagerView: FSPagerView) {
+        pageControl.currentPage = pagerView.currentIndex
+        resetViews()
+    }
+    
+    func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
+        pagerView.deselectItem(at: index, animated: true)
+        // 현재 등급과 교과서 등급을 비교하여 접근 제한
+        let myGrade = UserRecord.fetch().first?.grade ?? 0
+        if !(0...myGrade).contains(index) {
+            UIAlertController.presentErrorAlert(to: self, error: "당신은 아직 \(Grade(rawValue: myGrade)?.expression ?? "")예요!")
+            return
+        }
+        guard let next = UIViewController.instantiate(storyboard: "Chapter", identifier: ChapterViewController.classNameToString) as? ChapterViewController else { return }
+        next.grade = index
+        navigationController?.pushViewController(next, animated: true)
+    }
+}
+
 // MARK: - UICollectionView DataSource Implementation
 extension BookViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -153,15 +213,8 @@ private extension BookViewController {
     }
     // 달성률을 시각적으로 보여주는 게이지(레이블 활용하여 만듦)를 만듦
     func makeGaugeLabel() {
-        // 현재 보여지고 있는 컬렉션뷰의 셀 인덱스 구하기
-        var visibleRect = CGRect()
-        visibleRect.origin = collectionView.contentOffset
-        visibleRect.size = collectionView.bounds.size
-        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
-        guard let index = collectionView.indexPathForItem(at: visiblePoint)?.item else { return }
-        currentCellIndex = index
         // 달성률 구하기
-        let filtered = chapterRecord.filter("grade = %d", index)
+        let filtered = chapterRecord.filter("grade = %d", pagerView.currentIndex)
         let count = filtered.count
         var passedCount = 0
         for element in filtered where element.isPassed {
@@ -171,24 +224,24 @@ private extension BookViewController {
         self.percentage = percentage
         view.viewWithTag(gaugeLabelTag)?.removeFromSuperview()
         // 레이블 프로퍼티 설정
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-        label.textColor = .main
-        label.tag = gaugeLabelTag
-        label.backgroundColor = #colorLiteral(red: 0.7803921569, green: 0.737254902, blue: 0.7137254902, alpha: 1)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(label)
-        // 오토레이아웃 설정
-        NSLayoutConstraint.activate([
-            label.heightAnchor.constraint(equalTo: backgroundGaugeView.heightAnchor),
-            label.leadingAnchor.constraint(equalTo: backgroundGaugeView.leadingAnchor),
-            label.centerYAnchor.constraint(equalTo: backgroundGaugeView.centerYAnchor),
-            label.widthAnchor.constraint(equalTo: backgroundGaugeView.widthAnchor, multiplier: percentage)
-            ])
+        let label: UILabel = {
+            let label = UILabel()
+            label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+            label.textColor = .main
+            label.tag = gaugeLabelTag
+            label.backgroundColor = #colorLiteral(red: 0.7803921569, green: 0.737254902, blue: 0.7137254902, alpha: 1)
+            label.layer.cornerRadius = backgroundGaugeView.bounds.height / 2
+            label.clipsToBounds = true
+            view.addSubview(label)
+            return label
+        }()
+        label.snp.makeConstraints { maker in
+            maker.height.equalTo(backgroundGaugeView.snp.height)
+            maker.leading.equalTo(backgroundGaugeView.snp.leading)
+            maker.centerY.equalTo(backgroundGaugeView.snp.centerY)
+            maker.width.equalTo(backgroundGaugeView.snp.width).multipliedBy(percentage)
+        }
         view.layoutIfNeeded()
-        // 레이블 외곽선 둥글게 만들기
-        label.layer.cornerRadius = label.bounds.height / 2
-        label.layer.masksToBounds = true
     }
     // 달성률 표시하는 레이블 만들기
     func makePercentLabel() {
@@ -198,15 +251,17 @@ private extension BookViewController {
         percentLabel.tag = percentLabelTag
         view.addSubview(percentLabel)
         if percentage == 0 {
-            NSLayoutConstraint.activate([
-                percentLabel.topAnchor.constraint(equalTo: backgroundGaugeView.bottomAnchor, constant: 6),
-                percentLabel.centerXAnchor.constraint(equalTo: backgroundGaugeView.leadingAnchor, constant: 0)
-                ])
+            percentLabel.snp.makeConstraints { maker in
+                maker.top.equalTo(backgroundGaugeView.snp.bottom).offset(6)
+                maker.centerX.equalTo(backgroundGaugeView.snp.leading)
+            }
         } else {
-            NSLayoutConstraint.activate([
-                percentLabel.topAnchor.constraint(equalTo: backgroundGaugeView.bottomAnchor, constant: 6),
-                NSLayoutConstraint(item: percentLabel, attribute: .centerX, relatedBy: .equal, toItem: backgroundGaugeView, attribute: .trailing, multiplier: percentage, constant: leading - leading * percentage)
-                ])
+            percentLabel.snp.makeConstraints { maker in
+                maker.top.equalTo(backgroundGaugeView.snp.bottom).offset(6)
+                maker.centerX.equalTo(backgroundGaugeView.snp.trailing)
+                    .offset(leading - leading * percentage)
+                    .multipliedBy(percentage)
+            }
         }
         percentLabel.text = "\(Int(percentage * 100))%"
     }
@@ -214,45 +269,49 @@ private extension BookViewController {
     func makeDescriptionLabel() {
         view.viewWithTag(descriptionLabelTag)?.removeFromSuperview()
         // 레이블 프로퍼티 설정
-        let label = UILabel()
-        label.tag = descriptionLabelTag
-        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-        label.textColor = .main
-        label.text = labelText()
-        view.addSubview(label)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        // 오토레이아웃 설정
-        NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            label.topAnchor.constraint(equalTo: percentLabel.bottomAnchor, constant: 8)
-            ])
+        let label: UILabel = {
+            let label = UILabel()
+            label.tag = descriptionLabelTag
+            label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+            label.textColor = .main
+            label.text = labelText()
+            view.addSubview(label)
+            return label
+        }()
+        label.snp.makeConstraints { maker in
+            maker.centerX.equalTo(view.snp.centerX)
+            maker.top.equalTo(percentLabel.snp.bottom).offset(8)
+        }
     }
     // 승급심사 버튼 만들기
     func makePromotionReviewButton() {
         view.viewWithTag(promotionReviewButtonTag)?.removeFromSuperview()
-        let passesCurrentBook = UserRecord.fetch().first?[currentCellIndex] ?? false
+        let passesCurrentBook = UserRecord.fetch().first?[pagerView.currentIndex] ?? false
         // 교과서 달성률이 100%이면 버튼 표시. 100%이나 승급심사를 통과했으면 버튼 표시하지 않음
         if percentage == 1 && !passesCurrentBook {
             // 버튼 프로퍼티 설정
-            let button = UIButton(type: .system)
-            button.tag = promotionReviewButtonTag
-            button.setTitle("승급 심사", for: [])
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-            button.addTarget(self, action: #selector(didTouchUpPromotionReviewButton(_:)), for: .touchUpInside)
-            button.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(button)
-            // 오토레이아웃 설정
-            NSLayoutConstraint.activate([
-                button.topAnchor.constraint(equalTo: percentLabel.bottomAnchor, constant: 40),
-                button.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6),
-                button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                button.heightAnchor.constraint(equalToConstant: 40)
-                ])
+            let button: UIButton = {
+                let button = UIButton(type: .system)
+                button.tag = promotionReviewButtonTag
+                button.setTitle("승급 심사", for: [])
+                button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+                button.clipsToBounds = true
+                button.layer.cornerRadius = button.bounds.height / 2
+                button.layer.borderColor = UIColor.main.cgColor
+                button.layer.borderWidth = 2
+                button.addTarget(self, action: #selector(didTouchUpPromotionReviewButton(_:)), for: .touchUpInside)
+                view.addSubview(button)
+                return button
+            }()
+            button.snp.makeConstraints { maker in
+                maker.top.equalTo(percentLabel.snp.bottom).offset(40)
+                maker.width.equalTo(view.snp.width).multipliedBy(0.6)
+                maker.centerX.equalTo(view.snp.centerX)
+                maker.height.equalTo(40)
+            }
             view.layoutIfNeeded()
             button.clipsToBounds = true
             button.layer.cornerRadius = button.bounds.height / 2
-            button.layer.borderColor = UIColor.main.cgColor
-            button.layer.borderWidth = 2
         }
     }
 }
@@ -264,9 +323,9 @@ private extension BookViewController {
         let userGrade = userInfo.grade
         switch percentage {
         case 0:
-            if userGrade == currentCellIndex {
+            if userGrade == pagerView.currentIndex {
                 return "자, 지금부터 과일 카드를 모아볼까?"
-            } else if userGrade < currentCellIndex {
+            } else if userGrade < pagerView.currentIndex {
                 return "아직 당신에겐 수련이 필요하오."
             }
         case 0.5:
@@ -284,19 +343,19 @@ private extension BookViewController {
                 break
             }
         case 1:
-            if currentCellIndex == 0 {
+            if pagerView.currentIndex == 0 {
                 if userInfo.passesDog {
                     return "드디어 사람이 되었개! 서당개 인생은 이제 안녕."
                 } else {
                     return "당신은 이제 학도가 되기에 충분하개!"
                 }
-            } else if currentCellIndex == 1 {
+            } else if pagerView.currentIndex == 1 {
                 if userInfo.passesStudent {
                     return "나도 어디서 꿀리지 않는 과일인이 되었소."
                 } else {
                     return "나는 훈장님이 되러 떠나겠어!"
                 }
-            } else if currentCellIndex == 2 {
+            } else if pagerView.currentIndex == 2 {
                 if userInfo.passesBoss {
                     return "과일학당 훈장이오. 무엇이든 물어보시오."
                 } else {

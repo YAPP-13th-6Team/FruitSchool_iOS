@@ -1,26 +1,38 @@
 PODS:
+  - FSPagerView (0.8.1)
   - Realm (3.7.6):
     - Realm/Headers (= 3.7.6)
   - Realm/Headers (3.7.6)
   - RealmSwift (3.7.6):
     - Realm (= 3.7.6)
+  - SnapKit (4.0.1)
+  - SVProgressHUD (2.2.5)
   - SwiftLint (0.27.0)
 
 DEPENDENCIES:
+  - FSPagerView
   - RealmSwift
+  - SnapKit (~> 4.0.0)
+  - SVProgressHUD
   - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - FSPagerView
     - Realm
     - RealmSwift
+    - SnapKit
+    - SVProgressHUD
     - SwiftLint
 
 SPEC CHECKSUMS:
+  FSPagerView: 4e865526acc0b0e3077e2abb29b8d10a9f395476
   Realm: 9eaecad54712d6246d08ba34c10f354e4715d7d3
   RealmSwift: 1fe08b4ebaeeaacf17f9ba0343f7b25c9fc31fa6
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
-PODFILE CHECKSUM: cf768adbb3690cef7ee24cc8b738db720f96b6df
+PODFILE CHECKSUM: 7038dbf5f2fa7d0fae85f7ee2549e3c13394ab46
 
 COCOAPODS: 1.6.0.beta.1

@@ -8,4 +8,7 @@ target 'FruitSchool' do
   # Pods for FruitSchool
   pod 'RealmSwift'
   pod 'SwiftLint'
+  pod 'SnapKit', '~> 4.0.0'
+  pod 'SVProgressHUD'
+  pod 'FSPagerView'
 end
