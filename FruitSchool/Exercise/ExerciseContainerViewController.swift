@@ -191,6 +191,18 @@ extension ExerciseContainerViewController {
                 }, completion: { _ in
                     self.submitButton.isHidden = true
                 })
+                Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
+                    let score = self.numberOfCorrectAnswers()
+                    if score == self.questions.count {
+                        guard let record = ChapterRecord.fetch().filter("id = %@", self.id).first else { return }
+                        ChapterRecord.update(record, keyValue: ["isPassed": true])
+                        self.dismiss(animated: true) {
+                            self.delegate?.didDismissExerciseViewController(fruitTitle: self.fruitTitle, english: self.english)
+                        }
+                    } else {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                })
             }
             .action(title: "취소", style: .cancel)
             .present(to: self)

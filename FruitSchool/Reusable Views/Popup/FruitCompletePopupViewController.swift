@@ -29,7 +29,7 @@ class FruitCompletePopupViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UIView.animate(withDuration: 0.7, delay: 0.7, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseInOut, animations: {
             self.blurView.alpha = 0
             self.lockImageView.alpha = 0
         }, completion: { _ in

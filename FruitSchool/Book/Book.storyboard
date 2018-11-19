@@ -23,7 +23,7 @@
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UAZ-n2-heH" customClass="FSPagerView" customModule="FSPagerView">
                                 <rect key="frame" x="0.0" y="35.999999999999972" width="375" height="478.33333333333326"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="UAZ-n2-heH" secondAttribute="height" multiplier="312:398" id="7ol-Hb-9B6"/>
                                 </constraints>
