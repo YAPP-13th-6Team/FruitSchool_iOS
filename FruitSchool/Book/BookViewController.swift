@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class BookViewController: UIViewController {
 
@@ -171,24 +172,32 @@ private extension BookViewController {
         self.percentage = percentage
         view.viewWithTag(gaugeLabelTag)?.removeFromSuperview()
         // 레이블 프로퍼티 설정
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-        label.textColor = .main
-        label.tag = gaugeLabelTag
-        label.backgroundColor = #colorLiteral(red: 0.7803921569, green: 0.737254902, blue: 0.7137254902, alpha: 1)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(label)
-        // 오토레이아웃 설정
-        NSLayoutConstraint.activate([
-            label.heightAnchor.constraint(equalTo: backgroundGaugeView.heightAnchor),
-            label.leadingAnchor.constraint(equalTo: backgroundGaugeView.leadingAnchor),
-            label.centerYAnchor.constraint(equalTo: backgroundGaugeView.centerYAnchor),
-            label.widthAnchor.constraint(equalTo: backgroundGaugeView.widthAnchor, multiplier: percentage)
-            ])
+        let label: UILabel = {
+            let label = UILabel()
+            label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+            label.textColor = .main
+            label.tag = gaugeLabelTag
+            label.backgroundColor = #colorLiteral(red: 0.7803921569, green: 0.737254902, blue: 0.7137254902, alpha: 1)
+            label.layer.cornerRadius = label.bounds.height / 2
+            label.layer.masksToBounds = true
+            view.addSubview(label)
+            return label
+        }()
+        label.snp.makeConstraints { maker in
+            maker.height.equalTo(backgroundGaugeView.snp.height)
+            maker.leading.equalTo(backgroundGaugeView.snp.leading)
+            maker.centerY.equalTo(backgroundGaugeView.snp.centerY)
+            maker.width.equalTo(backgroundGaugeView.snp.width).multipliedBy(percentage)
+        }
         view.layoutIfNeeded()
-        // 레이블 외곽선 둥글게 만들기
-        label.layer.cornerRadius = label.bounds.height / 2
-        label.layer.masksToBounds = true
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        // 오토레이아웃 설정
+//        NSLayoutConstraint.activate([
+//            label.heightAnchor.constraint(equalTo: backgroundGaugeView.heightAnchor),
+//            label.leadingAnchor.constraint(equalTo: backgroundGaugeView.leadingAnchor),
+//            label.centerYAnchor.constraint(equalTo: backgroundGaugeView.centerYAnchor),
+//            label.widthAnchor.constraint(equalTo: backgroundGaugeView.widthAnchor, multiplier: percentage)
+//            ])
     }
     // 달성률 표시하는 레이블 만들기
     func makePercentLabel() {
@@ -198,15 +207,25 @@ private extension BookViewController {
         percentLabel.tag = percentLabelTag
         view.addSubview(percentLabel)
         if percentage == 0 {
-            NSLayoutConstraint.activate([
-                percentLabel.topAnchor.constraint(equalTo: backgroundGaugeView.bottomAnchor, constant: 6),
-                percentLabel.centerXAnchor.constraint(equalTo: backgroundGaugeView.leadingAnchor, constant: 0)
-                ])
+            percentLabel.snp.makeConstraints { maker in
+                maker.top.equalTo(backgroundGaugeView.snp.bottom).offset(6)
+                maker.centerX.equalTo(backgroundGaugeView.snp.leading)
+            }
+//            NSLayoutConstraint.activate([
+//                percentLabel.topAnchor.constraint(equalTo: backgroundGaugeView.bottomAnchor, constant: 6),
+//                percentLabel.centerXAnchor.constraint(equalTo: backgroundGaugeView.leadingAnchor, constant: 0)
+//                ])
         } else {
-            NSLayoutConstraint.activate([
-                percentLabel.topAnchor.constraint(equalTo: backgroundGaugeView.bottomAnchor, constant: 6),
-                NSLayoutConstraint(item: percentLabel, attribute: .centerX, relatedBy: .equal, toItem: backgroundGaugeView, attribute: .trailing, multiplier: percentage, constant: leading - leading * percentage)
-                ])
+            percentLabel.snp.makeConstraints { maker in
+                maker.top.equalTo(backgroundGaugeView.snp.bottom).offset(6)
+                maker.centerX.equalTo(backgroundGaugeView.snp.trailing)
+                    .offset(leading - leading * percentage)
+                    .multipliedBy(percentage)
+            }
+//            NSLayoutConstraint.activate([
+//                percentLabel.topAnchor.constraint(equalTo: backgroundGaugeView.bottomAnchor, constant: 6),
+//                NSLayoutConstraint(item: percentLabel, attribute: .centerX, relatedBy: .equal, toItem: backgroundGaugeView, attribute: .trailing, multiplier: percentage, constant: leading - leading * percentage)
+//                ])
         }
         percentLabel.text = "\(Int(percentage * 100))%"
     }
@@ -214,18 +233,25 @@ private extension BookViewController {
     func makeDescriptionLabel() {
         view.viewWithTag(descriptionLabelTag)?.removeFromSuperview()
         // 레이블 프로퍼티 설정
-        let label = UILabel()
-        label.tag = descriptionLabelTag
-        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-        label.textColor = .main
-        label.text = labelText()
-        view.addSubview(label)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        // 오토레이아웃 설정
-        NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            label.topAnchor.constraint(equalTo: percentLabel.bottomAnchor, constant: 8)
-            ])
+        let label: UILabel = {
+            let label = UILabel()
+            label.tag = descriptionLabelTag
+            label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+            label.textColor = .main
+            label.text = labelText()
+            view.addSubview(label)
+            return label
+        }()
+        label.snp.makeConstraints { maker in
+            maker.centerX.equalTo(view.snp.centerX)
+            maker.top.equalTo(percentLabel.snp.bottom).offset(8)
+        }
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        // 오토레이아웃 설정
+//        NSLayoutConstraint.activate([
+//            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            label.topAnchor.constraint(equalTo: percentLabel.bottomAnchor, constant: 8)
+//            ])
     }
     // 승급심사 버튼 만들기
     func makePromotionReviewButton() {
@@ -234,25 +260,36 @@ private extension BookViewController {
         // 교과서 달성률이 100%이면 버튼 표시. 100%이나 승급심사를 통과했으면 버튼 표시하지 않음
         if percentage == 1 && !passesCurrentBook {
             // 버튼 프로퍼티 설정
-            let button = UIButton(type: .system)
-            button.tag = promotionReviewButtonTag
-            button.setTitle("승급 심사", for: [])
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-            button.addTarget(self, action: #selector(didTouchUpPromotionReviewButton(_:)), for: .touchUpInside)
-            button.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(button)
-            // 오토레이아웃 설정
-            NSLayoutConstraint.activate([
-                button.topAnchor.constraint(equalTo: percentLabel.bottomAnchor, constant: 40),
-                button.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6),
-                button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                button.heightAnchor.constraint(equalToConstant: 40)
-                ])
+            let button: UIButton = {
+                let button = UIButton(type: .system)
+                button.tag = promotionReviewButtonTag
+                button.setTitle("승급 심사", for: [])
+                button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+                button.clipsToBounds = true
+                button.layer.cornerRadius = button.bounds.height / 2
+                button.layer.borderColor = UIColor.main.cgColor
+                button.layer.borderWidth = 2
+                button.addTarget(self, action: #selector(didTouchUpPromotionReviewButton(_:)), for: .touchUpInside)
+                view.addSubview(button)
+                return button
+            }()
+            button.snp.makeConstraints { maker in
+                maker.top.equalTo(percentLabel.snp.bottom).offset(40)
+                maker.width.equalTo(view.snp.width).multipliedBy(0.6)
+                maker.centerX.equalTo(view.snp.centerX)
+                maker.height.equalTo(40)
+            }
             view.layoutIfNeeded()
-            button.clipsToBounds = true
-            button.layer.cornerRadius = button.bounds.height / 2
-            button.layer.borderColor = UIColor.main.cgColor
-            button.layer.borderWidth = 2
+//
+//            button.translatesAutoresizingMaskIntoConstraints = false
+//            view.addSubview(button)
+            // 오토레이아웃 설정
+//            NSLayoutConstraint.activate([
+//                button.topAnchor.constraint(equalTo: percentLabel.bottomAnchor, constant: 40),
+//                button.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6),
+//                button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//                button.heightAnchor.constraint(equalToConstant: 40)
+//                ])
         }
     }
 }

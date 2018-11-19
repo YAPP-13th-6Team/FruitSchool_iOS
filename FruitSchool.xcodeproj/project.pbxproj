@@ -138,6 +138,7 @@
 		190F74A3213E33590038234A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				190FC3C3213A689D00DD333F /* LaunchScreen.storyboard */,
 				190FC3C6213A689D00DD333F /* Info.plist */,
 				190FC3BA213A689C00DD333F /* AppDelegate.swift */,
 				190FC3C1213A689D00DD333F /* Assets.xcassets */,
@@ -260,15 +261,6 @@
 			path = Question;
 			sourceTree = "<group>";
 		};
-		1978423C215FC66C00D53F48 /* Certificate */ = {
-			isa = PBXGroup;
-			children = (
-				1978423D215FC68000D53F48 /* Certificate.storyboard */,
-				1978423F215FC68600D53F48 /* CertificateViewController.swift */,
-			);
-			path = Certificate;
-			sourceTree = "<group>";
-		};
 		19784246215FCA0500D53F48 /* Book */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,8 +306,8 @@
 		19E274C22144D6EB00E2F6D2 /* Start */ = {
 			isa = PBXGroup;
 			children = (
-				190FC3C3213A689D00DD333F /* LaunchScreen.storyboard */,
-				1978423C215FC66C00D53F48 /* Certificate */,
+				1978423D215FC68000D53F48 /* Certificate.storyboard */,
+				1978423F215FC68600D53F48 /* CertificateViewController.swift */,
 			);
 			path = Start;
 			sourceTree = "<group>";
@@ -458,13 +450,19 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FruitSchool/Pods-FruitSchool-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSPagerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -696,7 +694,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yapp.FruitSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -729,7 +727,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yapp.FruitSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

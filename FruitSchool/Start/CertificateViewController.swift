@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class CertificateViewController: UIViewController {
 
@@ -49,7 +50,7 @@ class CertificateViewController: UIViewController {
             return
         }
         guard let next = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController") else { return }
-        IndicatorView.shared.showIndicator()
+        SVProgressHUD.show()
         API.requestFruitList { response, _, error in
             if let error = error {
                 DispatchQueue.main.async {
@@ -61,7 +62,7 @@ class CertificateViewController: UIViewController {
             for data in response.data {
                 ChapterRecord.add(id: data.id, title: data.title, english: data.english, grade: data.grade)
             }
-            IndicatorView.shared.hideIndicator()
+            SVProgressHUD.dismiss()
             DispatchQueue.main.async {
                 UserRecord.add(nickname: self.nickname)
                 self.present(next, animated: true)
