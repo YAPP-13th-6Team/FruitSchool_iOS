@@ -18,7 +18,7 @@ class ExerciseContainerViewController: UIViewController {
 
     weak var delegate: ExerciseDelegate?
     // 사용자가 선택한 보기가 기록되는 전역 프로퍼티
-    var answers: [String] = [] {
+    private var answers: [String] = [] {
         didSet {
             let filtered = answers.filter { !$0.isEmpty }
             DispatchQueue.main.async {
@@ -30,18 +30,43 @@ class ExerciseContainerViewController: UIViewController {
             }
         }
     }
-    var score: Int = 0
-    var isPassed: [Bool] = []
-    var didExecutesScoring: Bool = false
+    
+    private var isPassed: [Bool] = []
+    
+    private var didExecutesScoring: Bool = false
+    
     var id: String = ""
+    
     var fruitTitle: String = ""
+    
     var english: String = ""
-    var questions: [Question] = []
-    var pageViewController: UIPageViewController!
-    @IBOutlet weak var submitButton: UIButton!
-    @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var containerViewCenterYConstraint: NSLayoutConstraint!
+    
+    private var questions: [Question] = []
+    
+    private lazy var pageViewController: UIPageViewController! = {
+        let viewController = childViewControllers.first as? UIPageViewController ?? UIPageViewController()
+        viewController.dataSource = self
+        viewController.delegate = self
+        return viewController
+    }()
+    
+    @IBOutlet private weak var submitButton: UIButton! {
+        didSet {
+            submitButton.addTarget(self, action: #selector(touchUpSubmitButton(_:)), for: .touchUpInside)
+            submitButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        }
+    }
+    
+    @IBOutlet private weak var pageControl: UIPageControl!
+    
+    @IBOutlet private weak var containerView: UIView! {
+        didSet {
+            containerView.clipsToBounds = true
+            containerView.layer.cornerRadius = 15
+        }
+    }
+    
+    @IBOutlet private weak var containerViewCenterYConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,9 +78,9 @@ class ExerciseContainerViewController: UIViewController {
         API.requestExercises(by: id) { response, _, error in
             SVProgressHUD.dismiss()
             if let error = error {
-                DispatchQueue.main.async { [weak self] in
+                DispatchQueue.main.async {
                     UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription, handler: {
-                        self?.dismiss(animated: true, completion: nil)
+                        self.dismiss(animated: true, completion: nil)
                     })
                 }
                 return
@@ -96,18 +121,7 @@ class ExerciseContainerViewController: UIViewController {
     }
     
     private func setUp() {
-        submitButton.addTarget(self, action: #selector(didTouchUpSubmitButton(_:)), for: .touchUpInside)
-        submitButton.layer.cornerRadius = submitButton.bounds.height / 2
-        submitButton.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        submitButton.backgroundColor = .white
-        submitButton.titleLabel?.font = UIFont.systemFont(ofSize: 22)
-        submitButton.setTitleColor(.black, for: [])
-        containerView.layer.cornerRadius = 15
-        containerView.layer.masksToBounds = true
         pageControl.numberOfPages = questions.count
-        self.pageViewController = childViewControllers.first as? UIPageViewController
-        pageViewController.dataSource = self
-        pageViewController.delegate = self
         pageViewController.setViewControllers([makeContentViewController(at: 0) ?? UIViewController()], direction: .forward, animated: true, completion: nil)
     }
     // 페이지 이동시 새로운 뷰컨트롤러 instantiate
@@ -118,8 +132,8 @@ class ExerciseContainerViewController: UIViewController {
         let question = questions[index]
         // 문제 뷰에 데이터 뿌리기
         questionView.numberLabel.text = "문제 \(index + 1)"
-        let attributedString = NSMutableAttributedString(string: question.title, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 24, weight: .ultraLight)])
-        let boldFontAttribute = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 24, weight: .medium)]
+        let attributedString = NSMutableAttributedString(string: question.title, attributes: [.font: UIFont.systemFont(ofSize: 24, weight: .ultraLight)])
+        let boldFontAttribute: [NSAttributedString.Key: Any] = [.font: UIFont.systemFont(ofSize: 24, weight: .medium)]
         let range = (question.title as NSString).range(of: question.fruitName)
         attributedString.addAttributes(boldFontAttribute, range: range)
         questionView.titleLabel.attributedText = attributedString
@@ -153,7 +167,7 @@ class ExerciseContainerViewController: UIViewController {
 // MARK: - Selectors
 extension ExerciseContainerViewController {
     // 제출하기 버튼을 눌러서 채점하기
-    @objc func didTouchUpSubmitButton(_ sender: UIButton) {
+    @objc func touchUpSubmitButton(_ sender: UIButton) {
         executeScoring()
     }
 }
@@ -222,7 +236,7 @@ extension ExerciseContainerViewController {
 }
 // MARK: - QuestionView Custom Delegate Implementation
 extension ExerciseContainerViewController: QuestionViewDelegate {
-    func questionButtonsDidTouchUp(_ sender: UIButton) {
+    func touchUpQuestionButtons(_ sender: UIButton) {
         let currentPageIndex = pageControl.currentPage
         guard let questionView = (pageViewController.viewControllers?.first as? ExerciseContentViewController)?.questionView else { return }
         guard let title = sender.titleLabel?.text else { return }
@@ -240,7 +254,7 @@ extension ExerciseContainerViewController: QuestionViewDelegate {
         }
     }
     
-    func cancelButtonDidTouchUp(_ sender: UIButton) {
+    func touchUpCancelButton(_ sender: UIButton) {
         if !didExecutesScoring {
             UIAlertController
                 .alert(title: "", message: "퀴즈를 중단하고 나가시겠습니까?")

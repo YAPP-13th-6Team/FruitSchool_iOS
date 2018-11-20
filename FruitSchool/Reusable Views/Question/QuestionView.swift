@@ -9,8 +9,8 @@
 import UIKit
 
 protocol QuestionViewDelegate: class {
-    func questionButtonsDidTouchUp(_ sender: UIButton)
-    func cancelButtonDidTouchUp(_ sender: UIButton)
+    func touchUpQuestionButtons(_ sender: UIButton)
+    func touchUpCancelButton(_ sender: UIButton)
 }
 
 class QuestionView: UIView {
@@ -23,7 +23,7 @@ class QuestionView: UIView {
     
     @IBOutlet weak var cancelButton: UIButton! {
         didSet {
-            cancelButton.addTarget(self, action: #selector(cancelButtonDidTouchUp(_:)), for: .touchUpInside)
+            cancelButton.addTarget(self, action: #selector(touchUpCancelButton(_:)), for: .touchUpInside)
         }
     }
     
@@ -36,7 +36,7 @@ class QuestionView: UIView {
     @IBOutlet var answerButtons: [QuestionButton]! {
         didSet {
             answerButtons.forEach { button in
-                button.addTarget(self, action: #selector(questionButtonsDidTouchUp(_:)), for: .touchUpInside)
+                button.addTarget(self, action: #selector(touchUpQuestionButtons(_:)), for: .touchUpInside)
             }
         }
     }
@@ -49,11 +49,11 @@ class QuestionView: UIView {
         return answerButtons[index]
     }
     
-    @objc private func questionButtonsDidTouchUp(_ sender: UIButton) {
-        delegate?.questionButtonsDidTouchUp(sender)
+    @objc private func touchUpQuestionButtons(_ sender: UIButton) {
+        delegate?.touchUpQuestionButtons(sender)
     }
     
-    @objc private func cancelButtonDidTouchUp(_ sender: UIButton) {
-        delegate?.cancelButtonDidTouchUp(sender)
+    @objc private func touchUpCancelButton(_ sender: UIButton) {
+        delegate?.touchUpCancelButton(sender)
     }
 }

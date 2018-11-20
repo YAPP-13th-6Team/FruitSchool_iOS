@@ -11,6 +11,7 @@ import FSPagerView
 class BookCell: FSPagerViewCell {
 
     @IBOutlet var coverImageView: UIImageView!
+    
     @IBOutlet var stampImageView: UIImageView!
     
     override func awakeFromNib() {

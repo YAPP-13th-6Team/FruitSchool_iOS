@@ -47,9 +47,8 @@ class BookViewController: UIViewController {
     lazy private var promotionReviewButton: UIButton! = {
         let button = UIButton(type: .system)
         button.setTitle("승급 심사", for: [])
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
         button.clipsToBounds = true
-        button.layer.cornerRadius = button.bounds.height / 2
         button.layer.borderColor = UIColor.main.cgColor
         button.layer.borderWidth = 2
         button.addTarget(self, action: #selector(touchUpPromotionReviewButton(_:)), for: .touchUpInside)
@@ -60,6 +59,7 @@ class BookViewController: UIViewController {
             maker.centerX.equalTo(view.snp.centerX)
             maker.height.equalTo(40)
         }
+        button.layer.cornerRadius = 20
         return button
     }()
     

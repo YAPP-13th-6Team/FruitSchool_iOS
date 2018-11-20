@@ -17,20 +17,25 @@ class CertificateViewController: UIViewController {
         dateFormatter.dateFormat = "yyyy.MM.dd"
         return dateFormatter
     }()
+    
     var nickname: String {
         return nicknameTextField.text ?? ""
     }
+    
     @IBOutlet weak var backgroundView: UIView! {
         didSet {
             backgroundView.layer.cornerRadius = 13
         }
     }
+    
     @IBOutlet weak var nicknameTextField: UITextField!
+    
     @IBOutlet weak var dateLabel: UILabel! {
         didSet {
             dateLabel.text = dateFormatter.string(from: Date())
         }
     }
+    
     @IBOutlet weak var startButton: UIButton! {
         didSet {
             startButton.addTarget(self, action: #selector(touchUpStartButton(_:)), for: .touchUpInside)

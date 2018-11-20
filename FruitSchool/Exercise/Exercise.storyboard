@@ -36,7 +36,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zxY-me-sav">
                                 <rect key="frame" x="0.0" y="533" width="375" height="134"/>
                                 <subviews>
-                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1d-yV-qh1">
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1d-yV-qh1" customClass="SubmitButton" customModule="FruitSchool" customModuleProvider="target">
                                         <rect key="frame" x="94" y="52" width="187.5" height="30"/>
                                         <state key="normal" title="제출하기"/>
                                     </button>

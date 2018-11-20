@@ -10,13 +10,6 @@ import UIKit
 import SnapKit
 
 class ExerciseContentViewController: UIViewController {
-
-    override var view: UIView! {
-        didSet {
-            view.layer.cornerRadius = 15
-            view.layer.masksToBounds = true
-        }
-    }
     
     var pageIndex: Int!
     
@@ -24,16 +17,18 @@ class ExerciseContentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 15        
         makeQuestionView()
     }
 
-    func makeQuestionView() {
+    private func makeQuestionView() {
         if questionView == nil {
             questionView = UIView.instantiateFromXib(xibName: "QuestionView") as? QuestionView
         }
         view.addSubview(questionView)
         questionView.snp.makeConstraints { maker in
-            maker.edges.equalTo(view.snp.edges)
+            maker.edges.equalToSuperview()
         }
     }
 }

@@ -11,9 +11,11 @@ import SnapKit
 
 class ChapterCell: UICollectionViewCell {
 
-    var blurView: UIView?
-    var lockImageView: UIImageView?
-    @IBOutlet weak var imageView: UIImageView!
+    private var blurView: UIView?
+    
+    private var lockImageView: UIImageView?
+    
+    @IBOutlet private weak var imageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

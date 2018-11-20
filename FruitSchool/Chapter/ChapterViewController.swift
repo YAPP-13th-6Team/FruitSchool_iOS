@@ -13,10 +13,15 @@ import SVProgressHUD
 class ChapterViewController: UIViewController {
 
     var grade: Int = 0
+    
     private let cellIdentifier = "chapterCell"
+    
     private var fruits: [FruitListResponse.Data] = []
+    
     private lazy var records = ChapterRecord.fetch()
+    
     private var countLabel: UILabel!
+    
     @IBOutlet private weak var collectionView: UICollectionView! {
         didSet {
             let flowLayout = UICollectionViewFlowLayout()
