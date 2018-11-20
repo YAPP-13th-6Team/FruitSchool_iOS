@@ -11,4 +11,5 @@ target 'FruitSchool' do
   pod 'SnapKit', '~> 4.0.0'
   pod 'SVProgressHUD'
   pod 'FSPagerView'
+  pod 'GaugeKit'
 end

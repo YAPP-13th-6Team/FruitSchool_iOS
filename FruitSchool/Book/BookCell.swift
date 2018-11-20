@@ -22,4 +22,15 @@ class BookCell: FSPagerViewCell {
         coverImageView.image = nil
         stampImageView.image = nil
     }
+    
+    func setProperties(at index: Int, isPassed: Bool, isPassedCompletely: Bool) {
+        let allImageNames = BookCoverImage.all
+        if isPassedCompletely {
+            coverImageView.image = UIImage(named: allImageNames[index][1])
+            stampImageView.image = UIImage(named: "stamp_clear")
+        } else {
+            coverImageView.image = isPassed ? UIImage(named: allImageNames[index][1]) : UIImage(named: allImageNames[index][0])
+            stampImageView.image = nil
+        }
+    }
 }

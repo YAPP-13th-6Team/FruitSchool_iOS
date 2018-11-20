@@ -1,5 +1,6 @@
 PODS:
   - FSPagerView (0.8.1)
+  - GaugeKit (0.4.5)
   - Realm (3.7.6):
     - Realm/Headers (= 3.7.6)
   - Realm/Headers (3.7.6)
@@ -11,6 +12,7 @@ PODS:
 
 DEPENDENCIES:
   - FSPagerView
+  - GaugeKit
   - RealmSwift
   - SnapKit (~> 4.0.0)
   - SVProgressHUD
@@ -19,6 +21,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - FSPagerView
+    - GaugeKit
     - Realm
     - RealmSwift
     - SnapKit
@@ -27,12 +30,13 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   FSPagerView: 4e865526acc0b0e3077e2abb29b8d10a9f395476
+  GaugeKit: 7872069a8aed2d26b17fca110fe1ab59722f8a33
   Realm: 9eaecad54712d6246d08ba34c10f354e4715d7d3
   RealmSwift: 1fe08b4ebaeeaacf17f9ba0343f7b25c9fc31fa6
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
-PODFILE CHECKSUM: 7038dbf5f2fa7d0fae85f7ee2549e3c13394ab46
+PODFILE CHECKSUM: 6209c254783f2891bc05e909c1293e7ec0a21b75
 
 COCOAPODS: 1.6.0.beta.1
