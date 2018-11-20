@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Chapter Finish Popup View Controller-->
+        <!--Chapter Clear Popup View Controller-->
         <scene sceneID="E9w-xB-qGG">
             <objects>
-                <viewController storyboardIdentifier="ChapterFinishPopupViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aFL-Gf-rfI" customClass="ChapterFinishPopupViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChapterClearPopupViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aFL-Gf-rfI" customClass="ChapterClearPopupViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="VaL-DJ-Yyx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

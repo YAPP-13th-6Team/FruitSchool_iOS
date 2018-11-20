@@ -13,48 +13,37 @@ import SVProgressHUD
 class DetailViewController: UIViewController {
 
     var nth: Int = 0
+    
     var id: String = ""
-    var fruitResponse: FruitResponse.Data?
-    lazy var dummyView: UIView = {
-        let dummyView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
-        dummyView.backgroundColor = .white
+    
+    private var fruitResponse: FruitResponse.Data?
+    
+    private var dummyView: UIView = {
+        let dummyView = UIVisualEffectView(effect: UIBlurEffect(style: .prominent))
+        dummyView.frame = UIScreen.main.bounds
         return dummyView
     }()
-    lazy var statusBarView: UIView = {
-        let statusBarView = UIView(frame: UIApplication.shared.statusBarFrame)
-        statusBarView.backgroundColor = .white
-        statusBarView.alpha = 0
-        view.addSubview(statusBarView)
+    
+    private var statusBarView: UIView = {
+        let statusBarView = UIVisualEffectView(effect: UIBlurEffect(style: .prominent))
+        statusBarView.frame = UIApplication.shared.statusBarFrame
         return statusBarView
     }()
-    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet private weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.contentInset = UIEdgeInsets(top: -66, left: 0, bottom: 0, right: 0)
+        view.addSubview(statusBarView)
         view.addSubview(dummyView)
+        navigationController?.hidesBarsOnSwipe = true
+        tableView.contentInset = UIEdgeInsets(top: -(navigationController?.navigationBar.bounds.height ?? 0), left: 0, bottom: 0, right: 0)
         requestFruitDetails()
     }
     
-    // 스크롤시 네비바 불투명하게
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offset = scrollView.contentOffset.y / 200
-        if offset > 1 {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.navigationController?.navigationBar.backgroundColor = .white
-                self.statusBarView.alpha = 1
-            })
-        } else {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.navigationController?.navigationBar.backgroundColor = .clear
-                self.statusBarView.alpha = 0
-                })
-        }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        navigationController?.navigationBar.backgroundColor = .clear
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.hidesBarsOnSwipe = false
     }
     
     // 과일 세부 정보 요청하기
@@ -155,25 +144,25 @@ extension DetailViewController: UITableViewDelegate {
                 label.text = "기본정보"
             }
             headerView.addSubview(label)
+            label.snp.makeConstraints { maker in
+                maker.centerY.equalTo(headerView.snp.centerY)
+                maker.leading.equalTo(headerView.snp.leading).offset(16)
+                maker.width.equalTo(60)
+            }
             return label
         }()
-        titleLabel.snp.makeConstraints { maker in
-            maker.centerY.equalTo(headerView.snp.centerY)
-            maker.leading.equalTo(headerView.snp.leading).offset(16)
-            maker.width.equalTo(60)
-        }
-        let line: UILabel = {
+        let _: UILabel = {
             let label = UILabel()
             label.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.8862745098, blue: 0.862745098, alpha: 1)
             headerView.addSubview(label)
+            label.snp.makeConstraints { maker in
+                maker.centerY.equalTo(headerView.snp.centerY)
+                maker.trailing.equalTo(headerView.snp.trailing)
+                maker.leading.equalTo(titleLabel.snp.trailing).offset(16)
+                maker.height.equalTo(1)
+            }
             return label
         }()
-        line.snp.makeConstraints { maker in
-            maker.centerY.equalTo(headerView.snp.centerY)
-            maker.trailing.equalTo(headerView.snp.trailing)
-            maker.leading.equalTo(titleLabel.snp.trailing).offset(16)
-            maker.height.equalTo(1)
-        }
         return headerView
     }
     

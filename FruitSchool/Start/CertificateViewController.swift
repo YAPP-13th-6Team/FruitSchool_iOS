@@ -11,23 +11,35 @@ import SVProgressHUD
 
 class CertificateViewController: UIViewController {
 
-    lazy var dateFormatter: DateFormatter = {
+    private lazy var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "yyyy.MM.dd"
         return dateFormatter
     }()
-    var nickname: String {
+    
+    private var nickname: String {
         return nicknameTextField.text ?? ""
     }
-    @IBOutlet weak var backgroundView: UIView!
-    @IBOutlet weak var nicknameTextField: UITextField!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var startButton: UIButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setUp()
+    @IBOutlet private weak var backgroundView: UIView! {
+        didSet {
+            backgroundView.layer.cornerRadius = 13
+        }
+    }
+    
+    @IBOutlet private weak var nicknameTextField: UITextField!
+    
+    @IBOutlet private weak var dateLabel: UILabel! {
+        didSet {
+            dateLabel.text = dateFormatter.string(from: Date())
+        }
+    }
+    
+    @IBOutlet private weak var startButton: UIButton! {
+        didSet {
+            startButton.addTarget(self, action: #selector(touchUpStartButton(_:)), for: .touchUpInside)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -35,14 +47,8 @@ class CertificateViewController: UIViewController {
         nicknameTextField.becomeFirstResponder()
     }
     
-    func setUp() {
-        backgroundView.layer.cornerRadius = 13
-        dateLabel.text = dateFormatter.string(from: Date())
-        startButton.addTarget(self, action: #selector(startButtonDidTouchUp(_:)), for: .touchUpInside)
-    }
-    
-    @objc func startButtonDidTouchUp(_ sender: UIButton) {
-        if nicknameTextField.text?.isEmpty ?? true {
+    @objc private func touchUpStartButton(_ sender: UIButton) {
+        if nickname.isEmpty {
             UIAlertController
                 .alert(title: "", message: "닉네임을 입력하세요.")
                 .action(title: "확인")
@@ -62,8 +68,8 @@ class CertificateViewController: UIViewController {
             for data in response.data {
                 ChapterRecord.add(id: data.id, title: data.title, english: data.english, grade: data.grade)
             }
-            SVProgressHUD.dismiss()
             DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
                 UserRecord.add(nickname: self.nickname)
                 self.present(next, animated: true)
             }
