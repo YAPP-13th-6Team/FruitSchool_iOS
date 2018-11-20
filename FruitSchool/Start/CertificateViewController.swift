@@ -11,32 +11,32 @@ import SVProgressHUD
 
 class CertificateViewController: UIViewController {
 
-    lazy var dateFormatter: DateFormatter = {
+    private lazy var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "yyyy.MM.dd"
         return dateFormatter
     }()
     
-    var nickname: String {
+    private var nickname: String {
         return nicknameTextField.text ?? ""
     }
     
-    @IBOutlet weak var backgroundView: UIView! {
+    @IBOutlet private weak var backgroundView: UIView! {
         didSet {
             backgroundView.layer.cornerRadius = 13
         }
     }
     
-    @IBOutlet weak var nicknameTextField: UITextField!
+    @IBOutlet private weak var nicknameTextField: UITextField!
     
-    @IBOutlet weak var dateLabel: UILabel! {
+    @IBOutlet private weak var dateLabel: UILabel! {
         didSet {
             dateLabel.text = dateFormatter.string(from: Date())
         }
     }
     
-    @IBOutlet weak var startButton: UIButton! {
+    @IBOutlet private weak var startButton: UIButton! {
         didSet {
             startButton.addTarget(self, action: #selector(touchUpStartButton(_:)), for: .touchUpInside)
         }
@@ -47,7 +47,7 @@ class CertificateViewController: UIViewController {
         nicknameTextField.becomeFirstResponder()
     }
     
-    @objc func touchUpStartButton(_ sender: UIButton) {
+    @objc private func touchUpStartButton(_ sender: UIButton) {
         if nickname.isEmpty {
             UIAlertController
                 .alert(title: "", message: "닉네임을 입력하세요.")

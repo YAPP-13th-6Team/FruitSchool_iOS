@@ -12,4 +12,5 @@ target 'FruitSchool' do
   pod 'SVProgressHUD'
   pod 'FSPagerView'
   pod 'GaugeKit'
+  pod 'EFCountingLabel'
 end

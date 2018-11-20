@@ -9,6 +9,7 @@
 import UIKit
 import FSPagerView
 import GaugeKit
+import EFCountingLabel
 import SnapKit
 
 class BookViewController: UIViewController {
@@ -24,8 +25,10 @@ class BookViewController: UIViewController {
         return pagerView.currentIndex
     }
     
-    lazy private var percentLabel: UILabel! = {
-        let label = UILabel()
+    lazy private var percentLabel: EFCountingLabel! = {
+        let label = EFCountingLabel()
+        label.format = "%d%%"
+        label.method = .easeInOut
         label.textColor = .main
         label.font = UIFont.systemFont(ofSize: 12)
         view.addSubview(label)
@@ -193,7 +196,8 @@ private extension BookViewController {
     }
 
     func makePercentLabel(_ percent: CGFloat) {
-        percentLabel.text = "\(Int(percent * 100))%"
+        percentLabel.countFromCurrentValueTo(percent * 100, withDuration: 0.2)
+        //percentLabel.text = "\(Int(percent * 100))%"
         let leading = gaugeView.frame.origin.x
         if percent == 0 {
             percentLabel.snp.remakeConstraints { maker in
@@ -208,6 +212,9 @@ private extension BookViewController {
                     .multipliedBy(percent)
             }
         }
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
     // 화면을 비어보이지 않게 하는 레이블 만들기
     func changeDescriptionLabelText() {
