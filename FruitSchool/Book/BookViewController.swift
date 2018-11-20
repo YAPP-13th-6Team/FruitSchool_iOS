@@ -24,22 +24,6 @@ class BookViewController: UIViewController {
         return pagerView.currentIndex
     }
     
-    lazy private var gaugeLabel: UILabel! = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-        label.textColor = .main
-        label.backgroundColor = #colorLiteral(red: 0.7803921569, green: 0.737254902, blue: 0.7137254902, alpha: 1)
-        label.layer.cornerRadius = backgroundGaugeView.bounds.height / 2
-        label.clipsToBounds = true
-        view.addSubview(label)
-        label.snp.makeConstraints { maker in
-            maker.height.equalTo(backgroundGaugeView.snp.height)
-            maker.leading.equalTo(backgroundGaugeView.snp.leading)
-            maker.centerY.equalTo(backgroundGaugeView.snp.centerY)
-        }
-        return label
-    }()
-    
     lazy private var percentLabel: UILabel! = {
         let label = UILabel()
         label.textColor = .main
@@ -94,13 +78,6 @@ class BookViewController: UIViewController {
         return pageControl
     }()
     
-    @IBOutlet private weak var backgroundGaugeView: UILabel! {
-        didSet {
-            backgroundGaugeView.clipsToBounds = true
-            backgroundGaugeView.layer.cornerRadius = backgroundGaugeView.bounds.height / 2
-        }
-    }
-    
     @IBOutlet private weak var pagerView: FSPagerView! {
         didSet {
             pagerView.register(UINib(nibName: "BookCell", bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
@@ -112,6 +89,8 @@ class BookViewController: UIViewController {
             pagerView.dataSource = self
         }
     }
+    
+    @IBOutlet weak var gaugeView: Gauge!
     
     // MARK: - View Controler Life Cycles
     override func viewDidLoad() {
@@ -194,82 +173,45 @@ extension BookViewController: FSPagerViewDelegate {
 }
 // MARK: - Making Dynamic Views
 private extension BookViewController {
-    // 컬렉션뷰를 제외한 다른 모든 뷰를 다시 만듦
     func resetViews() {
         let percent = accomplishment()
         changePageControlStatus()
-        makeGaugeLabel(percent)
+        changeGaugeViewValue(percent)
         makePercentLabel(percent)
         changeDescriptionLabelText()
         decideIfShowingPromotionReviewButton(percent)
         pagerView.reloadData()
         view.layoutIfNeeded()
     }
-    // 페이지 컨트롤 속성 변경
+    
     func changePageControlStatus() {
         pageControl.currentPage = pagerView.currentIndex
     }
-    // 달성률을 시각적으로 보여주는 게이지(레이블 활용하여 만듦)를 만듦
-    func makeGaugeLabel(_ percent: CGFloat) {
-        // 레이블 프로퍼티 설정
-//        let label: UILabel = {
-//            let label = UILabel()
-//            label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-//            label.textColor = .main
-//            label.backgroundColor = #colorLiteral(red: 0.7803921569, green: 0.737254902, blue: 0.7137254902, alpha: 1)
-//            label.layer.cornerRadius = backgroundGaugeView.bounds.height / 2
-//            label.clipsToBounds = true
-//            view.addSubview(label)
-//            return label
-//        }()
-//        label.snp.makeConstraints { maker in
-//            maker.height.equalTo(backgroundGaugeView.snp.height)
-//            maker.leading.equalTo(backgroundGaugeView.snp.leading)
-//            maker.centerY.equalTo(backgroundGaugeView.snp.centerY)
-//            maker.width.equalTo(backgroundGaugeView.snp.width).multipliedBy(percent)
-//        }
-//        view.layoutIfNeeded()
-        gaugeLabel.snp.remakeConstraints { maker in
-            maker.width.equalTo(backgroundGaugeView.snp.width).multipliedBy(percent)
-        }
+    
+    func changeGaugeViewValue(_ percent: CGFloat) {
+        gaugeView.rate = percent
     }
-    // 달성률 표시하는 레이블 만들기
+
     func makePercentLabel(_ percent: CGFloat) {
-        // backgroundGaugeView의 슈퍼뷰와의 간격 구하여 percentLabel의 크기 적절하게 설정
-        let leading = backgroundGaugeView.frame.origin.x
+        percentLabel.text = "\(Int(percent * 100))%"
+        let leading = gaugeView.frame.origin.x
         if percent == 0 {
-            percentLabel.snp.makeConstraints { maker in
-                maker.top.equalTo(backgroundGaugeView.snp.bottom).offset(6)
-                maker.centerX.equalTo(backgroundGaugeView.snp.leading)
+            percentLabel.snp.remakeConstraints { maker in
+                maker.top.equalTo(gaugeView.snp.bottom).offset(6)
+                maker.centerX.equalTo(gaugeView.snp.leading)
             }
         } else {
-            percentLabel.snp.makeConstraints { maker in
-                maker.top.equalTo(backgroundGaugeView.snp.bottom).offset(6)
-                maker.centerX.equalTo(backgroundGaugeView.snp.trailing)
+            percentLabel.snp.remakeConstraints { maker in
+                maker.top.equalTo(gaugeView.snp.bottom).offset(6)
+                maker.centerX.equalTo(gaugeView.snp.trailing)
                     .offset(leading - leading * percent)
                     .multipliedBy(percent)
             }
         }
-        percentLabel.text = "\(Int(percent * 100))%"
     }
     // 화면을 비어보이지 않게 하는 레이블 만들기
     func changeDescriptionLabelText() {
         descriptionLabel.text = descriptionLabelText()
-//        view.viewWithTag(descriptionLabelTag)?.removeFromSuperview()
-//        // 레이블 프로퍼티 설정
-//        let label: UILabel = {
-//            let label = UILabel()
-//            label.tag = descriptionLabelTag
-//            label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-//            label.textColor = .main
-//            label.text = labelText()
-//            view.addSubview(label)
-//            return label
-//        }()
-//        label.snp.makeConstraints { maker in
-//            maker.centerX.equalTo(view.snp.centerX)
-//            maker.top.equalTo(percentLabel.snp.bottom).offset(8)
-//        }
     }
     // 승급심사 버튼 만들기
     func decideIfShowingPromotionReviewButton(_ percent: CGFloat) {
@@ -279,31 +221,6 @@ private extension BookViewController {
         } else {
             promotionReviewButton.isHidden = true
         }
-        // 교과서 달성률이 100%이면 버튼 표시. 100%이나 승급심사를 통과했으면 버튼 표시하지 않음
-//        if percent == 1 && !passesCurrentBook {
-//            // 버튼 프로퍼티 설정
-//            let button: UIButton = {
-//                let button = UIButton(type: .system)
-//                button.setTitle("승급 심사", for: [])
-//                button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-//                button.clipsToBounds = true
-//                button.layer.cornerRadius = button.bounds.height / 2
-//                button.layer.borderColor = UIColor.main.cgColor
-//                button.layer.borderWidth = 2
-//                button.addTarget(self, action: #selector(touchUpPromotionReviewButton(_:)), for: .touchUpInside)
-//                view.addSubview(button)
-//                return button
-//            }()
-//            button.snp.makeConstraints { maker in
-//                maker.top.equalTo(percentLabel.snp.bottom).offset(40)
-//                maker.width.equalTo(view.snp.width).multipliedBy(0.6)
-//                maker.centerX.equalTo(view.snp.centerX)
-//                maker.height.equalTo(40)
-//            }
-//            view.layoutIfNeeded()
-//            button.clipsToBounds = true
-//            button.layer.cornerRadius = button.bounds.height / 2
-//        }
     }
 }
 
