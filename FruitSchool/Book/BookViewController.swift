@@ -10,6 +10,7 @@ import UIKit
 import FSPagerView
 import GaugeKit
 import EFCountingLabel
+import StoreKit
 import SnapKit
 
 class BookViewController: UIViewController {
@@ -130,6 +131,11 @@ extension BookViewController: PromotionReviewDelegate {
             .alert(title: title, message: nil)
             .action(title: "확인", handler: { _ in
                 self.resetViews()
+                DispatchQueue.main.async {
+                    if #available(iOS 10.3, *) {
+                        SKStoreReviewController.requestReview()
+                    }
+                }
             })
             .present(to: self)
     }
