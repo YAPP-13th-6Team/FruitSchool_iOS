@@ -17,9 +17,9 @@ class BookViewController: UIViewController {
     // MARK: - Properties
     private let cellIdentifier = "bookCell"
     
-    lazy private var chapterRecord = ChapterRecord.fetch()
+    private lazy var chapterRecord = ChapterRecord.fetch()
     
-    lazy private var userRecord: UserRecord! = UserRecord.fetch().first
+    private lazy var userRecord: UserRecord! = UserRecord.fetch().first
     
     var currentIndex: Int {
         return pagerView.currentIndex
@@ -105,13 +105,6 @@ class BookViewController: UIViewController {
         super.viewWillAppear(animated)
         resetViews()
     }
-    
-    private func makeBackButton() {
-        let backBarButtonItem = UIBarButtonItem()
-        backBarButtonItem.title = "교과서"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIImageView(image: #imageLiteral(resourceName: "logo_noncircle")))
-        navigationItem.backBarButtonItem = backBarButtonItem
-    }
 }
 // MARK: - Button Touch Event
 private extension BookViewController {
@@ -183,12 +176,13 @@ private extension BookViewController {
         makePercentLabel(percent)
         changeDescriptionLabelText()
         decideIfShowingPromotionReviewButton(percent)
+        makeTopImageView()
         pagerView.reloadData()
         view.layoutIfNeeded()
     }
     
     func changePageControlStatus() {
-        pageControl.currentPage = pagerView.currentIndex
+        pageControl.currentPage = currentIndex
     }
     
     func changeGaugeViewValue(_ percent: CGFloat) {
@@ -197,7 +191,6 @@ private extension BookViewController {
 
     func makePercentLabel(_ percent: CGFloat) {
         percentLabel.countFromCurrentValueTo(percent * 100, withDuration: 0.2)
-        //percentLabel.text = "\(Int(percent * 100))%"
         let leading = gaugeView.frame.origin.x
         if percent == 0 {
             percentLabel.snp.remakeConstraints { maker in
@@ -232,6 +225,20 @@ private extension BookViewController {
 }
 
 private extension BookViewController {
+    private func makeBackButton() {
+        let backBarButtonItem = UIBarButtonItem()
+        backBarButtonItem.title = "교과서"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIImageView(image: #imageLiteral(resourceName: "logo_noncircle")))
+        navigationItem.backBarButtonItem = backBarButtonItem
+    }
+    
+    private func makeTopImageView() {
+        let grade = userRecord.grade
+        let imageView = UIImageView(image: UIImage(named: ChapterTopImage.allCases[grade].rawValue))
+        imageView.contentMode = .scaleAspectFit
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: imageView)
+    }
+    
     func accomplishment() -> CGFloat {
         let filtered = chapterRecord.filter("grade = %d", currentIndex)
         let count = filtered.count
