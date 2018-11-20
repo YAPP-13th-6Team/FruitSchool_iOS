@@ -11,11 +11,8 @@ import UIKit
 class DetailStandardTipCell: UITableViewCell {
 
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var contentLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+    @IBOutlet private weak var contentLabel: UILabel!
     
     func setProperties(_ object: FruitResponse.Data?, for indexPath: IndexPath) {
         let section = indexPath.section

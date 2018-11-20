@@ -53,7 +53,7 @@ class FruitCompletePopupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        setUp()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -74,7 +74,7 @@ class FruitCompletePopupViewController: UIViewController {
         }
     }
     
-    func setup() {
+    func setUp() {
         let blurEffect = UIBlurEffect(style: .prominent)
         blurView = UIVisualEffectView(effect: blurEffect)
         imageView.addSubview(blurView)

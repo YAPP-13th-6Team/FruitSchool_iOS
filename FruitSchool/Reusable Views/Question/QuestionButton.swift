@@ -13,15 +13,6 @@ class QuestionButton: UIButton {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setup()
-    }
-    
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        setup()
-//    }
-//    
-    func setup() {
         layer.cornerRadius = bounds.height / 2
         layer.masksToBounds = true
         setTitleColor(.black, for: [])

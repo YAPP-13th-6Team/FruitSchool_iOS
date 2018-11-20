@@ -12,10 +12,6 @@ class DetailNutritionTipCell: UITableViewCell {
 
     @IBOutlet weak var nutritionTipView: UIView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     func setProperties(_ object: NutritionTip?) {
         guard let object = object else { return }
         

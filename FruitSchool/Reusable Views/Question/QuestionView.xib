@@ -131,14 +131,14 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="answer1Button" destination="k4Z-xt-8GI" id="Jbu-T8-Jzw"/>
-                <outlet property="answer2Button" destination="uWv-zi-sOH" id="3Wc-d5-IPa"/>
-                <outlet property="answer3Button" destination="A85-BG-hWz" id="jsV-Ia-ey3"/>
-                <outlet property="answer4Button" destination="01h-Gu-YTB" id="zht-6l-rEn"/>
                 <outlet property="cancelButton" destination="wZE-Vc-xkO" id="3gg-EX-tBX"/>
                 <outlet property="markImageView" destination="bY0-gZ-pFP" id="Qpy-GY-kiO"/>
                 <outlet property="numberLabel" destination="3BU-uN-Oc7" id="TJ1-41-0pn"/>
                 <outlet property="titleLabel" destination="3s4-a8-ivz" id="eKT-NO-D4C"/>
+                <outletCollection property="answerButtons" destination="k4Z-xt-8GI" collectionClass="NSMutableArray" id="1qz-Yn-mEC"/>
+                <outletCollection property="answerButtons" destination="uWv-zi-sOH" collectionClass="NSMutableArray" id="4pK-QZ-yjF"/>
+                <outletCollection property="answerButtons" destination="A85-BG-hWz" collectionClass="NSMutableArray" id="fON-8X-3bG"/>
+                <outletCollection property="answerButtons" destination="01h-Gu-YTB" collectionClass="NSMutableArray" id="c3U-71-IR2"/>
             </connections>
             <point key="canvasLocation" x="138.40000000000001" y="-55.772113943028494"/>
         </view>
