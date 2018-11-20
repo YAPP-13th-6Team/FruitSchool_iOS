@@ -39,7 +39,7 @@ class BookViewController: UIViewController {
     @IBOutlet weak var backgroundGaugeView: UILabel!
     @IBOutlet weak var pagerView: FSPagerView! {
         didSet {
-            pagerView.register(UINib(nibName: "BookCell", bundle: nil), forCellWithReuseIdentifier: "bookCell")
+            pagerView.register(UINib(nibName: "BookCell", bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
             pagerView.transformer = FSPagerViewTransformer(type: .linear)
             pagerView.interitemSpacing = 6
             let width = UIScreen.main.bounds.width * 0.83
@@ -58,7 +58,6 @@ class BookViewController: UIViewController {
         super.viewWillAppear(animated)
         resetViews()
         pagerView.reloadData()
-        pagerView.scrollToItem(at: 0, animated: true)
     }
     
     private func setup() {
