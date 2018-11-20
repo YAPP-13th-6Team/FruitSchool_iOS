@@ -13,67 +13,34 @@ import SVProgressHUD
 class ChapterViewController: UIViewController {
 
     var grade: Int = 0
-    let cellIdentifier = "chapterCell"
-    var fruits: [FruitListResponse.Data] = []
-    let records = ChapterRecord.fetch()
-    var countLabel: UILabel!
-    @IBOutlet weak var collectionView: UICollectionView!
+    
+    private let cellIdentifier = "chapterCell"
+    
+    private var fruits: [FruitListResponse.Data] = []
+    
+    private lazy var records = ChapterRecord.fetch()
+    
+    private var countLabel: UILabel!
+    
+    @IBOutlet private weak var collectionView: UICollectionView! {
+        didSet {
+            let flowLayout = UICollectionViewFlowLayout()
+            let width = (UIScreen.main.bounds.width - 30) / 3
+            flowLayout.itemSize = CGSize(width: width, height: width)
+            flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 6, bottom: 0, right: 6)
+            flowLayout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 16)
+            flowLayout.footerReferenceSize = .zero
+            flowLayout.minimumLineSpacing = 8
+            flowLayout.minimumInteritemSpacing = 8
+            collectionView.collectionViewLayout = flowLayout
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 내비게이션 타이틀에 들어갈 이미지 설정
-        let topImage = UIImageView()
-        topImage.contentMode = .scaleAspectFit
-        switch grade {
-        case 0:
-            topImage.image = UIImage(named: "dog_top")
-        case 1:
-            topImage.image = UIImage(named: "student_top")
-        case 2:
-            topImage.image = UIImage(named: "boss_top")
-        default:
-            break
-        }
-        navigationItem.titleView = topImage
-        // 이전 버튼에 들어갈 문자열 설정
-        let backBarButtonItem = UIBarButtonItem()
-        backBarButtonItem.title = "과일목록"
-        navigationItem.backBarButtonItem = backBarButtonItem
-        // 내비게이션 바 우측에 위치하는 레이블 초기화
-        countLabel = UILabel()
-        if let navigationBar = navigationController?.navigationBar {
-            navigationBar.addSubview(countLabel)
-            countLabel.snp.makeConstraints { maker in
-                maker.trailing.equalTo(navigationBar.snp.trailing).offset(-22)
-                maker.centerY.equalTo(navigationBar.snp.centerY)
-            }
-        }
-        // 과일 목록 요청하기
+        setTopImage()
+        setBackButton()
         requestFruitList()
-    }
-}
-// MARK: - Making Fruit List
-extension ChapterViewController {
-    func requestFruitList() {
-        SVProgressHUD.show()
-        API.requestFruitList { response, _, error in
-            SVProgressHUD.dismiss()
-            if let error = error {
-                DispatchQueue.main.async { [weak self] in
-                    UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription, handler: {
-                        self?.navigationController?.popViewController(animated: true)
-                    })
-                }
-                return
-            }
-            guard let response = response else { return }
-            // 교과서의 등급에 맞는 데이터 필터링
-            let filtered = response.data.filter { $0.grade == self.grade }
-            self.fruits = filtered
-            DispatchQueue.main.async { [weak self] in
-                self?.collectionView.reloadData()
-            }
-        }
     }
 }
 // MARK: - ExerciseContainerViewController Custom Delegate Implementation
@@ -89,7 +56,7 @@ extension ChapterViewController: ExerciseDelegate {
             let filtered = self.records.filter("grade = %d", self.grade)
             let passed = filtered.filter("isPassed = true")
             if filtered.count == passed.count {
-                guard let finishPopup = UIViewController.instantiate(storyboard: "Popup", identifier: ChapterFinishPopupViewController.classNameToString) as? ChapterFinishPopupViewController else { return }
+                guard let finishPopup = UIViewController.instantiate(storyboard: "Popup", identifier: ChapterClearPopupViewController.classNameToString) as? ChapterClearPopupViewController else { return }
                 finishPopup.grade = self.grade
                 self.present(finishPopup, animated: true, completion: nil)
             }
@@ -138,31 +105,40 @@ extension ChapterViewController: UICollectionViewDelegate {
         }
     }
 }
-// MARK: - UICollectionView DelegateFlowLayout Implementation
-extension ChapterViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (view.bounds.width - 30) / 3
-        //let width = self.view.frame.width * 0.28
-        return CGSize(width: width, height: width)
+
+private extension ChapterViewController {
+    func requestFruitList() {
+        SVProgressHUD.show()
+        API.requestFruitList { response, _, error in
+            SVProgressHUD.dismiss()
+            if let error = error {
+                DispatchQueue.main.async {
+                    UIAlertController.presentErrorAlert(to: self, error: error.localizedDescription, handler: {
+                        self.navigationController?.popViewController(animated: true)
+                    })
+                }
+                return
+            }
+            guard let response = response else { return }
+            // 교과서의 등급에 맞는 데이터 필터링
+            let filtered = response.data.filter { $0.grade == self.grade }
+            self.fruits = filtered
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 6, bottom: 0, right: 6)
+    func setTopImage() {
+        let topImage = UIImageView()
+        topImage.contentMode = .scaleAspectFit
+        topImage.image = UIImage(named: ChapterTopImage.allCases[grade].rawValue)
+        navigationItem.titleView = topImage
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: self.view.frame.width, height: 16)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return .zero
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
+    func setBackButton() {
+        let backBarButtonItem = UIBarButtonItem()
+        backBarButtonItem.title = "과일목록"
+        navigationItem.backBarButtonItem = backBarButtonItem
     }
 }
