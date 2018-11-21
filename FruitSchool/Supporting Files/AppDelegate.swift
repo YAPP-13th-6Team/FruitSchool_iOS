@@ -21,7 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if UserRecord.fetch().count == 0 {
             controller = UIViewController.instantiate(storyboard: "Certificate", identifier: CertificateViewController.classNameToString)
         } else {
-            controller = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController")
+            let splitViewController = UISplitViewController()
+            let master = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController") ?? UIViewController()
+            let detail = UIViewController.instantiate(storyboard: "Book", identifier: DummyDetailViewController.classNameToString) ?? UIViewController()
+            splitViewController.viewControllers = [master, detail]
+            controller = splitViewController
+            //controller = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController")
         }
         window?.rootViewController = controller
         window?.makeKeyAndVisible()

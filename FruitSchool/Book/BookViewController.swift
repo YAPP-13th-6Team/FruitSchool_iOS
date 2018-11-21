@@ -87,7 +87,13 @@ class BookViewController: UIViewController {
             pagerView.register(UINib(nibName: "BookCell", bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
             pagerView.transformer = FSPagerViewTransformer(type: .linear)
             pagerView.interitemSpacing = 6
-            let width = UIScreen.main.bounds.width * 0.83
+            let width: CGFloat
+            if deviceModel == .iPad {
+                width = (splitViewController?.primaryColumnWidth ?? 0) * 0.83
+            } else {
+                width = UIScreen.main.bounds.width * 0.83
+            }
+            //let width = UIScreen.main.bounds.width * 0.83
             pagerView.itemSize = CGSize(width: width, height: width * 398 / 312)
             pagerView.delegate = self
             pagerView.dataSource = self

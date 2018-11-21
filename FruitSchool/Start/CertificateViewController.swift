@@ -41,30 +41,39 @@ class CertificateViewController: UIViewController {
             startButton.addTarget(self, action: #selector(touchUpStartButton(_:)), for: .touchUpInside)
         }
     }
-    
-    @IBOutlet weak var dummyView: UIView! {
-        didSet {
-            dummyView.layer.cornerRadius = 13
-        }
-    }
+//
+//    @IBOutlet weak var dummyView: UIView! {
+//        didSet {
+//            dummyView.layer.cornerRadius = 13
+//        }
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if deviceModel == .iPad {
             NSLayoutConstraint.activate([
-                dummyView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-                dummyView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                dummyView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.63),
-                dummyView.widthAnchor.constraint(equalTo: dummyView.heightAnchor, multiplier: 270 / 422)
+                backgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                backgroundView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                backgroundView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.63),
+                backgroundView.widthAnchor.constraint(equalTo: backgroundView.heightAnchor, multiplier: 270 / 422)
+//                dummyView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+//                dummyView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//                dummyView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.63),
+//                dummyView.widthAnchor.constraint(equalTo: dummyView.heightAnchor, multiplier: 270 / 422)
                 ])
         } else {
             NSLayoutConstraint.activate([
-                dummyView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-                dummyView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                dummyView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.63),
-                dummyView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 270 / 422)
+                backgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                backgroundView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                backgroundView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.63),
+                backgroundView.heightAnchor.constraint(equalTo: backgroundView.widthAnchor, multiplier: 422 / 270)
+//                dummyView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+//                dummyView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//                dummyView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.63),
+//                dummyView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 270 / 422)
                 ])
         }
+        view.layoutIfNeeded()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -96,7 +105,12 @@ class CertificateViewController: UIViewController {
             DispatchQueue.main.async {
                 SVProgressHUD.dismiss()
                 UserRecord.add(nickname: self.nickname)
-                self.present(next, animated: true)
+                let splitViewController = UISplitViewController()
+                let master = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController") ?? UIViewController()
+                let detail = UIViewController.instantiate(storyboard: "Book", identifier: DummyDetailViewController.classNameToString) ?? UIViewController()
+                splitViewController.viewControllers = [master, detail]
+                self.present(splitViewController, animated: true, completion: nil)
+                //self.present(next, animated: true)
             }
         }
     }
