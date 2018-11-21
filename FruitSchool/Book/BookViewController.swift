@@ -10,6 +10,7 @@ import UIKit
 import FSPagerView
 import GaugeKit
 import EFCountingLabel
+import StoreKit
 import SnapKit
 
 class BookViewController: UIViewController {
@@ -17,12 +18,20 @@ class BookViewController: UIViewController {
     // MARK: - Properties
     private let cellIdentifier = "bookCell"
     
-    lazy private var chapterRecord = ChapterRecord.fetch()
+    private lazy var chapterRecord = ChapterRecord.fetch()
     
-    lazy private var userRecord: UserRecord! = UserRecord.fetch().first
+    private lazy var userRecord: UserRecord! = UserRecord.fetch().first
     
     var currentIndex: Int {
         return pagerView.currentIndex
+    }
+    
+    var detailViewController: UIViewController? {
+        return (splitViewController?.viewControllers.last as? UINavigationController)?.topViewController
+    }
+    
+    var detailNavigationController: UINavigationController? {
+        return detailViewController?.navigationController
     }
     
     lazy private var percentLabel: EFCountingLabel! = {
@@ -86,7 +95,13 @@ class BookViewController: UIViewController {
             pagerView.register(UINib(nibName: "BookCell", bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
             pagerView.transformer = FSPagerViewTransformer(type: .linear)
             pagerView.interitemSpacing = 6
-            let width = UIScreen.main.bounds.width * 0.83
+            let width: CGFloat
+            if deviceModel == .iPad {
+                width = (splitViewController?.primaryColumnWidth ?? 0) * 0.83
+            } else {
+                width = UIScreen.main.bounds.width * 0.83
+            }
+            //let width = UIScreen.main.bounds.width * 0.83
             pagerView.itemSize = CGSize(width: width, height: width * 398 / 312)
             pagerView.delegate = self
             pagerView.dataSource = self
@@ -104,13 +119,6 @@ class BookViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         resetViews()
-    }
-    
-    private func makeBackButton() {
-        let backBarButtonItem = UIBarButtonItem()
-        backBarButtonItem.title = "교과서"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIImageView(image: #imageLiteral(resourceName: "logo_noncircle")))
-        navigationItem.backBarButtonItem = backBarButtonItem
     }
 }
 // MARK: - Button Touch Event
@@ -137,6 +145,11 @@ extension BookViewController: PromotionReviewDelegate {
             .alert(title: title, message: nil)
             .action(title: "확인", handler: { _ in
                 self.resetViews()
+                DispatchQueue.main.async {
+                    if #available(iOS 10.3, *) {
+                        SKStoreReviewController.requestReview()
+                    }
+                }
             })
             .present(to: self)
     }
@@ -163,6 +176,10 @@ extension BookViewController: FSPagerViewDelegate {
     
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
         pagerView.deselectItem(at: index, animated: true)
+        navigationController?.hidesBarsOnSwipe = false
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        detailNavigationController?.hidesBarsOnSwipe = false
+        detailNavigationController?.setNavigationBarHidden(false, animated: false)
         // 현재 등급과 교과서 등급을 비교하여 접근 제한
         let myGrade = UserRecord.fetch().first?.grade ?? 0
         if !(0...myGrade).contains(index) {
@@ -171,11 +188,21 @@ extension BookViewController: FSPagerViewDelegate {
         }
         guard let next = UIViewController.instantiate(storyboard: "Chapter", identifier: ChapterViewController.classNameToString) as? ChapterViewController else { return }
         next.grade = index
-        navigationController?.pushViewController(next, animated: true)
+        if deviceModel == .iPad {
+            if detailNavigationController?.viewControllers.count ?? 0 >= 2 {
+                detailNavigationController?.popToRootViewController(animated: false)
+                detailNavigationController?.pushViewController(next, animated: false)
+            } else {
+                detailNavigationController?.pushViewController(next, animated: true)
+            }
+        } else {
+            navigationController?.pushViewController(next, animated: true)
+        }
+        //navigationController?.pushViewController(next, animated: true)
     }
 }
 // MARK: - Making Dynamic Views
-private extension BookViewController {
+extension BookViewController {
     func resetViews() {
         let percent = accomplishment()
         changePageControlStatus()
@@ -183,21 +210,22 @@ private extension BookViewController {
         makePercentLabel(percent)
         changeDescriptionLabelText()
         decideIfShowingPromotionReviewButton(percent)
+        makeTopImageView()
         pagerView.reloadData()
         view.layoutIfNeeded()
     }
     
-    func changePageControlStatus() {
-        pageControl.currentPage = pagerView.currentIndex
+    private func changePageControlStatus() {
+        pageControl.currentPage = currentIndex
     }
     
-    func changeGaugeViewValue(_ percent: CGFloat) {
-        gaugeView.rate = percent
+    private func changeGaugeViewValue(_ percent: CGFloat) {
+        gaugeView.animateRate(0.5, newValue: percent) { _ in }
+        //gaugeView.rate = percent
     }
 
-    func makePercentLabel(_ percent: CGFloat) {
-        percentLabel.countFromCurrentValueTo(percent * 100, withDuration: 0.2)
-        //percentLabel.text = "\(Int(percent * 100))%"
+    private func makePercentLabel(_ percent: CGFloat) {
+        percentLabel.countFromCurrentValueTo(percent * 100, withDuration: 0.5)
         let leading = gaugeView.frame.origin.x
         if percent == 0 {
             percentLabel.snp.remakeConstraints { maker in
@@ -212,16 +240,16 @@ private extension BookViewController {
                     .multipliedBy(percent)
             }
         }
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
     // 화면을 비어보이지 않게 하는 레이블 만들기
-    func changeDescriptionLabelText() {
+    private func changeDescriptionLabelText() {
         descriptionLabel.text = descriptionLabelText()
     }
     // 승급심사 버튼 만들기
-    func decideIfShowingPromotionReviewButton(_ percent: CGFloat) {
+    private func decideIfShowingPromotionReviewButton(_ percent: CGFloat) {
         let passesCurrentBook = UserRecord.fetch().first?[pagerView.currentIndex] ?? false
         if percent == 1 && !passesCurrentBook {
             promotionReviewButton.isHidden = false
@@ -232,6 +260,20 @@ private extension BookViewController {
 }
 
 private extension BookViewController {
+    private func makeBackButton() {
+        let backBarButtonItem = UIBarButtonItem()
+        backBarButtonItem.title = "교과서"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIImageView(image: #imageLiteral(resourceName: "logo_noncircle")))
+        navigationItem.backBarButtonItem = backBarButtonItem
+    }
+    
+    private func makeTopImageView() {
+        let grade = userRecord.grade
+        let imageView = UIImageView(image: UIImage(named: ChapterTopImage.allCases[grade].rawValue))
+        imageView.contentMode = .scaleAspectFit
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: imageView)
+    }
+    
     func accomplishment() -> CGFloat {
         let filtered = chapterRecord.filter("grade = %d", currentIndex)
         let count = filtered.count

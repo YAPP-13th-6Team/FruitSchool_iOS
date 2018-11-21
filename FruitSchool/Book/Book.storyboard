@@ -90,6 +90,49 @@
             </objects>
             <point key="canvasLocation" x="872.79999999999995" y="221.67487684729065"/>
         </scene>
+        <!--Dummy Detail View Controller-->
+        <scene sceneID="VfE-qj-KBy">
+            <objects>
+                <viewController storyboardIdentifier="DummyDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qEj-Ar-1VF" customClass="DummyDetailViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="srn-QW-zY5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dIa-aX-orZ">
+                                <rect key="frame" x="105" y="255" width="165" height="302"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dog_clear" translatesAutoresizingMaskIntoConstraints="NO" id="LiM-4g-0UT">
+                                        <rect key="frame" x="0.0" y="0.0" width="165" height="90"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="student_clear" translatesAutoresizingMaskIntoConstraints="NO" id="4O1-Hj-3MH">
+                                        <rect key="frame" x="0.0" y="90" width="165" height="97"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boss_clear" translatesAutoresizingMaskIntoConstraints="NO" id="Rd6-gf-bYg">
+                                        <rect key="frame" x="0.0" y="187" width="165" height="115"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_main" translatesAutoresizingMaskIntoConstraints="NO" id="WBv-o4-cRA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dIa-aX-orZ" firstAttribute="centerX" secondItem="srn-QW-zY5" secondAttribute="centerX" id="8aO-xJ-dts"/>
+                            <constraint firstItem="WBv-o4-cRA" firstAttribute="leading" secondItem="srn-QW-zY5" secondAttribute="leading" id="BFt-uM-PZC"/>
+                            <constraint firstAttribute="bottom" secondItem="WBv-o4-cRA" secondAttribute="bottom" id="Esv-Nc-KzR"/>
+                            <constraint firstAttribute="trailing" secondItem="WBv-o4-cRA" secondAttribute="trailing" id="Ifx-Sw-8Up"/>
+                            <constraint firstItem="WBv-o4-cRA" firstAttribute="top" secondItem="srn-QW-zY5" secondAttribute="top" id="hvD-qz-IFb"/>
+                            <constraint firstItem="dIa-aX-orZ" firstAttribute="centerY" secondItem="srn-QW-zY5" secondAttribute="centerY" id="rKK-qZ-b84"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="EEZ-9O-Znn"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Cgo-lT-L3J"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZEA-Iv-jXA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2887.1999999999998" y="221.67487684729065"/>
+        </scene>
         <!--교과서-->
         <scene sceneID="LeA-30-Eu1">
             <objects>
@@ -108,8 +151,29 @@
             </objects>
             <point key="canvasLocation" x="-106.40000000000001" y="221.73913043478262"/>
         </scene>
+        <!--Dummy Detail Navigation Controller-->
+        <scene sceneID="jpB-8W-WIk">
+            <objects>
+                <navigationController storyboardIdentifier="DummyDetailNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SWh-iQ-u0N" customClass="DummyDetailNavigationController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cGv-q0-TnD">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qEj-Ar-1VF" kind="relationship" relationship="rootViewController" id="yZR-ry-Jqh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RBf-kj-FAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1944.8" y="221.67487684729065"/>
+        </scene>
     </scenes>
     <resources>
         <image name="background_main" width="375" height="667"/>
+        <image name="boss_clear" width="165" height="115.66666412353516"/>
+        <image name="dog_clear" width="144.33332824707031" height="90.333335876464844"/>
+        <image name="student_clear" width="162" height="97"/>
     </resources>
 </document>

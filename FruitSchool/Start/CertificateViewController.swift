@@ -42,11 +42,35 @@ class CertificateViewController: UIViewController {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if deviceModel == .iPad {
+            NSLayoutConstraint.activate([
+                backgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                backgroundView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                backgroundView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.63),
+                backgroundView.widthAnchor.constraint(equalTo: backgroundView.heightAnchor, multiplier: 270 / 422)
+                ])
+        } else {
+            NSLayoutConstraint.activate([
+                backgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                backgroundView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                backgroundView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.63),
+                backgroundView.heightAnchor.constraint(equalTo: backgroundView.widthAnchor, multiplier: 422 / 270)
+                ])
+        }
+        view.layoutIfNeeded()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         nicknameTextField.becomeFirstResponder()
     }
-    
+
     @objc private func touchUpStartButton(_ sender: UIButton) {
         if nickname.isEmpty {
             UIAlertController
@@ -71,7 +95,13 @@ class CertificateViewController: UIViewController {
             DispatchQueue.main.async {
                 SVProgressHUD.dismiss()
                 UserRecord.add(nickname: self.nickname)
-                self.present(next, animated: true)
+                let splitViewController = UISplitViewController()
+                let master = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController") ?? UIViewController()
+                let detail = UIViewController.instantiate(storyboard: "Book", identifier: DummyDetailNavigationController.classNameToString) ?? UIViewController()
+                splitViewController.viewControllers = [master, detail]
+                splitViewController.modalTransitionStyle = .crossDissolve
+                self.present(splitViewController, animated: true, completion: nil)
+                //self.present(next, animated: true)
             }
         }
     }

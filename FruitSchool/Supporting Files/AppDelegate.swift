@@ -15,13 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        self.window = UIWindow(frame: UIScreen.main.bounds)
+        window = UIWindow(frame: UIScreen.main.bounds)
         window?.tintColor = .main
         let controller: UIViewController?
         if UserRecord.fetch().count == 0 {
             controller = UIViewController.instantiate(storyboard: "Certificate", identifier: CertificateViewController.classNameToString)
         } else {
-            controller = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController")
+            let splitViewController = UISplitViewController()
+            let master = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController") ?? UIViewController()
+            //let detail = UIViewController.instantiate(storyboard: "Book", identifier: "DetailNavigationController") ?? UIViewController()
+            let detail = UIViewController.instantiate(storyboard: "Book", identifier: DummyDetailNavigationController.classNameToString) ?? UIViewController()
+            splitViewController.viewControllers = [master, detail]
+            controller = splitViewController
+            //controller = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController")
         }
         window?.rootViewController = controller
         window?.makeKeyAndVisible()
@@ -31,6 +37,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().backgroundColor = .clear
         UINavigationBar.appearance().isTranslucent = true
         return true
+    }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        if deviceModel == .iPad {
+            return [.landscapeRight]
+        } else {
+            return [.portrait]
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {}
