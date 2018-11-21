@@ -12,12 +12,8 @@ class DummyDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        splitViewController?.delegate = self
-    }
-}
-
-extension DummyDetailViewController: UISplitViewControllerDelegate {
-    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
-        return true
+        let backBarButton = UIBarButtonItem()
+        backBarButton.title = "교과서"
+        navigationItem.backBarButtonItem = backBarButton
     }
 }

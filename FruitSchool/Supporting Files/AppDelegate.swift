@@ -23,7 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             let splitViewController = UISplitViewController()
             let master = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController") ?? UIViewController()
-            let detail = UIViewController.instantiate(storyboard: "Book", identifier: "DetailNavigationController") ?? UIViewController()
+            //let detail = UIViewController.instantiate(storyboard: "Book", identifier: "DetailNavigationController") ?? UIViewController()
+            let detail = UIViewController.instantiate(storyboard: "Book", identifier: DummyDetailNavigationController.classNameToString) ?? UIViewController()
             splitViewController.viewControllers = [master, detail]
             controller = splitViewController
             //controller = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController")

@@ -98,7 +98,7 @@ class CertificateViewController: UIViewController {
                 UserRecord.add(nickname: self.nickname)
                 let splitViewController = UISplitViewController()
                 let master = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController") ?? UIViewController()
-                let detail = UIViewController.instantiate(storyboard: "Book", identifier: DummyDetailViewController.classNameToString) ?? UIViewController()
+                let detail = UIViewController.instantiate(storyboard: "Book", identifier: DummyDetailNavigationController.classNameToString) ?? UIViewController()
                 splitViewController.viewControllers = [master, detail]
                 self.present(splitViewController, animated: true, completion: nil)
                 //self.present(next, animated: true)

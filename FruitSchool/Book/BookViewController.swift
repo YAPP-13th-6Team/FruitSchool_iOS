@@ -26,6 +26,10 @@ class BookViewController: UIViewController {
         return pagerView.currentIndex
     }
     
+    var detailViewController: UIViewController? {
+        return (splitViewController?.viewControllers.last as? UINavigationController)?.topViewController
+    }
+    
     lazy private var percentLabel: EFCountingLabel! = {
         let label = EFCountingLabel()
         label.format = "%d%%"
@@ -177,8 +181,12 @@ extension BookViewController: FSPagerViewDelegate {
         guard let next = UIViewController.instantiate(storyboard: "Chapter", identifier: ChapterViewController.classNameToString) as? ChapterViewController else { return }
         next.grade = index
         if deviceModel == .iPad {
-            splitViewController?.viewControllers[1].navigationController?.pushViewController(next, animated: true)
-            //splitViewController?.showDetailViewController(UINavigationController(rootViewController: next), sender: self)
+            if detailViewController?.navigationController?.viewControllers.count ?? 0 >= 2 {
+                detailViewController?.navigationController?.popViewController(animated: false)
+                detailViewController?.navigationController?.pushViewController(next, animated: false)
+            } else {
+                detailViewController?.navigationController?.pushViewController(next, animated: true)
+            }
         } else {
             navigationController?.pushViewController(next, animated: true)
         }
