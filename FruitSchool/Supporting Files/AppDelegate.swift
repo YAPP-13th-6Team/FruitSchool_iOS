@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        self.window = UIWindow(frame: UIScreen.main.bounds)
+        window = UIWindow(frame: UIScreen.main.bounds)
         window?.tintColor = .main
         let controller: UIViewController?
         if UserRecord.fetch().count == 0 {
@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             let splitViewController = UISplitViewController()
             let master = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController") ?? UIViewController()
-            let detail = UIViewController.instantiate(storyboard: "Book", identifier: DummyDetailViewController.classNameToString) ?? UIViewController()
+            let detail = UIViewController.instantiate(storyboard: "Book", identifier: "DetailNavigationController") ?? UIViewController()
             splitViewController.viewControllers = [master, detail]
             controller = splitViewController
             //controller = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController")

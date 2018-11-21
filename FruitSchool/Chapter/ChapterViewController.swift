@@ -25,7 +25,13 @@ class ChapterViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView! {
         didSet {
             let flowLayout = UICollectionViewFlowLayout()
-            let width = (UIScreen.main.bounds.width - 30) / 3
+            let width: CGFloat
+            if deviceModel == .iPad {
+                width = (UIScreen.main.bounds.width - (splitViewController?.primaryColumnWidth ?? 0) - 30) / 7
+            } else {
+                width = (UIScreen.main.bounds.width - 30) / 3
+            }
+            //let width = (UIScreen.main.bounds.width - 30) / 3
             flowLayout.itemSize = CGSize(width: width, height: width)
             flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 6, bottom: 0, right: 6)
             flowLayout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 16)

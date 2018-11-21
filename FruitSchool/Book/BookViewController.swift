@@ -176,7 +176,13 @@ extension BookViewController: FSPagerViewDelegate {
         }
         guard let next = UIViewController.instantiate(storyboard: "Chapter", identifier: ChapterViewController.classNameToString) as? ChapterViewController else { return }
         next.grade = index
-        navigationController?.pushViewController(next, animated: true)
+        if deviceModel == .iPad {
+            splitViewController?.viewControllers[1].navigationController?.pushViewController(next, animated: true)
+            //splitViewController?.showDetailViewController(UINavigationController(rootViewController: next), sender: self)
+        } else {
+            navigationController?.pushViewController(next, animated: true)
+        }
+        //navigationController?.pushViewController(next, animated: true)
     }
 }
 // MARK: - Making Dynamic Views
