@@ -101,7 +101,6 @@ class BookViewController: UIViewController {
             } else {
                 width = UIScreen.main.bounds.width * 0.83
             }
-            //let width = UIScreen.main.bounds.width * 0.83
             pagerView.itemSize = CGSize(width: width, height: width * 398 / 312)
             pagerView.delegate = self
             pagerView.dataSource = self
@@ -198,7 +197,6 @@ extension BookViewController: FSPagerViewDelegate {
         } else {
             navigationController?.pushViewController(next, animated: true)
         }
-        //navigationController?.pushViewController(next, animated: true)
     }
 }
 // MARK: - Making Dynamic Views
@@ -221,7 +219,6 @@ extension BookViewController {
     
     private func changeGaugeViewValue(_ percent: CGFloat) {
         gaugeView.animateRate(0.5, newValue: percent) { _ in }
-        //gaugeView.rate = percent
     }
 
     private func makePercentLabel(_ percent: CGFloat) {
