@@ -223,8 +223,6 @@ extension ExerciseContainerViewController {
                         self.dismiss(animated: true) {
                             self.delegate?.didDismissExerciseViewController(fruitTitle: self.fruitTitle, english: self.english)
                         }
-                    } else {
-                        self.dismiss(animated: true, completion: nil)
                     }
                 })
             }
