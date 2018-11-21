@@ -32,6 +32,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().isTranslucent = true
         return true
     }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        if deviceModel == .iPad {
+            return [.landscapeRight]
+        } else {
+            return [.portrait]
+        }
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {}
 

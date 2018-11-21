@@ -90,10 +90,7 @@ class FruitCompletePopupViewController: UIViewController {
         blurView = UIVisualEffectView(effect: blurEffect)
         imageView.addSubview(blurView)
         blurView.snp.makeConstraints { maker in
-            maker.top.equalTo(imageView.snp.top)
-            maker.leading.equalTo(imageView.snp.leading)
-            maker.trailing.equalTo(imageView.snp.trailing)
-            maker.bottom.equalTo(imageView.snp.bottom)
+            maker.edges.equalTo(imageView)
         }
         imageView.addSubview(lockImageView)
         lockImageView.snp.makeConstraints { maker in

@@ -37,10 +37,7 @@ class ChapterCell: UICollectionViewCell {
             guard let blurView = blurView else { return }
             addSubview(blurView)
             blurView.snp.makeConstraints { maker in
-                maker.leading.equalTo(snp.leading)
-                maker.top.equalTo(snp.top)
-                maker.trailing.equalTo(snp.trailing)
-                maker.bottom.equalTo(snp.bottom)
+                maker.edges.equalTo(self)
             }
             lockImageView = UIImageView(image: #imageLiteral(resourceName: "lock"))
             guard let lockImageView = lockImageView else { return }

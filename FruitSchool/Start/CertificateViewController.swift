@@ -42,11 +42,36 @@ class CertificateViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var dummyView: UIView! {
+        didSet {
+            dummyView.layer.cornerRadius = 13
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if deviceModel == .iPad {
+            NSLayoutConstraint.activate([
+                dummyView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                dummyView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                dummyView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.63),
+                dummyView.widthAnchor.constraint(equalTo: dummyView.heightAnchor, multiplier: 270 / 422)
+                ])
+        } else {
+            NSLayoutConstraint.activate([
+                dummyView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                dummyView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                dummyView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.63),
+                dummyView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 270 / 422)
+                ])
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         nicknameTextField.becomeFirstResponder()
     }
-    
+
     @objc private func touchUpStartButton(_ sender: UIButton) {
         if nickname.isEmpty {
             UIAlertController
