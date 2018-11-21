@@ -44,7 +44,6 @@ class CertificateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "background_main") ?? UIImage())
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -100,6 +99,7 @@ class CertificateViewController: UIViewController {
                 let master = UIViewController.instantiate(storyboard: "Book", identifier: "BookNavigationController") ?? UIViewController()
                 let detail = UIViewController.instantiate(storyboard: "Book", identifier: DummyDetailNavigationController.classNameToString) ?? UIViewController()
                 splitViewController.viewControllers = [master, detail]
+                splitViewController.modalTransitionStyle = .crossDissolve
                 self.present(splitViewController, animated: true, completion: nil)
                 //self.present(next, animated: true)
             }
