@@ -58,6 +58,7 @@ extension ChapterViewController: ExerciseDelegate {
         popup.english = english
         popup.grade = grade
         popup.handler = {
+            ((self.splitViewController?.viewControllers.first as? UINavigationController)?.topViewController as? BookViewController)?.resetViews()
             self.collectionView.reloadSections(IndexSet(0...0))
             let filtered = self.records.filter("grade = %d", self.grade)
             let passed = filtered.filter("isPassed = true")

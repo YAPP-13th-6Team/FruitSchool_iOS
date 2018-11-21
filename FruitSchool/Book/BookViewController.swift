@@ -30,6 +30,10 @@ class BookViewController: UIViewController {
         return (splitViewController?.viewControllers.last as? UINavigationController)?.topViewController
     }
     
+    var detailNavigationController: UINavigationController? {
+        return detailViewController?.navigationController
+    }
+    
     lazy private var percentLabel: EFCountingLabel! = {
         let label = EFCountingLabel()
         label.format = "%d%%"
@@ -172,6 +176,10 @@ extension BookViewController: FSPagerViewDelegate {
     
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
         pagerView.deselectItem(at: index, animated: true)
+        navigationController?.hidesBarsOnSwipe = false
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        detailNavigationController?.hidesBarsOnSwipe = false
+        detailNavigationController?.setNavigationBarHidden(false, animated: false)
         // 현재 등급과 교과서 등급을 비교하여 접근 제한
         let myGrade = UserRecord.fetch().first?.grade ?? 0
         if !(0...myGrade).contains(index) {
@@ -181,11 +189,11 @@ extension BookViewController: FSPagerViewDelegate {
         guard let next = UIViewController.instantiate(storyboard: "Chapter", identifier: ChapterViewController.classNameToString) as? ChapterViewController else { return }
         next.grade = index
         if deviceModel == .iPad {
-            if detailViewController?.navigationController?.viewControllers.count ?? 0 >= 2 {
-                detailViewController?.navigationController?.popViewController(animated: false)
-                detailViewController?.navigationController?.pushViewController(next, animated: false)
+            if detailNavigationController?.viewControllers.count ?? 0 >= 2 {
+                detailNavigationController?.popToRootViewController(animated: false)
+                detailNavigationController?.pushViewController(next, animated: false)
             } else {
-                detailViewController?.navigationController?.pushViewController(next, animated: true)
+                detailNavigationController?.pushViewController(next, animated: true)
             }
         } else {
             navigationController?.pushViewController(next, animated: true)
@@ -194,7 +202,7 @@ extension BookViewController: FSPagerViewDelegate {
     }
 }
 // MARK: - Making Dynamic Views
-private extension BookViewController {
+extension BookViewController {
     func resetViews() {
         let percent = accomplishment()
         changePageControlStatus()
@@ -207,16 +215,17 @@ private extension BookViewController {
         view.layoutIfNeeded()
     }
     
-    func changePageControlStatus() {
+    private func changePageControlStatus() {
         pageControl.currentPage = currentIndex
     }
     
-    func changeGaugeViewValue(_ percent: CGFloat) {
-        gaugeView.rate = percent
+    private func changeGaugeViewValue(_ percent: CGFloat) {
+        gaugeView.animateRate(0.5, newValue: percent) { _ in }
+        //gaugeView.rate = percent
     }
 
-    func makePercentLabel(_ percent: CGFloat) {
-        percentLabel.countFromCurrentValueTo(percent * 100, withDuration: 0.2)
+    private func makePercentLabel(_ percent: CGFloat) {
+        percentLabel.countFromCurrentValueTo(percent * 100, withDuration: 0.5)
         let leading = gaugeView.frame.origin.x
         if percent == 0 {
             percentLabel.snp.remakeConstraints { maker in
@@ -231,16 +240,16 @@ private extension BookViewController {
                     .multipliedBy(percent)
             }
         }
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
     // 화면을 비어보이지 않게 하는 레이블 만들기
-    func changeDescriptionLabelText() {
+    private func changeDescriptionLabelText() {
         descriptionLabel.text = descriptionLabelText()
     }
     // 승급심사 버튼 만들기
-    func decideIfShowingPromotionReviewButton(_ percent: CGFloat) {
+    private func decideIfShowingPromotionReviewButton(_ percent: CGFloat) {
         let passesCurrentBook = UserRecord.fetch().first?[pagerView.currentIndex] ?? false
         if percent == 1 && !passesCurrentBook {
             promotionReviewButton.isHidden = false
