@@ -13,7 +13,7 @@
         <!--Chapter Clear Popup View Controller-->
         <scene sceneID="E9w-xB-qGG">
             <objects>
-                <viewController storyboardIdentifier="ChapterClearPopupViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aFL-Gf-rfI" customClass="ChapterClearPopupViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChapterClearPopupViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aFL-Gf-rfI" customClass="ChapterClearPopupViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="VaL-DJ-Yyx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,14 +72,15 @@
                                     <constraint firstAttribute="trailing" secondItem="QnB-53-fGO" secondAttribute="trailing" constant="16" id="KrG-PZ-4TL"/>
                                     <constraint firstItem="ljT-yX-jpH" firstAttribute="top" secondItem="QnB-53-fGO" secondAttribute="bottom" id="Lmo-dd-y3w"/>
                                     <constraint firstAttribute="bottom" secondItem="AxB-0I-ePl" secondAttribute="bottom" id="Nqh-yL-G16"/>
+                                    <constraint firstAttribute="height" constant="286" id="UOE-UP-013"/>
                                     <constraint firstItem="ljT-yX-jpH" firstAttribute="leading" secondItem="gh6-Lq-O7n" secondAttribute="leading" id="WMV-6L-K3z"/>
                                     <constraint firstItem="qBF-jt-SVW" firstAttribute="top" secondItem="qbl-Jj-63a" secondAttribute="bottom" id="fXT-wI-OyK"/>
                                     <constraint firstItem="AxB-0I-ePl" firstAttribute="top" secondItem="gh6-Lq-O7n" secondAttribute="top" id="gkC-6E-gTp"/>
                                     <constraint firstItem="AxB-0I-ePl" firstAttribute="leading" secondItem="gh6-Lq-O7n" secondAttribute="leading" id="hVE-pk-lLc"/>
                                     <constraint firstItem="QnB-53-fGO" firstAttribute="leading" secondItem="gh6-Lq-O7n" secondAttribute="leading" constant="16" id="jE4-Pq-rcX"/>
+                                    <constraint firstAttribute="width" constant="270" id="nvN-kn-EuY"/>
                                     <constraint firstAttribute="trailing" secondItem="qBF-jt-SVW" secondAttribute="trailing" id="nzM-Dv-eOl"/>
                                     <constraint firstItem="qbl-Jj-63a" firstAttribute="top" secondItem="ljT-yX-jpH" secondAttribute="bottom" id="pfh-Cz-Y09"/>
-                                    <constraint firstAttribute="width" secondItem="gh6-Lq-O7n" secondAttribute="height" multiplier="270:286" id="qOh-EF-cUG"/>
                                     <constraint firstAttribute="trailing" secondItem="ljT-yX-jpH" secondAttribute="trailing" id="qXc-OB-ftS"/>
                                     <constraint firstAttribute="trailing" secondItem="qbl-Jj-63a" secondAttribute="trailing" id="s3O-72-otr"/>
                                 </constraints>
@@ -87,7 +88,6 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="gh6-Lq-O7n" firstAttribute="width" secondItem="VaL-DJ-Yyx" secondAttribute="width" multiplier="0.72" id="49m-TF-48v"/>
                             <constraint firstItem="gh6-Lq-O7n" firstAttribute="centerX" secondItem="VaL-DJ-Yyx" secondAttribute="centerX" id="Kfx-a6-imc"/>
                             <constraint firstItem="gh6-Lq-O7n" firstAttribute="centerY" secondItem="VaL-DJ-Yyx" secondAttribute="centerY" id="r49-Mu-Crm"/>
                         </constraints>
@@ -107,7 +107,7 @@
         <!--Fruit Complete Popup View Controller-->
         <scene sceneID="Te9-Ow-Puv">
             <objects>
-                <viewController storyboardIdentifier="FruitCompletePopupViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vo2-WC-BEy" customClass="FruitCompletePopupViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FruitCompletePopupViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vo2-WC-BEy" customClass="FruitCompletePopupViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="BQE-63-5g3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -154,7 +154,6 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="t91-Xs-ELA" secondAttribute="height" multiplier="270:286" id="2Ep-5J-No0"/>
                                     <constraint firstAttribute="trailing" secondItem="PnJ-8s-NAL" secondAttribute="trailing" id="2y3-te-K36"/>
                                     <constraint firstItem="aF0-5z-D1Z" firstAttribute="leading" secondItem="t91-Xs-ELA" secondAttribute="leading" id="2yS-IW-8sr"/>
                                     <constraint firstItem="S8f-8f-25J" firstAttribute="top" secondItem="PnJ-8s-NAL" secondAttribute="bottom" id="6ry-Rw-4WI"/>
@@ -163,10 +162,12 @@
                                     <constraint firstItem="Pat-8U-8dz" firstAttribute="width" secondItem="t91-Xs-ELA" secondAttribute="width" multiplier="0.4" id="C8c-pa-wc2"/>
                                     <constraint firstAttribute="bottom" secondItem="S8f-8f-25J" secondAttribute="bottom" id="DTW-9d-Zuo"/>
                                     <constraint firstAttribute="trailing" secondItem="st0-Gf-aXa" secondAttribute="trailing" id="DUh-Gc-QIH"/>
+                                    <constraint firstAttribute="width" constant="270" id="Lyj-fv-6mZ"/>
                                     <constraint firstAttribute="trailing" secondItem="aF0-5z-D1Z" secondAttribute="trailing" id="QQr-7C-7EW"/>
                                     <constraint firstItem="Pat-8U-8dz" firstAttribute="top" secondItem="st0-Gf-aXa" secondAttribute="bottom" id="Rm1-c0-rWy"/>
                                     <constraint firstItem="st0-Gf-aXa" firstAttribute="bottom" secondItem="t91-Xs-ELA" secondAttribute="bottom" multiplier="0.19" id="TcJ-fP-Jqv"/>
                                     <constraint firstItem="st0-Gf-aXa" firstAttribute="top" secondItem="t91-Xs-ELA" secondAttribute="top" id="TeS-ed-xqF"/>
+                                    <constraint firstAttribute="height" constant="286" id="X0J-i6-Xfn"/>
                                     <constraint firstItem="S8f-8f-25J" firstAttribute="leading" secondItem="t91-Xs-ELA" secondAttribute="leading" id="YrR-GK-Vie"/>
                                     <constraint firstItem="Pat-8U-8dz" firstAttribute="centerX" secondItem="t91-Xs-ELA" secondAttribute="centerX" id="cx8-cV-jFX"/>
                                     <constraint firstItem="PnJ-8s-NAL" firstAttribute="leading" secondItem="t91-Xs-ELA" secondAttribute="leading" id="hFp-eQ-qjH"/>
@@ -178,7 +179,6 @@
                         <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="t91-Xs-ELA" firstAttribute="centerY" secondItem="BQE-63-5g3" secondAttribute="centerY" id="0Ud-Sr-ykW"/>
-                            <constraint firstItem="t91-Xs-ELA" firstAttribute="width" secondItem="BQE-63-5g3" secondAttribute="width" multiplier="0.72" id="ATU-AG-Jac"/>
                             <constraint firstItem="t91-Xs-ELA" firstAttribute="centerX" secondItem="BQE-63-5g3" secondAttribute="centerX" id="hGq-PA-vG9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iN9-oT-67e"/>

@@ -37,6 +37,9 @@
 		195A6A21216F17EB0072D03A /* QuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 195A6A1E216F17EB0072D03A /* QuestionView.xib */; };
 		19709A3721A3D40F00598D6F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19709A3621A3D40F00598D6F /* Constants.swift */; };
 		19709A3921A41DBF00598D6F /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19709A3821A41DBF00598D6F /* SubmitButton.swift */; };
+		19709A3D21A502FE00598D6F /* DummyDetailNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19709A3C21A502FE00598D6F /* DummyDetailNavigationController.swift */; };
+		19709A3F21A51C7500598D6F /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19709A3E21A51C7500598D6F /* UIImage+.swift */; };
+		19709A4121A531E800598D6F /* DummyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19709A4021A531E800598D6F /* DummyDetailViewController.swift */; };
 		1971E87C216A6902001378CA /* PromotionReviewContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1971E87B216A6902001378CA /* PromotionReviewContainerViewController.swift */; };
 		1973FD67219324B600FCD8C6 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1973FD66219324B600FCD8C6 /* String+.swift */; };
 		1975DD13216A5E8A0092B93C /* ExerciseContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1975DD12216A5E8A0092B93C /* ExerciseContainerViewController.swift */; };
@@ -94,6 +97,9 @@
 		195A6A1E216F17EB0072D03A /* QuestionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionView.xib; sourceTree = "<group>"; };
 		19709A3621A3D40F00598D6F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		19709A3821A41DBF00598D6F /* SubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
+		19709A3C21A502FE00598D6F /* DummyDetailNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDetailNavigationController.swift; sourceTree = "<group>"; };
+		19709A3E21A51C7500598D6F /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		19709A4021A531E800598D6F /* DummyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDetailViewController.swift; sourceTree = "<group>"; };
 		1971E87B216A6902001378CA /* PromotionReviewContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionReviewContainerViewController.swift; sourceTree = "<group>"; };
 		1973FD66219324B600FCD8C6 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		1975DD12216A5E8A0092B93C /* ExerciseContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseContainerViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +159,7 @@
 				190F74AB213E340F0038234A /* UIView+.swift */,
 				1973FD66219324B600FCD8C6 /* String+.swift */,
 				1953821F2199217500A8774E /* Int+.swift */,
+				19709A3E21A51C7500598D6F /* UIImage+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -256,6 +263,8 @@
 				19E274D32144DA7600E2F6D2 /* BookViewController.swift */,
 				1991DBED21A28800009A4C93 /* BookCell.xib */,
 				1991DBEE21A28800009A4C93 /* BookCell.swift */,
+				19709A3C21A502FE00598D6F /* DummyDetailNavigationController.swift */,
+				19709A4021A531E800598D6F /* DummyDetailViewController.swift */,
 			);
 			path = Book;
 			sourceTree = "<group>";
@@ -493,6 +502,7 @@
 				1991DBF021A28800009A4C93 /* BookCell.swift in Sources */,
 				192366492165AF390043F9BB /* FruitListResponse.swift in Sources */,
 				1923664D2165BF170043F9BB /* QuestionResponse.swift in Sources */,
+				19709A3D21A502FE00598D6F /* DummyDetailNavigationController.swift in Sources */,
 				19784240215FC68600D53F48 /* CertificateViewController.swift in Sources */,
 				19A38B7A217F838400B68F67 /* ExerciseContentViewController.swift in Sources */,
 				195A6A20216F17EB0072D03A /* QuestionView.swift in Sources */,
@@ -500,6 +510,7 @@
 				19FCF2402160FE9600BCC3F7 /* Grade.swift in Sources */,
 				19999573217CA18900B7C843 /* FruitCompletePopupViewController.swift in Sources */,
 				1947C568214F2DC700BF6521 /* ChapterRecord.swift in Sources */,
+				19709A4121A531E800598D6F /* DummyDetailViewController.swift in Sources */,
 				190FC3BB213A689C00DD333F /* AppDelegate.swift in Sources */,
 				19E70828216941B700C6F452 /* UserRecord.swift in Sources */,
 				1947C56C214F2E1500BF6521 /* DetailViewController.swift in Sources */,
@@ -513,6 +524,7 @@
 				190F74AE213E34700038234A /* NSObject+.swift in Sources */,
 				195382202199217500A8774E /* Int+.swift in Sources */,
 				1947C57C214F9E5F00BF6521 /* FruitResponse.swift in Sources */,
+				19709A3F21A51C7500598D6F /* UIImage+.swift in Sources */,
 				195A6A1F216F17EB0072D03A /* QuestionButton.swift in Sources */,
 				1975DD13216A5E8A0092B93C /* ExerciseContainerViewController.swift in Sources */,
 				19DE4AA62168F5FB000C412A /* Question.swift in Sources */,
@@ -684,7 +696,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yapp.FruitSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -717,7 +729,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yapp.FruitSchool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

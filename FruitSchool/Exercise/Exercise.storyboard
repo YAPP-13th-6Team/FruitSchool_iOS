@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,35 +15,31 @@
             <objects>
                 <viewController storyboardIdentifier="ExerciseContainerViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LDZ-DX-JeE" customClass="ExerciseContainerViewController" customModule="FruitSchool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="tcr-YL-klx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ygs-Hq-cwZ">
-                                <rect key="frame" x="43" y="134" width="289" height="399"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="ygs-Hq-cwZ" secondAttribute="height" multiplier="355:490" id="HPi-sk-lCs"/>
-                                </constraints>
+                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ygs-Hq-cwZ">
+                                <rect key="frame" x="150.33333333333334" y="206.66666666666663" width="74.333333333333343" height="398.66666666666674"/>
                                 <connections>
                                     <segue destination="lat-3a-bO5" kind="embed" id="NrC-bZ-u0B"/>
                                 </connections>
                             </containerView>
-                            <pageControl opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="10" translatesAutoresizingMaskIntoConstraints="NO" id="VSG-HB-I4U">
-                                <rect key="frame" x="112" y="496" width="151" height="37"/>
+                            <pageControl opaque="NO" alpha="0.0" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="10" translatesAutoresizingMaskIntoConstraints="NO" id="VSG-HB-I4U">
+                                <rect key="frame" x="112" y="568.33333333333337" width="151" height="37"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="pageIndicatorTintColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.68000000000000005" colorSpace="calibratedRGB"/>
                             </pageControl>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zxY-me-sav">
-                                <rect key="frame" x="0.0" y="533" width="375" height="134"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zxY-me-sav">
+                                <rect key="frame" x="0.0" y="605.33333333333348" width="375" height="172.66666666666663"/>
                                 <subviews>
-                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1d-yV-qh1" customClass="SubmitButton" customModule="FruitSchool" customModuleProvider="target">
-                                        <rect key="frame" x="94" y="52" width="187.5" height="30"/>
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1d-yV-qh1" customClass="SubmitButton" customModule="FruitSchool" customModuleProvider="target">
+                                        <rect key="frame" x="161.66666666666666" y="71.333333333333258" width="52" height="30"/>
                                         <state key="normal" title="제출하기"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="N1d-yV-qh1" firstAttribute="width" secondItem="zxY-me-sav" secondAttribute="width" multiplier="0.5" id="91K-9S-9nP"/>
                                     <constraint firstItem="N1d-yV-qh1" firstAttribute="centerY" secondItem="zxY-me-sav" secondAttribute="centerY" id="S1i-xy-oyY"/>
                                     <constraint firstItem="N1d-yV-qh1" firstAttribute="centerX" secondItem="zxY-me-sav" secondAttribute="centerX" id="cZc-nY-1zb"/>
                                 </constraints>
@@ -53,8 +49,8 @@
                         <constraints>
                             <constraint firstItem="VSG-HB-I4U" firstAttribute="bottom" secondItem="ygs-Hq-cwZ" secondAttribute="bottom" id="5ez-sy-eX6"/>
                             <constraint firstItem="UmB-vE-JWF" firstAttribute="trailing" secondItem="zxY-me-sav" secondAttribute="trailing" id="8zd-GH-XKy"/>
+                            <constraint firstItem="N1d-yV-qh1" firstAttribute="width" secondItem="ygs-Hq-cwZ" secondAttribute="width" multiplier="0.7" id="9jy-8Y-W1T"/>
                             <constraint firstItem="VSG-HB-I4U" firstAttribute="centerX" secondItem="tcr-YL-klx" secondAttribute="centerX" id="Bw7-Zt-8Wn"/>
-                            <constraint firstItem="ygs-Hq-cwZ" firstAttribute="width" secondItem="tcr-YL-klx" secondAttribute="width" multiplier="0.77" id="UgG-81-V2l"/>
                             <constraint firstItem="ygs-Hq-cwZ" firstAttribute="centerX" secondItem="tcr-YL-klx" secondAttribute="centerX" id="XmY-xP-mnl"/>
                             <constraint firstItem="ygs-Hq-cwZ" firstAttribute="centerY" secondItem="tcr-YL-klx" secondAttribute="centerY" id="dTG-WF-eJm"/>
                             <constraint firstItem="UmB-vE-JWF" firstAttribute="bottom" secondItem="zxY-me-sav" secondAttribute="bottom" id="pED-sC-wif"/>
@@ -65,7 +61,6 @@
                     </view>
                     <connections>
                         <outlet property="containerView" destination="ygs-Hq-cwZ" id="FNW-4U-OHz"/>
-                        <outlet property="containerViewCenterYConstraint" destination="dTG-WF-eJm" id="aRA-vb-Vmi"/>
                         <outlet property="pageControl" destination="VSG-HB-I4U" id="Vkc-YM-xcR"/>
                         <outlet property="submitButton" destination="N1d-yV-qh1" id="wyN-wg-5be"/>
                     </connections>

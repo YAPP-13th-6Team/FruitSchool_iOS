@@ -66,8 +66,6 @@ class ExerciseContainerViewController: UIViewController {
         }
     }
     
-    @IBOutlet private weak var containerViewCenterYConstraint: NSLayoutConstraint!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         makeQuestions()
@@ -121,6 +119,18 @@ class ExerciseContainerViewController: UIViewController {
     }
     
     private func setUp() {
+        if deviceModel == .iPad {
+            NSLayoutConstraint.activate([
+                containerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.77),
+                containerView.widthAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: 355 / 490)
+                ])
+        } else {
+            NSLayoutConstraint.activate([
+                containerView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.77),
+                containerView.heightAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 490 / 355)
+                ])
+        }
+        view.layoutIfNeeded()
         pageControl.numberOfPages = questions.count
         pageViewController.setViewControllers([makeContentViewController(at: 0) ?? UIViewController()], direction: .forward, animated: true, completion: nil)
     }
