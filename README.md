@@ -2,11 +2,13 @@
 
 ## 과일 학당
 
-**당신의 과일력을 높여줄 단 하나뿐인 학당**
+**당신의 과일력을 높여줄 단 하나뿐인 학당**
 
 ![로고](./images/appIcon.png)
 
 ---
+
+### [App Store 링크](https://itunes.apple.com/kr/app/%EA%B3%BC%EC%9D%BC-%ED%95%99%EB%8B%B9/id1442496247?mt=8)
 
 ### 소개
 
@@ -30,12 +32,12 @@
 
 - 기획 | 13기 홍승혜
 - 디자인 | 12기 장윤정
-- 개발(Front-End) | 13기 김동환
 - 개발(Front-End) | 12기 박주현
-- 개발(Front-End) | 13기 이재은
 - 개발(Front-End) | 12기 이한결
-- 개발(Back-End) | 13기 김다영
+- 개발(Front-End) | 13기 김동환
+- 개발(Front-End) | 13기 이재은
 - 개발(Back-End) | 12기 이승연
+- 개발(Back-End) | 13기 김다영
 
 ### 활용 기술: 디자인
 
@@ -61,7 +63,7 @@
 - MongoDB
 - express.js
 
-### [App Store 링크](https://itunes.apple.com/kr/app/%EA%B3%BC%EC%9D%BC-%ED%95%99%EB%8B%B9/id1442496247?mt=8)
+### 
 
 
 
