@@ -121,7 +121,7 @@ class ExerciseContainerViewController: UIViewController {
     private func setUp() {
         if deviceModel == .iPad {
             NSLayoutConstraint.activate([
-                containerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.77),
+                containerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
                 containerView.widthAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: 355 / 490)
                 ])
         } else {
@@ -223,8 +223,6 @@ extension ExerciseContainerViewController {
                         self.dismiss(animated: true) {
                             self.delegate?.didDismissExerciseViewController(fruitTitle: self.fruitTitle, english: self.english)
                         }
-                    } else {
-                        self.dismiss(animated: true, completion: nil)
                     }
                 })
             }

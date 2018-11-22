@@ -101,7 +101,6 @@ class CertificateViewController: UIViewController {
                 splitViewController.viewControllers = [master, detail]
                 splitViewController.modalTransitionStyle = .crossDissolve
                 self.present(splitViewController, animated: true, completion: nil)
-                //self.present(next, animated: true)
             }
         }
     }
