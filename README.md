@@ -55,6 +55,7 @@
 - FSPagerView
 - GaugeKit
 - EFCountingLabel
+- Kingfisher
 
 ### 활용 기술: 개발 (Back-End)
 
