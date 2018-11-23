@@ -34,6 +34,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="42" id="Cnt-XV-eFX"/>
                                     </constraints>
+                                    <state key="normal" title="ㅁㄴㅇㄹ"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                             <real key="value" value="5"/>
@@ -42,6 +43,7 @@
                                 </button>
                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWv-zi-sOH" customClass="QuestionButton" customModule="FruitSchool" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="63" width="355" height="42"/>
+                                    <state key="normal" title="ㄹㄴㅇㅁ"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                             <real key="value" value="5"/>
@@ -50,6 +52,7 @@
                                 </button>
                                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A85-BG-hWz" customClass="QuestionButton" customModule="FruitSchool" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="126" width="355" height="42"/>
+                                    <state key="normal" title="ㅁㄴㅇㄹ"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                             <real key="value" value="5"/>
@@ -88,8 +91,8 @@
                         <constraint firstItem="RAj-Cm-Niu" firstAttribute="top" secondItem="UCk-yG-lS5" secondAttribute="top" constant="16" id="Wbd-CW-dvw"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Question" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="3s4-a8-ivz">
-                    <rect key="frame" x="20" y="160" width="261" height="29"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="QuestionQuestionQuestionQuestionQuestionQuestionQuestionQuestionQuestionQuestionQuestionQuestionQuestionQuestion" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="3s4-a8-ivz">
+                    <rect key="frame" x="20" y="73.5" width="261" height="115.5"/>
                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="24"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
