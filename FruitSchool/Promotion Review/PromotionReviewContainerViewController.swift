@@ -307,7 +307,7 @@ extension PromotionReviewContainerViewController: UIPageViewControllerDelegate {
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-        guard let controller = pendingViewControllers.first as? ExerciseContentViewController else { return }
+        guard let controller = pendingViewControllers.first as? PromotionReviewContentViewController else { return }
         guard let questionView = controller.questionView else { return }
         guard let index = controller.pageIndex else { return }
         let question = questions[index]
