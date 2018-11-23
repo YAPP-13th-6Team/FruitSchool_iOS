@@ -305,4 +305,25 @@ extension PromotionReviewContainerViewController: UIPageViewControllerDelegate {
         guard let pageContentViewController = pageViewController.viewControllers?.first as? PromotionReviewContentViewController else { return }
         pageControl.currentPage = pageContentViewController.pageIndex
     }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        guard let controller = pendingViewControllers.first as? ExerciseContentViewController else { return }
+        guard let questionView = controller.questionView else { return }
+        guard let index = controller.pageIndex else { return }
+        let question = questions[index]
+        if didExecutesScoring {
+            for index in 0..<4 {
+                questionView[index].isUserInteractionEnabled = false
+            }
+            let correctIndex = question.answers.index(of: question.correctAnswer) ?? 0
+            if isPassed[index] {
+                questionView.markImageView.image = UIImage(named: "mark_correct")
+                questionView[correctIndex].backgroundColor = .correct
+            } else {
+                questionView.markImageView.image = UIImage(named: "mark_incorrect")
+                questionView[correctIndex].layer.borderWidth = 2
+                questionView[correctIndex].layer.borderColor = UIColor.incorrect.cgColor
+            }
+        }
+    }
 }

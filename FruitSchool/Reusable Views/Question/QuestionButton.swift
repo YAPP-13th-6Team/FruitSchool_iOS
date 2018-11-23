@@ -14,17 +14,7 @@ class QuestionButton: UIButton {
     override func awakeFromNib() {
         super.awakeFromNib()
         layer.cornerRadius = bounds.height / 2
-        layer.masksToBounds = true
-        setTitleColor(.black, for: [])
-        titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .light)
-        titleLabel?.adjustsFontSizeToFitWidth = true
-        backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        layer.cornerRadius = bounds.height / 2
-        layer.masksToBounds = true
+        clipsToBounds = true
         setTitleColor(.black, for: [])
         titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .light)
         titleLabel?.adjustsFontSizeToFitWidth = true

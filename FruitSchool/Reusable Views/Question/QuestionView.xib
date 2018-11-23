@@ -24,17 +24,16 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UCk-yG-lS5">
-                    <rect key="frame" x="0.0" y="211" width="375" height="291"/>
+                    <rect key="frame" x="0.0" y="201" width="375" height="301"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RAj-Cm-Niu">
-                            <rect key="frame" x="10" y="16" width="355" height="231"/>
+                            <rect key="frame" x="10" y="16" width="355" height="241"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4Z-xt-8GI" customClass="QuestionButton" customModule="FruitSchool" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="355" height="42"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="355" height="34"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="42" id="Cnt-XV-eFX"/>
+                                        <constraint firstAttribute="height" constant="34" id="s4P-8e-8ar"/>
                                     </constraints>
-                                    <state key="normal" title="ㅁㄴㅇㄹ"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                             <real key="value" value="5"/>
@@ -42,8 +41,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </button>
                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWv-zi-sOH" customClass="QuestionButton" customModule="FruitSchool" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="63" width="355" height="42"/>
-                                    <state key="normal" title="ㄹㄴㅇㅁ"/>
+                                    <rect key="frame" x="0.0" y="69" width="355" height="34"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                             <real key="value" value="5"/>
@@ -51,8 +49,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </button>
                                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A85-BG-hWz" customClass="QuestionButton" customModule="FruitSchool" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="126" width="355" height="42"/>
-                                    <state key="normal" title="ㅁㄴㅇㄹ"/>
+                                    <rect key="frame" x="0.0" y="138" width="355" height="34"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                             <real key="value" value="5"/>
@@ -60,7 +57,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </button>
                                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01h-Gu-YTB" customClass="QuestionButton" customModule="FruitSchool" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="189" width="355" height="42"/>
+                                    <rect key="frame" x="0.0" y="207" width="355" height="34"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                     <state key="normal">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -76,10 +73,10 @@
                                 <constraint firstItem="uWv-zi-sOH" firstAttribute="width" secondItem="RAj-Cm-Niu" secondAttribute="width" id="0mO-wa-xQL"/>
                                 <constraint firstItem="k4Z-xt-8GI" firstAttribute="width" secondItem="RAj-Cm-Niu" secondAttribute="width" id="478-Bu-eW3"/>
                                 <constraint firstItem="01h-Gu-YTB" firstAttribute="width" secondItem="RAj-Cm-Niu" secondAttribute="width" id="4U1-2h-Tn5"/>
-                                <constraint firstItem="01h-Gu-YTB" firstAttribute="height" secondItem="k4Z-xt-8GI" secondAttribute="height" id="IEq-N3-h0J"/>
+                                <constraint firstItem="uWv-zi-sOH" firstAttribute="height" secondItem="k4Z-xt-8GI" secondAttribute="height" id="VLO-vq-mGs"/>
                                 <constraint firstItem="A85-BG-hWz" firstAttribute="width" secondItem="RAj-Cm-Niu" secondAttribute="width" id="d8L-V2-eYl"/>
-                                <constraint firstItem="A85-BG-hWz" firstAttribute="height" secondItem="k4Z-xt-8GI" secondAttribute="height" id="fNE-zT-rsw"/>
-                                <constraint firstItem="uWv-zi-sOH" firstAttribute="height" secondItem="k4Z-xt-8GI" secondAttribute="height" id="tks-XY-Eoz"/>
+                                <constraint firstItem="A85-BG-hWz" firstAttribute="height" secondItem="k4Z-xt-8GI" secondAttribute="height" id="k7F-LI-ONc"/>
+                                <constraint firstItem="01h-Gu-YTB" firstAttribute="height" secondItem="k4Z-xt-8GI" secondAttribute="height" id="q3S-IY-Ecc"/>
                             </constraints>
                         </stackView>
                     </subviews>
@@ -91,8 +88,8 @@
                         <constraint firstItem="RAj-Cm-Niu" firstAttribute="top" secondItem="UCk-yG-lS5" secondAttribute="top" constant="16" id="Wbd-CW-dvw"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="QuestionQuestionQuestionQuestionQuestionQuestionQuestionQuestionQuestionQuestionQuestionQuestionQuestionQuestion" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="3s4-a8-ivz">
-                    <rect key="frame" x="20" y="73.5" width="261" height="115.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="QuestionQuestionQuestionQuestionQuestionQuestionQuestionQuestionQues" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="3s4-a8-ivz">
+                    <rect key="frame" x="20" y="93" width="261" height="86"/>
                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="24"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -106,7 +103,7 @@
                     <state key="normal" image="cancel"/>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mark_correct" translatesAutoresizingMaskIntoConstraints="NO" id="bY0-gZ-pFP">
-                    <rect key="frame" x="311" y="145" width="44" height="44"/>
+                    <rect key="frame" x="311" y="135" width="44" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="8rd-hn-ujQ"/>
                         <constraint firstAttribute="width" constant="44" id="LgH-Ti-Ikd"/>
@@ -115,7 +112,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="UCk-yG-lS5" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.58" id="0b8-2a-kXv"/>
+                <constraint firstItem="UCk-yG-lS5" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.6" id="0b8-2a-kXv"/>
                 <constraint firstItem="3s4-a8-ivz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="3BU-uN-Oc7" secondAttribute="bottom" constant="8" id="Csn-JH-2iR"/>
                 <constraint firstItem="3BU-uN-Oc7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="GZa-yN-aIA"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="UCk-yG-lS5" secondAttribute="trailing" id="HFz-jN-9nV"/>
