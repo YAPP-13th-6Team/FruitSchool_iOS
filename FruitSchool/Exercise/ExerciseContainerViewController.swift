@@ -100,6 +100,7 @@ class ExerciseContainerViewController: UIViewController {
                 let question = Question(title: data.title, fruitName: data.fruitTitle, correctAnswer: data.correctAnswer, answers: [[data.correctAnswer], data.incorrectAnswers].flatMap { $0 }.shuffled())
                 self.questions.append(question)
             }
+            self.questions.shuffle()
             // 정답이 기록될 전역 프로퍼티 배열 초기화
             self.answers = Array(repeating: "", count: self.questions.count)
             self.isPassed = Array(repeating: false, count: self.questions.count)

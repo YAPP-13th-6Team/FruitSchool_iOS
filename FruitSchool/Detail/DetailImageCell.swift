@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DetailImageCell: UITableViewCell {
 
@@ -28,7 +29,13 @@ class DetailImageCell: UITableViewCell {
 
     func setProperties(_ object: FruitResponse.Data?, at index: Int) {
         guard let object = object else { return }
-        fruitImageView.image = UIImage(named: object.english.toImageName(grade: object.grade, isDetail: true)) ?? UIImage(named: "detail_sample_image")
+        guard let url = URL(string: API.imageBaseURL + object.english.toImageName(grade: object.grade, isDetail: true)) else { return }
+        fruitImageView.kf.setImage(with: url, placeholder: nil, options: nil, progressBlock: nil) { image, _, _, _ in
+            if image == nil {
+                self.fruitImageView.contentMode = .scaleAspectFit
+                self.fruitImageView.image = UIImage(named: "boss_clear") ?? UIImage()
+            }
+        }
         fruitNameLabel.text = object.title
         englishLabel.text = object.english
         nthCardLabel.text = index.toOrdinalExpression

@@ -2,6 +2,7 @@ PODS:
   - EFCountingLabel (4.1.0)
   - FSPagerView (0.8.1)
   - GaugeKit (0.4.5)
+  - Kingfisher (4.10.1)
   - Realm (3.7.6):
     - Realm/Headers (= 3.7.6)
   - Realm/Headers (3.7.6)
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - EFCountingLabel
   - FSPagerView
   - GaugeKit
+  - Kingfisher (~> 4.0)
   - RealmSwift
   - SnapKit (~> 4.0.0)
   - SVProgressHUD
@@ -25,6 +27,7 @@ SPEC REPOS:
     - EFCountingLabel
     - FSPagerView
     - GaugeKit
+    - Kingfisher
     - Realm
     - RealmSwift
     - SnapKit
@@ -35,12 +38,13 @@ SPEC CHECKSUMS:
   EFCountingLabel: d3da80ee35b212f3b434ed9a3431653504b9f982
   FSPagerView: 4e865526acc0b0e3077e2abb29b8d10a9f395476
   GaugeKit: 7872069a8aed2d26b17fca110fe1ab59722f8a33
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   Realm: 9eaecad54712d6246d08ba34c10f354e4715d7d3
   RealmSwift: 1fe08b4ebaeeaacf17f9ba0343f7b25c9fc31fa6
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
-PODFILE CHECKSUM: e78e2c08ec99dd0a4097bccca9c8f85cfe3274fa
+PODFILE CHECKSUM: 0fabd532105a66cec1e077fecc6390dbe508b25b
 
 COCOAPODS: 1.6.0.beta.1
