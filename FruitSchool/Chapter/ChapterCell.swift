@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 import SnapKit
 
 class ChapterCell: UICollectionViewCell {
@@ -30,7 +31,8 @@ class ChapterCell: UICollectionViewCell {
     }
     
     func setProperties(_ object: FruitListResponse.Data, grade: Int, isPassed: Bool) {
-        imageView.image = UIImage(named: object.english.toImageName(grade: grade, isDetail: false))
+        guard let url = URL(string: API.imageBaseURL + object.english.toImageName(grade: object.grade, isDetail: false)) else { return }
+        imageView.kf.setImage(with: url)
         if !isPassed {
             let blurEffect = UIBlurEffect(style: .prominent)
             blurView = UIVisualEffectView(effect: blurEffect)

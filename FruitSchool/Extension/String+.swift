@@ -29,6 +29,7 @@ extension String {
             result += splitted[index] + "_"
         }
         result += splitted.last ?? ""
+        result += ".png"
         return result
     }
 }

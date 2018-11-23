@@ -13,4 +13,5 @@ target 'FruitSchool' do
   pod 'FSPagerView'
   pod 'GaugeKit'
   pod 'EFCountingLabel'
+  pod 'Kingfisher', '~> 4.0'
 end

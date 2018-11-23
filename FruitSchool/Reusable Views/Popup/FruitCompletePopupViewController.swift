@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 import SnapKit
 
 class FruitCompletePopupViewController: UIViewController {
@@ -33,7 +34,8 @@ class FruitCompletePopupViewController: UIViewController {
     
     @IBOutlet private weak var imageView: UIImageView! {
         didSet {
-            imageView.image = UIImage(named: english.toImageName(grade: grade, isDetail: false))
+            guard let url = URL(string: API.imageBaseURL + english.toImageName(grade: grade, isDetail: false)) else { return }
+            imageView.kf.setImage(with: url)
             imageView.layer.cornerRadius = 4
             imageView.clipsToBounds = true
         }
