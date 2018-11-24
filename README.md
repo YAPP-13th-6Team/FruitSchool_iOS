@@ -60,10 +60,10 @@
 ### 활용 기술: 개발 (Back-End)
 
 - Node.js
-- Microsoft Azure
+- Microsoft Azure vm
 - MongoDB
 - express.js
-
+- Microsoft Azure Blob Storage
 ### 
 
 
