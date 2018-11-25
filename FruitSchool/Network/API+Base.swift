@@ -14,7 +14,7 @@ import Foundation
  */
 class API {
     //static let baseURL = "http://localhost:3000"
-    static let baseURL = "http://168.62.38.254:3000"
+    static let baseURL = "http://40.76.74.37:3000"
     static let imageBaseURL = "https://fruits2.blob.core.windows.net/fruits/"
     static let jsonDecoder: JSONDecoder = {
         let jsonDecoder = JSONDecoder()
